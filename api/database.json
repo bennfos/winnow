@@ -1,0 +1,24 @@
+{
+    "users": [
+        {
+        "id": 1,
+        "firstName": "Bennett",
+        "lastName": "Foster",
+        "username": "bennfos",
+        "email": "bennfos@gmail.com",
+        "password": "a"
+        }
+    ],
+    "books": [
+
+    ],
+    "pages": [
+
+    ],
+    "quotes": [
+
+    ],
+    "pageQuotes": [
+        
+    ]
+}

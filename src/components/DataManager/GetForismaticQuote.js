@@ -7,6 +7,7 @@ export default {
         .then(function(response) {
           return response.json();
         })
+        .then(response => console.log(response))
       }
 }
 

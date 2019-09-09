@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import getRandomQuote from '../DataManager/GetForismaticQuote'
+import fetchJsonp from 'fetch-jsonp'
 
 
 class QuoteCard extends Component {
@@ -9,16 +9,17 @@ class QuoteCard extends Component {
       };
 
     getAndDisplayRandomQuote = () => {
-        getRandomQuote.getRandomQuote()
-            .then(quote => {
-                this.setState({
-                    quoteText: quote.quoteText,
-                    quoteAuthor: quote.quoteAuthor
-                })
-                console.log(this.state)
-            })
-    }
-
+        fetchJsonp('http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en',
+        {jsonpCallback: 'jsonp'})
+        .then(function(response) {
+          return response.json();
+        })
+        .then(response =>
+            this.setState({
+                quoteText: response.quoteText,
+                quoteAuthor: response.quoteAuthor
+            }))
+        }
 
     render() {
        return (
