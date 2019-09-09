@@ -15,16 +15,16 @@ class NavBar extends Component {
             <nav className="navbar navbar-light light-blue flex-md-nowrap p-0 shadow">
                 <ul className="nav nav-pills nav-fill">
                     <li className="nav-item">
-                        <Link className="nav-link" to="/login">Login</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/book">Book</Link>
+                        <Link className="nav-link" to="/book">Books</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/search">Search</Link>
                     </li>
                     <li className="nav-item">
                         <Link onClick={this.logout} className="nav-link" to="/">Logout</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/quote">Quote</Link>
                     </li>
                 </ul>
             </nav>

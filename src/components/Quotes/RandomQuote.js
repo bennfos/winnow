@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import fetchJsonp from 'fetch-jsonp'
 
 
-class QuoteCard extends Component {
+class RandomQuote extends Component {
     state = {
         quoteText: "",
         quoteAuthor: ""
@@ -31,4 +31,4 @@ class QuoteCard extends Component {
        )}
 }
 
-export default QuoteCard
+export default RandomQuote

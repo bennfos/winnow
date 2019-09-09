@@ -1,24 +1,24 @@
 {
-    "users": [
-        {
-        "id": 1,
-        "firstName": "Bennett",
-        "lastName": "Foster",
-        "username": "bennfos",
-        "email": "bennfos@gmail.com",
-        "password": "a"
-        }
-    ],
-    "books": [
-
-    ],
-    "pages": [
-
-    ],
-    "quotes": [
-
-    ],
-    "pageQuotes": [
-        
-    ]
+  "users": [
+    {
+      "firstName": "Bennett",
+      "lastName": "Foster",
+      "email": "me@me.com",
+      "username": "me",
+      "password": "1",
+      "id": 1
+    },
+    {
+      "firstName": "test",
+      "lastName": "test",
+      "email": "test@test.com",
+      "username": "test",
+      "password": "1",
+      "id": 2
+    }
+  ],
+  "books": [],
+  "pages": [],
+  "quotes": [],
+  "pageQuotes": []
 }

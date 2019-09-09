@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import UserDataManager from "./UserDataManager";
+import {Button} from 'reactstrap'
 
-import "./Login.css";
 
 class Login extends Component {
   state = {
+    username: "",
     email: "",
     password: "",
     users: []
@@ -18,20 +19,20 @@ class Login extends Component {
 
   handleLogin = event => {
     event.preventDefault();
-    UserDataManager.checkUsers(this.state.email, this.state.password).then(
-      checkedUsers => {
-        if (checkedUsers.length > 0) {
-          sessionStorage.setItem("credentials", checkedUsers[0].id);
-          this.props.history.push("/chat");
-        } else {
-          alert("Invalid email or password.");
+    UserDataManager.checkUsers(this.state.username, this.state.password)
+        .then(checkedUsers => {
+            if (checkedUsers.length > 0) {
+            sessionStorage.setItem("credentials", checkedUsers[0].id);
+            this.props.history.push("/book");
+            } else {
+            alert("invalid username or password");
+            }
         }
-      }
     );
   };
 
   componentDidMount() {
-    // getAll users and hand on
+    // getAll users and put them in users array in state
     UserDataManager.getAllUsers().then(users => {
       this.setState({
         users: users
@@ -40,18 +41,18 @@ class Login extends Component {
   }
 
   render() {
-    console.log(this.state.users);
+    console.log(this.state);
     return (
       <React.Fragment>
         <form onSubmit={this.handleLogin}>
           <fieldset className="loginSection">
-            <h3>Please Log In</h3>
+            <h3>winnow</h3>
             <div className="loginForm">
               <input
                 onChange={this.handleFieldChange}
-                type="email"
-                id="email"
-                placeholder="Email address"
+                type="text"
+                id="username"
+                placeholder="username"
                 required
                 autoFocus=""
               /><br/>
@@ -63,8 +64,8 @@ class Login extends Component {
                 required
               />
             </div>
-            <button type="submit">Sign In</button>
-            <p>Or</p>
+            <Button type="submit" color="primary">Sign In</Button>
+            <p>or</p>
           </fieldset>
         </form>
       </React.Fragment>
