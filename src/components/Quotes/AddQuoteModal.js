@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input } from 'reactstrap';
 
-class AddBookModal extends Component {
+class AddQuoteModal extends Component {
 
 //Defines initial state
     state = {
-        books: [],
+        quotes: [],
         userId: parseInt(sessionStorage.getItem("credentials")),
-        title: "",
-        description: "",
-        timestamp: "",
+        quoteText: "",
+        quoteAuthor: "",
+        timestamp: ""
     };
 
     constructor(props) {
         super(props);
         this.state = {
-            books: [],
-            userId: "",
-            title: "",
-            description: "",
+            quotes: [],
+            userId: parseInt(sessionStorage.getItem("credentials")),
+            quoteText: "",
+            quoteAuthor: "",
             timestamp: "",
             modal: false
         };
@@ -41,26 +41,26 @@ class AddBookModal extends Component {
         console.log(stateToChange)
     };
 
-    constructNewBook = event => {
+    constructNewQuote = event => {
         event.preventDefault();
 
     //Validates user input
-        if (this.state.title === ""||
-        this.state.description === "") {
+        if (this.state.quoteText === ""||
+        this.state.quoteAuthor === "") {
             alert("please fill out all fields");
         } else {
             this.setState({ loadingStatus: true });
 
         //creates a new object for the edited news item,
-            const newBook = {
-                title: this.state.title,
+            const newQuote = {
+                quoteText: this.state.quoteText,
                 userId: parseInt(sessionStorage.getItem("credentials")),
-                description: this.state.description,
+                quoteAuthor: this.state.quoteAuthor,
                 timestamp: new Date().toLocaleString()
             };
 
         //posts the object to the database, gets all news items, updates state of news array
-            this.props.addBook(newBook)
+            this.props.addQuote(newQuote)
 
         //closes the modal
             .then(this.toggle)
@@ -70,11 +70,11 @@ class AddBookModal extends Component {
     render(){
         return(
             <>
-                <section className="eventSectionContent">
+                <section className="quoteSectionContent">
                     <Button type="button"
                     color="success"
                     onClick={this.toggle}>
-                    add book
+                    add quote
                     </Button>
                 </section>
                 <div>
@@ -83,28 +83,30 @@ class AddBookModal extends Component {
                         toggle={this.toggle}
                         className={this.props.className}
                     >
-                        <ModalHeader toggle={this.toggle}>add book</ModalHeader>
+                        <ModalHeader toggle={this.toggle}>add quote</ModalHeader>
                         <ModalBody>
-                            <form>
-                                <fieldset>
-                                    <div className="newBookForm">
-                                    <input onChange={this.handleFieldChange} type="text"
-                                            id="title"
-                                            placeholder="title"
+                            <Form className="newQuoteForm">
+                                <FormGroup>
+
+                                    <Input onChange={this.handleFieldChange}
+                                            type="textarea"
+                                            id="quoteText"
+                                            placeholder="text"
                                             required
                                             autoFocus=""
                                         /><br/>
-                                        <textarea onChange={this.handleFieldChange}
-                                            id="description"
-                                            placeholder="description"
+                                    <Input onChange={this.handleFieldChange}
+                                            type="text"
+                                            id="quoteAuthor"
+                                            placeholder="author"
                                             required
                                         /><br/>
-                                    </div>
-                                </fieldset>
-                            </form>
+
+                                </FormGroup>
+                            </Form>
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={this.constructNewBook}>save</Button>{' '}
+                            <Button color="primary" onClick={this.constructNewQuote}>save</Button>{' '}
                             <Button color="secondary" onClick={this.toggle}>cancel</Button>
                         </ModalFooter>
                     </Modal>
@@ -114,4 +116,4 @@ class AddBookModal extends Component {
     }
 }
 
-export default AddBookModal
+export default AddQuoteModal

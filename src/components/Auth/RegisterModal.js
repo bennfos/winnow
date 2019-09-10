@@ -71,7 +71,7 @@ class RegisterModal extends React.Component {
     render() {
         return (
             <div>
-                <Button className="registerbtn" color="danger" onClick={this.toggle}>sign up</Button>
+                <Button className="registerbtn" onClick={this.toggle}>sign up</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Sign up</ModalHeader>
                     <ModalBody>
@@ -111,7 +111,7 @@ class RegisterModal extends React.Component {
                                 /><br/>
                             <input onChange={this.handleFieldChange} type="password"
                                     id="confirmPassword"
-                                    placeholder="confirm Password"
+                                    placeholder="confirm password"
                                     required
                             />
                             </div>

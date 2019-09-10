@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-// import EditBookModal from './EditBookModal'
-import {Button} from 'reactstrap'
+import { Link } from 'react-router-dom'
+import EditBookModal from './EditBookModal'
+import {Button, Card, CardImg, CardText, CardBody,
+    CardTitle, CardSubtitle, Col, Row} from 'reactstrap'
 
 class BookCard extends Component {
 
@@ -10,13 +12,21 @@ class BookCard extends Component {
     return (
 
         <div className="bookCard">
-          <h3>{this.props.book.title}</h3>
-          <p>{this.props.book.description}</p>
-          {/* <EditBookModal
-          {...this.props}
-          postedEditedNewsItem={this.props.postedEditedNewsItem}
-          /> */}
-          <Button color="danger" type="button" onClick={() => this.props.removeBook(this.props.book.id)}>Delete</Button>
+            <Row>
+                <Col sm="6">
+                    <Card body onClick={() => console.log("clicked")}>
+                        <CardTitle>{this.props.book.title}</CardTitle>
+                        <CardText>{this.props.book.description}</CardText>
+                        <EditBookModal
+                        {...this.props}
+                        postedEditedNewsItem={this.props.postedEditedNewsItem}
+                        />
+                        <Button onClick={() => this.props.history.push(`./books/${this.props.book.id}`)}>open</Button>
+                        <Button color="danger" onClick={() => this.props.removeBook(this.props.book.id)}>delete</Button>
+
+                    </Card>
+                </Col>
+            </Row>
         </div>
 
     );
