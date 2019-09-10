@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import UserDataManager from "./UserDataManager";
-import {Button} from 'reactstrap'
+import { Button } from 'reactstrap'
 
+import "./Login.css";
 
 class Login extends Component {
   state = {
-    username: "",
     email: "",
     password: "",
     users: []
@@ -19,20 +19,20 @@ class Login extends Component {
 
   handleLogin = event => {
     event.preventDefault();
-    UserDataManager.checkUsers(this.state.username, this.state.password)
-        .then(checkedUsers => {
-            if (checkedUsers.length > 0) {
-            sessionStorage.setItem("credentials", checkedUsers[0].id);
-            this.props.history.push("/book");
-            } else {
-            alert("invalid username or password");
-            }
+    UserDataManager.checkUsers(this.state.username, this.state.password).then(
+      checkedUsers => {
+        if (checkedUsers.length > 0) {
+          sessionStorage.setItem("credentials", checkedUsers[0].id);
+          this.props.history.push("/books");
+        } else {
+          alert("Invalid username or password.");
         }
+      }
     );
   };
 
   componentDidMount() {
-    // getAll users and put them in users array in state
+    // getAll users and hand on
     UserDataManager.getAllUsers().then(users => {
       this.setState({
         users: users
@@ -41,7 +41,7 @@ class Login extends Component {
   }
 
   render() {
-    console.log(this.state);
+    console.log(this.state.users);
     return (
       <React.Fragment>
         <form onSubmit={this.handleLogin}>
@@ -50,7 +50,7 @@ class Login extends Component {
             <div className="loginForm">
               <input
                 onChange={this.handleFieldChange}
-                type="text"
+                type="username"
                 id="username"
                 placeholder="username"
                 required
@@ -60,11 +60,11 @@ class Login extends Component {
                 onChange={this.handleFieldChange}
                 type="password"
                 id="password"
-                placeholder="Password"
+                placeholder="password"
                 required
               />
             </div>
-            <Button type="submit" color="primary">Sign In</Button>
+            <Button type="submit">sign in</Button>
             <p>or</p>
           </fieldset>
         </form>

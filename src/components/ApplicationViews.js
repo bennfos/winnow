@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Auth from './Auth/Auth'
 import BookMain from './Books/BookMain'
 import RandomQuote from './Quotes/RandomQuote'
+import PageMain from './Pages/PageMain'
 
 
 export default class ApplicationViews extends Component {
@@ -22,8 +23,7 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          exact path="/book" render={props => {
-            // Render FriendList component when user goes to '/friends'
+          exact path="/books" render={props => {
             if (this.isAuthenticated()) {
               return <BookMain {...props} />
             }
@@ -32,8 +32,16 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
+          exact path="/books/:bookId(\d+)" render={props => {
+            if (this.isAuthenticated()) {
+              return <PageMain bookId={parseInt(props.match.params.bookId)} />
+            }
+              return <Auth {...props} />
+          }}
+        />
+        
+        <Route
           exact path="/quote" render={props => {
-            // Render FriendList component when user goes to '/friends'
             if (this.isAuthenticated()) {
               return <RandomQuote {...props} />
             }

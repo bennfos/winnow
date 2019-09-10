@@ -17,8 +17,51 @@
       "id": 2
     }
   ],
-  "books": [],
-  "pages": [],
-  "quotes": [],
+  "books": [
+    {
+      "id": 3,
+      "userId": 1,
+      "title": "test3!",
+      "description": "!test3",
+      "timestamp": "9/10/2019, 10:23:25 AM"
+    },
+    {
+      "title": "book2",
+      "userId": 1,
+      "description": "book2",
+      "timestamp": "9/10/2019, 2:02:22 PM",
+      "id": 4
+    }
+  ],
+  "pages": [
+    {
+      "month": "february",
+      "userId": 1,
+      "day": "4",
+      "id": 2
+    },
+    {
+      "month": "november",
+      "userId": 1,
+      "day": "7",
+      "id": 3
+    }
+  ],
+  "quotes": [
+    {
+      "quoteText": "test",
+      "userId": 1,
+      "quoteAuthor": "test",
+      "timestamp": "9/10/2019, 1:53:46 PM",
+      "id": 1
+    },
+    {
+      "quoteText": "test2",
+      "userId": 1,
+      "quoteAuthor": "test2",
+      "timestamp": "9/10/2019, 2:01:12 PM",
+      "id": 2
+    }
+  ],
   "pageQuotes": []
 }
