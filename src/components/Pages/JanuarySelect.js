@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PageDataManager from './PageDataManager'
-import { Button, Form, FormGroup, Input, ModalBody, ModalHeader, Modal, ModalFooter } from 'reactstrap';
+import { Button, Form, FormGroup, Input, ModalBody, ModalHeader, Modal, ModalFooter, Label } from 'reactstrap';
+import { Link } from 'react-router-dom'
+
 
 class JanuarySelect extends Component {
 
@@ -8,7 +10,9 @@ class JanuarySelect extends Component {
     state = {
         pages: [],
         userId: parseInt(sessionStorage.getItem("credentials")),
-        day: ""
+        day: "1",
+        month: "january",
+        newPage: {}
     };
 
     constructor(props) {
@@ -17,6 +21,7 @@ class JanuarySelect extends Component {
             pages: [],
             userId: parseInt(sessionStorage.getItem("credentials")),
             day: "1",
+            month: "january",
             modal: false
         };
 
@@ -38,41 +43,45 @@ class JanuarySelect extends Component {
         console.log(stateToChange)
     };
 
-    addPage = pageObject => {
-        return PageDataManager.postPage(pageObject)
-            .then(() => {
-                PageDataManager.getAllPages(this.state.userId)
-                    .then(pages => {
-                        this.setState({
-                            pages: pages
-              });
-            });
-          });
-        };
+
 
     constructNewPage = event => {
         event.preventDefault();
-
     //Validates user input
         if (this.state.day === "") {
             alert("please select a day");
         } else {
             this.setState({ loadingStatus: true });
 
-        //creates a new object for the edited news item,
-            const newPage = {
-                month: "january",
-                userId: parseInt(sessionStorage.getItem("credentials")),
-                day: this.state.day,
-            };
+            PageDataManager.checkPages(this.state.userId, this.props.bookId, this.state.month, this.state.day)
+                .then(pages => {
+                    if (pages.length > 0) {
+                        alert("page exists")
+                    } else {
 
-        //posts the object to the database, gets all news items, updates state of news array
-            this.addPage(newPage)
+                    //creates a new object for the edited news item,
+                        const newPage = {
+                            month: "january",
+                            userId: parseInt(sessionStorage.getItem("credentials")),
+                            day: this.state.day,
+                        };
+                        this.setState({ newPage: newPage})
+                        //posts the object to the database, gets all news items, updates state of news array
+                        this.props.addPage(newPage)
 
-        //closes the modal
-            .then(this.toggle)
+                    }
+                })
+
+                    //closes the modal
+                    .then(this.toggle)
+                    .then(this.props.toggleSidebar)
+                    // .then(this.props.history.push(`/books/${this.props.bookId}/month=${this.state.month}/day=${this.state.day}`))
+        }
     }
-};
+
+
+
+
 
     render(){
         return(
@@ -83,9 +92,14 @@ class JanuarySelect extends Component {
                     toggle={this.toggle}
                     className={this.props.className}
                 >
-                    <ModalHeader toggle={this.toggle}>select page</ModalHeader>
+                    <ModalHeader toggle={this.toggle}>select a page</ModalHeader>
                     <ModalBody>
-                        <Input onChange={this.handleFieldChange} type="select" name="day" id="day">
+                        <Label />january
+                        <Input
+                        onChange={this.handleFieldChange}
+                        type="select"
+                        name="day"
+                        id="day">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -120,8 +134,23 @@ class JanuarySelect extends Component {
                         </Input>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={this.constructNewPage}>save</Button>{' '}
-                        <Button color="secondary" onClick={this.toggle}>cancel</Button>
+
+                            <Button
+                                color="primary"
+                                onClick={
+                                    this.constructNewPage
+
+
+                                }>go
+                            </Button>
+
+                        <Button
+                            color="secondary"
+                            onClick={() => {
+                            this.toggle()
+                            this.props.toggleSidebar()
+                            }}>cancel
+                        </Button>
                     </ModalFooter>
                 </Modal>
             </>

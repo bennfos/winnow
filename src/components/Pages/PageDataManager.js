@@ -30,7 +30,7 @@ export default {
         {method: "DELETE"
         }).then(response => response.json())
     },
-    editBook(editedPage) {
+    editPage(editedPage) {
         return fetch (`${remoteURL}/pages/${editedPage.id}`,  {
             method: "PUT",
             headers: {
@@ -38,5 +38,9 @@ export default {
             },
             body: JSON.stringify(editedPage)
         }).then(response => response.json());
-    }
+    },
+    checkPages(userId, bookId, month, day) {
+        return fetch(`${remoteURL}/pages?userId=${userId}&&bookId=${bookId}month=${month}&&day=${day}`)
+            .then(response => response.json());
+    },
 }

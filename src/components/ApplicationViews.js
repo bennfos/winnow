@@ -5,6 +5,7 @@ import BookMain from './Books/BookMain'
 import RandomQuote from './Quotes/RandomQuote'
 import PageMain from './Pages/PageMain'
 import JanuarySelect from "./Pages/JanuarySelect";
+import PageDay from './Pages/PageDay'
 
 
 export default class ApplicationViews extends Component {
@@ -40,6 +41,19 @@ export default class ApplicationViews extends Component {
               return <Auth {...props} />
           }}
         />
+
+{/* <Route
+          exact path="/books/:bookId(\d+)/:month(\d+)/:day(\d+)" render={props => {
+            if (this.isAuthenticated()) {
+              return <PageDay
+                        bookId={props.bookId}
+                        month={props.month}
+                        day={props.day}
+                        />
+            }
+              return <Auth {...props} />
+          }}
+        /> */}
 
         <Route
           exact path="/quote" render={props => {
