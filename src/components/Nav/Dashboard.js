@@ -24,7 +24,8 @@ class NavBar extends Component {
   render() {
 
     return (
-      <>  <div className="appViews__container">
+      <>
+        <div className="appViews__container">
               <ApplicationViews />
           </div>
           <div className="nav__container">
@@ -35,7 +36,6 @@ class NavBar extends Component {
                 animation='push'
                 inverted
                 direction='bottom'
-                visible
                 width='thin'
             >
                 <Menu.Item as={Link} to='/books'

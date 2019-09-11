@@ -22,17 +22,17 @@ class PageMain extends Component {
         }
       }
 
-      addPage = pageObject => {
+    addPage = pageObject => {
         return PageDataManager.postPage(pageObject)
             .then(() => {
                 PageDataManager.getAllPages(this.state.userId)
                     .then(pages => {
                         this.setState({
                             pages: pages
-              });
+                        });
+                    });
             });
-          });
-        };
+    };
 
     render() {
         const { visible } = this.state
@@ -60,8 +60,7 @@ class PageMain extends Component {
                     ><JanuarySelect
                         addPage={this.addPage}
                         toggleSidebar={this.handleClick}
-                        {...this.props}
-                        onClick={this.toggle}/>
+                        {...this.props}/>
                 </Menu.Item>
 
 

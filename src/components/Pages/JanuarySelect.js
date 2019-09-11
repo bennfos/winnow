@@ -11,8 +11,7 @@ class JanuarySelect extends Component {
         pages: [],
         userId: parseInt(sessionStorage.getItem("credentials")),
         day: "1",
-        month: "january",
-        newPage: {}
+        month: "january"
     };
 
     constructor(props) {
@@ -68,14 +67,9 @@ class JanuarySelect extends Component {
                         this.setState({ newPage: newPage})
                         //posts the object to the database, gets all news items, updates state of news array
                         this.props.addPage(newPage)
-
+                            .then(this.props.history.push(`/books/${this.props.bookId}/${this.state.month}/${this.state.day}`))
                     }
                 })
-
-                    //closes the modal
-                    .then(this.toggle)
-                    .then(this.props.toggleSidebar)
-                    .then(this.props.history.push(`/books/${this.props.bookId}/${this.state.month}/${this.state.day}`))
         }
     }
 
