@@ -6,6 +6,7 @@ import { Sidebar, Menu, Icon, Segment, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import './PageMain.css'
 import JanuarySelect from './JanuarySelect';
+import PageDataManager from './PageDataManager'
 
 class PageMain extends Component {
 
@@ -20,6 +21,18 @@ class PageMain extends Component {
           this.setState({ visible: false })
         }
       }
+
+      addPage = pageObject => {
+        return PageDataManager.postPage(pageObject)
+            .then(() => {
+                PageDataManager.getAllPages(this.state.userId)
+                    .then(pages => {
+                        this.setState({
+                            pages: pages
+              });
+            });
+          });
+        };
 
     render() {
         const { visible } = this.state
@@ -44,7 +57,11 @@ class PageMain extends Component {
             >
                 <Menu.Item
                     className="sidebarButton"
-                    ><JanuarySelect />
+                    ><JanuarySelect
+                        addPage={this.addPage}
+                        toggleSidebar={this.handleClick}
+                        {...this.props}
+                        onClick={this.toggle}/>
                 </Menu.Item>
 
 
@@ -62,7 +79,6 @@ class PageMain extends Component {
                 onClick={this.handleClick}>
                 march
                 </Menu.Item>
-
 
 
                 <Menu.Item as={Link} to='/april'
@@ -91,26 +107,31 @@ class PageMain extends Component {
                 className="sidebarButton">
                 july
                 </Menu.Item>
+
                 <Menu.Item as={Link} to='/august'
                 onClick={this.logout}
                 className="sidebarButton">
                 august
                 </Menu.Item>
+
                 <Menu.Item as={Link} to='/september'
                 onClick={this.logout}
                 className="sidebarButton">
                 september
                 </Menu.Item>
+
                 <Menu.Item as={Link} to='/november'
                 onClick={this.logout}
                 className="sidebarButton">
                 november
                 </Menu.Item>
+
                 <Menu.Item as={Link} to='/december'
                 onClick={this.logout}
                 className="sidebarButton">
                 december
                 </Menu.Item>
+
             </Sidebar>
             <Sidebar.Pusher dimmed={visible}>
                 <PageList {...this.props}/>

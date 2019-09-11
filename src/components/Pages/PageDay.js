@@ -23,7 +23,8 @@ class PageDay extends Component {
     render() {
         return (
             <React.Fragment>
-                <QuoteList {...this.props}/>
+                <h3>Hi</h3>
+                {/* <QuoteList {...this.props}/> */}
                 {/* <ThoughtsMain {...this.props}/> */}
             </React.Fragment>
         )
