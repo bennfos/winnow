@@ -63,20 +63,14 @@
     {
       "month": "january",
       "userId": 1,
-      "day": "17",
+      "day": "7",
       "id": 3
     },
     {
       "month": "january",
       "userId": 1,
-      "day": "14",
+      "day": "15",
       "id": 4
-    },
-    {
-      "month": "january",
-      "userId": 1,
-      "day": "21",
-      "id": 5
     }
   ],
   "quotes": [

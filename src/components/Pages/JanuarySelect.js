@@ -75,7 +75,7 @@ class JanuarySelect extends Component {
                     //closes the modal
                     .then(this.toggle)
                     .then(this.props.toggleSidebar)
-                    // .then(this.props.history.push(`/books/${this.props.bookId}/month=${this.state.month}/day=${this.state.day}`))
+                    .then(this.props.history.push(`/books/${this.props.bookId}/${this.state.month}/${this.state.day}`))
         }
     }
 
@@ -86,7 +86,9 @@ class JanuarySelect extends Component {
     render(){
         return(
             <>
-                <Button onClick={this.toggle}>january</Button>
+                <Button
+                    onClick={this.toggle}
+                    >january</Button>
                 <Modal
                     isOpen={this.state.modal}
                     toggle={this.toggle}
@@ -139,8 +141,6 @@ class JanuarySelect extends Component {
                                 color="primary"
                                 onClick={
                                     this.constructNewPage
-
-
                                 }>go
                             </Button>
 
