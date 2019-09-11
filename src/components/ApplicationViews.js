@@ -36,24 +36,26 @@ export default class ApplicationViews extends Component {
         <Route
           exact path="/books/:bookId(\d+)" render={props => {
             if (this.isAuthenticated()) {
-              return <PageMain bookId={parseInt(props.match.params.bookId)} />
+              return <PageMain
+                  bookId={parseInt(props.match.params.bookId)}
+                  {...props}/>
             }
               return <Auth {...props} />
           }}
         />
 
-{/* <Route
-          exact path="/books/:bookId(\d+)/:month(\d+)/:day(\d+)" render={props => {
+        <Route
+          exact path="/books/:bookId(\d+)/:month/:day" render={props => {
             if (this.isAuthenticated()) {
               return <PageDay
-                        bookId={props.bookId}
-                        month={props.month}
-                        day={props.day}
+                        bookId={props.match.params.bookId}
+                        month={props.match.params.month}
+                        day={props.match.params.day}
                         />
             }
               return <Auth {...props} />
           }}
-        /> */}
+        />
 
         <Route
           exact path="/quote" render={props => {
