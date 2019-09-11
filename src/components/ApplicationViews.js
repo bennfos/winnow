@@ -4,6 +4,7 @@ import Auth from './Auth/Auth'
 import BookMain from './Books/BookMain'
 import RandomQuote from './Quotes/RandomQuote'
 import PageMain from './Pages/PageMain'
+import JanuarySelect from "./Pages/JanuarySelect";
 
 
 export default class ApplicationViews extends Component {
@@ -39,11 +40,20 @@ export default class ApplicationViews extends Component {
               return <Auth {...props} />
           }}
         />
-        
+
         <Route
           exact path="/quote" render={props => {
             if (this.isAuthenticated()) {
               return <RandomQuote {...props} />
+            }
+              return <Auth {...props} />
+          }}
+        />
+
+        <Route
+          exact path="/january" render={props => {
+            if (this.isAuthenticated()) {
+              return <JanuarySelect {...props} />
             }
               return <Auth {...props} />
           }}
