@@ -1,0 +1,11 @@
+.pageSelect {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pageSelect__button {
+    height: 25px;
+    padding: 0;
+    width: 100%
+}

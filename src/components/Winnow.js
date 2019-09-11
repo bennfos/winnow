@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Winnow.css';
-import NavBar from './Nav/NavBar'
+import Dashboard from './Nav/Dashboard'
 import ApplicationViews from "./ApplicationViews";
 
 
@@ -11,8 +11,7 @@ class Winnow extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar {...this.props}/>
-        <ApplicationViews />
+        <Dashboard {...this.props}/>
       </React.Fragment>
     )
   }
