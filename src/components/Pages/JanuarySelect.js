@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PageDataManager from './PageDataManager'
 import { Button, Form, FormGroup, Input } from 'reactstrap';
 
 class JanuarySelect extends Component {
@@ -34,8 +35,20 @@ class JanuarySelect extends Component {
         const stateToChange = {};
         stateToChange[evt.target.id] = evt.target.value;
         this.setState(stateToChange);
-        console.log(this.state)
+        console.log(stateToChange)
     };
+
+    addPage = pageObject => {
+        return PageDataManager.postPage(pageObject)
+            .then(() => {
+                PageDataManager.getAllPages(this.state.userId)
+                    .then(pages => {
+                        this.setState({
+                            pages: pages
+              });
+            });
+          });
+        };
 
     constructNewPage = event => {
         event.preventDefault();
@@ -54,7 +67,7 @@ class JanuarySelect extends Component {
             };
 
         //posts the object to the database, gets all news items, updates state of news array
-            this.props.addPage(newPage)
+            this.addPage(newPage)
 
         //closes the modal
             .then(this.toggle)
@@ -66,7 +79,7 @@ class JanuarySelect extends Component {
             <>
                 <Form>
                   <FormGroup>
-                    <Input onChange={this.handleFieldChange} type="select" name="day" id="dayInput">
+                    <Input onChange={this.handleFieldChange} type="select" name="day" id="day">
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>
