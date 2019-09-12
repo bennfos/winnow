@@ -25,7 +25,7 @@ class BookCard extends Component {
                         pages: pages,
                         pageId: pages[0].id
                     })
-                    this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}`)
+                    this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}/january/1`)
                 } else {
 
                 //creates a new object for the edited news item,
@@ -39,12 +39,13 @@ class BookCard extends Component {
                     //posts the object to the database, gets all news items, updates state of news array
                     PageDataManager.postPage(newPage)
                         .then(page => {
+                            console.log("Page:", page)
                             this.setState({
                                 pageId: page.id
                             })
                             console.log("pageId: ", this.state.pageId)
+                            this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}/january/1`)
                         })
-                        .then(this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}`))
                 }
             })
     }

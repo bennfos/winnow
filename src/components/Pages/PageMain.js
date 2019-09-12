@@ -53,10 +53,6 @@ class PageMain extends Component {
       }
 
 
-
-
-
-
     addPage = pageObject => {
         return PageDataManager.postPage(pageObject)
             .then(page => {
