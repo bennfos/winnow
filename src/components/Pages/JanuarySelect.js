@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PageDataManager from './PageDataManager'
-import { Button, Form, FormGroup, Input, ModalBody, ModalHeader, Modal, ModalFooter, Label } from 'reactstrap';
+import { Button, Form, FormGroup, Input, ModalBody, ModalHeader, ModalFooter, Label } from 'reactstrap';
 import { Link } from 'react-router-dom'
-import { Menu } from 'semantic-ui-react';
+import { Menu, Modal } from 'semantic-ui-react';
 
 
 class JanuarySelect extends Component {
@@ -12,28 +12,12 @@ class JanuarySelect extends Component {
         pages: [],
         userId: parseInt(sessionStorage.getItem("credentials")),
         day: "1",
-        month: "january"
+        month: "january",
+        modal: false
     };
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            pages: [],
-            userId: parseInt(sessionStorage.getItem("credentials")),
-            day: "1",
-            month: "january",
-            modal: false
-        };
-
-        this.toggle = this.toggle.bind(this);
-    }
 
 //Displays/hides the new article modal
-    toggle() {
-        this.setState(prevState => ({
-            modal: !prevState.modal
-        }));
-    }
 
     handleFieldChange = evt => {
         const stateToChange = {};
@@ -70,9 +54,12 @@ class JanuarySelect extends Component {
                             day: this.state.day,
                             thought: ""
                         };
-                        this.props.changeView()
                         //posts the object to the database, gets all news items, updates state of news array
                         this.props.addPage(newPage)
+                            .then(()=> {
+                                this.props.toggle()
+                                this.props.toggleSidebar()
+                            })
                             .then(this.props.history.push(`/books/${this.props.bookId}/${this.state.month}/${this.state.day}`))
                     }
                 })
@@ -87,14 +74,14 @@ class JanuarySelect extends Component {
         return(
             <>
                 <Menu.Item
-                    onClick={this.toggle}
+                    onClick={this.props.toggle}
                     >january</Menu.Item>
                 <Modal
-                    isOpen={this.state.modal}
-                    toggle={this.toggle}
+                    isOpen={this.props.modal}
+                    toggle={this.props.toggle}
                     className={this.props.className}
                 >
-                    <ModalHeader toggle={this.toggle}>select a page</ModalHeader>
+                    <ModalHeader toggle={this.props.toggle}>select a page</ModalHeader>
                     <ModalBody>
                         <Label />january
                         <Input
@@ -147,7 +134,7 @@ class JanuarySelect extends Component {
                         <Button
                             color="secondary"
                             onClick={() => {
-                            this.toggle()
+                            this.props.toggleModal()
                             this.props.toggleSidebar()
                             }}>cancel
                         </Button>

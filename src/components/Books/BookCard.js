@@ -22,7 +22,7 @@ class BookCard extends Component {
                         postedEditedNewsItem={this.props.postedEditedNewsItem}
                         />
                         <Button
-                            onClick={() => this.props.history.push(`./books/${this.props.book.id}`)}
+                            onClick={() => this.props.history.push(`./books/${this.props.book.id}/january/1`)}
                             >open</Button>
                         <Button color="danger" onClick={() => this.props.removeBook(this.props.book.id)}>delete</Button>
 
