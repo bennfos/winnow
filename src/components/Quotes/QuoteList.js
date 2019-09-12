@@ -27,8 +27,8 @@ class QuoteList extends Component {
   addQuote = quoteObject => {
     return QuoteDataManager.postQuote(quoteObject)
         .then(quote => {
-          
 
+          //use quote.id and pageId to create an object, then post to pageQuotes table
 
             QuoteDataManager.getAllUserQuotes(this.state.userId)
                 .then(quotes => {

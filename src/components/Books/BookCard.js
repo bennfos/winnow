@@ -8,6 +8,7 @@ import PageDataManager from '../Pages/PageDataManager'
 class BookCard extends Component {
     state = {
         pages: [],
+        pageId: 0
     }
 
   //Renders an individual news card with an article title, synopsis, link to URL, and edit and delete buttons.
@@ -20,7 +21,11 @@ class BookCard extends Component {
         PageDataManager.checkPages(this.props.book.id, "january", "1")
             .then(pages => {
                 if (pages.length > 0) {
-                    this.props.history.push(`/books/${this.props.book.id}/january/1`)
+                    this.setState({
+                        pages: pages,
+                        pageId: pages[0].id
+                    })
+                    this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}`)
                 } else {
 
                 //creates a new object for the edited news item,
@@ -33,7 +38,13 @@ class BookCard extends Component {
                     };
                     //posts the object to the database, gets all news items, updates state of news array
                     PageDataManager.postPage(newPage)
-                        .then(this.props.history.push(`/books/${this.props.book.id}/january/1`))
+                        .then(page => {
+                            this.setState({
+                                pageId: page.id
+                            })
+                            console.log("pageId: ", this.state.pageId)
+                        })
+                        .then(this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}`))
                 }
             })
     }

@@ -184,6 +184,46 @@
       "day": "11",
       "thought": "",
       "id": 18
+    },
+    {
+      "userId": 1,
+      "bookId": 6,
+      "month": "january",
+      "day": "18",
+      "thought": "",
+      "id": 19
+    },
+    {
+      "userId": 1,
+      "bookId": 6,
+      "month": "january",
+      "day": "25",
+      "thought": "",
+      "id": 20
+    },
+    {
+      "userId": 1,
+      "bookId": 6,
+      "month": "january",
+      "day": "12",
+      "thought": "",
+      "id": 21
+    },
+    {
+      "userId": 1,
+      "bookId": 6,
+      "month": "january",
+      "day": "24",
+      "thought": "",
+      "id": 22
+    },
+    {
+      "userId": 1,
+      "bookId": 6,
+      "month": "january",
+      "day": "10",
+      "thought": "",
+      "id": 23
     }
   ],
   "quotes": [

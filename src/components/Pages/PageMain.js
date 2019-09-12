@@ -17,7 +17,9 @@ class PageMain extends Component {
         day: "",
         month: "",
         dayChosen: false,
-        modalOpen: false
+        modalOpen: false,
+        pageId: 0,
+        pages: []
     }
 
     constructor(props) {
@@ -57,14 +59,20 @@ class PageMain extends Component {
 
     addPage = pageObject => {
         return PageDataManager.postPage(pageObject)
-            .then(() => {
+            .then(page => {
+                this.setState({
+                    pageId: page.id
+                })
+                console.log("pageId: ", this.state.pageId)
+            })
+            .then(() =>
                 PageDataManager.getAllPages(this.state.userId)
-                    .then(pages => {
-                        this.setState({
-                            pages: pages
-                        });
+                .then(pages => {
+                    this.setState({
+                        pages: pages
                     });
-            });
+                })
+            )
     };
 
     render() {
