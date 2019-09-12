@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PageDataManager from './PageDataManager'
-import { Input, Label, Form, FormGroup, ModalBody, ModalHeader, ModalFooter, } from 'reactstrap';
+import { Input, Label } from 'reactstrap';
 import { Link } from 'react-router-dom'
 import { Menu, Modal, Button } from 'semantic-ui-react';
 
@@ -13,7 +13,8 @@ class JanuarySelect extends Component {
         userId: parseInt(sessionStorage.getItem("credentials")),
         day: "1",
         month: "january",
-        modalOpen: false
+        modalOpen: false,
+        pageId: 0
     };
 
 
@@ -42,14 +43,18 @@ class JanuarySelect extends Component {
 
             PageDataManager.checkPages(this.props.bookId, this.state.month, this.state.day)
                 .then(pages => {
-                    console.log(pages)
+                    console.log("bookId: ", this.props.bookId, "day: ", this.state.day)
                     if (pages.length > 0) {
                         this.setState({
                             pages: pages,
                             month: pages[0].month,
-                            day: pages[0].day
+                            day: pages[0].day,
+                            pageId: pages[0].id
                         })
-                        this.props.history.push(`/books/${this.props.bookId}/${this.state.month}/${this.state.day}`)
+                        console.log(this.state.pageId)
+                        this.handleClose()
+                        this.props.toggleSidebar()
+                        this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}`)
                     } else {
 
                     //creates a new object for the edited news item,
@@ -61,8 +66,14 @@ class JanuarySelect extends Component {
                             thought: ""
                         };
                         //posts the object to the database, gets all news items, updates state of news array
-                        this.props.addPage(newPage)
-                            .then(()=> {
+                        PageDataManager.postPage(newPage)
+                            .then(page => {
+                                this.setState({
+                                    pageId: page.id
+                                })
+                                console.log("pageId: ", this.state.pageId)
+                            })
+                            .then(() => {
                                 this.handleClose()
                                 this.props.toggleSidebar()
                             })

@@ -38,5 +38,18 @@ export default {
             },
             body: JSON.stringify(editedQuote)
         }).then(response => response.json());
+    },
+    savePageQuote(pageQuoteObject) {
+        return fetch(`${remoteURL}/pageQuotes`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(pageQuoteObject)
+        }).then(response => response.json());
+    },
+    getPageQuotes (pageId) {
+        return fetch(`${remoteURL}/pageQuotes?_expand=quote&pageId=${pageId}`)
+            .then(response => response.json());
     }
 }
