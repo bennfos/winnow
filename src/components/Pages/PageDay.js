@@ -33,7 +33,7 @@ componentDidMount() {
         return (
             <React.Fragment>
                 <h3>{this.props.month} {this.props.day}</h3>
-                {/* <QuoteList {...this.props}/> */}
+                <QuoteList {...this.props}/>
                 {/* <ThoughtsMain {...this.props}/> */}
             </React.Fragment>
         )

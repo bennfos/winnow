@@ -18,6 +18,7 @@ export default class PageViews extends Component {
           exact path="/books/:bookId(\d+)/:month/:day" render={props => {
             if (this.isAuthenticated()) {
               return <PageDay
+                        pageId={props.match.params.pageId}
                         bookId={props.match.params.bookId}
                         month={props.match.params.month}
                         day={props.match.params.day}

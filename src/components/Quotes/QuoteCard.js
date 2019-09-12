@@ -4,6 +4,23 @@ import EditQuoteModal from '../Quotes/EditQuoteModal'
 
 
 class QuoteCard extends Component {
+    state = {
+        randomQuoteText: "",
+        randomQuoteAuthor: "",
+    }
+
+    getAndDisplayRandomQuote = () => {
+        fetchJsonp('http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en',
+        {jsonpCallback: 'jsonp'})
+        .then(function(response) {
+          return response.json();
+        })
+        .then(response =>
+            this.setState({
+                randomQuoteText: response.quoteText,
+                randomQuoteAuthor: response.quoteAuthor
+            }))
+        }
 
   render() {
     return (

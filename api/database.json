@@ -33,17 +33,10 @@
       "id": 4
     },
     {
-      "title": "sc",
+      "title": "test",
       "userId": 1,
-      "description": "sdvdsv",
-      "timestamp": "9/11/2019, 10:15:31 AM",
-      "id": 5
-    },
-    {
-      "title": "d sdsdv",
-      "userId": 1,
-      "description": "sdv",
-      "timestamp": "9/11/2019, 10:15:57 AM",
+      "description": "test",
+      "timestamp": "9/12/2019, 12:10:17 PM",
       "id": 6
     }
   ],
@@ -167,21 +160,45 @@
       "day": "19",
       "thought": "",
       "id": 15
+    },
+    {
+      "userId": 1,
+      "bookId": 4,
+      "month": "january",
+      "day": "9",
+      "thought": "",
+      "id": 16
+    },
+    {
+      "userId": 1,
+      "bookId": 6,
+      "month": "january",
+      "day": "1",
+      "thought": "",
+      "id": 17
+    },
+    {
+      "userId": 1,
+      "bookId": 6,
+      "month": "january",
+      "day": "11",
+      "thought": "",
+      "id": 18
     }
   ],
   "quotes": [
     {
-      "quoteText": "test",
+      "quoteText": "I am dynamite!",
       "userId": 1,
-      "quoteAuthor": "test",
-      "timestamp": "9/10/2019, 1:53:46 PM",
+      "quoteAuthor": "Nietzsche",
+      "timestamp": "9/12/2019, 11:10:04 AM",
       "id": 1
     },
     {
-      "quoteText": "test2",
+      "quoteText": "I have sought myself.",
       "userId": 1,
-      "quoteAuthor": "test2",
-      "timestamp": "9/10/2019, 2:01:12 PM",
+      "quoteAuthor": "Heraclitus",
+      "timestamp": "9/12/2019, 11:13:09 AM",
       "id": 2
     }
   ],

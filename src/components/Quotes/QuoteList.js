@@ -26,7 +26,10 @@ class QuoteList extends Component {
   // Called in NewsItemNewModal (child component) to post a new object to database and update state
   addQuote = quoteObject => {
     return QuoteDataManager.postQuote(quoteObject)
-        .then(() => {
+        .then(quote => {
+          
+
+
             QuoteDataManager.getAllUserQuotes(this.state.userId)
                 .then(quotes => {
                     this.setState({
@@ -66,13 +69,16 @@ class QuoteList extends Component {
     render() {
         return (
             <React.Fragment>
-                <AddQuoteModal {...this.props} addQuote={this.addQuote}/>
                 {this.state.quotes.map(quote => (
                 <QuoteCard
                     key={quote.id}
                     quote={quote}
                     {...this.props}/>
                 ))}
+                <AddQuoteModal
+                  className="addQuoteModal"
+                  {...this.props}
+                  addQuote={this.addQuote}/>
             </React.Fragment>
         )
     }

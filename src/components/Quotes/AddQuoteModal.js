@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input } from 'reactstrap';
+import { Button, Icon } from 'semantic-ui-react'
+import QuoteDataManager from './QuoteDataManager'
 
 class AddQuoteModal extends Component {
 
@@ -9,7 +11,10 @@ class AddQuoteModal extends Component {
         userId: parseInt(sessionStorage.getItem("credentials")),
         quoteText: "",
         quoteAuthor: "",
-        timestamp: ""
+        timestamp: "",
+        pageId: 0,
+        quoteId: 0,
+        pageQuoteId: 0
     };
 
     constructor(props) {
@@ -61,9 +66,11 @@ class AddQuoteModal extends Component {
 
         //posts the object to the database, gets all news items, updates state of news array
             this.props.addQuote(newQuote)
+                .then(QuoteDataManager.getQuote())
+
 
         //closes the modal
-            .then(this.toggle)
+                .then(this.toggle)
     }
 };
 
@@ -71,10 +78,10 @@ class AddQuoteModal extends Component {
         return(
             <>
                 <section className="quoteSectionContent">
-                    <Button type="button"
-                    color="success"
-                    onClick={this.toggle}>
-                    add quote
+                    <Button icon
+                    onClick={this.toggle}
+                    size='mini'>
+                        <Icon name="add"/>
                     </Button>
                 </section>
                 <div>
@@ -106,8 +113,8 @@ class AddQuoteModal extends Component {
                             </Form>
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={this.constructNewQuote}>save</Button>{' '}
-                            <Button color="secondary" onClick={this.toggle}>cancel</Button>
+                            <Button onClick={this.constructNewQuote}>save</Button>{' '}
+                            <Button onClick={this.toggle}>cancel</Button>
                         </ModalFooter>
                     </Modal>
                 </div>
