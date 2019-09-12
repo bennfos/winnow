@@ -11,8 +11,7 @@ class JanuarySelect extends Component {
         pages: [],
         userId: parseInt(sessionStorage.getItem("credentials")),
         day: "1",
-        month: "january",
-        newPage: {}
+        month: "january"
     };
 
     constructor(props) {
@@ -56,7 +55,12 @@ class JanuarySelect extends Component {
             PageDataManager.checkPages(this.state.userId, this.props.bookId, this.state.month, this.state.day)
                 .then(pages => {
                     if (pages.length > 0) {
-                        alert("page exists")
+                        this.setState({
+                            pages: pages,
+                            month: pages[0].month,
+                            day: pages[0].day
+                        })
+                        this.props.history.push(`/books/${this.props.bookId}/${this.state.month}/${this.state.day}`)
                     } else {
 
                     //creates a new object for the edited news item,
@@ -68,14 +72,9 @@ class JanuarySelect extends Component {
                         this.setState({ newPage: newPage})
                         //posts the object to the database, gets all news items, updates state of news array
                         this.props.addPage(newPage)
-
+                            .then(this.props.history.push(`/books/${this.props.bookId}/${this.state.month}/${this.state.day}`))
                     }
                 })
-
-                    //closes the modal
-                    .then(this.toggle)
-                    .then(this.props.toggleSidebar)
-                    .then(this.props.history.push(`/books/${this.props.bookId}/${this.state.month}/${this.state.day}`))
         }
     }
 

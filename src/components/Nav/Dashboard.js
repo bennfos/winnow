@@ -18,13 +18,13 @@ class NavBar extends Component {
 
   logout = () => {
     sessionStorage.clear()
-    this.props.history.push("/")
   }
 
   render() {
 
     return (
-      <>  <div className="appViews__container">
+      <>
+        <div className="appViews__container">
               <ApplicationViews />
           </div>
           <div className="nav__container">
@@ -35,7 +35,6 @@ class NavBar extends Component {
                 animation='push'
                 inverted
                 direction='bottom'
-                visible
                 width='thin'
             >
                 <Menu.Item as={Link} to='/books'
@@ -53,6 +52,7 @@ class NavBar extends Component {
                 quote
                 </Menu.Item>
                 <Menu.Item as={Link} to='/'
+                onClick={this.logout}
                 className="sidebarButton">
                 logout
                 </Menu.Item>

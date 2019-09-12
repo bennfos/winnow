@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import './PageMain.css'
 import JanuarySelect from './JanuarySelect';
 import PageDataManager from './PageDataManager'
+import RandomQuote from '../Quotes/RandomQuote'
 
 class PageMain extends Component {
 
@@ -22,17 +23,17 @@ class PageMain extends Component {
         }
       }
 
-      addPage = pageObject => {
+    addPage = pageObject => {
         return PageDataManager.postPage(pageObject)
             .then(() => {
                 PageDataManager.getAllPages(this.state.userId)
                     .then(pages => {
                         this.setState({
                             pages: pages
-              });
+                        });
+                    });
             });
-          });
-        };
+    };
 
     render() {
         const { visible } = this.state
@@ -42,6 +43,7 @@ class PageMain extends Component {
                 <Button icon="caret down" className="pageSelect__button" onClick={this.handleClick}></Button>
 
             <Sidebar.Pushable >
+                <div className="sidebar">
             <Sidebar
                 className="dimmed"
                 as={Menu}
@@ -60,11 +62,8 @@ class PageMain extends Component {
                     ><JanuarySelect
                         addPage={this.addPage}
                         toggleSidebar={this.handleClick}
-                        {...this.props}
-                        onClick={this.toggle}/>
+                        {...this.props}/>
                 </Menu.Item>
-
-
 
 
                 <Menu.Item as={Link} to='/february/'
@@ -133,8 +132,10 @@ class PageMain extends Component {
                 </Menu.Item>
 
             </Sidebar>
+            </div>
             <Sidebar.Pusher dimmed={visible}>
-                <PageList {...this.props}/>
+                <RandomQuote
+                {...this.props}/>
             </Sidebar.Pusher>
             </Sidebar.Pushable>
             </div>
