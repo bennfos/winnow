@@ -55,7 +55,12 @@ class JanuarySelect extends Component {
             PageDataManager.checkPages(this.state.userId, this.props.bookId, this.state.month, this.state.day)
                 .then(pages => {
                     if (pages.length > 0) {
-                        alert("page exists")
+                        this.setState({
+                            pages: pages,
+                            month: pages[0].month,
+                            day: pages[0].day
+                        })
+                        this.props.history.push(`/books/${this.props.bookId}/${this.state.month}/${this.state.day}`)
                     } else {
 
                     //creates a new object for the edited news item,

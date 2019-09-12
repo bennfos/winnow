@@ -18,7 +18,6 @@ class NavBar extends Component {
 
   logout = () => {
     sessionStorage.clear()
-    this.props.history.push("/")
   }
 
   render() {
@@ -53,6 +52,7 @@ class NavBar extends Component {
                 quote
                 </Menu.Item>
                 <Menu.Item as={Link} to='/'
+                onClick={this.logout}
                 className="sidebarButton">
                 logout
                 </Menu.Item>
