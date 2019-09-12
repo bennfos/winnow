@@ -39,13 +39,13 @@ class BookCard extends Component {
                     //posts the object to the database, gets all news items, updates state of news array
                     PageDataManager.postPage(newPage)
                         .then(page => {
-                            console.log(page)
+                            console.log("Page:", page)
                             this.setState({
                                 pageId: page.id
                             })
                             console.log("pageId: ", this.state.pageId)
+                            this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}`)
                         })
-                        .then(this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}`))
                 }
             })
     }
