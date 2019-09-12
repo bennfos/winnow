@@ -17,7 +17,7 @@ class PageMain extends Component {
         day: "",
         month: "",
         dayChosen: false,
-        modal: false
+        modalOpen: false
     }
 
     constructor(props) {
@@ -28,7 +28,7 @@ class PageMain extends Component {
             userId: parseInt(sessionStorage.getItem("credentials")),
             day: "1",
             month: "january",
-            modal: false
+            modalOpen: false
         };
 
     }
@@ -49,6 +49,10 @@ class PageMain extends Component {
           this.setState({ modal: false })
         }
       }
+
+
+      
+
 
 
     addPage = pageObject => {
@@ -89,7 +93,8 @@ class PageMain extends Component {
                     <JanuarySelect
                         addPage={this.addPage}
                         toggleSidebar={this.toggleSidebar}
-                        toggle={this.toggle}
+                        handleOpen={this.handleOpen}
+                        handleClose={this.handleClose}
                         {...this.props}/>
 
 

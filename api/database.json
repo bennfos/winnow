@@ -95,6 +95,38 @@
       "day": "12",
       "thought": "",
       "id": 6
+    },
+    {
+      "userId": 1,
+      "bookId": 3,
+      "month": "january",
+      "day": "10",
+      "thought": "",
+      "id": 7
+    },
+    {
+      "userId": 1,
+      "bookId": 3,
+      "month": "january",
+      "day": "18",
+      "thought": "",
+      "id": 8
+    },
+    {
+      "userId": 1,
+      "bookId": 3,
+      "month": "january",
+      "day": "14",
+      "thought": "",
+      "id": 9
+    },
+    {
+      "userId": 1,
+      "bookId": 3,
+      "month": "january",
+      "day": "6",
+      "thought": "",
+      "id": 10
     }
   ],
   "quotes": [
