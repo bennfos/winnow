@@ -64,9 +64,11 @@ class AddQuoteModal extends Component {
                 timestamp: new Date().toLocaleString()
             };
 
+
+
         //posts the object to the database, gets all news items, updates state of news array
             this.props.addQuote(newQuote)
-                .then(QuoteDataManager.getQuote())
+                
 
 
         //closes the modal

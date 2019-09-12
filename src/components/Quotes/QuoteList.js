@@ -13,27 +13,59 @@ class QuoteList extends Component {
         day: 0
         }
 
+
+
     componentDidMount() {
-        QuoteDataManager.getAllUserQuotes(this.state.userId)
-          .then(quotes => {
-            this.setState({
-              quotes: quotes,
-            });
+      const currentPageId = parseInt(this.props.pageId)
+        QuoteDataManager.getPageQuotes(currentPageId)
+        .then(pageQuotes => {
+          console.log(pageQuotes)
+          const quotesForPage = pageQuotes.map(pageQuote => {
+            return ({
+              quoteText: pageQuote.quote.quoteText,
+              quoteAuthor: pageQuote.quote.quoteAuthor
+            })
           })
-      }
+          this.setState({
+              quotes: quotesForPage
+          })
+          console.log(this.state.quotes)
+      })
+    }
+
 
 
   // Called in NewsItemNewModal (child component) to post a new object to database and update state
   addQuote = quoteObject => {
+    const currentPageId = parseInt(this.props.pageId)
     return QuoteDataManager.postQuote(quoteObject)
         .then(quote => {
 
-          //use quote.id and pageId to create an object, then post to pageQuotes table
+          //construct a new pageQuote object
+          const newPageQuote = {
+            quoteId: quote.id,
+            pageId: parseInt(this.props.pageId)
+          }
 
-            QuoteDataManager.getAllUserQuotes(this.state.userId)
-                .then(quotes => {
-                    this.setState({
-                        quotes: quotes
+          //post the new pageQuote to the database
+          QuoteDataManager.savePageQuote(newPageQuote)
+            .then(pageQuote => console.log(pageQuote)
+            )
+
+            .then(() => {
+              QuoteDataManager.getPageQuotes(currentPageId)
+                .then(pageQuotes => {
+                  console.log(pageQuotes)
+                  const quotesForPage = pageQuotes.map(pageQuote => {
+                    return ({
+                      quoteText: pageQuote.quote.quoteText,
+                      quoteAuthor: pageQuote.quote.quoteAuthor
+                    })
+                  })
+                  this.setState({
+                      quotes: quotesForPage
+                  })
+                  console.log(this.state.quotes)
           });
         });
       });
