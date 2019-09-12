@@ -49,6 +49,8 @@ class JanuarySelect extends Component {
                             month: pages[0].month,
                             day: pages[0].day
                         })
+                        this.handleClose()
+                        this.props.toggleSidebar()
                         this.props.history.push(`/books/${this.props.bookId}/${this.state.month}/${this.state.day}`)
                     } else {
 
