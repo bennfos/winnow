@@ -25,7 +25,7 @@ class BookCard extends Component {
                         pages: pages,
                         pageId: pages[0].id
                     })
-                    this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}`)
+                    this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}/january/1`)
                 } else {
 
                 //creates a new object for the edited news item,
@@ -44,7 +44,7 @@ class BookCard extends Component {
                                 pageId: page.id
                             })
                             console.log("pageId: ", this.state.pageId)
-                            this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}`)
+                            this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}/january/1`)
                         })
                 }
             })

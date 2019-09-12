@@ -54,7 +54,7 @@ class JanuarySelect extends Component {
                         console.log(this.state.pageId)
                         this.handleClose()
                         this.props.toggleSidebar()
-                        this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}`)
+                        this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}/${this.state.month}/${this.state.day}`)
                     } else {
 
                     //creates a new object for the edited news item,
@@ -73,7 +73,7 @@ class JanuarySelect extends Component {
                                     pageId: page.id
                                 })
                                 console.log("pageId: ", this.state.pageId)
-                                this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}`)
+                                this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}/${this.state.month}/${this.state.day}`)
                                 this.handleClose()
                                 this.props.toggleSidebar()
 

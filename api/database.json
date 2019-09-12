@@ -31,6 +31,13 @@
       "description": "hi",
       "timestamp": "9/12/2019, 1:48:28 PM",
       "id": 4
+    },
+    {
+      "title": "testnewroute",
+      "userId": 1,
+      "description": "test new route",
+      "timestamp": "9/12/2019, 1:55:46 PM",
+      "id": 5
     }
   ],
   "pages": [
@@ -169,6 +176,38 @@
       "day": "1",
       "thought": "",
       "id": 24
+    },
+    {
+      "userId": 1,
+      "bookId": 3,
+      "month": "january",
+      "day": "22",
+      "thought": "",
+      "id": 25
+    },
+    {
+      "userId": 1,
+      "bookId": 5,
+      "month": "january",
+      "day": "1",
+      "thought": "",
+      "id": 26
+    },
+    {
+      "userId": 1,
+      "bookId": 5,
+      "month": "january",
+      "day": "14",
+      "thought": "",
+      "id": 27
+    },
+    {
+      "userId": 1,
+      "bookId": 5,
+      "month": "january",
+      "day": "22",
+      "thought": "",
+      "id": 28
     }
   ],
   "quotes": [
