@@ -13,6 +13,8 @@ class PageMain extends Component {
 
     state = {
         visible: false,
+        day: "",
+        month: ""
     }
 
     handleClick = (event) => {
@@ -22,6 +24,9 @@ class PageMain extends Component {
           this.setState({ visible: false })
         }
       }
+
+    //Sets state with input values as fields change
+    
 
     addPage = pageObject => {
         return PageDataManager.postPage(pageObject)
@@ -57,13 +62,13 @@ class PageMain extends Component {
                 visible={visible}
                 width='thin'
             >
-                <Menu.Item
-                    className="sidebarButton"
+
                     ><JanuarySelect
                         addPage={this.addPage}
                         toggleSidebar={this.handleClick}
+                        handleFieldChange={this.handleFieldChange}
                         {...this.props}/>
-                </Menu.Item>
+
 
 
                 <Menu.Item as={Link} to='/february/'

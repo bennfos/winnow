@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PageDataManager from './PageDataManager'
 import { Button, Form, FormGroup, Input, ModalBody, ModalHeader, Modal, ModalFooter, Label } from 'reactstrap';
 import { Link } from 'react-router-dom'
+import { Menu } from 'semantic-ui-react';
 
 
 class JanuarySelect extends Component {
@@ -34,7 +35,6 @@ class JanuarySelect extends Component {
         }));
     }
 
-//Sets state with input values as fields change
     handleFieldChange = evt => {
         const stateToChange = {};
         stateToChange[evt.target.id] = evt.target.value;
@@ -85,9 +85,9 @@ class JanuarySelect extends Component {
     render(){
         return(
             <>
-                <Button
+                <Menu.Item
                     onClick={this.toggle}
-                    >january</Button>
+                    >january</Menu.Item>
                 <Modal
                     isOpen={this.state.modal}
                     toggle={this.toggle}
