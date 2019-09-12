@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PageDataManager from './PageDataManager'
 import { Button, Form, FormGroup, Input, ModalBody, ModalHeader, Modal, ModalFooter, Label } from 'reactstrap';
 import { Link } from 'react-router-dom'
+import { Menu } from 'semantic-ui-react';
 
 
 class JanuarySelect extends Component {
@@ -34,15 +35,12 @@ class JanuarySelect extends Component {
         }));
     }
 
-//Sets state with input values as fields change
     handleFieldChange = evt => {
         const stateToChange = {};
         stateToChange[evt.target.id] = evt.target.value;
         this.setState(stateToChange);
         console.log(stateToChange)
     };
-
-
 
     constructNewPage = event => {
         event.preventDefault();
@@ -52,8 +50,9 @@ class JanuarySelect extends Component {
         } else {
             this.setState({ loadingStatus: true });
 
-            PageDataManager.checkPages(this.state.userId, this.props.bookId, this.state.month, this.state.day)
+            PageDataManager.checkPages(this.props.bookId, this.state.month, this.state.day)
                 .then(pages => {
+                    console.log(pages)
                     if (pages.length > 0) {
                         this.setState({
                             pages: pages,
@@ -65,11 +64,13 @@ class JanuarySelect extends Component {
 
                     //creates a new object for the edited news item,
                         const newPage = {
-                            month: "january",
                             userId: parseInt(sessionStorage.getItem("credentials")),
+                            bookId: this.props.bookId,
+                            month: "january",
                             day: this.state.day,
+                            thought: ""
                         };
-                        this.setState({ newPage: newPage})
+                        this.props.changeView()
                         //posts the object to the database, gets all news items, updates state of news array
                         this.props.addPage(newPage)
                             .then(this.props.history.push(`/books/${this.props.bookId}/${this.state.month}/${this.state.day}`))
@@ -85,9 +86,9 @@ class JanuarySelect extends Component {
     render(){
         return(
             <>
-                <Button
+                <Menu.Item
                     onClick={this.toggle}
-                    >january</Button>
+                    >january</Menu.Item>
                 <Modal
                     isOpen={this.state.modal}
                     toggle={this.toggle}

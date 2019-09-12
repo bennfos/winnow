@@ -49,52 +49,28 @@
   ],
   "pages": [
     {
-      "month": "january",
       "userId": 1,
+      "bookId": 3,
+      "month": "january",
       "day": "1",
+      "thought": "",
       "id": 1
     },
     {
-      "month": "january",
       "userId": 1,
+      "bookId": 3,
+      "month": "january",
       "day": "2",
+      "thought": "",
       "id": 2
     },
     {
-      "month": "january",
       "userId": 1,
-      "day": "11",
+      "bookId": 3,
+      "month": "january",
+      "day": "7",
+      "thought": "",
       "id": 3
-    },
-    {
-      "month": "january",
-      "userId": 1,
-      "day": "20",
-      "id": 4
-    },
-    {
-      "month": "january",
-      "userId": 1,
-      "day": "9",
-      "id": 5
-    },
-    {
-      "month": "january",
-      "userId": 1,
-      "day": "3",
-      "id": 6
-    },
-    {
-      "month": "january",
-      "userId": 1,
-      "day": "26",
-      "id": 7
-    },
-    {
-      "month": "january",
-      "userId": 1,
-      "day": "15",
-      "id": 8
     }
   ],
   "quotes": [

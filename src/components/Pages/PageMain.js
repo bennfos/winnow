@@ -13,6 +13,9 @@ class PageMain extends Component {
 
     state = {
         visible: false,
+        day: "",
+        month: "",
+        dayChosen: false
     }
 
     handleClick = (event) => {
@@ -22,6 +25,15 @@ class PageMain extends Component {
           this.setState({ visible: false })
         }
       }
+
+      changeView = (event) => {
+        if (this.state.dayChosen === false) {
+          this.setState({ dayChosen: true })
+        } else {
+          this.setState({ dayChosen: false })
+        }
+      }
+
 
     addPage = pageObject => {
         return PageDataManager.postPage(pageObject)
@@ -57,13 +69,13 @@ class PageMain extends Component {
                 visible={visible}
                 width='thin'
             >
-                <Menu.Item
-                    className="sidebarButton"
+
                     ><JanuarySelect
                         addPage={this.addPage}
                         toggleSidebar={this.handleClick}
+                        changeView={this.changeView}
                         {...this.props}/>
-                </Menu.Item>
+
 
 
                 <Menu.Item as={Link} to='/february/'
@@ -134,8 +146,13 @@ class PageMain extends Component {
             </Sidebar>
             </div>
             <Sidebar.Pusher dimmed={visible}>
-                <RandomQuote
-                {...this.props}/>
+                {this.state.hasChosenDay ? (
+                    <PageDay {...this.props} />
+                    )
+                      : (
+                    <RandomQuote {...this.props} />
+                      )
+                }
             </Sidebar.Pusher>
             </Sidebar.Pushable>
             </div>

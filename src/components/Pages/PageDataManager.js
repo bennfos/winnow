@@ -39,8 +39,8 @@ export default {
             body: JSON.stringify(editedPage)
         }).then(response => response.json());
     },
-    checkPages(userId, bookId, month, day) {
-        return fetch(`${remoteURL}/pages?userId=${userId}&&bookId=${bookId}month=${month}&&day=${day}`)
+    checkPages(bookId, month, day) {
+        return fetch(`${remoteURL}/pages?bookId=${bookId}&&month=${month}&&day=${day}`)
             .then(response => response.json());
     },
 }

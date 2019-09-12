@@ -34,7 +34,7 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          exact path="/books/:bookId(\d+)/landing" render={props => {
+          exact path="/books/:bookId(\d+)" render={props => {
             if (this.isAuthenticated()) {
               return <PageMain
                   bookId={parseInt(props.match.params.bookId)}
