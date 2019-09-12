@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PageDataManager from './PageDataManager'
-import { Button, Form, FormGroup, Input, ModalBody, ModalHeader, Modal, ModalFooter, Label } from 'reactstrap';
+import { Input, Label, Form, FormGroup, ModalBody, ModalHeader, ModalFooter, } from 'reactstrap';
 import { Link } from 'react-router-dom'
-import { Menu } from 'semantic-ui-react';
+import { Menu, Modal, Button } from 'semantic-ui-react';
 
 
 class JanuarySelect extends Component {
@@ -12,28 +12,12 @@ class JanuarySelect extends Component {
         pages: [],
         userId: parseInt(sessionStorage.getItem("credentials")),
         day: "1",
-        month: "january"
+        month: "january",
+        modalOpen: false
     };
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            pages: [],
-            userId: parseInt(sessionStorage.getItem("credentials")),
-            day: "1",
-            month: "january",
-            modal: false
-        };
-
-        this.toggle = this.toggle.bind(this);
-    }
 
 //Displays/hides the new article modal
-    toggle() {
-        this.setState(prevState => ({
-            modal: !prevState.modal
-        }));
-    }
 
     handleFieldChange = evt => {
         const stateToChange = {};
@@ -41,6 +25,12 @@ class JanuarySelect extends Component {
         this.setState(stateToChange);
         console.log(stateToChange)
     };
+
+    handleOpen = () => this.setState({ modalOpen: true })
+
+    handleClose = () => this.setState({ modalOpen: false })
+
+
 
     constructNewPage = event => {
         event.preventDefault();
@@ -70,9 +60,12 @@ class JanuarySelect extends Component {
                             day: this.state.day,
                             thought: ""
                         };
-                        this.props.changeView()
                         //posts the object to the database, gets all news items, updates state of news array
                         this.props.addPage(newPage)
+                            .then(()=> {
+                                this.handleClose()
+                                this.props.toggleSidebar()
+                            })
                             .then(this.props.history.push(`/books/${this.props.bookId}/${this.state.month}/${this.state.day}`))
                     }
                 })
@@ -81,21 +74,18 @@ class JanuarySelect extends Component {
 
 
 
-
-
     render(){
         return(
             <>
-                <Menu.Item
-                    onClick={this.toggle}
-                    >january</Menu.Item>
                 <Modal
-                    isOpen={this.state.modal}
-                    toggle={this.toggle}
-                    className={this.props.className}
+                    trigger={<Menu.Item
+                        onClick={this.handleOpen}
+                        >january</Menu.Item>}
+                    open={this.state.modalOpen}
+                    onClose={this.handleClose}
                 >
-                    <ModalHeader toggle={this.toggle}>select a page</ModalHeader>
-                    <ModalBody>
+                    <Modal.Header>select a page</Modal.Header>
+                    <Modal.Content>
                         <Label />january
                         <Input
                         onChange={this.handleFieldChange}
@@ -134,24 +124,21 @@ class JanuarySelect extends Component {
                                 <option>30</option>
                                 <option>31</option>
                         </Input>
-                    </ModalBody>
-                    <ModalFooter>
+                    </Modal.Content>
 
+                    <Modal.Actions>
                             <Button
-                                color="primary"
                                 onClick={
                                     this.constructNewPage
                                 }>go
                             </Button>
 
                         <Button
-                            color="secondary"
-                            onClick={() => {
-                            this.toggle()
-                            this.props.toggleSidebar()
-                            }}>cancel
+                            onClick={() =>
+                                this.handleClose
+                            }>cancel
                         </Button>
-                    </ModalFooter>
+                    </Modal.Actions>
                 </Modal>
             </>
 

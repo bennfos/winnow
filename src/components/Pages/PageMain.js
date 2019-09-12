@@ -8,6 +8,7 @@ import './PageMain.css'
 import JanuarySelect from './JanuarySelect';
 import PageDataManager from './PageDataManager'
 import RandomQuote from '../Quotes/RandomQuote'
+import PageViews from './PageViews'
 
 class PageMain extends Component {
 
@@ -15,10 +16,25 @@ class PageMain extends Component {
         visible: false,
         day: "",
         month: "",
-        dayChosen: false
+        dayChosen: false,
+        modalOpen: false
     }
 
-    handleClick = (event) => {
+    constructor(props) {
+        super(props);
+        this.state = {
+            visible: false,
+            pages: [],
+            userId: parseInt(sessionStorage.getItem("credentials")),
+            day: "1",
+            month: "january",
+            modalOpen: false
+        };
+
+    }
+
+
+    toggleSidebar = (event) => {
         if (this.state.visible === false) {
           this.setState({ visible: true })
         } else {
@@ -26,13 +42,17 @@ class PageMain extends Component {
         }
       }
 
-      changeView = (event) => {
-        if (this.state.dayChosen === false) {
-          this.setState({ dayChosen: true })
+    toggle = (event) => {
+        if (this.state.modal === false) {
+          this.setState({ modal: true })
         } else {
-          this.setState({ dayChosen: false })
+          this.setState({ modal: false })
         }
       }
+
+
+      
+
 
 
     addPage = pageObject => {
@@ -52,7 +72,7 @@ class PageMain extends Component {
         return (
         <>
             <div className="pageSelect">
-                <Button icon="caret down" className="pageSelect__button" onClick={this.handleClick}></Button>
+                <Button icon="caret down" className="pageSelect__button" onClick={this.toggleSidebar}></Button>
 
             <Sidebar.Pushable >
                 <div className="sidebar">
@@ -60,7 +80,7 @@ class PageMain extends Component {
                 className="dimmed"
                 as={Menu}
                 color="grey"
-                animation='overlay'
+                animation='push'
                 icon='labeled'
                 inverted
                 onHide={this.handleSidebarHide}
@@ -70,17 +90,18 @@ class PageMain extends Component {
                 width='thin'
             >
 
-                    ><JanuarySelect
+                    <JanuarySelect
                         addPage={this.addPage}
-                        toggleSidebar={this.handleClick}
-                        changeView={this.changeView}
+                        toggleSidebar={this.toggleSidebar}
+                        handleOpen={this.handleOpen}
+                        handleClose={this.handleClose}
                         {...this.props}/>
 
 
 
-                <Menu.Item as={Link} to='/february/'
+                {/* <Menu.Item as={Link} to='/february/'
                 className="sidebarButton"
-                onClick={this.handleClick}>
+                onClick={this.toggleSidebar}>
                 february
                 </Menu.Item>
 
@@ -141,18 +162,12 @@ class PageMain extends Component {
                 onClick={this.logout}
                 className="sidebarButton">
                 december
-                </Menu.Item>
+                </Menu.Item> */}
 
             </Sidebar>
             </div>
             <Sidebar.Pusher dimmed={visible}>
-                {this.state.hasChosenDay ? (
-                    <PageDay {...this.props} />
-                    )
-                      : (
-                    <RandomQuote {...this.props} />
-                      )
-                }
+                <PageViews {...this.props}/>
             </Sidebar.Pusher>
             </Sidebar.Pushable>
             </div>

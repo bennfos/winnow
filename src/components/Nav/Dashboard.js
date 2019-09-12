@@ -5,7 +5,7 @@ import {Menu, Icon, Segment, Sidebar, Button} from 'semantic-ui-react'
 import "./Dashboard.css"
 import ApplicationViews from "../ApplicationViews";
 
-class NavBar extends Component {
+class Dashboard extends Component {
     state = { visible: false }
   handleClick = (event) => {
     if (this.state.visible === false) {
@@ -89,4 +89,4 @@ class NavBar extends Component {
 //     }
 // }
 
-export default NavBar
+export default Dashboard
