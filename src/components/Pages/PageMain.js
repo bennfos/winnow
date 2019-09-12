@@ -14,7 +14,8 @@ class PageMain extends Component {
     state = {
         visible: false,
         day: "",
-        month: ""
+        month: "",
+        dayChosen: false
     }
 
     handleClick = (event) => {
@@ -25,8 +26,14 @@ class PageMain extends Component {
         }
       }
 
-    //Sets state with input values as fields change
-    
+      changeView = (event) => {
+        if (this.state.dayChosen === false) {
+          this.setState({ dayChosen: true })
+        } else {
+          this.setState({ dayChosen: false })
+        }
+      }
+
 
     addPage = pageObject => {
         return PageDataManager.postPage(pageObject)
@@ -66,7 +73,7 @@ class PageMain extends Component {
                     ><JanuarySelect
                         addPage={this.addPage}
                         toggleSidebar={this.handleClick}
-                        handleFieldChange={this.handleFieldChange}
+                        changeView={this.changeView}
                         {...this.props}/>
 
 
@@ -139,8 +146,13 @@ class PageMain extends Component {
             </Sidebar>
             </div>
             <Sidebar.Pusher dimmed={visible}>
-                <RandomQuote
-                {...this.props}/>
+                {this.state.hasChosenDay ? (
+                    <PageDay {...this.props} />
+                    )
+                      : (
+                    <RandomQuote {...this.props} />
+                      )
+                }
             </Sidebar.Pusher>
             </Sidebar.Pushable>
             </div>

@@ -42,8 +42,6 @@ class JanuarySelect extends Component {
         console.log(stateToChange)
     };
 
-
-
     constructNewPage = event => {
         event.preventDefault();
     //Validates user input
@@ -52,8 +50,9 @@ class JanuarySelect extends Component {
         } else {
             this.setState({ loadingStatus: true });
 
-            PageDataManager.checkPages(this.state.userId, this.props.bookId, this.state.month, this.state.day)
+            PageDataManager.checkPages(this.props.bookId, this.state.month, this.state.day)
                 .then(pages => {
+                    console.log(pages)
                     if (pages.length > 0) {
                         this.setState({
                             pages: pages,
@@ -65,11 +64,13 @@ class JanuarySelect extends Component {
 
                     //creates a new object for the edited news item,
                         const newPage = {
-                            month: "january",
                             userId: parseInt(sessionStorage.getItem("credentials")),
+                            bookId: this.props.bookId,
+                            month: "january",
                             day: this.state.day,
+                            thought: ""
                         };
-                        this.setState({ newPage: newPage})
+                        this.props.changeView()
                         //posts the object to the database, gets all news items, updates state of news array
                         this.props.addPage(newPage)
                             .then(this.props.history.push(`/books/${this.props.bookId}/${this.state.month}/${this.state.day}`))
