@@ -63,7 +63,7 @@ class BookCard extends Component {
                         <CardText>{this.props.book.description}</CardText>
                         <EditBookModal
                         {...this.props}
-                        postedEditedNewsItem={this.props.postedEditedNewsItem}
+                        postEditedBook={this.props.postEditedBook}
                         />
                         <Button
                             onClick={this.constructOrNavigateToFirstPage}

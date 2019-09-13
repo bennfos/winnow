@@ -1,0 +1,10 @@
+.pageDay__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.quoteList__container {
+    margin: 30px
+}

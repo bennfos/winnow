@@ -145,7 +145,7 @@ class JanuarySelect extends Component {
                             </Button>
 
                         <Button
-                            onClick={() =>
+                            onClick={
                                 this.handleClose
                             }>cancel
                         </Button>
