@@ -31,28 +31,28 @@ class QuoteList extends Component {
 
       }
 
-      componentWillReceiveProps({nextProps}) {
-        this.setState({update: nextProps})
-      }
 
     componentDidMount() {
-      const currentPageId = parseInt(this.props.pageId)
-        QuoteDataManager.getPageQuotes(currentPageId)
-          .then(pageQuotes => {
-            console.log(pageQuotes)
-            const quotesForPage = pageQuotes.map(pageQuote => {
-              return ({
-                id: pageQuote.quote.id,
-                quoteText: pageQuote.quote.quoteText,
-                quoteAuthor: pageQuote.quote.quoteAuthor,
-                timestamp: pageQuote.quote.timestamp
-              })
-            })
-            this.setState({
-                quotes: quotesForPage,
-            })
-            console.log(this.state.quotes)
-          })
+
+
+
+      // const currentPageId = parseInt(this.props.pageId)
+      //   QuoteDataManager.getPageQuotes(currentPageId)
+      //     .then(pageQuotes => {
+      //       console.log(pageQuotes)
+      //       const quotesForPage = pageQuotes.map(pageQuote => {
+      //         return ({
+      //           id: pageQuote.quote.id,
+      //           quoteText: pageQuote.quote.quoteText,
+      //           quoteAuthor: pageQuote.quote.quoteAuthor,
+      //           timestamp: pageQuote.quote.timestamp
+      //         })
+      //       })
+      //       this.setState({
+      //           quotes: quotesForPage,
+      //       })
+      //       console.log(this.state.quotes)
+      //     })
     }
 
 
@@ -152,7 +152,8 @@ class QuoteList extends Component {
                         addQuote={this.addQuote}
                       />
                 </div>
-                  {this.state.quotes.map(quote => (
+                  {this.props.renderPageQuotes(this.props.pageId)}
+                  {this.props.quotes.map(quote => (
                 <QuoteCard
                       key={quote.id}
                       quote={quote}

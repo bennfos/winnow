@@ -9,6 +9,7 @@ import JanuarySelect from './JanuarySelect';
 import PageDataManager from './PageDataManager'
 import RandomQuote from '../Quotes/RandomQuote'
 import PageViews from './PageViews'
+import QuoteDataManager from '../Quotes/QuoteDataManager'
 
 class PageMain extends Component {
 
@@ -117,14 +118,33 @@ class PageMain extends Component {
                                 this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}/${this.state.month}/${this.state.day}`)
                                 this.toggle()
                                 this.toggleSidebar()
-            
+
                             })
                     }
             })
         }
     }
 
-
+    renderPageQuotes = (pageId) => {
+        const currentPageId = pageId
+        console.log("PageId(string or int?): ", currentPageId)
+        QuoteDataManager.getPageQuotes(currentPageId)
+          .then(pageQuotes => {
+            console.log("pageQuotes: ", pageQuotes)
+            const quotesForPage = pageQuotes.map(pageQuote => {
+              return ({
+                id: pageQuote.quote.id,
+                quoteText: pageQuote.quote.quoteText,
+                quoteAuthor: pageQuote.quote.quoteAuthor,
+                timestamp: pageQuote.quote.timestamp
+              })
+            })
+            this.setState({
+                quotes: quotesForPage,
+            })
+            console.log(this.state.quotes)
+          })
+    }
 
 
     addPage = pageObject => {
@@ -251,6 +271,8 @@ class PageMain extends Component {
                 <PageViews
                 updateState={this.updateState}
                 update={this.state.update}
+                renderPageQuotes={this.renderPageQuotes}
+                quotes={this.state.quotes}
                 {...this.props}
                 />
             </Sidebar.Pusher>
