@@ -9,30 +9,50 @@ class QuoteList extends Component {
         quotes: [],
         userId: parseInt(sessionStorage.getItem("credentials")),
         bookId: 0,
-        month: 0,
-        day: 0
+        month: "",
+        day: "",
+
+
         }
 
+    constructor(props) {
+      super(props);
+      this.state = {
+          visible: false,
+          pages: [],
+          userId: parseInt(sessionStorage.getItem("credentials")),
+          day: "1",
+          month: "january",
+          modalOpen: false,
+          quotes: [],
 
+
+      };
+
+      }
+
+      componentWillReceiveProps({nextProps}) {
+        this.setState({update: nextProps})
+      }
 
     componentDidMount() {
       const currentPageId = parseInt(this.props.pageId)
         QuoteDataManager.getPageQuotes(currentPageId)
-        .then(pageQuotes => {
-          console.log(pageQuotes)
-          const quotesForPage = pageQuotes.map(pageQuote => {
-            return ({
-              id: pageQuote.quote.id,
-              quoteText: pageQuote.quote.quoteText,
-              quoteAuthor: pageQuote.quote.quoteAuthor,
-              timestamp: pageQuote.quote.timestamp
+          .then(pageQuotes => {
+            console.log(pageQuotes)
+            const quotesForPage = pageQuotes.map(pageQuote => {
+              return ({
+                id: pageQuote.quote.id,
+                quoteText: pageQuote.quote.quoteText,
+                quoteAuthor: pageQuote.quote.quoteAuthor,
+                timestamp: pageQuote.quote.timestamp
+              })
             })
+            this.setState({
+                quotes: quotesForPage,
+            })
+            console.log(this.state.quotes)
           })
-          this.setState({
-              quotes: quotesForPage
-          })
-          console.log(this.state.quotes)
-      })
     }
 
 

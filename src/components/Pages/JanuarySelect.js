@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PageDataManager from './PageDataManager'
-import { Input, Label } from 'reactstrap';
+import { Input, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Link } from 'react-router-dom'
-import { Menu, Modal, Button } from 'semantic-ui-react';
+import { Menu, Button } from 'semantic-ui-react';
 
 
 class JanuarySelect extends Component {
@@ -13,74 +13,28 @@ class JanuarySelect extends Component {
         userId: parseInt(sessionStorage.getItem("credentials")),
         day: "1",
         month: "january",
-        modalOpen: false,
+        modal: false,
         pageId: 0
     };
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            quotes: [],
+            userId: parseInt(sessionStorage.getItem("credentials")),
+            quoteText: "",
+            quoteAuthor: "",
+            timestamp: "",
+            modal: false
+        };
 
-//Displays/hides the new article modal
+        this.toggle = this.toggle.bind(this);
+    }
 
-    handleFieldChange = evt => {
-        const stateToChange = {};
-        stateToChange[evt.target.id] = evt.target.value;
-        this.setState(stateToChange);
-        console.log(stateToChange)
-    };
-
-    handleOpen = () => this.setState({ modalOpen: true })
-
-    handleClose = () => this.setState({ modalOpen: false })
-
-
-
-    constructNewPage = event => {
-        event.preventDefault();
-    //Validates user input
-        if (this.state.day === "") {
-            alert("please select a day");
-        } else {
-            this.setState({ loadingStatus: true });
-
-            PageDataManager.checkPages(this.props.bookId, this.state.month, this.state.day)
-                .then(pages => {
-                    console.log("bookId: ", this.props.bookId, "day: ", this.state.day)
-                    if (pages.length > 0) {
-                        this.setState({
-                            pages: pages,
-                            month: pages[0].month,
-                            day: pages[0].day,
-                            pageId: pages[0].id
-                        })
-                        console.log(this.state.pageId)
-                        this.handleClose()
-                        this.props.toggleSidebar()
-                        this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}/${this.state.month}/${this.state.day}`)
-                    } else {
-
-                    //creates a new object for the edited news item,
-                        const newPage = {
-                            userId: parseInt(sessionStorage.getItem("credentials")),
-                            bookId: this.props.bookId,
-                            month: "january",
-                            day: this.state.day,
-                            thought: ""
-                        };
-                        //posts the object to the database, gets all news items, updates state of news array
-                        PageDataManager.postPage(newPage)
-                            .then(page => {
-                                console.log("page: ", page)
-                                this.setState({
-                                    pageId: page.id
-                                })
-                                console.log("pageId: ", this.state.pageId)
-                                this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}/${this.state.month}/${this.state.day}`)
-                                this.handleClose()
-                                this.props.toggleSidebar()
-
-                            })
-                    }
-            })
-        }
+    toggle() {
+        this.setState(prevState => ({
+            modal: !prevState.modal
+        }));
     }
 
 
@@ -88,18 +42,19 @@ class JanuarySelect extends Component {
     render(){
         return(
             <>
+                <Menu.Item
+                        onClick={this.toggle}
+                        >january
+                </Menu.Item>
                 <Modal
-                    trigger={<Menu.Item
-                        onClick={this.handleOpen}
-                        >january</Menu.Item>}
-                    open={this.state.modalOpen}
-                    onClose={this.handleClose}
+                    isOpen={this.state.modal}
+                    toggle={this.toggle}
                 >
-                    <Modal.Header>select a page</Modal.Header>
-                    <Modal.Content>
+                    <ModalHeader toggle={this.toggle}>select a page</ModalHeader>
+                    <ModalBody>
                         <Label />january
                         <Input
-                        onChange={this.handleFieldChange}
+                        onChange={this.props.handleFieldChange}
                         type="select"
                         name="day"
                         id="day">
@@ -135,21 +90,24 @@ class JanuarySelect extends Component {
                                 <option>30</option>
                                 <option>31</option>
                         </Input>
-                    </Modal.Content>
+                    </ModalBody>
 
-                    <Modal.Actions>
+                    <ModalFooter>
                             <Button
-                                onClick={
-                                    this.constructNewPage
+                                onClick={() => {
+                                    this.props.constructNewPage()
+                                    this.toggle()
+                                }
+
                                 }>go
                             </Button>
 
                         <Button
                             onClick={
-                                this.handleClose
+                                this.props.handleClose
                             }>cancel
                         </Button>
-                    </Modal.Actions>
+                    </ModalFooter>
                 </Modal>
             </>
 
