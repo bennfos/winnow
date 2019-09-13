@@ -31,20 +31,6 @@
       "description": "hi",
       "timestamp": "9/12/2019, 1:48:28 PM",
       "id": 4
-    },
-    {
-      "title": "testnewroute",
-      "userId": 1,
-      "description": "test new route",
-      "timestamp": "9/12/2019, 1:55:46 PM",
-      "id": 5
-    },
-    {
-      "title": "bookcard",
-      "userId": 1,
-      "description": "vdsv",
-      "timestamp": "9/13/2019, 8:49:26 AM",
-      "id": 6
     }
   ],
   "pages": [
@@ -194,38 +180,6 @@
     },
     {
       "userId": 1,
-      "bookId": 5,
-      "month": "january",
-      "day": "1",
-      "thought": "",
-      "id": 26
-    },
-    {
-      "userId": 1,
-      "bookId": 5,
-      "month": "january",
-      "day": "14",
-      "thought": "",
-      "id": 27
-    },
-    {
-      "userId": 1,
-      "bookId": 5,
-      "month": "january",
-      "day": "22",
-      "thought": "",
-      "id": 28
-    },
-    {
-      "userId": 1,
-      "bookId": 5,
-      "month": "january",
-      "day": "3",
-      "thought": "",
-      "id": 29
-    },
-    {
-      "userId": 1,
       "bookId": 3,
       "month": "january",
       "day": "4",
@@ -239,38 +193,29 @@
       "day": "3",
       "thought": "",
       "id": 31
-    },
-    {
-      "userId": 1,
-      "bookId": 6,
-      "month": "january",
-      "day": "1",
-      "thought": "",
-      "id": 32
-    },
-    {
-      "userId": 1,
-      "bookId": 6,
-      "month": "january",
-      "day": "9",
-      "thought": "",
-      "id": 33
     }
   ],
   "quotes": [
     {
-      "quoteText": "jan 1 ",
+      "id": 1,
       "userId": 1,
+      "quoteText": "jan 1 !!",
       "quoteAuthor": "jan",
-      "timestamp": "9/13/2019, 9:57:10 AM",
-      "id": 1
+      "timestamp": "9/13/2019, 9:57:10 AM"
     },
     {
-      "quoteText": "jan9",
+      "id": 2,
       "userId": 1,
+      "quoteText": "jan9!!!",
       "quoteAuthor": "jan",
-      "timestamp": "9/13/2019, 9:57:35 AM",
-      "id": 2
+      "timestamp": "9/13/2019, 9:57:35 AM"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "quoteText": "jan 8!!!@",
+      "quoteAuthor": "8!",
+      "timestamp": "9/13/2019, 10:45:44 AM"
     }
   ],
   "pageQuotes": [
@@ -283,6 +228,11 @@
       "quoteId": 2,
       "pageId": 4,
       "id": 2
+    },
+    {
+      "quoteId": 3,
+      "pageId": 21,
+      "id": 3
     }
   ]
 }

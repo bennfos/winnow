@@ -57,7 +57,6 @@ class QuoteList extends Component {
             .then(() => {
               QuoteDataManager.getPageQuotes(currentPageId)
                 .then(pageQuotes => {
-                  console.log(pageQuotes)
                   const quotesForPage = pageQuotes.map(pageQuote => {
                     return ({
                       id: pageQuote.quote.id,
@@ -81,27 +80,45 @@ class QuoteList extends Component {
   removeQuote = id => {
     QuoteDataManager.deleteQuote(id)
         .then(() => {
-            QuoteDataManager.getAllUserQuotes(this.state.userId)
-                .then(quotes => {
-          this.setState({
-            quotes: quotes
-          });
-        });
-      });
+            QuoteDataManager.getPageQuotes(this.props.pageId)
+                .then(pageQuotes => {
+                  const quotesForPage = pageQuotes.map(pageQuote => {
+                    return ({
+                      id: pageQuote.quote.id,
+                      quoteText: pageQuote.quote.quoteText,
+                      quoteAuthor: pageQuote.quote.quoteAuthor,
+                      timestamp: pageQuote.quote.timestamp
+                    })
+                  })
+                  this.setState({
+                      quotes: quotesForPage
+                  })
+                })
+        })
   };
+
 
   // Called in NewEditModal (child component) to post edited object to database and update state
   postEditedQuote = id => {
     return QuoteDataManager.editQuote(id)
         .then(() => {
-            QuoteDataManager.getAllUserQuotes(this.state.userId)
-                .then(quotes => {
-                    this.setState({
-                        quotes: quotes
-          });
-        });
-      });
-  };
+          QuoteDataManager.getPageQuotes(this.props.pageId)
+          .then(pageQuotes => {
+            const quotesForPage = pageQuotes.map(pageQuote => {
+              return ({
+                id: pageQuote.quote.id,
+                quoteText: pageQuote.quote.quoteText,
+                quoteAuthor: pageQuote.quote.quoteAuthor,
+                timestamp: pageQuote.quote.timestamp
+              })
+            })
+            this.setState({
+                quotes: quotesForPage
+            })
+          })
+        })
+  }
+
 
     render() {
         return (
