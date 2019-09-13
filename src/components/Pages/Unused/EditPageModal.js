@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input } from 'reactstrap';
-import PageDataManager from './PageDataManager'
+import PageDataManager from '../PageDataManager'
 
 class PageEditModal extends Component {
 

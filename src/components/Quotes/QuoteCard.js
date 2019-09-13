@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import fetchJsonp from 'fetch-jsonp'
 import EditQuoteModal from '../Quotes/EditQuoteModal'
+import { Button } from 'semantic-ui-react'
 
 
 class QuoteCard extends Component {
@@ -30,6 +31,14 @@ class QuoteCard extends Component {
                     <h3>{this.props.quote.quoteText}</h3>
                     <p>{this.props.quote.quoteAuthor}</p>
                 </div>
+                <EditQuoteModal
+                postEditedQuote={this.props.postEditedQuote}
+                {...this.props}/>
+                <Button
+                    size="mini"
+                    onClick={() => this.props.removeQuote(this.props.quote.id)}
+                    >delete
+                </Button>
             </div>
         </>
     );

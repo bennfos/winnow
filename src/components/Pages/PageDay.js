@@ -5,7 +5,11 @@ import PageDataManager from '../Pages/PageDataManager'
 import ThoughtsMain from '../Thoughts/ThoughtsMain'
 import AddThoughtsModal from '../Thoughts/AddThoughtsModal'
 import EditThoughtsModal from '../Thoughts/EditThoughtsModal'
-import PageSelect from './PageSelect'
+import PageSelect from './Unused/PageSelect'
+import QuoteDataManager from '../Quotes/QuoteDataManager'
+import ReactDOM from "react-dom"
+import './PageDay.css'
+
 
 class PageDay extends Component {
     state = {
@@ -13,6 +17,16 @@ class PageDay extends Component {
         userId: parseInt(sessionStorage.getItem("credentials")),
         thought: "",
       };
+
+
+
+    updateTopmostParent = event => {
+        const topmostParent = ReactDOM.render(<PageDay />, document.getElementById('root'))
+        topmostParent.setState({
+            render: true
+        })
+    }
+
 
 //When component mounts, gets all news and sets state of news array with all existsing news items
 componentDidMount() {
@@ -28,13 +42,18 @@ componentDidMount() {
     };
 
 
+
+
     render() {
         // console.log(this.state)
         return (
             <React.Fragment>
-                <h3>{this.props.month} {this.props.day}</h3>
-                <QuoteList {...this.props}/>
-                {/* <ThoughtsMain {...this.props}/> */}
+                <div className="quoteList__container">
+                    <QuoteList
+                        {...this.props}
+                        updateTopmostParent={this.updateTopmostParent}/>
+                    {/* <ThoughtsMain {...this.props}/> */}
+                </div>
             </React.Fragment>
         )
     }
