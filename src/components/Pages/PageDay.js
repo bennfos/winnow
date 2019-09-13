@@ -19,15 +19,6 @@ class PageDay extends Component {
       };
 
 
-
-    updateTopmostParent = event => {
-        const topmostParent = ReactDOM.render(<PageDay />, document.getElementById('root'))
-        topmostParent.setState({
-            render: true
-        })
-    }
-
-
 //When component mounts, gets all news and sets state of news array with all existsing news items
 componentDidMount() {
     PageDataManager.checkPages(this.props.bookId, this.props.month, this.props.day)
@@ -38,7 +29,7 @@ componentDidMount() {
                 day: this.props.day
             })
         })
-        .then(()=> console.log(this.state.pages))
+        .then(()=> this.forceUpdate)
     };
 
 
@@ -51,7 +42,7 @@ componentDidMount() {
                 <div className="quoteList__container">
                     <QuoteList
                         {...this.props}
-                        updateTopmostParent={this.updateTopmostParent}/>
+                        />
                     {/* <ThoughtsMain {...this.props}/> */}
                 </div>
             </React.Fragment>

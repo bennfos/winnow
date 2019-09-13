@@ -9,6 +9,7 @@ import JanuarySelect from './JanuarySelect';
 import PageDataManager from './PageDataManager'
 import RandomQuote from '../Quotes/RandomQuote'
 import PageViews from './PageViews'
+import QuoteDataManager from '../Quotes/QuoteDataManager'
 
 class PageMain extends Component {
 
@@ -17,9 +18,12 @@ class PageMain extends Component {
         day: "",
         month: "",
         dayChosen: false,
-        modalOpen: false,
+        modal: false,
         pageId: 0,
-        pages: []
+        pages: [],
+        quotes: [],
+        update: false,
+        loadingStatus: false
     }
 
     constructor(props) {
@@ -30,11 +34,30 @@ class PageMain extends Component {
             userId: parseInt(sessionStorage.getItem("credentials")),
             day: "1",
             month: "january",
-            modalOpen: false
+            modal: false,
+            quotes: [],
+            update: false
         };
 
     }
 
+    handleFieldChange = evt => {
+        const stateToChange = {};
+        stateToChange[evt.target.id] = evt.target.value;
+        this.setState(stateToChange);
+    };
+
+    handleOpen = () => this.setState({ modalOpen: true })
+
+    handleClose = () => this.setState({ modalOpen: false })
+
+    updateState = (event) => {
+        if (this.state.update === false) {
+          this.setState({ update: true })
+        } else {
+          this.setState({ update: false })
+        }
+      }
 
     toggleSidebar = (event) => {
         if (this.state.visible === false) {
@@ -51,6 +74,77 @@ class PageMain extends Component {
           this.setState({ modal: false })
         }
       }
+
+    constructNewPage = event => {
+        // event.preventDefault();
+    //Validates user input
+        if (this.state.day === "") {
+            alert("please select a day");
+        } else {
+            this.setState({ loadingStatus: true });
+
+            PageDataManager.checkPages(this.props.bookId, this.state.month, this.state.day)
+                .then(pages => {
+                    console.log("bookId: ", this.props.bookId, "day: ", this.state.day)
+                    if (pages.length > 0) {
+                        this.setState({
+                            pages: pages,
+                            month: pages[0].month,
+                            day: pages[0].day,
+                            pageId: pages[0].id
+                        })
+                        console.log(this.state.pageId)
+                        this.toggle()
+                        this.toggleSidebar()
+                        this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}/${this.state.month}/${this.state.day}`)
+                    } else {
+
+                    //creates a new object for the edited news item,
+                        const newPage = {
+                            userId: parseInt(sessionStorage.getItem("credentials")),
+                            bookId: this.props.bookId,
+                            month: "january",
+                            day: this.state.day,
+                            thought: ""
+                        };
+                        //posts the object to the database, gets all news items, updates state of news array
+                        PageDataManager.postPage(newPage)
+                            .then(page => {
+                                console.log("page: ", page)
+                                this.setState({
+                                    pageId: page.id
+                                })
+                                console.log("pageId: ", this.state.pageId)
+                                this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}/${this.state.month}/${this.state.day}`)
+                                this.toggle()
+                                this.toggleSidebar()
+
+                            })
+                    }
+            })
+        }
+    }
+
+    renderPageQuotes = (pageId) => {
+        const currentPageId = pageId
+        console.log("PageId(string or int?): ", currentPageId)
+        QuoteDataManager.getPageQuotes(currentPageId)
+          .then(pageQuotes => {
+            console.log("pageQuotes: ", pageQuotes)
+            const quotesForPage = pageQuotes.map(pageQuote => {
+              return ({
+                id: pageQuote.quote.id,
+                quoteText: pageQuote.quote.quoteText,
+                quoteAuthor: pageQuote.quote.quoteAuthor,
+                timestamp: pageQuote.quote.timestamp
+              })
+            })
+            this.setState({
+                quotes: quotesForPage,
+            })
+            console.log(this.state.quotes)
+          })
+    }
 
 
     addPage = pageObject => {
@@ -94,10 +188,14 @@ class PageMain extends Component {
             >
 
                     <JanuarySelect
+                        updateState={this.updateState}
                         addPage={this.addPage}
                         toggleSidebar={this.toggleSidebar}
+                        toggle={this.toggle}
                         handleOpen={this.handleOpen}
                         handleClose={this.handleClose}
+                        handleFieldChange={this.handleFieldChange}
+                        constructNewPage={this.constructNewPage}
                         {...this.props}/>
 
 
@@ -170,7 +268,13 @@ class PageMain extends Component {
             </Sidebar>
             </div>
             <Sidebar.Pusher>
-                <PageViews {...this.props}/>
+                <PageViews
+                updateState={this.updateState}
+                update={this.state.update}
+                renderPageQuotes={this.renderPageQuotes}
+                quotes={this.state.quotes}
+                {...this.props}
+                />
             </Sidebar.Pusher>
             </Sidebar.Pushable>
             </div>
