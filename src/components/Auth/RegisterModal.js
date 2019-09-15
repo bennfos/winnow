@@ -120,8 +120,8 @@ class RegisterModal extends React.Component {
                     </form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={this.handleRegister}>Sign up</Button>{' '}
-                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                        <Button onClick={this.handleRegister}>Sign up</Button>{' '}
+                        <Button onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
             </div>

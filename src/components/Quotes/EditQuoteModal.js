@@ -46,9 +46,9 @@ class EditQuoteModal extends Component {
         event.preventDefault();
 
     //Validates user input
-        if (this.state.quoteText === ""||
-        this.state.quoteAuthor === "") {
-            alert("Please fill out all fields");
+        if (this.state.quoteText === ""
+        ) {
+            alert("please provide the quote text");
         } else {
             this.setState({ loadingStatus: true });
 
@@ -61,7 +61,7 @@ class EditQuoteModal extends Component {
                 timestamp: this.props.quote.timestamp,
             };
         //posts the object to the database
-            this.props.postEditedQuote(editedQuote)
+            this.props.postEditedQuote(editedQuote, this.props.pageId)
         //closes the modal
             .then(this.toggle)
         }

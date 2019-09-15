@@ -7,7 +7,7 @@ import { Button } from 'semantic-ui-react'
 
 class QuoteList extends Component {
     state = {
-        quotes: this.props.quotes,
+        quotes: [],
         userId: parseInt(sessionStorage.getItem("credentials")),
         bookId: 0,
         month: "january",
@@ -23,61 +23,26 @@ class QuoteList extends Component {
           day: "1",
           month: "january",
           modalOpen: false,
-          quotes: this.props.quotes,
+          quotes: []
       }
     }
 
 
     componentDidMount() {
-        this.props.renderPageQuotes(this.props.pageId)
-    }
+      this.props.renderPageQuotes(this.props.pageId)
+      }
+
 
     componentDidUpdate(prevProps) {
+      console.log("component update")
       if (this.props.pageId !== prevProps.pageId) {
         this.props.renderPageQuotes(this.props.pageId)
+        this.setState({
+          quotes: this.props.quotes
+        })
+        console.log("quotes in QuoteList state after update: ", this.state.quotes)
       }
     }
-
-    componentWillReceiveProps() {
-      // this.props.renderPageQuotes(this.props.pageId)
-    }
-
-
-
-
-
-
-
-
-
-  // Called in NewsItemNewModal (child component) to post a new object to database and update state
-
-
-
-  // Called in NewsCard(child component) to delete object from database and update state
-
-
-
-  // Called in NewEditModal (child component) to post edited object to database and update state
-  postEditedQuote = id => {
-    return QuoteDataManager.editQuote(id)
-        .then(() => {
-          QuoteDataManager.getPageQuotes(this.props.pageId)
-          .then(pageQuotes => {
-            const quotesForPage = pageQuotes.map(pageQuote => {
-              return ({
-                id: pageQuote.quote.id,
-                quoteText: pageQuote.quote.quoteText,
-                quoteAuthor: pageQuote.quote.quoteAuthor,
-                timestamp: pageQuote.quote.timestamp
-              })
-            })
-            this.setState({
-                quotes: quotesForPage
-            })
-          })
-        })
-  }
 
 
     render() {
@@ -98,7 +63,7 @@ class QuoteList extends Component {
                 <QuoteCard
                       key={quote.id}
                       quote={quote}
-                      removeQuote={this.props.removeQuote}
+                      removeQuote={this.removeQuote}
                       postEditedQuote={this.props.postEditedQuote}
                       {...this.props}/>
                   ))}

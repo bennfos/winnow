@@ -130,7 +130,6 @@ class PageMain extends Component {
     }
 
     renderPageQuotes = (pageId) => {
-
         console.log("PageId(string or int?): ", pageId)
         QuoteDataManager.getPageQuotes(pageId)
           .then(pageQuotes => {
@@ -148,7 +147,7 @@ class PageMain extends Component {
               //construct a new pageQuote object
               const newPageQuote = {
                 quoteId: quote.id,
-                pageId: pageId
+                pageId: parseInt(pageId)
               }
               //post the new pageQuote to the database
               QuoteDataManager.savePageQuote(newPageQuote)
@@ -164,18 +163,34 @@ class PageMain extends Component {
           });
         };
 
-    removeQuote = id => {
+
+    removeQuote = (id, pageId) => {
         QuoteDataManager.deleteQuote(id)
             .then(() => {
-                QuoteDataManager.getPageQuotes(this.props.pageId)
-                .then(pageQuotes => {
-                    this.setState({
-                        quotes: pageQuotes
+                QuoteDataManager.getPageQuotes(pageId)
+                    .then(pageQuotes => {
+                        this.setState({
+                            quotes: pageQuotes,
+                        })
+                        console.log("quotes in PageMain state after removeQuote: ", this.state.quotes)
                     })
-                })
             })
     };
 
+    postEditedQuote = (id, pageId) => {
+        return QuoteDataManager.editQuote(id)
+            .then(() => {
+                QuoteDataManager.getPageQuotes(pageId)
+                .then(pageQuotes => {
+                    this.setState({
+                        quotes: pageQuotes,
+                    })
+                })
+            })
+    }
+
+
+//posts new page object to database, then sets state with pageId, then gets all pageQuotes for that user and sets them in state
     addPage = pageObject => {
         return PageDataManager.postPage(pageObject)
             .then(page => {
@@ -193,6 +208,8 @@ class PageMain extends Component {
                 })
             )
     };
+
+
 
     render() {
         const { visible } = this.state
@@ -298,6 +315,7 @@ class PageMain extends Component {
             </div>
             <Sidebar.Pusher>
                 <PageViews
+                postEditedQuote={this.postEditedQuote}
                 addQuote={this.addQuote}
                 removeQuote={this.removeQuote}
                 renderPageQuotes={this.renderPageQuotes}

@@ -29,14 +29,7 @@ export default class PageViews extends Component {
           }}
         />
 
-        <Route
-          exact path="/quote" render={props => {
-            if (this.isAuthenticated()) {
-              return <RandomQuote {...props} />
-            }
-              return <Auth {...this.props} />
-          }}
-        />
+        
 
         <Route
           exact path="/january" render={props => {

@@ -47,7 +47,7 @@ class AddQuoteModal extends Component {
     };
 
     constructNewQuote = event => {
-        event.preventDefault();
+        // event.preventDefault();
 
     //Validates user input
         if (this.state.quoteText === "") {
@@ -55,7 +55,7 @@ class AddQuoteModal extends Component {
         } else {
             this.setState({ loadingStatus: true });
 
-        //creates a new object for the edited news item,
+        //creates a new object for the quote that is to be added,
             const newQuote = {
                 quoteText: this.state.quoteText,
                 userId: parseInt(sessionStorage.getItem("credentials")),
@@ -65,7 +65,7 @@ class AddQuoteModal extends Component {
 
 
 
-        //posts the object to the database, gets all news items, updates state of news array
+        //posts the object to the database, gets all pageQuotes, and rerenders (see PageMain)
             this.props.addQuote(newQuote, this.props.pageId)
 
 
@@ -74,6 +74,17 @@ class AddQuoteModal extends Component {
                 .then(this.toggle)
     }
 };
+
+//this is called after a new quote is created and rendered to DOM.
+//This fixes a bug that allowed users to add the same quote twice
+//in a row without typing anything in the input fields the second time,
+//becuase the quote text and author were already in state.
+    resetQuoteState = () => {
+        this.setState({
+            quoteText: "",
+            quoteAuthor: ""
+        })
+    }
 
     render(){
         return(
@@ -107,14 +118,16 @@ class AddQuoteModal extends Component {
                                             type="text"
                                             id="quoteAuthor"
                                             placeholder="author"
-                                            required
                                         /><br/>
 
                                 </FormGroup>
                             </Form>
                         </ModalBody>
                         <ModalFooter>
-                            <Button onClick={this.constructNewQuote}>save</Button>{' '}
+                            <Button onClick={ ()=> {
+                                this.constructNewQuote()
+                                setTimeout(this.resetQuoteState, 1000)
+                                }}>save</Button>
                             <Button onClick={this.toggle}>cancel</Button>
                         </ModalFooter>
                     </Modal>
