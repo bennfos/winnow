@@ -8,18 +8,24 @@ class RandomQuote extends Component {
         quoteAuthor: ""
       };
 
-    getAndDisplayRandomQuote = () => {
-        fetchJsonp('http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en',
-        {jsonpCallback: 'jsonp'})
-        .then(function(response) {
-          return response.json();
-        })
-        .then(response =>
-            this.setState({
-                quoteText: response.quoteText,
-                quoteAuthor: response.quoteAuthor
-            }))
+
+getAndDisplayRandomQuote = () => {
+    fetchJsonp('http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en',
+    {jsonpCallback: 'jsonp'})
+    .then(function(response) {
+      return response.json();
+    })
+    .then(response =>
+        this.setState({
+            quoteText: response.quoteText,
+            quoteAuthor: response.quoteAuthor
+        }))
+    }
+
+    componentDidMount () {
+        this.getAndDisplayRandomQuote()
         }
+
 
     render() {
        return (

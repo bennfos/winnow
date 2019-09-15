@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import QuoteCard from './QuoteCard'
 import QuoteDataManager from './QuoteDataManager'
 import AddQuoteModal from './AddQuoteModal'
+import { Button } from 'semantic-ui-react'
 
 
 class QuoteList extends Component {
@@ -9,11 +10,9 @@ class QuoteList extends Component {
         quotes: [],
         userId: parseInt(sessionStorage.getItem("credentials")),
         bookId: 0,
-        month: "",
-        day: "",
-
-
-        }
+        month: "january",
+        day: "1",
+    }
 
     constructor(props) {
       super(props);
@@ -24,141 +23,48 @@ class QuoteList extends Component {
           day: "1",
           month: "january",
           modalOpen: false,
-          quotes: [],
-
-
-      };
-
+          quotes: []
       }
-
-
-    componentDidMount() {
-
-
-
-      // const currentPageId = parseInt(this.props.pageId)
-      //   QuoteDataManager.getPageQuotes(currentPageId)
-      //     .then(pageQuotes => {
-      //       console.log(pageQuotes)
-      //       const quotesForPage = pageQuotes.map(pageQuote => {
-      //         return ({
-      //           id: pageQuote.quote.id,
-      //           quoteText: pageQuote.quote.quoteText,
-      //           quoteAuthor: pageQuote.quote.quoteAuthor,
-      //           timestamp: pageQuote.quote.timestamp
-      //         })
-      //       })
-      //       this.setState({
-      //           quotes: quotesForPage,
-      //       })
-      //       console.log(this.state.quotes)
-      //     })
     }
 
 
-
-  // Called in NewsItemNewModal (child component) to post a new object to database and update state
-  addQuote = quoteObject => {
-    const currentPageId = parseInt(this.props.pageId)
-    return QuoteDataManager.postQuote(quoteObject)
-        .then(quote => {
-
-          //construct a new pageQuote object
-          const newPageQuote = {
-            quoteId: quote.id,
-            pageId: parseInt(this.props.pageId)
-          }
-
-          //post the new pageQuote to the database
-          QuoteDataManager.savePageQuote(newPageQuote)
-            .then(pageQuote => console.log(pageQuote)
-            )
-
-            .then(() => {
-              QuoteDataManager.getPageQuotes(currentPageId)
-                .then(pageQuotes => {
-                  const quotesForPage = pageQuotes.map(pageQuote => {
-                    return ({
-                      id: pageQuote.quote.id,
-                      quoteText: pageQuote.quote.quoteText,
-                      quoteAuthor: pageQuote.quote.quoteAuthor,
-                      timestamp: pageQuote.quote.timestamp
-                    })
-                  })
-                  this.setState({
-                      quotes: quotesForPage
-                  })
-
-                  console.log(this.state.quotes)
-          });
-        });
-      });
-    };
+    componentDidMount() {
+      this.props.renderPageQuotes(this.props.pageId)
+      }
 
 
-  // Called in NewsCard(child component) to delete object from database and update state
-  removeQuote = id => {
-    QuoteDataManager.deleteQuote(id)
-        .then(() => {
-            QuoteDataManager.getPageQuotes(this.props.pageId)
-                .then(pageQuotes => {
-                  const quotesForPage = pageQuotes.map(pageQuote => {
-                    return ({
-                      id: pageQuote.quote.id,
-                      quoteText: pageQuote.quote.quoteText,
-                      quoteAuthor: pageQuote.quote.quoteAuthor,
-                      timestamp: pageQuote.quote.timestamp
-                    })
-                  })
-                  this.setState({
-                      quotes: quotesForPage
-                  })
-                })
+    componentDidUpdate(prevProps) {
+      console.log("component update")
+      if (this.props.pageId !== prevProps.pageId) {
+        this.props.renderPageQuotes(this.props.pageId)
+        this.setState({
+          quotes: this.props.quotes
         })
-  };
-
-
-  // Called in NewEditModal (child component) to post edited object to database and update state
-  postEditedQuote = id => {
-    return QuoteDataManager.editQuote(id)
-        .then(() => {
-          QuoteDataManager.getPageQuotes(this.props.pageId)
-          .then(pageQuotes => {
-            const quotesForPage = pageQuotes.map(pageQuote => {
-              return ({
-                id: pageQuote.quote.id,
-                quoteText: pageQuote.quote.quoteText,
-                quoteAuthor: pageQuote.quote.quoteAuthor,
-                timestamp: pageQuote.quote.timestamp
-              })
-            })
-            this.setState({
-                quotes: quotesForPage
-            })
-          })
-        })
-  }
+        console.log("quotes in QuoteList state after update: ", this.state.quotes)
+      }
+    }
 
 
     render() {
         return (
             <React.Fragment>
+              {/* <Button onClick={()=>this.props.renderPageQuotes(this.props.pageId)}>refresh</Button> */}
               <div className="quoteList__container">
                 <div className="pageDay__container">
                     <h3>{this.props.month} {this.props.day}</h3>
                     <AddQuoteModal
                         className="addQuoteModal"
                         {...this.props}
-                        addQuote={this.addQuote}
+
                       />
                 </div>
-                  {this.props.renderPageQuotes(this.props.pageId)}
+
                   {this.props.quotes.map(quote => (
                 <QuoteCard
                       key={quote.id}
                       quote={quote}
                       removeQuote={this.removeQuote}
-                      postEditedQuote={this.postEditedQuote}
+                      postEditedQuote={this.props.postEditedQuote}
                       {...this.props}/>
                   ))}
               </div>

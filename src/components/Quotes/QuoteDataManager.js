@@ -1,3 +1,5 @@
+import fetchJsonp from 'fetch-jsonp'
+
 const remoteURL = "http://localhost:8088"
 
 export default {
@@ -51,5 +53,12 @@ export default {
     getPageQuotes (pageId) {
         return fetch(`${remoteURL}/pageQuotes?_expand=quote&pageId=${pageId}`)
             .then(response => response.json());
+    },
+    getRandomQuote () {
+       return fetchJsonp('http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en',
+        {jsonpCallback: 'jsonp'})
+        .then(function(response) {
+          return response.json();
+        })
     }
 }

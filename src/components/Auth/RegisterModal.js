@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button } from 'semantic-ui-react'
 import UserDataManager from './UserDataManager';
 import './Login.css';
 import Winnow from '../Winnow';
@@ -119,8 +120,8 @@ class RegisterModal extends React.Component {
                     </form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={this.handleRegister}>Sign up</Button>{' '}
-                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                        <Button onClick={this.handleRegister}>Sign up</Button>{' '}
+                        <Button onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
             </div>
