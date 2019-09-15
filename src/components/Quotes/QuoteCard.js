@@ -28,8 +28,8 @@ class QuoteCard extends Component {
         <>
             <div className="quoteCard">
                 <div className="quoteCardContent">
-                    <h3>{this.props.quote.quoteText}</h3>
-                    <p>{this.props.quote.quoteAuthor}</p>
+                    <h3>{this.props.quote.quote.quoteText}</h3>
+                    <p>{this.props.quote.quote.quoteAuthor}</p>
                 </div>
                 <EditQuoteModal
                 postEditedQuote={this.props.postEditedQuote}

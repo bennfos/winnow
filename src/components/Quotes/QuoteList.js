@@ -10,8 +10,8 @@ class QuoteList extends Component {
         quotes: this.props.quotes,
         userId: parseInt(sessionStorage.getItem("credentials")),
         bookId: 0,
-        month: "",
-        day: "",
+        month: "january",
+        day: "1",
 
 
 
@@ -34,10 +34,13 @@ class QuoteList extends Component {
       }
 
 
-    componentDidUpdate() {
-if (this.props.count < 100) {
-  this.props.renderPageQuotes(this.props.pageId)
-}
+    componentDidUpdate(prevProps) {
+      if (this.props.pageId !== prevProps.pageId) {
+        this.props.renderPageQuotes(this.props.pageId)
+      }}
+
+
+
 
 
 
@@ -61,7 +64,7 @@ if (this.props.count < 100) {
       //       })
       //       console.log(this.state.quotes)
       //     })
-    }
+
 
 
 

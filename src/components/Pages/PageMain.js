@@ -134,19 +134,11 @@ class PageMain extends Component {
         QuoteDataManager.getPageQuotes(currentPageId)
           .then(pageQuotes => {
             console.log("pageQuotes: ", pageQuotes)
-            const quotesForPage = pageQuotes.map(pageQuote => {
-              return ({
-                id: pageQuote.quote.id,
-                quoteText: pageQuote.quote.quoteText,
-                quoteAuthor: pageQuote.quote.quoteAuthor,
-                timestamp: pageQuote.quote.timestamp
-              })
-            })
             this.setState({
-                quotes: quotesForPage,
+                quotes: pageQuotes,
                 count: this.state.count + 1
             })
-            console.log(this.state.quotes)
+            console.log("quotes in pagemain state: ", this.state.quotes)
           })
     }
 
@@ -200,7 +192,7 @@ class PageMain extends Component {
                         handleClose={this.handleClose}
                         handleFieldChange={this.handleFieldChange}
                         constructNewPage={this.constructNewPage}
-                        
+
                         {...this.props}/>
 
 
