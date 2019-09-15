@@ -12,10 +12,7 @@ class QuoteList extends Component {
         bookId: 0,
         month: "january",
         day: "1",
-
-
-
-        }
+    }
 
     constructor(props) {
       super(props);
@@ -27,106 +24,38 @@ class QuoteList extends Component {
           month: "january",
           modalOpen: false,
           quotes: this.props.quotes,
-
-
-      };
-
       }
+    }
 
+
+    componentDidMount() {
+        this.props.renderPageQuotes(this.props.pageId)
+    }
 
     componentDidUpdate(prevProps) {
       if (this.props.pageId !== prevProps.pageId) {
         this.props.renderPageQuotes(this.props.pageId)
-      }}
+      }
+    }
+
+    componentWillReceiveProps() {
+      // this.props.renderPageQuotes(this.props.pageId)
+    }
 
 
 
 
 
-
-
-
-
-      // const currentPageId = parseInt(this.props.pageId)
-      //   QuoteDataManager.getPageQuotes(currentPageId)
-      //     .then(pageQuotes => {
-      //       console.log(pageQuotes)
-      //       const quotesForPage = pageQuotes.map(pageQuote => {
-      //         return ({
-      //           id: pageQuote.quote.id,
-      //           quoteText: pageQuote.quote.quoteText,
-      //           quoteAuthor: pageQuote.quote.quoteAuthor,
-      //           timestamp: pageQuote.quote.timestamp
-      //         })
-      //       })
-      //       this.setState({
-      //           quotes: quotesForPage,
-      //       })
-      //       console.log(this.state.quotes)
-      //     })
 
 
 
 
   // Called in NewsItemNewModal (child component) to post a new object to database and update state
-  addQuote = quoteObject => {
-    const currentPageId = parseInt(this.props.pageId)
-    return QuoteDataManager.postQuote(quoteObject)
-        .then(quote => {
 
-          //construct a new pageQuote object
-          const newPageQuote = {
-            quoteId: quote.id,
-            pageId: parseInt(this.props.pageId)
-          }
-
-          //post the new pageQuote to the database
-          QuoteDataManager.savePageQuote(newPageQuote)
-            .then(pageQuote => console.log(pageQuote)
-            )
-
-            .then(() => {
-              QuoteDataManager.getPageQuotes(currentPageId)
-                .then(pageQuotes => {
-                  const quotesForPage = pageQuotes.map(pageQuote => {
-                    return ({
-                      id: pageQuote.quote.id,
-                      quoteText: pageQuote.quote.quoteText,
-                      quoteAuthor: pageQuote.quote.quoteAuthor,
-                      timestamp: pageQuote.quote.timestamp
-                    })
-                  })
-                  this.setState({
-                      quotes: quotesForPage
-                  })
-
-                  console.log(this.state.quotes)
-          });
-        });
-      });
-    };
 
 
   // Called in NewsCard(child component) to delete object from database and update state
-  removeQuote = id => {
-    QuoteDataManager.deleteQuote(id)
-        .then(() => {
-            QuoteDataManager.getPageQuotes(this.props.pageId)
-                .then(pageQuotes => {
-                  const quotesForPage = pageQuotes.map(pageQuote => {
-                    return ({
-                      id: pageQuote.quote.id,
-                      quoteText: pageQuote.quote.quoteText,
-                      quoteAuthor: pageQuote.quote.quoteAuthor,
-                      timestamp: pageQuote.quote.timestamp
-                    })
-                  })
-                  this.setState({
-                      quotes: quotesForPage
-                  })
-                })
-        })
-  };
+
 
 
   // Called in NewEditModal (child component) to post edited object to database and update state
@@ -154,14 +83,14 @@ class QuoteList extends Component {
     render() {
         return (
             <React.Fragment>
-              <Button onClick={()=>this.props.renderPageQuotes(this.props.pageId)}>refresh</Button>
+              {/* <Button onClick={()=>this.props.renderPageQuotes(this.props.pageId)}>refresh</Button> */}
               <div className="quoteList__container">
                 <div className="pageDay__container">
                     <h3>{this.props.month} {this.props.day}</h3>
                     <AddQuoteModal
                         className="addQuoteModal"
                         {...this.props}
-                        addQuote={this.addQuote}
+
                       />
                 </div>
 
@@ -169,8 +98,8 @@ class QuoteList extends Component {
                 <QuoteCard
                       key={quote.id}
                       quote={quote}
-                      removeQuote={this.removeQuote}
-                      postEditedQuote={this.postEditedQuote}
+                      removeQuote={this.props.removeQuote}
+                      postEditedQuote={this.props.postEditedQuote}
                       {...this.props}/>
                   ))}
               </div>

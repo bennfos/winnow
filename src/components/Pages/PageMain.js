@@ -48,6 +48,7 @@ class PageMain extends Component {
         const stateToChange = {};
         stateToChange[evt.target.id] = evt.target.value;
         this.setState(stateToChange);
+        console.log(this.state)
     };
 
     handleOpen = () => this.setState({ modalOpen: true })
@@ -129,19 +130,51 @@ class PageMain extends Component {
     }
 
     renderPageQuotes = (pageId) => {
-        const currentPageId = pageId
-        console.log("PageId(string or int?): ", currentPageId)
-        QuoteDataManager.getPageQuotes(currentPageId)
+
+        console.log("PageId(string or int?): ", pageId)
+        QuoteDataManager.getPageQuotes(pageId)
           .then(pageQuotes => {
             console.log("pageQuotes: ", pageQuotes)
             this.setState({
                 quotes: pageQuotes,
-                count: this.state.count + 1
             })
-            console.log("quotes in pagemain state: ", this.state.quotes)
+            console.log("quotes in PageMain state: ", this.state.quotes)
           })
     }
 
+    addQuote = (quoteObject, pageId) => {
+        return QuoteDataManager.postQuote(quoteObject)
+            .then(quote => {
+              //construct a new pageQuote object
+              const newPageQuote = {
+                quoteId: quote.id,
+                pageId: pageId
+              }
+              //post the new pageQuote to the database
+              QuoteDataManager.savePageQuote(newPageQuote)
+                .then(() => {
+                  QuoteDataManager.getPageQuotes(pageId)
+                    .then(pageQuotes => {
+                      this.setState({
+                          quotes: pageQuotes
+                      })
+                      console.log(this.state.quotes)
+              });
+            });
+          });
+        };
+
+    removeQuote = id => {
+        QuoteDataManager.deleteQuote(id)
+            .then(() => {
+                QuoteDataManager.getPageQuotes(this.props.pageId)
+                .then(pageQuotes => {
+                    this.setState({
+                        quotes: pageQuotes
+                    })
+                })
+            })
+    };
 
     addPage = pageObject => {
         return PageDataManager.postPage(pageObject)
@@ -192,7 +225,6 @@ class PageMain extends Component {
                         handleClose={this.handleClose}
                         handleFieldChange={this.handleFieldChange}
                         constructNewPage={this.constructNewPage}
-
                         {...this.props}/>
 
 
@@ -266,7 +298,8 @@ class PageMain extends Component {
             </div>
             <Sidebar.Pusher>
                 <PageViews
-                count={this.state.count}
+                addQuote={this.addQuote}
+                removeQuote={this.removeQuote}
                 renderPageQuotes={this.renderPageQuotes}
                 quotes={this.state.quotes}
                 {...this.props}

@@ -50,9 +50,8 @@ class AddQuoteModal extends Component {
         event.preventDefault();
 
     //Validates user input
-        if (this.state.quoteText === ""||
-        this.state.quoteAuthor === "") {
-            alert("please fill out all fields");
+        if (this.state.quoteText === "") {
+            alert("please provide the quote text");
         } else {
             this.setState({ loadingStatus: true });
 
@@ -67,8 +66,8 @@ class AddQuoteModal extends Component {
 
 
         //posts the object to the database, gets all news items, updates state of news array
-            this.props.addQuote(newQuote)
-                
+            this.props.addQuote(newQuote, this.props.pageId)
+
 
 
         //closes the modal

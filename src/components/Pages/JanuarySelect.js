@@ -20,6 +20,8 @@ class JanuarySelect extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            day: "1",
+            month: "january",
             quotes: [],
             userId: parseInt(sessionStorage.getItem("credentials")),
             quoteText: "",
@@ -57,7 +59,9 @@ class JanuarySelect extends Component {
                         onChange={this.props.handleFieldChange}
                         type="select"
                         name="day"
-                        id="day">
+                        id="day"
+                        placeholder="select a day">
+                                <option>select a day</option>
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -95,7 +99,7 @@ class JanuarySelect extends Component {
                     <ModalFooter>
                             <Button
                                 onClick={() => {
-                                    
+
                                     this.props.constructNewPage()
                                     this.toggle()
                                 }
@@ -105,7 +109,7 @@ class JanuarySelect extends Component {
 
                         <Button
                             onClick={
-                                this.props.toggle
+                                this.toggle
                             }>cancel
                         </Button>
                     </ModalFooter>
