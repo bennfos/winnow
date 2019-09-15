@@ -13,6 +13,7 @@ import './PageDay.css'
 
 class PageDay extends Component {
     state = {
+        quotes: [],
         pages: [],
         userId: parseInt(sessionStorage.getItem("credentials")),
         thought: "",
@@ -27,11 +28,9 @@ componentDidMount() {
                 pages: pages,
                 month: this.props.month,
                 day: this.props.day
-            })
         })
-        .then(()=> this.forceUpdate)
-    };
-
+    })
+}
 
 
 

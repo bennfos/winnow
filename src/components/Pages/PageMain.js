@@ -15,15 +15,16 @@ class PageMain extends Component {
 
     state = {
         visible: false,
-        day: "",
-        month: "",
+        day: "1",
+        month: "january",
         dayChosen: false,
         modal: false,
         pageId: 0,
         pages: [],
         quotes: [],
         update: false,
-        loadingStatus: false
+        loadingStatus: false,
+        count: 0
     }
 
     constructor(props) {
@@ -36,9 +37,11 @@ class PageMain extends Component {
             month: "january",
             modal: false,
             quotes: [],
-            update: false
+            update: false,
+            count: 0
         };
 
+        this.renderPageQuotes = this.renderPageQuotes.bind(this);
     }
 
     handleFieldChange = evt => {
@@ -141,6 +144,7 @@ class PageMain extends Component {
             })
             this.setState({
                 quotes: quotesForPage,
+                count: this.state.count + 1
             })
             console.log(this.state.quotes)
           })
@@ -196,6 +200,7 @@ class PageMain extends Component {
                         handleClose={this.handleClose}
                         handleFieldChange={this.handleFieldChange}
                         constructNewPage={this.constructNewPage}
+                        
                         {...this.props}/>
 
 
@@ -269,8 +274,7 @@ class PageMain extends Component {
             </div>
             <Sidebar.Pusher>
                 <PageViews
-                updateState={this.updateState}
-                update={this.state.update}
+                count={this.state.count}
                 renderPageQuotes={this.renderPageQuotes}
                 quotes={this.state.quotes}
                 {...this.props}

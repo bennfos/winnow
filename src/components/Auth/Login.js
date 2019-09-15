@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import UserDataManager from "./UserDataManager";
-import { Button } from 'reactstrap'
+import { Button, Input } from 'semantic-ui-react'
 
 import "./Login.css";
 
@@ -48,7 +48,7 @@ class Login extends Component {
           <fieldset className="loginSection">
             <h3>winnow</h3>
             <div className="loginForm">
-              <input
+              <Input
                 onChange={this.handleFieldChange}
                 type="username"
                 id="username"
@@ -56,7 +56,7 @@ class Login extends Component {
                 required
                 autoFocus=""
               /><br/>
-              <input
+              <Input
                 onChange={this.handleFieldChange}
                 type="password"
                 id="password"

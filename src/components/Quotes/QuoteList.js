@@ -2,15 +2,17 @@ import React, { Component } from 'react'
 import QuoteCard from './QuoteCard'
 import QuoteDataManager from './QuoteDataManager'
 import AddQuoteModal from './AddQuoteModal'
+import { Button } from 'semantic-ui-react'
 
 
 class QuoteList extends Component {
     state = {
-        quotes: [],
+        quotes: this.props.quotes,
         userId: parseInt(sessionStorage.getItem("credentials")),
         bookId: 0,
         month: "",
         day: "",
+
 
 
         }
@@ -24,7 +26,7 @@ class QuoteList extends Component {
           day: "1",
           month: "january",
           modalOpen: false,
-          quotes: [],
+          quotes: this.props.quotes,
 
 
       };
@@ -32,7 +34,13 @@ class QuoteList extends Component {
       }
 
 
-    componentDidMount() {
+    componentDidUpdate() {
+if (this.props.count < 100) {
+  this.props.renderPageQuotes(this.props.pageId)
+}
+
+
+
 
 
 
@@ -143,6 +151,7 @@ class QuoteList extends Component {
     render() {
         return (
             <React.Fragment>
+              <Button onClick={()=>this.props.renderPageQuotes(this.props.pageId)}>refresh</Button>
               <div className="quoteList__container">
                 <div className="pageDay__container">
                     <h3>{this.props.month} {this.props.day}</h3>
@@ -152,7 +161,7 @@ class QuoteList extends Component {
                         addQuote={this.addQuote}
                       />
                 </div>
-                  {this.props.renderPageQuotes(this.props.pageId)}
+
                   {this.props.quotes.map(quote => (
                 <QuoteCard
                       key={quote.id}

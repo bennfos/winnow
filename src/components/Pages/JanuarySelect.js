@@ -95,6 +95,7 @@ class JanuarySelect extends Component {
                     <ModalFooter>
                             <Button
                                 onClick={() => {
+                                    
                                     this.props.constructNewPage()
                                     this.toggle()
                                 }
@@ -104,7 +105,7 @@ class JanuarySelect extends Component {
 
                         <Button
                             onClick={
-                                this.props.handleClose
+                                this.props.toggle
                             }>cancel
                         </Button>
                     </ModalFooter>
