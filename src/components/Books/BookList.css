@@ -1,0 +1,11 @@
+.bookList__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    margin: 20px;
+}
+
+.addBookModal {
+    margin: 13px
+}

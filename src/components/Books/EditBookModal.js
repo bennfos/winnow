@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
+import { Icon, Button } from 'semantic-ui-react'
 import BookDataManager from './BookDataManager'
 
 class BookEditModal extends Component {
@@ -82,10 +83,12 @@ class BookEditModal extends Component {
         return(
             <>
                 <section className="bookSectionContent">
-                <Button type="button"
-                onClick={this.toggle}>
-                edit
-                </Button>
+                <Icon
+                type="button"
+                size='med'
+                onClick={this.toggle}
+                name='edit outline'>
+                </Icon>
                 </section>
                 <div>
                 <Modal isOpen={this.state.modal} toggle={this.toggle}
@@ -93,27 +96,30 @@ class BookEditModal extends Component {
             >
                     <ModalHeader toggle={this.toggle}>edit book</ModalHeader>
                     <ModalBody>
-                        <form>
-                            <fieldset>
+
                                 <div className="editBookForm">
-                                    <input onChange={this.handleFieldChange} type="text"
+                                    <Input
+
+                                        onChange={this.handleFieldChange}
+                                        type="text"
                                         id="title"
                                         value={this.state.title}
                                         required
                                         autoFocus=""
                                     /><br/>
-                                    <textarea onChange={this.handleFieldChange}
+                                    <Input
+                                        onChange={this.handleFieldChange}
+                                        type="textarea"
                                         id="description"
                                         value={this.state.description}
                                         required
                                     /><br/>
                                 </div>
-                            </fieldset>
-                        </form>
+
                     </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" type="button" onClick={this.editExistingBook}>save</Button>{' '}
-                    <Button color="secondary" type="button" onClick={this.toggle}>cancel</Button>
+                    <Button primary type="button" onClick={this.editExistingBook}>save</Button>{' '}
+                    <Button secondary type="button" onClick={this.toggle}>cancel</Button>
                 </ModalFooter>
             </Modal>
         </div>

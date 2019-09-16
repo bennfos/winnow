@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import UserDataManager from "./UserDataManager";
-import { Button, Input } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
+import { Input } from 'reactstrap'
 
 import "./Login.css";
 
@@ -44,9 +45,19 @@ class Login extends Component {
     console.log(this.state.users);
     return (
       <React.Fragment>
-        <form onSubmit={this.handleLogin}>
-          <fieldset className="loginSection">
-            <h3>winnow</h3>
+          <div className="login__heading">
+            <h1>winnow</h1>
+          </div>
+          <div>
+            <p><em>Marcus Aurelius wrote that we should</em>
+              <strong> winnow </strong><em>our thoughts, so that we always
+              have something meaningful to think and
+              talk about.</em></p>
+
+              <p><em>Create a daily quote book to winnow the
+              chaff of media noise, and collect a few
+              grains of wisdom.</em></p>
+          </div>
             <div className="loginForm">
               <Input
                 onChange={this.handleFieldChange}
@@ -64,10 +75,14 @@ class Login extends Component {
                 required
               />
             </div>
-            <Button type="submit">sign in</Button>
-            <p>or</p>
-          </fieldset>
-        </form>
+            <div className="signIn">
+              <Button
+                className="signIn_button"
+                type="submit"
+                onClick={this.handleLogin}
+                >sign in</Button>
+              <p>or</p>
+            </div>
       </React.Fragment>
     );
   }

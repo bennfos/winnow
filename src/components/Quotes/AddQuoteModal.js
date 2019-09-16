@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input } from 'reactstrap';
-import { Button, Icon } from 'semantic-ui-react'
+import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input, Button } from 'reactstrap';
+import { Icon } from 'semantic-ui-react'
 import QuoteDataManager from './QuoteDataManager'
 
 class AddQuoteModal extends Component {
@@ -90,11 +90,11 @@ class AddQuoteModal extends Component {
         return(
             <>
                 <section className="quoteSectionContent">
-                    <Button icon
+                    <Icon
                     onClick={this.toggle}
-                    size='mini'>
-                        <Icon name="add"/>
-                    </Button>
+                    
+                    name="add">
+                    </Icon>
                 </section>
                 <div>
                     <Modal
@@ -124,11 +124,16 @@ class AddQuoteModal extends Component {
                             </Form>
                         </ModalBody>
                         <ModalFooter>
-                            <Button onClick={ ()=> {
+                            <Button
+                                color="primary"
+                                onClick={ ()=> {
                                 this.constructNewQuote()
                                 setTimeout(this.resetQuoteState, 1000)
                                 }}>save</Button>
-                            <Button onClick={this.toggle}>cancel</Button>
+                            <Button
+                                color="secondary"
+                                onClick={this.toggle}
+                                >cancel</Button>
                         </ModalFooter>
                     </Modal>
                 </div>

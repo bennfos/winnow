@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import EditBookModal from './EditBookModal'
-import {Button, Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Col, Row} from 'reactstrap'
+import { Card, CardText,
+    CardTitle, Col, Row, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
+import { Icon, Confirm } from 'semantic-ui-react'
 import PageDataManager from '../Pages/PageDataManager'
+import ConfirmBookDeleteModal from './ConfirmDeleteBookModal'
+import './BookCard.css'
 
 class BookCard extends Component {
     state = {
         pages: [],
-        pageId: 0
+        pageId: 0,
+        open: false
     }
 
   //Renders an individual news card with an article title, synopsis, link to URL, and edit and delete buttons.
@@ -56,19 +60,35 @@ class BookCard extends Component {
     return (
 
         <div className="bookCard">
+
             <Row>
                 <Col sm="6">
                     <Card body onClick={() => console.log("clicked")}>
-                        <CardTitle>{this.props.book.title}</CardTitle>
-                        <CardText>{this.props.book.description}</CardText>
-                        <EditBookModal
-                        {...this.props}
-                        postEditedBook={this.props.postEditedBook}
-                        />
-                        <Button
-                            onClick={this.constructOrNavigateToFirstPage}
-                            >open</Button>
-                        <Button color="danger" onClick={() => this.props.removeBook(this.props.book.id)}>delete</Button>
+                        <div className="card__content">
+                            <div className="card__header">
+                                <CardTitle
+                                    onClick={this.constructOrNavigateToFirstPage}
+                                    className="cardTitle">
+                                    <h2>{this.props.book.title}</h2>
+                                    <div className="open__button">
+                                        <Icon
+                                            name="chevron right"
+                                            size="large"
+                                        ></Icon>
+                                    </div>
+                                </CardTitle>
+                                <div className="editAndDelete__container">
+                                    <ConfirmBookDeleteModal {...this.props}/>
+                                    <EditBookModal
+                                        {...this.props}
+                                        postEditedBook={this.props.postEditedBook}
+                                    />
+
+
+                                </div>
+                            </div>
+                            <CardText>{this.props.book.description}</CardText>
+                        </div>
 
                     </Card>
                 </Col>

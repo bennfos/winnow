@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import BookCard from "./BookCard";
 import BookDataManager from "./BookDataManager";
 import AddBookModal from "./AddBookModal";
+import './BookList.css'
 
 
 class BookList extends Component {
@@ -63,7 +64,12 @@ class BookList extends Component {
   render() {
     return (
       <React.Fragment>
-        <AddBookModal {...this.props} addBook={this.addBook} />
+        <div className="bookList__header">
+          <h1>my books</h1>
+          <div className="addBookModal">
+            <AddBookModal  {...this.props} addBook={this.addBook} />
+          </div>
+        </div>
         <div className="bookCards__container">
           {this.state.books.map(book => (
             <BookCard

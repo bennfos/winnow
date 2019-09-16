@@ -216,7 +216,7 @@ class PageMain extends Component {
         return (
         <>
             <div className="pageSelect">
-                <Button icon="caret down" className="pageSelect__button" onClick={this.toggleSidebar}></Button>
+                <Button icon="chevron down" className="pageSelect__button" onClick={this.toggleSidebar}></Button>
 
             <Sidebar.Pushable >
                 <div className="sidebar">
