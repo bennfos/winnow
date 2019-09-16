@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
-import AddQuoteModal from '../Quotes/AddQuoteModal'
 import QuoteList from '../Quotes/QuoteList'
 import PageDataManager from '../Pages/PageDataManager'
-import ThoughtsMain from '../Thoughts/ThoughtsMain'
-import AddThoughtsModal from '../Thoughts/AddThoughtsModal'
-import EditThoughtsModal from '../Thoughts/EditThoughtsModal'
-import PageSelect from './Unused/PageSelect'
-import QuoteDataManager from '../Quotes/QuoteDataManager'
-import ReactDOM from "react-dom"
+import AddThoughtModal from '../Thoughts/AddThoughtModal'
+import ThoughtCard from '../Thoughts/ThoughtCard'
 import './PageDay.css'
 
 
@@ -21,16 +16,17 @@ class PageDay extends Component {
 
 
 //When component mounts, gets all news and sets state of news array with all existsing news items
-componentDidMount() {
-    PageDataManager.checkPages(this.props.bookId, this.props.month, this.props.day)
-        .then(pages => {
-            this.setState({
-                pages: pages,
-                month: this.props.month,
-                day: this.props.day
-        })
-    })
-}
+// componentDidMount() {
+//     PageDataManager.checkPages(this.props.bookId, this.props.month, this.props.day)
+//         .then(pages => {
+//             this.setState({
+//                 pages: pages,
+//                 month: this.props.month,
+//                 day: this.props.day,
+//                 thought: this.props.thought
+//         })
+//     })
+// }
 
 
 
@@ -42,7 +38,8 @@ componentDidMount() {
                     <QuoteList
                         {...this.props}
                         />
-                    {/* <ThoughtsMain {...this.props}/> */}
+                    <AddThoughtModal {...this.props} />
+                    <ThoughtCard {...this.props}/>
                 </div>
             </React.Fragment>
         )

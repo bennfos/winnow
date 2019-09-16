@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Input, Alert } from 'reactstrap';
 import { Button } from 'semantic-ui-react'
 import UserDataManager from './UserDataManager';
 import './Login.css';
@@ -119,7 +119,11 @@ class RegisterModal extends React.Component {
 
                     </ModalBody>
                     <ModalFooter>
-                        <Button primary onClick={this.handleRegister}>Sign up</Button>{' '}
+                        <Button
+                            primary
+                            onClick={this.handleRegister}
+                            >Sign up</Button>
+
                         <Button secondary onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>

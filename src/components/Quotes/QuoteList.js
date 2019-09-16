@@ -7,7 +7,7 @@ import { Button } from 'semantic-ui-react'
 
 class QuoteList extends Component {
     state = {
-        quotes: [],
+        pageQuotes: [],
         userId: parseInt(sessionStorage.getItem("credentials")),
         bookId: 0,
         month: "january",
@@ -23,7 +23,7 @@ class QuoteList extends Component {
           day: "1",
           month: "january",
           modalOpen: false,
-          quotes: []
+          pageQuotes: []
       }
     }
 
@@ -38,9 +38,9 @@ class QuoteList extends Component {
       if (this.props.pageId !== prevProps.pageId) {
         this.props.renderPageQuotes(this.props.pageId)
         this.setState({
-          quotes: this.props.quotes
+          pageQuotes: this.props.pageQuotes
         })
-        console.log("quotes in QuoteList state after update: ", this.state.quotes)
+        console.log("pageQuotes in QuoteList state after update: ", this.state.pageQuotes)
       }
     }
 
@@ -48,7 +48,7 @@ class QuoteList extends Component {
     render() {
         return (
             <React.Fragment>
-              {/* <Button onClick={()=>this.props.renderPageQuotes(this.props.pageId)}>refresh</Button> */}
+
               <div className="quoteList__container">
                 <div className="pageDay__container">
                     <h3>{this.props.month} {this.props.day}</h3>
@@ -59,10 +59,10 @@ class QuoteList extends Component {
                       />
                 </div>
 
-                  {this.props.quotes.map(quote => (
+                  {this.props.pageQuotes.map(pageQuote => (
                 <QuoteCard
-                      key={quote.id}
-                      quote={quote}
+                      key={pageQuote.id}
+                      pageQuote={pageQuote}
                       removeQuote={this.removeQuote}
                       postEditedQuote={this.props.postEditedQuote}
                       {...this.props}/>

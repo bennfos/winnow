@@ -22,9 +22,11 @@ class PageMain extends Component {
         pageId: 0,
         pages: [],
         quotes: [],
+        thought: "",
         update: false,
         loadingStatus: false,
-        count: 0
+        count: 0,
+        pageQuotes: []
     }
 
     constructor(props) {
@@ -37,8 +39,10 @@ class PageMain extends Component {
             month: "january",
             modal: false,
             quotes: [],
+            thought: "",
             update: false,
-            count: 0
+            count: 0,
+            pageQuotes: []
         };
 
         this.renderPageQuotes = this.renderPageQuotes.bind(this);
@@ -95,7 +99,8 @@ class PageMain extends Component {
                             pages: pages,
                             month: pages[0].month,
                             day: pages[0].day,
-                            pageId: pages[0].id
+                            pageId: pages[0].id,
+                            thought: pages[0].thought
                         })
                         console.log(this.state.pageId)
                         this.toggle()
@@ -135,10 +140,20 @@ class PageMain extends Component {
           .then(pageQuotes => {
             console.log("pageQuotes: ", pageQuotes)
             this.setState({
-                quotes: pageQuotes,
+                pageQuotes: pageQuotes,
+
             })
             console.log("quotes in PageMain state: ", this.state.quotes)
           })
+    }
+
+    postThought = (pageObject) => {
+        PageDataManager.editPage(pageObject)
+            .then(page => {
+                this.setState({
+                    thought: page.thought
+                })
+            })
     }
 
     addQuote = (quoteObject, pageId) => {
@@ -155,7 +170,7 @@ class PageMain extends Component {
                   QuoteDataManager.getPageQuotes(pageId)
                     .then(pageQuotes => {
                       this.setState({
-                          quotes: pageQuotes
+                          pageQuotes: pageQuotes
                       })
                       console.log(this.state.quotes)
               });
@@ -170,7 +185,7 @@ class PageMain extends Component {
                 QuoteDataManager.getPageQuotes(pageId)
                     .then(pageQuotes => {
                         this.setState({
-                            quotes: pageQuotes,
+                            pageQuotes: pageQuotes,
                         })
                         console.log("quotes in PageMain state after removeQuote: ", this.state.quotes)
                     })
@@ -183,7 +198,7 @@ class PageMain extends Component {
                 QuoteDataManager.getPageQuotes(pageId)
                 .then(pageQuotes => {
                     this.setState({
-                        quotes: pageQuotes,
+                        pageQuotes: pageQuotes,
                     })
                 })
             })
@@ -319,7 +334,9 @@ class PageMain extends Component {
                 addQuote={this.addQuote}
                 removeQuote={this.removeQuote}
                 renderPageQuotes={this.renderPageQuotes}
-                quotes={this.state.quotes}
+                postThought={this.postThought}
+                thought={this.state.thought}
+                pageQuotes={this.state.pageQuotes}
                 {...this.props}
                 />
             </Sidebar.Pusher>

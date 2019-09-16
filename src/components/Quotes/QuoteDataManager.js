@@ -51,7 +51,7 @@ export default {
         }).then(response => response.json());
     },
     getPageQuotes (pageId) {
-        return fetch(`${remoteURL}/pageQuotes?_expand=quote&pageId=${pageId}`)
+        return fetch(`${remoteURL}/pageQuotes?_expand=quote&_expand=page&pageId=${pageId}`)
             .then(response => response.json());
     },
     getRandomQuote () {

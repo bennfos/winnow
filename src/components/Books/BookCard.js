@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import EditBookModal from './EditBookModal'
 import { Card, CardText,
     CardTitle, Col, Row, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
 import { Icon, Confirm } from 'semantic-ui-react'
 import PageDataManager from '../Pages/PageDataManager'
 import ConfirmBookDeleteModal from './ConfirmDeleteBookModal'
-import './BookCard.css'
+import './Card.css'
 
 class BookCard extends Component {
     state = {
         pages: [],
         pageId: 0,
-        open: false
     }
 
   //Renders an individual news card with an article title, synopsis, link to URL, and edit and delete buttons.

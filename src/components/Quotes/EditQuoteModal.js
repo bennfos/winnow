@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Input} from 'reactstrap';
-import { Button } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 import QuoteDataManager from './QuoteDataManager'
 
 
@@ -54,11 +54,11 @@ class EditQuoteModal extends Component {
 
         //creates a new object for the edited news item,
             const editedQuote = {
-                id: this.props.quote.id,
+                id: this.props.pageQuote.quote.id,
                 userId: parseInt(sessionStorage.getItem("credentials")),
                 quoteText: this.state.quoteText,
                 quoteAuthor: this.state.quoteAuthor,
-                timestamp: this.props.quote.timestamp,
+                timestamp: this.props.pageQuote.quote.timestamp,
             };
         //posts the object to the database
             this.props.postEditedQuote(editedQuote, this.props.pageId)
@@ -70,13 +70,13 @@ class EditQuoteModal extends Component {
 
 //Gets the id of the news item that is being edited and sets state to populate the input fields
     componentDidMount() {
-        QuoteDataManager.getQuote(this.props.quote.id)
+        QuoteDataManager.getQuote(this.props.pageQuote.quote.id)
         .then(quote => {
-            console.log(this.props.quote.id)
+            console.log(this.props.pageQuote.quote.id)
             this.setState({
             quoteText: quote.quoteText,
             quoteAuthor: quote.quoteAuthor,
-            timestamp: this.props.quote.timestamp,
+            timestamp: this.props.pageQuote.quote.timestamp,
             loadingStatus: false,
             });
             console.log(this.state)
@@ -87,17 +87,18 @@ class EditQuoteModal extends Component {
         return(
             <>
                 <section className="quoteSectionContent">
-                    <Button type="button"
-                    size="mini"
-                    onClick={this.toggle}>
-                    edit
-                    </Button>
+                    <Icon
+                    type="button"
+                    onClick={this.toggle}
+                    name='edit outline'>
+                    </Icon>
                 </section>
+
                 <div>
                     <Modal isOpen={this.state.modal} toggle={this.toggle}
                     className={this.props.className}
                     >
-                        <ModalHeader toggle={this.toggle}>edit book</ModalHeader>
+                        <ModalHeader toggle={this.toggle}>edit quote</ModalHeader>
                             <ModalBody>
 
                                 <div className="editBookForm">
@@ -116,8 +117,8 @@ class EditQuoteModal extends Component {
 
                             </ModalBody>
                         <ModalFooter>
-                            <Button type="button" onClick={this.editExistingQuote}>save</Button>
-                            <Button type="button" onClick={this.toggle}>cancel</Button>
+                            <Button primary onClick={this.editExistingQuote}>save</Button>
+                            <Button secondary onClick={this.toggle}>cancel</Button>
                         </ModalFooter>
                     </Modal>
                 </div>

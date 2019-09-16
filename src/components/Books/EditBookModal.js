@@ -85,7 +85,6 @@ class BookEditModal extends Component {
                 <section className="bookSectionContent">
                 <Icon
                 type="button"
-                size='med'
                 onClick={this.toggle}
                 name='edit outline'>
                 </Icon>

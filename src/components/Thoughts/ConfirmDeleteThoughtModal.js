@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
-import { Icon, Button } from 'semantic-ui-react'
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Icon, Button} from 'semantic-ui-react'
 
-class ConfirmDeleteBookModal extends Component {
+class ConfirmDeleteThoughtModal extends Component {
 
 //Defines initial state
     constructor(props) {
         super(props);
         this.state = {
-            books: [],
+            quotes: [],
             userId: "",
-            title: "",
-            description: "",
+            quoteAuthor: "",
+            quoteText: "",
             timestamp: "",
             modal: false
         };
@@ -26,11 +26,25 @@ class ConfirmDeleteBookModal extends Component {
         }));
     }
 
+    removeThought = event => {
+        event.preventDefault()
+            const pageWithThought = {
+                id: this.props.pageId,
+                userId: parseInt(sessionStorage.getItem("credentials")),
+                month: this.props.month,
+                day: this.props.day,
+                thought: ""
+            }
+            this.props.postThought(pageWithThought)
+            this.toggle()
+        }
+
+
 
     render(){
         return(
             <>
-                <section className="eventSectionContent">
+                <section className="confirmSectionContent">
                     <Icon
                         className="delete__icon"
                         name="delete"
@@ -46,16 +60,15 @@ class ConfirmDeleteBookModal extends Component {
                         <ModalHeader toggle={this.toggle}>confirm delete</ModalHeader>
                         <ModalBody>
                             <div className="confirm__message">
-                                <h4>are you sure you want to delete this book?</h4>
+                                <h4>are you sure you want to delete this thought?</h4>
                             </div>
                         </ModalBody>
                         <ModalFooter>
                             <Button
                                 negative
-                                onClick={()=>{
-                                    this.props.removeBook(this.props.book.id)
-                                    this.toggle()
-                                }}>delete</Button>
+                                onClick={
+                                    this.removeThought
+                                }>delete</Button>
                             <Button
 
                                 onClick={this.toggle}
@@ -66,6 +79,6 @@ class ConfirmDeleteBookModal extends Component {
             </>
         )
     }
-}
 
-export default ConfirmDeleteBookModal
+}
+export default ConfirmDeleteThoughtModal

@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
-import { Icon, Button } from 'semantic-ui-react'
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Icon, Button} from 'semantic-ui-react'
 
-class ConfirmDeleteBookModal extends Component {
+class ConfirmDeleteQuoteModal extends Component {
 
 //Defines initial state
     constructor(props) {
         super(props);
         this.state = {
-            books: [],
+            quotes: [],
             userId: "",
-            title: "",
-            description: "",
+            quoteAuthor: "",
+            quoteText: "",
             timestamp: "",
             modal: false
         };
@@ -30,7 +30,7 @@ class ConfirmDeleteBookModal extends Component {
     render(){
         return(
             <>
-                <section className="eventSectionContent">
+                <section className="confirmSectionContent">
                     <Icon
                         className="delete__icon"
                         name="delete"
@@ -46,14 +46,14 @@ class ConfirmDeleteBookModal extends Component {
                         <ModalHeader toggle={this.toggle}>confirm delete</ModalHeader>
                         <ModalBody>
                             <div className="confirm__message">
-                                <h4>are you sure you want to delete this book?</h4>
+                                <h4>are you sure you want to delete this quote?</h4>
                             </div>
                         </ModalBody>
                         <ModalFooter>
                             <Button
                                 negative
                                 onClick={()=>{
-                                    this.props.removeBook(this.props.book.id)
+                                    this.props.removeQuote(this.props.pageQuote.quote.id, this.props.pageId)
                                     this.toggle()
                                 }}>delete</Button>
                             <Button
@@ -68,4 +68,4 @@ class ConfirmDeleteBookModal extends Component {
     }
 }
 
-export default ConfirmDeleteBookModal
+export default ConfirmDeleteQuoteModal

@@ -3,7 +3,8 @@ import QuoteDataManager from './QuoteDataManager'
 import EditQuoteModal from '../Quotes/EditQuoteModal'
 import { Button } from 'semantic-ui-react'
 import { throwStatement } from '@babel/types';
-
+import ConfirmDeleteQuoteModal from './ConfirmDeleteQuoteModal';
+import '../Books/Card.css'
 
 class QuoteCard extends Component {
     state = {
@@ -22,21 +23,21 @@ class QuoteCard extends Component {
   render() {
     return (
         <>
-            <Button onClick={this.getRandom}>rando</Button>
-            <p>{this.state.randomQuoteText}</p>
-            <div className="quoteCard">
-                <div className="quoteCardContent">
-                    <h3>{this.props.quote.quote.quoteText}</h3>
-                    <p>{this.props.quote.quote.quoteAuthor}</p>
+            <div className="card__container">
+                <div className="card__content">
+                    <h4>{this.props.pageQuote.quote.quoteText}</h4>
+                    <p>{this.props.pageQuote.quote.quoteAuthor}</p>
                 </div>
-                <EditQuoteModal
-                postEditedQuote={this.props.postEditedQuote}
-                {...this.props}/>
-                <Button
-                    size="mini"
-                    onClick={() => this.props.removeQuote(this.props.quote.id, this.props.pageId)}
-                    >delete
-                </Button>
+                <div className="card__header">
+                    <div className="editAndDelete__container">
+                        <EditQuoteModal
+                            postEditedQuote={this.props.postEditedQuote}
+                            {...this.props}/>
+                        <ConfirmDeleteQuoteModal
+                            {...this.props}
+                        />
+                    </div>
+                </div>
             </div>
         </>
     );
