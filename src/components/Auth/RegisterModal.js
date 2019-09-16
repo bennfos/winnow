@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
 import { Button } from 'semantic-ui-react'
 import UserDataManager from './UserDataManager';
 import './Login.css';
@@ -72,56 +72,55 @@ class RegisterModal extends React.Component {
     render() {
         return (
             <div>
-                <Button className="registerbtn" onClick={this.toggle}>sign up</Button>
+                <div className="registerbtn">
+                    <Button onClick={this.toggle}>sign up</Button>
+                </div>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Sign up</ModalHeader>
                     <ModalBody>
-                    <form>
-                        <fieldset>
-                            <div className="loginForm">
-                            <input onChange={this.handleFieldChange} type="text"
+                        <div>
+                            <Input onChange={this.handleFieldChange} type="text"
                                     id="firstName"
                                     placeholder="first name"
                                     value={this.state.firstName}
                                     required
                                 /><br/>
-                            <input onChange={this.handleFieldChange} type="text"
+                            <Input onChange={this.handleFieldChange} type="text"
                                     id="lastName"
                                     placeholder="last name"
                                     value={this.state.lastName}
                                     required
                                 /><br/>
-                            <input onChange={this.handleFieldChange} type="email"
+                            <Input onChange={this.handleFieldChange} type="email"
                                     id="email"
                                     placeholder="email"
                                     value={this.state.email}
                                     required
                                     autoFocus=""
                                 /><br/>
-                            <input onChange={this.handleFieldChange} type="text"
+                            <Input onChange={this.handleFieldChange} type="text"
                                     id="username"
                                     placeholder="username"
                                     value={this.state.username}
                                     required
                                 /><br/>
-                            <input onChange={this.handleFieldChange} type="password"
+                            <Input onChange={this.handleFieldChange} type="password"
                                     id="password"
                                     placeholder="password"
                                     value={this.state.password}
                                     required
                                 /><br/>
-                            <input onChange={this.handleFieldChange} type="password"
+                            <Input onChange={this.handleFieldChange} type="password"
                                     id="confirmPassword"
                                     placeholder="confirm password"
                                     required
-                            />
-                            </div>
-                        </fieldset>
-                    </form>
+                                />
+                        </div>
+
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClick={this.handleRegister}>Sign up</Button>{' '}
-                        <Button onClick={this.toggle}>Cancel</Button>
+                        <Button primary onClick={this.handleRegister}>Sign up</Button>{' '}
+                        <Button secondary onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
             </div>

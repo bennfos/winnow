@@ -1,0 +1,27 @@
+.card__header {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+
+}
+
+.editAndDeleteContainer {
+    display: flex;
+    flex-direction: row;
+    display: inline-block;
+}
+
+
+.cardTitle {
+    display:flex;
+}
+
+.open__button {
+    margin: 7px 0 0 0
+}
+
+.delete__icon {
+
+}

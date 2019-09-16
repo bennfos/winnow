@@ -1,0 +1,25 @@
+.loginForm {
+    width: 200px;
+    margin: 15px;
+}
+
+.signIn {
+    display: flex;
+    display: inline-block;
+    flex-direction: column;
+    justify-content: center;
+    margin: 15px 0 15px 40px;
+    text-align: center;
+}
+
+p {
+    margin: 15px;
+}
+
+.registerbtn {
+    margin: 0 0 0 40px;
+}
+
+.login__heading {
+    margin: 15px 0 15px 25px;
+}

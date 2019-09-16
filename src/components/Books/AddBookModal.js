@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button, Input } from 'reactstrap';
+import { Icon } from 'semantic-ui-react'
 
 class AddBookModal extends Component {
 
@@ -45,9 +46,8 @@ class AddBookModal extends Component {
         event.preventDefault();
 
     //Validates user input
-        if (this.state.title === ""||
-        this.state.description === "") {
-            alert("please fill out all fields");
+        if (this.state.title === "") {
+            alert("please give your new quoebook a title");
         } else {
             this.setState({ loadingStatus: true });
 
@@ -71,11 +71,12 @@ class AddBookModal extends Component {
         return(
             <>
                 <section className="eventSectionContent">
-                    <Button type="button"
-                    color="success"
-                    onClick={this.toggle}>
-                    add book
-                    </Button>
+                    <Icon
+                    className="addBookModal__button"
+                    name="add"
+                    onClick={this.toggle}
+                    size="large">
+                    </Icon>
                 </section>
                 <div>
                     <Modal
@@ -85,23 +86,22 @@ class AddBookModal extends Component {
                     >
                         <ModalHeader toggle={this.toggle}>add book</ModalHeader>
                         <ModalBody>
-                            <form>
-                                <fieldset>
-                                    <div className="newBookForm">
-                                    <input onChange={this.handleFieldChange} type="text"
-                                            id="title"
-                                            placeholder="title"
-                                            required
-                                            autoFocus=""
-                                        /><br/>
-                                        <textarea onChange={this.handleFieldChange}
-                                            id="description"
-                                            placeholder="description"
-                                            required
-                                        /><br/>
-                                    </div>
-                                </fieldset>
-                            </form>
+                            <div className="newBookForm">
+                                <Input
+                                    onChange={this.handleFieldChange}
+                                    type="text"
+                                    id="title"
+                                    placeholder="title"
+                                    required
+                                    autoFocus=""
+                                    /><br/>
+                                <Input onChange={this.handleFieldChange}
+                                    type="textarea"
+                                    id="description"
+                                    placeholder="description"
+                                    /><br/>
+                            </div>
+
                         </ModalBody>
                         <ModalFooter>
                             <Button color="primary" onClick={this.constructNewBook}>save</Button>{' '}
