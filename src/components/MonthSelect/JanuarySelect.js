@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PageDataManager from './PageDataManager'
+import PageDataManager from '../Pages/PageDataManager'
 import { Input, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Link } from 'react-router-dom'
 import { Menu, Button } from 'semantic-ui-react';
@@ -45,7 +45,10 @@ class JanuarySelect extends Component {
         return(
             <>
                 <Menu.Item
-                        onClick={this.toggle}
+                        onClick={() => {
+                            this.toggle()
+                            this.props.setMonth("january")
+                        }}
                         >january
                 </Menu.Item>
                 <Modal

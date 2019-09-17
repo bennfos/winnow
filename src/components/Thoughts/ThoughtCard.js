@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import EditThoughtModal from './EditThoughtModal'
 import { Card, CardText,
     CardTitle} from 'reactstrap'
 import ConfirmDeleteThoughtModal from './ConfirmDeleteThoughtModal'
@@ -21,24 +20,17 @@ class ThoughtCard extends Component {
     return (
 
         <div className="bookCard">
-
-
-                    <Card body>
-                        <div className="card__content">
-                            <div className="card__header">
-                                <CardTitle
-                                    className="cardTitle">
-                                    <p>{this.props.thought}</p>
-                                </CardTitle>
-                                <div className="editAndDelete__container">
-                                    <ConfirmDeleteThoughtModal {...this.props}/>
-                                </div>
-                            </div>
-                            <CardText>{this.props.thought}</CardText>
-                        </div>
-
-                    </Card>
+            <Card body>
+                <div className="card__header">
+                        <CardTitle
+                            className="cardTitle">
+                            <p>{this.props.thought}</p>
+                        </CardTitle>
+                    <ConfirmDeleteThoughtModal {...this.props}/>
+                </div>
+            </Card>
         </div>
+
 
     );
   }
@@ -46,8 +38,3 @@ class ThoughtCard extends Component {
 
 export default ThoughtCard
 
-
-
-
-{/* <AddThoughtsModal {...this.props}/> */}
-{/* <EditThoughtsModal {...this.props}/> */}

@@ -6,11 +6,13 @@
 
 
 .pageSelect__button {
-    height: 25px;
+    height: 35px;
     padding: 0;
-    width: 100%
+    width: 100%;
+    border-radius: 0;
 }
 
 .sidebar {
     height: 20px;
+
 }
