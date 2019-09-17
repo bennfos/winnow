@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Sidebar, Menu, Icon, Segment, Button } from 'semantic-ui-react'
+import { Sidebar, Menu, Button } from 'semantic-ui-react'
 import './PageMain.css'
 import PageDataManager from './PageDataManager'
 import PageViews from './PageViews'
@@ -32,23 +32,6 @@ class PageMain extends Component {
         pageQuotes: []
     }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            visible: false,
-            pages: [],
-            userId: parseInt(sessionStorage.getItem("credentials")),
-            day: "1",
-            month: "january",
-            modal: false,
-            quotes: [],
-            thought: "",
-            pageQuotes: []
-        };
-
-        this.renderPageQuotes = this.renderPageQuotes.bind(this);
-    }
-
     handleFieldChange = evt => {
         const stateToChange = {};
         stateToChange[evt.target.id] = evt.target.value;
@@ -78,9 +61,9 @@ class PageMain extends Component {
         })
     }
 
-    constructNewPage = event => {
 
-        // event.preventDefault();
+
+    constructNewPage = () => {
     //Validates user input
         if (this.state.day === "") {
             alert("please select a day");
@@ -380,6 +363,7 @@ class PageMain extends Component {
                 thought={this.state.thought}
                 pageQuotes={this.state.pageQuotes}
                 renderThought={this.renderThought}
+                // resetThoughtInState={this.resetThoughtInState}
                 {...this.props}
                 />
             </Sidebar.Pusher>
