@@ -25,7 +25,7 @@
       "bookId": 1,
       "month": "january",
       "day": "1",
-      "thought": "sdvs"
+      "thought": "jdjv ds"
     },
     {
       "id": 2,
@@ -44,6 +44,32 @@
       "id": 3
     }
   ],
-  "quotes": [],
-  "pageQuotes": []
+  "quotes": [
+    {
+      "quoteText": "sdvdv",
+      "userId": 1,
+      "quoteAuthor": "dsvdsv",
+      "timestamp": "9/17/2019, 12:07:15 AM",
+      "id": 1
+    },
+    {
+      "quoteText": "vdsv",
+      "userId": 1,
+      "quoteAuthor": "dsdv",
+      "timestamp": "9/17/2019, 12:07:26 AM",
+      "id": 2
+    }
+  ],
+  "pageQuotes": [
+    {
+      "quoteId": 1,
+      "pageId": 1,
+      "id": 1
+    },
+    {
+      "quoteId": 2,
+      "pageId": 2,
+      "id": 2
+    }
+  ]
 }

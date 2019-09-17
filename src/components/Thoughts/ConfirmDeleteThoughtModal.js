@@ -36,7 +36,7 @@ class ConfirmDeleteThoughtModal extends Component {
                 day: this.props.day,
                 thought: ""
             }
-            this.props.postThought(pageWithThought, this.props.pageId)
+            this.props.putThought(pageWithThought, this.props.pageId)
             this.toggle()
         }
 
@@ -50,6 +50,7 @@ class ConfirmDeleteThoughtModal extends Component {
                         className="delete__icon"
                         name="delete"
                         onClick={this.toggle}
+                        size="small"
                     >
                     </Icon>
                 </section>

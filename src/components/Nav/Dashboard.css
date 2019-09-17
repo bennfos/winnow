@@ -1,13 +1,12 @@
 .nav__container {
     position: fixed;
     bottom: 0;
-    align-content: bottom;
-    width: 100%;
     overflow: hidden;
+    width: 100%
 }
 
 .appViews__container {
-    top: 0px;
+    top: 15px;
     justify-content: center;
     position: relative;
     bottom: 32px;
@@ -15,5 +14,6 @@
 }
 
 .nav__menu {
+    position: relative;
     width: 100%;
 }

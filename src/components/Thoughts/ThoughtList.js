@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import ThoughtCard from "./ThoughtCard";
 import AddThoughtModal from "./AddThoughtModal";
-
-import PageDataManager from "../Pages/PageDataManager";
+import './Thoughts.css'
 
 
 class ThoughtList extends Component {
@@ -33,12 +32,7 @@ class ThoughtList extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="thoughtList__header">
-          <div className="addthoughtModal">
-          <h6>thoughts</h6>
-            <AddThoughtModal {...this.props} />
-          </div>
-          </div>
+        <AddThoughtModal {...this.props} />
         <div className="thoughtCard__container">
             <ThoughtCard
               {...this.props}
