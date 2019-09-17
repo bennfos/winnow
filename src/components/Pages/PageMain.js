@@ -15,17 +15,14 @@ class PageMain extends Component {
 
     state = {
         visible: false,
+        userId: parseInt(sessionStorage.getItem("credentials")),
         day: "1",
         month: "january",
-        dayChosen: false,
         modal: false,
         pageId: 0,
         pages: [],
         quotes: [],
         thought: "",
-        update: false,
-        loadingStatus: false,
-        count: 0,
         pageQuotes: []
     }
 
@@ -40,8 +37,6 @@ class PageMain extends Component {
             modal: false,
             quotes: [],
             thought: "",
-            update: false,
-            count: 0,
             pageQuotes: []
         };
 
@@ -54,18 +49,6 @@ class PageMain extends Component {
         this.setState(stateToChange);
         console.log(this.state)
     };
-
-    handleOpen = () => this.setState({ modalOpen: true })
-
-    handleClose = () => this.setState({ modalOpen: false })
-
-    updateState = (event) => {
-        if (this.state.update === false) {
-          this.setState({ update: true })
-        } else {
-          this.setState({ update: false })
-        }
-      }
 
     toggleSidebar = (event) => {
         if (this.state.visible === false) {
@@ -147,11 +130,36 @@ class PageMain extends Component {
           })
     }
 
-    postThought = (pageObject) => {
-        PageDataManager.editPage(pageObject)
+    renderThought = (pageId) => {
+        PageDataManager.getPage(pageId)
             .then(page => {
                 this.setState({
                     thought: page.thought
+                })
+            })
+    }
+
+    postEditedQuote = (quoteObject, pageId) => {
+        return QuoteDataManager.editQuote(quoteObject)
+            .then(() => {
+                QuoteDataManager.getPageQuotes(pageId)
+                .then(pageQuotes => {
+                    this.setState({
+                        pageQuotes: pageQuotes,
+                    })
+                })
+            })
+    }
+
+
+    postThought = (pageObject, pageId) => {
+        PageDataManager.editPage(pageObject)
+            .then(()=> {
+                PageDataManager.getPage(pageId)
+                .then(page => {
+                    this.setState({
+                        thought: page.thought
+                })
                 })
             })
     }
@@ -191,18 +199,6 @@ class PageMain extends Component {
                     })
             })
     };
-
-    postEditedQuote = (id, pageId) => {
-        return QuoteDataManager.editQuote(id)
-            .then(() => {
-                QuoteDataManager.getPageQuotes(pageId)
-                .then(pageQuotes => {
-                    this.setState({
-                        pageQuotes: pageQuotes,
-                    })
-                })
-            })
-    }
 
 
 //posts new page object to database, then sets state with pageId, then gets all pageQuotes for that user and sets them in state
@@ -337,6 +333,7 @@ class PageMain extends Component {
                 postThought={this.postThought}
                 thought={this.state.thought}
                 pageQuotes={this.state.pageQuotes}
+                renderThought={this.renderThought}
                 {...this.props}
                 />
             </Sidebar.Pusher>

@@ -42,8 +42,8 @@ class AddThoughtModal extends Component {
         console.log(stateToChange)
     };
 
-    constructThought = event => {
-        // event.preventDefault();
+    constructOrEditThought = event => {
+        event.preventDefault();
     //Validates user input
         if (this.state.thought === "") {
             alert("please provide the thought text");
@@ -55,9 +55,21 @@ class AddThoughtModal extends Component {
                 day: this.props.day,
                 thought: this.state.thought
             }
-            this.props.postThought(pageWithThought)
+            this.props.postThought(pageWithThought, this.props.pageId)
             this.toggle()
         }
+    }
+
+    componentDidMount() {
+        PageDataManager.getPage(this.props.pageId)
+        .then(page => {
+            this.setState({
+            thought: page.thought,
+            timestamp: page.timestamp,
+            loadingStatus: false,
+            });
+            console.log(this.state)
+        });
     }
 
 
@@ -83,16 +95,17 @@ class AddThoughtModal extends Component {
                                     placeholder="add thought"
                                     required
                                     autoFocus=""
+                                    value={this.state.thought}
                             ></Input>
                         </ModalBody>
                         <ModalFooter>
                             <Button
                                 primary
-                                onClick={ ()=> {
-                                this.constructThought()
-                                }}>save</Button>
+                                onClick={
+                                this.constructOrEditThought
+                                }>save</Button>
                             <Button
-                                
+
                                 onClick={this.toggle}
                                 >cancel</Button>
                         </ModalFooter>

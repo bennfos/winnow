@@ -15,21 +15,6 @@ class PageDay extends Component {
       };
 
 
-//When component mounts, gets all news and sets state of news array with all existsing news items
-// componentDidMount() {
-//     PageDataManager.checkPages(this.props.bookId, this.props.month, this.props.day)
-//         .then(pages => {
-//             this.setState({
-//                 pages: pages,
-//                 month: this.props.month,
-//                 day: this.props.day,
-//                 thought: this.props.thought
-//         })
-//     })
-// }
-
-
-
     render() {
         // console.log(this.state)
         return (
