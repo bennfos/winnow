@@ -31,7 +31,6 @@ class QuoteCard extends Component {
                 <div className="card__header">
                     <div className="editAndDelete__container">
                         <EditQuoteModal
-                            postEditedQuote={this.props.postEditedQuote}
                             {...this.props}/>
                         <ConfirmDeleteQuoteModal
                             {...this.props}

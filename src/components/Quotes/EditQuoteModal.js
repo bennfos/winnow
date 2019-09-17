@@ -61,7 +61,7 @@ class EditQuoteModal extends Component {
                 timestamp: this.props.pageQuote.quote.timestamp,
             };
         //posts the object to the database
-            this.props.postEditedQuote(editedQuote, this.props.pageId)
+            this.props.putEditedQuote(editedQuote, this.props.pageId)
         //closes the modal
             .then(this.toggle)
         }

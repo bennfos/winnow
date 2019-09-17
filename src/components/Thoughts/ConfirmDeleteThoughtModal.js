@@ -31,6 +31,7 @@ class ConfirmDeleteThoughtModal extends Component {
             const pageWithThought = {
                 id: this.props.pageId,
                 userId: parseInt(sessionStorage.getItem("credentials")),
+                bookId: this.props.bookId,
                 month: this.props.month,
                 day: this.props.day,
                 thought: ""

@@ -48,17 +48,21 @@ class AddThoughtModal extends Component {
         if (this.state.thought === "") {
             alert("please provide the thought text");
         } else {
-            const pageWithThought = {
-                id: this.props.pageId,
-                userId: parseInt(sessionStorage.getItem("credentials")),
-                month: this.props.month,
-                day: this.props.day,
-                thought: this.state.thought
+
+                const pageWithThought = {
+                    id: this.props.pageId,
+                    userId: parseInt(sessionStorage.getItem("credentials")),
+                    bookId: this.props.bookId,
+                    month: this.props.month,
+                    day: this.props.day,
+                    thought: this.state.thought
+                }
+                this.props.putThought(pageWithThought, this.props.pageId)
             }
-            this.props.postThought(pageWithThought, this.props.pageId)
-            this.toggle()
-        }
+        this.toggle()
     }
+
+
 
     componentDidMount() {
         PageDataManager.getPage(this.props.pageId)

@@ -34,13 +34,13 @@ class QuoteList extends Component {
 
 
     componentDidUpdate(prevProps) {
-      console.log("component update")
+
       if (this.props.pageId !== prevProps.pageId) {
         this.props.renderPageQuotes(this.props.pageId)
         this.setState({
           pageQuotes: this.props.pageQuotes
         })
-        console.log("pageQuotes in QuoteList state after update: ", this.state.pageQuotes)
+
       }
     }
 
@@ -63,8 +63,6 @@ class QuoteList extends Component {
                 <QuoteCard
                       key={pageQuote.id}
                       pageQuote={pageQuote}
-                      removeQuote={this.removeQuote}
-                      postEditedQuote={this.props.postEditedQuote}
                       {...this.props}/>
                   ))}
               </div>

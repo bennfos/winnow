@@ -32,15 +32,9 @@ class ThoughtCard extends Component {
                                 </CardTitle>
                                 <div className="editAndDelete__container">
                                     <ConfirmDeleteThoughtModal {...this.props}/>
-                                    {/* <EditThoughtModal
-                                        {...this.props}
-                                        postEditedThought={this.props.postEditedThought}
-                                    /> */}
-
-
                                 </div>
                             </div>
-                            {/* <CardText>{this.props.thought}</CardText> */}
+                            <CardText>{this.props.thought}</CardText>
                         </div>
 
                     </Card>

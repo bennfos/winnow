@@ -22,80 +22,28 @@
     {
       "id": 1,
       "userId": 1,
+      "bookId": 1,
       "month": "january",
       "day": "1",
-      "thought": "jan1 thought"
+      "thought": "sdvs"
     },
     {
       "id": 2,
       "userId": 1,
+      "bookId": 1,
       "month": "january",
       "day": "2",
-      "thought": "hai"
-    },
-    {
-      "id": 3,
-      "userId": 1,
-      "month": "january",
-      "day": "10",
-      "thought": ""
-    },
-    {
-      "id": 4,
-      "userId": 1,
-      "month": "january",
-      "day": "11",
-      "thought": "asc"
-    },
-    {
-      "id": 5,
-      "userId": 1,
-      "month": "january",
-      "day": "12",
-      "thought": "hai"
-    },
-    {
-      "id": 6,
-      "userId": 1,
-      "month": "january",
-      "day": "13",
-      "thought": "haisdv"
+      "thought": "sdvsascas"
     },
     {
       "userId": 1,
       "bookId": 1,
       "month": "january",
-      "day": "14",
+      "day": "3",
       "thought": "",
-      "id": 7
+      "id": 3
     }
   ],
-  "quotes": [
-    {
-      "id": 1,
-      "userId": 1,
-      "quoteText": "a1!",
-      "quoteAuthor": "a1!",
-      "timestamp": "9/16/2019, 9:11:26 PM"
-    },
-    {
-      "quoteText": "2",
-      "userId": 1,
-      "quoteAuthor": "2",
-      "timestamp": "9/16/2019, 9:12:31 PM",
-      "id": 2
-    }
-  ],
-  "pageQuotes": [
-    {
-      "quoteId": 1,
-      "pageId": 1,
-      "id": 1
-    },
-    {
-      "quoteId": 2,
-      "pageId": 2,
-      "id": 2
-    }
-  ]
+  "quotes": [],
+  "pageQuotes": []
 }
