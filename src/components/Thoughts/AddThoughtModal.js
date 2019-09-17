@@ -42,7 +42,6 @@ class AddThoughtModal extends Component {
     };
 
     constructOrEditThought = event => {
-        event.preventDefault();
     //Validates user input
         if (this.state.thought === "") {
             alert("please provide the thought text");
@@ -61,11 +60,6 @@ class AddThoughtModal extends Component {
         this.toggle()
     }
 
-    // updateThoughtInPageMainState = () => {
-
-    // }
-
-
     componentDidMount() {
         PageDataManager.getPage(this.props.pageId)
         .then(page => {
@@ -75,6 +69,12 @@ class AddThoughtModal extends Component {
             });
             console.log(this.state)
         });
+    }
+
+    resetThoughtInState = () => {
+        this.setState({
+            thought: ""
+        })
     }
 
 
@@ -110,8 +110,11 @@ class AddThoughtModal extends Component {
                         <ModalFooter>
                             <Button
                                 primary
-                                onClick={
-                                this.constructOrEditThought
+                                onClick={ () => {
+                                    this.constructOrEditThought()
+                                    this.resetThoughtInState()
+                                }
+
                                 }>save</Button>
                             <Button
 

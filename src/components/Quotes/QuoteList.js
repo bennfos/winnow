@@ -14,20 +14,6 @@ class QuoteList extends Component {
         day: "1",
     }
 
-    constructor(props) {
-      super(props);
-      this.state = {
-          visible: false,
-          pages: [],
-          userId: parseInt(sessionStorage.getItem("credentials")),
-          day: "1",
-          month: "january",
-          modalOpen: false,
-          pageQuotes: []
-      }
-    }
-
-
     componentDidMount() {
       this.props.renderPageQuotes(this.props.pageId)
       }
