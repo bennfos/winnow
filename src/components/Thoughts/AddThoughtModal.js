@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Input, Label } from 'reactstrap';
 import { Icon, Button } from 'semantic-ui-react'
 import PageDataManager from '../Pages/PageDataManager'
 
 class AddThoughtModal extends Component {
 
-//Defines initial state
     state = {
         userId: parseInt(sessionStorage.getItem("credentials")),
         thought: "add your thoughts",
@@ -27,7 +26,7 @@ class AddThoughtModal extends Component {
         this.toggle = this.toggle.bind(this);
     }
 
-//Displays/hides the new article modal
+//toggles modal
     toggle() {
         this.setState(prevState => ({
             modal: !prevState.modal
@@ -79,11 +78,15 @@ class AddThoughtModal extends Component {
     render(){
         return(
             <>
-                <section className="thoughtSectionContent">
-                    <Icon
-                    onClick={this.toggle}
-                    name="add">
-                    </Icon>
+                <section onClick={this.toggle} className="thoughtList__header">
+                    <div className="thoughtList__title">
+                        <Label>thoughts</Label>
+                        <Icon
+
+                            name="chevron right"
+                            size="small">
+                        </Icon>
+                    </div>
                 </section>
                 <div>
                     <Modal
