@@ -3,7 +3,7 @@ import { Input, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reacts
 import { Menu, Button } from 'semantic-ui-react';
 
 
-class MarchSelect extends Component {
+class SeptemberSelect extends Component {
 
 //Defines initial state
     state = {
@@ -45,9 +45,9 @@ class MarchSelect extends Component {
                 <Menu.Item
                         onClick={() => {
                             this.toggle()
-                            this.props.setMonth("march")
+                            this.props.setMonth("september")
                         }}
-                        >march
+                        >september
                 </Menu.Item>
                 <Modal
                     isOpen={this.state.modal}
@@ -55,7 +55,7 @@ class MarchSelect extends Component {
                 >
                     <ModalHeader toggle={this.toggle}>select a page</ModalHeader>
                     <ModalBody>
-                        <Label />march
+                        <Label />september
                         <Input
                         onChange={this.props.handleFieldChange}
                         type="select"
@@ -93,7 +93,6 @@ class MarchSelect extends Component {
                                 <option>28</option>
                                 <option>29</option>
                                 <option>30</option>
-                                <option>31</option>
                         </Input>
                     </ModalBody>
 
@@ -102,11 +101,8 @@ class MarchSelect extends Component {
                                 onClick={() => {
                                     this.props.constructNewPage()
                                     this.toggle()
-                                }
-
-                                }>go
+                                }}>go
                             </Button>
-
                         <Button
                             onClick={
                                 this.toggle
@@ -120,4 +116,4 @@ class MarchSelect extends Component {
     }
 }
 
-export default MarchSelect
+export default SeptemberSelect

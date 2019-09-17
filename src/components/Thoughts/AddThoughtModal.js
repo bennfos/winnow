@@ -61,6 +61,9 @@ class AddThoughtModal extends Component {
         this.toggle()
     }
 
+    // updateThoughtInPageMainState = () => {
+
+    // }
 
 
     componentDidMount() {

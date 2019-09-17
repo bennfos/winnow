@@ -6,6 +6,16 @@ import PageViews from './PageViews'
 import QuoteDataManager from '../Quotes/QuoteDataManager'
 import JanuarySelect from '../MonthSelect/JanuarySelect';
 import FebruarySelect from '../MonthSelect/FebruarySelect';
+import MarchSelect from '../MonthSelect/FebruarySelect';
+import AprilSelect from '../MonthSelect/AprilSelect';
+import MaySelect from '../MonthSelect/MaySelect';
+import JuneSelect from '../MonthSelect/JuneSelect';
+import JulySelect from '../MonthSelect/JulySelect';
+import AugustSelect from '../MonthSelect/AugustSelect';
+import SeptemberSelect from '../MonthSelect/SeptemberSelect';
+import OctoberSelect from '../MonthSelect/OctoberSelect';
+import NovemberSelect from '../MonthSelect/NovemberSelect';
+import DecemberSelect from '../MonthSelect/DecemberSelect';
 
 class PageMain extends Component {
 
@@ -268,72 +278,95 @@ class PageMain extends Component {
                         constructNewPage={this.constructNewPage}
                         {...this.props}/>
 
+                    <MarchSelect
+                        addPage={this.addPage}
+                        setMonth={this.setMonth}
+                        toggleSidebar={this.toggleSidebar}
+                        toggle={this.toggle}
+                        handleFieldChange={this.handleFieldChange}
+                        constructNewPage={this.constructNewPage}
+                        {...this.props}/>
 
+                    <AprilSelect
+                        addPage={this.addPage}
+                        setMonth={this.setMonth}
+                        toggleSidebar={this.toggleSidebar}
+                        toggle={this.toggle}
+                        handleFieldChange={this.handleFieldChange}
+                        constructNewPage={this.constructNewPage}
+                        {...this.props}/>
 
-                {/* <Menu.Item as={Link} to='/february/'
-                className="sidebarButton"
-                onClick={this.toggleSidebar}>
-                february
-                </Menu.Item>
+                    <MaySelect
+                        addPage={this.addPage}
+                        setMonth={this.setMonth}
+                        toggleSidebar={this.toggleSidebar}
+                        toggle={this.toggle}
+                        handleFieldChange={this.handleFieldChange}
+                        constructNewPage={this.constructNewPage}
+                        {...this.props}/>
 
+                    <JuneSelect
+                        addPage={this.addPage}
+                        setMonth={this.setMonth}
+                        toggleSidebar={this.toggleSidebar}
+                        toggle={this.toggle}
+                        handleFieldChange={this.handleFieldChange}
+                        constructNewPage={this.constructNewPage}
+                        {...this.props}/>
 
-                <Menu.Item as={Link} to='/march'
-                className="sidebarButton"
-                onClick={this.handleClick}>
-                march
-                </Menu.Item>
+                    <JulySelect
+                        addPage={this.addPage}
+                        setMonth={this.setMonth}
+                        toggleSidebar={this.toggleSidebar}
+                        toggle={this.toggle}
+                        handleFieldChange={this.handleFieldChange}
+                        constructNewPage={this.constructNewPage}
+                        {...this.props}/>
 
+                    <AugustSelect
+                        addPage={this.addPage}
+                        setMonth={this.setMonth}
+                        toggleSidebar={this.toggleSidebar}
+                        toggle={this.toggle}
+                        handleFieldChange={this.handleFieldChange}
+                        constructNewPage={this.constructNewPage}
+                        {...this.props}/>
 
-                <Menu.Item as={Link} to='/april'
-                onClick={this.logout}
-                className="sidebarButton">
-                april
-                </Menu.Item>
+                    <SeptemberSelect
+                        addPage={this.addPage}
+                        setMonth={this.setMonth}
+                        toggleSidebar={this.toggleSidebar}
+                        toggle={this.toggle}
+                        handleFieldChange={this.handleFieldChange}
+                        constructNewPage={this.constructNewPage}
+                        {...this.props}/>
 
+                    <OctoberSelect
+                        addPage={this.addPage}
+                        setMonth={this.setMonth}
+                        toggleSidebar={this.toggleSidebar}
+                        toggle={this.toggle}
+                        handleFieldChange={this.handleFieldChange}
+                        constructNewPage={this.constructNewPage}
+                        {...this.props}/>
 
-                <Menu.Item as={Link} to='/may'
-                onClick={this.logout}
-                className="sidebarButton">
-                may
-                </Menu.Item>
+                    <NovemberSelect
+                        addPage={this.addPage}
+                        setMonth={this.setMonth}
+                        toggleSidebar={this.toggleSidebar}
+                        toggle={this.toggle}
+                        handleFieldChange={this.handleFieldChange}
+                        constructNewPage={this.constructNewPage}
+                        {...this.props}/>
 
-
-                <Menu.Item as={Link} to='/june'
-                onClick={this.logout}
-                className="sidebarButton">
-                june
-                </Menu.Item>
-
-
-                <Menu.Item as={Link} to='/july'
-                onClick={this.logout}
-                className="sidebarButton">
-                july
-                </Menu.Item>
-
-                <Menu.Item as={Link} to='/august'
-                onClick={this.logout}
-                className="sidebarButton">
-                august
-                </Menu.Item>
-
-                <Menu.Item as={Link} to='/september'
-                onClick={this.logout}
-                className="sidebarButton">
-                september
-                </Menu.Item>
-
-                <Menu.Item as={Link} to='/november'
-                onClick={this.logout}
-                className="sidebarButton">
-                november
-                </Menu.Item>
-
-                <Menu.Item as={Link} to='/december'
-                onClick={this.logout}
-                className="sidebarButton">
-                december
-                </Menu.Item> */}
+                    <DecemberSelect
+                        addPage={this.addPage}
+                        setMonth={this.setMonth}
+                        toggleSidebar={this.toggleSidebar}
+                        toggle={this.toggle}
+                        handleFieldChange={this.handleFieldChange}
+                        constructNewPage={this.constructNewPage}
+                        {...this.props}/>
 
             </Sidebar>
             </div>
