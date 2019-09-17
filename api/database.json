@@ -1,461 +1,49 @@
 {
   "users": [
     {
-      "firstName": "Bennett",
-      "lastName": "Foster",
-      "email": "me@me.com",
-      "username": "me",
-      "password": "1",
+      "firstName": "a",
+      "lastName": "a",
+      "email": "a",
+      "username": "a",
+      "password": "a",
       "id": 1
-    },
-    {
-      "firstName": "test",
-      "lastName": "test",
-      "email": "test@test.com",
-      "username": "test",
-      "password": "1",
-      "id": 2
-    },
-    {
-      "firstName": "Pookie",
-      "lastName": "Pookster",
-      "email": "pookiepoo@gmail.com",
-      "username": "pokemypook",
-      "password": "pookmedaddy",
-      "id": 3
     }
   ],
   "books": [
     {
-      "id": 3,
+      "title": "a",
       "userId": 1,
-      "title": "quotebook",
-      "description": "My first quote book",
-      "timestamp": "9/10/2019, 10:23:25 AM"
-    },
-    {
-      "id": 5,
-      "userId": 1,
-      "title": "new!",
-      "description": "new",
-      "timestamp": "9/15/2019, 4:46:58 PM"
-    },
-    {
-      "id": 6,
-      "userId": 3,
-      "title": "Year of Pookie",
-      "description": "Pooks McPooks and Quotes McGoats",
-      "timestamp": "9/15/2019, 9:49:09 PM"
+      "description": "a",
+      "timestamp": "9/16/2019, 9:11:06 PM",
+      "id": 1
     }
   ],
   "pages": [
     {
+      "id": 1,
       "userId": 1,
-      "bookId": 3,
+      "bookId": 1,
       "month": "january",
       "day": "1",
-      "thought": "",
-      "id": 1
+      "thought": "sdvs"
     },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "2",
-      "thought": "",
-      "id": 2
-    },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "7",
-      "thought": "",
-      "id": 3
-    },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "9",
-      "thought": "",
-      "id": 4
-    },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "17",
-      "thought": "",
-      "id": 5
-    },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "12",
-      "thought": "",
-      "id": 6
-    },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "10",
-      "thought": "",
-      "id": 7
-    },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "18",
-      "thought": "",
-      "id": 8
-    },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "14",
-      "thought": "",
-      "id": 9
-    },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "6",
-      "thought": "",
-      "id": 10
-    },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "13",
-      "thought": "",
-      "id": 11
-    },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "31",
-      "thought": "",
-      "id": 12
-    },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "30",
-      "thought": "",
-      "id": 13
-    },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "8",
-      "thought": "",
-      "id": 21
-    },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "16",
-      "thought": "",
-      "id": 22
-    },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "29",
-      "thought": "",
-      "id": 23
-    },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "22",
-      "thought": "",
-      "id": 25
-    },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "4",
-      "thought": "",
-      "id": 30
-    },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "3",
-      "thought": "",
-      "id": 31
-    },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "5",
-      "thought": "",
-      "id": 32
-    },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "21",
-      "thought": "",
-      "id": 33
-    },
-    {
-      "userId": 1,
-      "bookId": 3,
-      "month": "january",
-      "day": "4",
-      "thought": "",
-      "id": 34
-    },
-    {
-      "userId": 1,
-      "bookId": 5,
-      "month": "january",
-      "day": "1",
-      "thought": "",
-      "id": 35
-    },
-    {
-      "userId": 1,
-      "bookId": 5,
-      "month": "january",
-      "day": "8",
-      "thought": "",
-      "id": 36
-    },
-    {
-      "userId": 3,
-      "bookId": 6,
-      "month": "january",
-      "day": "1",
-      "thought": "",
-      "id": 37
-    },
-    {
-      "userId": 3,
-      "bookId": 6,
-      "month": "january",
-      "day": "7",
-      "thought": "",
-      "id": 38
-    },
-    {
-      "userId": 3,
-      "bookId": 6,
-      "month": "january",
-      "day": "4",
-      "thought": "",
-      "id": 39
-    }
-  ],
-  "quotes": [
     {
       "id": 2,
       "userId": 1,
-      "quoteText": "jan9!!!",
-      "quoteAuthor": "jan",
-      "timestamp": "9/13/2019, 9:57:35 AM"
+      "bookId": 1,
+      "month": "january",
+      "day": "2",
+      "thought": "sdvsascas"
     },
     {
-      "id": 3,
       "userId": 1,
-      "quoteText": "jan 8!",
-      "quoteAuthor": "8",
-      "timestamp": "9/13/2019, 10:45:44 AM"
-    },
-    {
-      "quoteText": "jan 2",
-      "userId": 1,
-      "quoteAuthor": "jan",
-      "timestamp": "9/13/2019, 12:46:02 PM",
-      "id": 4
-    },
-    {
-      "quoteText": "state",
-      "userId": 1,
-      "quoteAuthor": "state",
-      "timestamp": "9/13/2019, 1:23:05 PM",
-      "id": 5
-    },
-    {
-      "id": 8,
-      "userId": 1,
-      "quoteText": "happy bday kk",
-      "quoteAuthor": "bento"
-    },
-    {
-      "id": 9,
-      "userId": 1,
-      "quoteText": "jan3!!",
-      "quoteAuthor": "jan",
-      "timestamp": "9/14/2019, 9:47:52 PM"
-    },
-    {
-      "quoteText": "jan3 - 2",
-      "userId": 1,
-      "quoteAuthor": "jan",
-      "timestamp": "9/15/2019, 11:10:48 AM",
-      "id": 11
-    },
-    {
-      "quoteText": "jan4",
-      "userId": 1,
-      "quoteAuthor": "jan",
-      "timestamp": "9/15/2019, 12:30:50 PM",
-      "id": 12
-    },
-    {
-      "quoteText": "h",
-      "userId": 1,
-      "quoteAuthor": ",n",
-      "timestamp": "9/15/2019, 12:31:01 PM",
-      "id": 13
-    },
-    {
-      "quoteText": "tets",
-      "userId": 1,
-      "quoteAuthor": "test",
-      "timestamp": "9/15/2019, 12:32:47 PM",
-      "id": 14
-    },
-    {
-      "quoteText": "jan 6",
-      "userId": 1,
-      "quoteAuthor": "jan",
-      "timestamp": "9/15/2019, 1:41:02 PM",
-      "id": 16
-    },
-    {
-      "id": 17,
-      "userId": 1,
-      "quoteText": "jan1!!!!!",
-      "quoteAuthor": "jan!!"
-    },
-    {
-      "id": 18,
-      "userId": 1,
-      "quoteText": "jan5!",
-      "quoteAuthor": "jan"
-    },
-    {
-      "quoteText": "jan1 ew",
-      "userId": 1,
-      "quoteAuthor": "new",
-      "timestamp": "9/15/2019, 4:47:52 PM",
-      "id": 19
-    },
-    {
-      "quoteText": "Boink",
-      "userId": 3,
-      "quoteAuthor": "Frank",
-      "timestamp": "9/15/2019, 9:49:53 PM",
-      "id": 20
-    },
-    {
-      "quoteText": "Beefaroni in your shoe makes a mess for me and you",
-      "userId": 3,
-      "quoteAuthor": "God",
-      "timestamp": "9/15/2019, 9:50:57 PM",
-      "id": 21
+      "bookId": 1,
+      "month": "january",
+      "day": "3",
+      "thought": "",
+      "id": 3
     }
   ],
-  "pageQuotes": [
-    {
-      "quoteId": 2,
-      "pageId": 4,
-      "id": 2
-    },
-    {
-      "quoteId": 3,
-      "pageId": 21,
-      "id": 3
-    },
-    {
-      "quoteId": 4,
-      "pageId": 2,
-      "id": 4
-    },
-    {
-      "quoteId": 5,
-      "pageId": 4,
-      "id": 5
-    },
-    {
-      "quoteId": 8,
-      "pageId": 12,
-      "id": 8
-    },
-    {
-      "quoteId": 9,
-      "pageId": 31,
-      "id": 9
-    },
-    {
-      "quoteId": 11,
-      "pageId": 31,
-      "id": 11
-    },
-    {
-      "quoteId": 12,
-      "pageId": 30,
-      "id": 12
-    },
-    {
-      "quoteId": 13,
-      "pageId": 30,
-      "id": 13
-    },
-    {
-      "quoteId": 14,
-      "pageId": 30,
-      "id": 14
-    },
-    {
-      "quoteId": 16,
-      "id": 16
-    },
-    {
-      "quoteId": 17,
-      "pageId": 1,
-      "id": 17
-    },
-    {
-      "quoteId": 18,
-      "pageId": 32,
-      "id": 18
-    },
-    {
-      "quoteId": 19,
-      "pageId": 35,
-      "id": 19
-    },
-    {
-      "quoteId": 20,
-      "pageId": 37,
-      "id": 20
-    },
-    {
-      "quoteId": 21,
-      "pageId": 38,
-      "id": 21
-    }
-  ]
+  "quotes": [],
+  "pageQuotes": []
 }

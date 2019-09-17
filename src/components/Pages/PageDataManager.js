@@ -40,7 +40,7 @@ export default {
         }).then(response => response.json());
     },
     checkPages(bookId, month, day) {
-        return fetch(`${remoteURL}/pages?bookId=${bookId}&&month=${month}&&day=${day}`)
+        return fetch(`${remoteURL}/pages?bookId=${bookId}&month=${month}&day=${day}`)
             .then(response => response.json());
     },
 }

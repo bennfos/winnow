@@ -92,7 +92,7 @@ class AddQuoteModal extends Component {
                 <section className="quoteSectionContent">
                     <Icon
                     onClick={this.toggle}
-                    
+
                     name="add">
                     </Icon>
                 </section>
@@ -132,7 +132,10 @@ class AddQuoteModal extends Component {
                                 }}>save</Button>
                             <Button
                                 color="secondary"
-                                onClick={this.toggle}
+                                onClick={() => {
+                                    this.toggle()
+                                    this.resetQuoteState()
+                                }}
                                 >cancel</Button>
                         </ModalFooter>
                     </Modal>

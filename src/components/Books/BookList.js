@@ -15,7 +15,6 @@ class BookList extends Component {
   //When component mounts, gets all news and sets state of news array with all existsing news items
   componentDidMount() {
     BookDataManager.getAllBooks(this.state.userId).then(books => {
-
         this.setState({
           books: books
         });
