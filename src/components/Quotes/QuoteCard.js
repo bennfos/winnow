@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import QuoteDataManager from './QuoteDataManager'
 import EditQuoteModal from '../Quotes/EditQuoteModal'
-import { Button } from 'semantic-ui-react'
-import { throwStatement } from '@babel/types';
 import ConfirmDeleteQuoteModal from './ConfirmDeleteQuoteModal';
 import '../Books/Card.css'
 

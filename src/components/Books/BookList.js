@@ -3,6 +3,7 @@ import BookCard from "./BookCard";
 import BookDataManager from "./BookDataManager";
 import AddBookModal from "./AddBookModal";
 import './BookList.css'
+import PageDataManager from "../Pages/PageDataManager"
 
 
 class BookList extends Component {

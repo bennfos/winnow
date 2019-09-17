@@ -6,12 +6,7 @@
     text-align: center;
 
 }
-/*
-.card__content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-} */
+
 
 .editAndDelete__container {
     display: flex;

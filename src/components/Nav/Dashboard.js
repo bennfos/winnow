@@ -34,7 +34,8 @@ class Dashboard extends Component {
                 icon='labeled'
                 animation='push'
                 inverted
-                direction='bottom'
+                fixed="bottom"
+                fitted="vertically"
                 width='thin'
             >
                 <Menu.Item as={Link} to='/books'
