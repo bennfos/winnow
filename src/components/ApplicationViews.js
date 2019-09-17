@@ -4,7 +4,7 @@ import Auth from './Auth/Auth'
 import BookMain from './Books/BookMain'
 import RandomQuote from './Quotes/RandomQuote'
 import PageMain from './Pages/PageMain'
-import JanuarySelect from "./Pages/JanuarySelect";
+import JanuarySelect from "./MonthSelect/JanuarySelect";
 import PageDay from './Pages/PageDay'
 import Pages from './Pages/Pages'
 

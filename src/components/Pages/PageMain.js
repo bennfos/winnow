@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
-import PageList from './Unused/PageList'
-import PageDay from './PageDay'
-import PageSelect from './Unused/PageSelect'
 import { Sidebar, Menu, Icon, Segment, Button } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
 import './PageMain.css'
-import JanuarySelect from './JanuarySelect';
 import PageDataManager from './PageDataManager'
-import RandomQuote from '../Quotes/RandomQuote'
 import PageViews from './PageViews'
 import QuoteDataManager from '../Quotes/QuoteDataManager'
+import JanuarySelect from '../MonthSelect/JanuarySelect';
+import FebruarySelect from '../MonthSelect/FebruarySelect';
 
 class PageMain extends Component {
 
@@ -66,6 +62,12 @@ class PageMain extends Component {
         }
       }
 
+    setMonth = (month) => {
+        this.setState({
+            month: month
+        })
+    }
+
     constructNewPage = event => {
 
         // event.preventDefault();
@@ -94,11 +96,11 @@ class PageMain extends Component {
                         this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}/${this.state.month}/${this.state.day}`)
                     } else {
                         console.log("constructNewPage-create run")
-                    //creates a new object for the edited news item,
+
                         const newPage = {
                             userId: parseInt(sessionStorage.getItem("credentials")),
                             bookId: this.props.bookId,
-                            month: "january",
+                            month: this.state.month,
                             day: this.state.day,
                             thought: ""
                         };
@@ -233,7 +235,7 @@ class PageMain extends Component {
             <div className="pageSelect">
                 <Button icon="chevron down" className="pageSelect__button" onClick={this.toggleSidebar}></Button>
 
-            <Sidebar.Pushable >
+            <Sidebar.Pushable animation='push'>
                 <div className="sidebar">
             <Sidebar
                 as={Menu}
@@ -249,12 +251,19 @@ class PageMain extends Component {
             >
 
                     <JanuarySelect
-                        updateState={this.updateState}
                         addPage={this.addPage}
+                        setMonth={this.setMonth}
                         toggleSidebar={this.toggleSidebar}
                         toggle={this.toggle}
-                        handleOpen={this.handleOpen}
-                        handleClose={this.handleClose}
+                        handleFieldChange={this.handleFieldChange}
+                        constructNewPage={this.constructNewPage}
+                        {...this.props}/>
+
+                    <FebruarySelect
+                        addPage={this.addPage}
+                        setMonth={this.setMonth}
+                        toggleSidebar={this.toggleSidebar}
+                        toggle={this.toggle}
                         handleFieldChange={this.handleFieldChange}
                         constructNewPage={this.constructNewPage}
                         {...this.props}/>

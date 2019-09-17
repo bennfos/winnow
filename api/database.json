@@ -7,6 +7,22 @@
       "username": "a",
       "password": "a",
       "id": 1
+    },
+    {
+      "firstName": "b",
+      "lastName": "b",
+      "email": "b",
+      "username": "b",
+      "password": "b",
+      "id": 2
+    },
+    {
+      "firstName": "c",
+      "lastName": "c",
+      "email": "c",
+      "username": "c",
+      "password": "c",
+      "id": 3
     }
   ],
   "books": [
@@ -16,6 +32,20 @@
       "description": "a",
       "timestamp": "9/16/2019, 9:11:06 PM",
       "id": 1
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "title": "b book!!!",
+      "description": "bbbbbbb!",
+      "timestamp": "9/17/2019, 9:17:49 AM"
+    },
+    {
+      "title": "new",
+      "userId": 3,
+      "description": "new",
+      "timestamp": "9/17/2019, 9:48:47 AM",
+      "id": 3
     }
   ],
   "pages": [
@@ -25,7 +55,7 @@
       "bookId": 1,
       "month": "january",
       "day": "1",
-      "thought": "jdjv ds"
+      "thought": "jan1 thoughts"
     },
     {
       "id": 2,
@@ -42,6 +72,62 @@
       "day": "3",
       "thought": "",
       "id": 3
+    },
+    {
+      "userId": 1,
+      "bookId": 1,
+      "month": "january",
+      "day": "6",
+      "thought": "",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "userId": 2,
+      "bookId": 2,
+      "month": "january",
+      "day": "1",
+      "thought": "like"
+    },
+    {
+      "id": 6,
+      "userId": 3,
+      "bookId": 3,
+      "month": "january",
+      "day": "1",
+      "thought": "asc"
+    },
+    {
+      "id": 7,
+      "userId": 3,
+      "bookId": 3,
+      "month": "january",
+      "day": "2",
+      "thought": "2"
+    },
+    {
+      "userId": 1,
+      "bookId": 1,
+      "month": "february",
+      "day": "9",
+      "thought": "",
+      "id": 8
+    },
+    {
+      "id": 9,
+      "userId": 1,
+      "bookId": 1,
+      "month": "february",
+      "day": "3",
+      "thought": "feb3"
+    },
+    {
+      "id": 10,
+      "userId": 1,
+      "bookId": 1,
+      "month": "february",
+      "day": "26",
+      "thought": "feb3sdc"
     }
   ],
   "quotes": [
@@ -58,6 +144,41 @@
       "quoteAuthor": "dsdv",
       "timestamp": "9/17/2019, 12:07:26 AM",
       "id": 2
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "quoteText": "Discovery consists of seeing what everybody has seen and thinking what nobody else has thought.",
+      "quoteAuthor": "Jonathan Swift!",
+      "timestamp": "9/17/2019, 9:19:06 AM"
+    },
+    {
+      "quoteText": "sdds",
+      "userId": 3,
+      "quoteAuthor": "sdv",
+      "timestamp": "9/17/2019, 9:48:53 AM",
+      "id": 4
+    },
+    {
+      "quoteText": "2",
+      "userId": 3,
+      "quoteAuthor": "2",
+      "timestamp": "9/17/2019, 9:49:16 AM",
+      "id": 5
+    },
+    {
+      "quoteText": "sdvsd",
+      "userId": 1,
+      "quoteAuthor": "sdvsd",
+      "timestamp": "9/17/2019, 10:21:00 AM",
+      "id": 6
+    },
+    {
+      "quoteText": "feb3",
+      "userId": 1,
+      "quoteAuthor": "",
+      "timestamp": "9/17/2019, 10:24:00 AM",
+      "id": 7
     }
   ],
   "pageQuotes": [
@@ -70,6 +191,31 @@
       "quoteId": 2,
       "pageId": 2,
       "id": 2
+    },
+    {
+      "quoteId": 3,
+      "pageId": 5,
+      "id": 3
+    },
+    {
+      "quoteId": 4,
+      "pageId": 6,
+      "id": 4
+    },
+    {
+      "quoteId": 5,
+      "pageId": 7,
+      "id": 5
+    },
+    {
+      "quoteId": 6,
+      "pageId": 8,
+      "id": 6
+    },
+    {
+      "quoteId": 7,
+      "pageId": 9,
+      "id": 7
     }
   ]
 }
