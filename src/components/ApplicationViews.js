@@ -3,10 +3,9 @@ import React, { Component } from "react";
 import Auth from './Auth/Auth'
 import BookMain from './Books/BookMain'
 import RandomQuote from './Quotes/RandomQuote'
-import PageMain from './Pages/PageMain'
-import JanuarySelect from "./MonthSelect/JanuarySelect";
-import PageDay from './Pages/PageDay'
 import Pages from './Pages/Pages'
+import Search from './Search/Search'
+import SearchResults from './Search/SearchResultCard'
 
 
 export default class ApplicationViews extends Component {
@@ -49,6 +48,15 @@ export default class ApplicationViews extends Component {
           exact path="/quote" render={props => {
             if (this.isAuthenticated()) {
               return <RandomQuote {...props} />
+            }
+              return <Auth {...this.props} />
+          }}
+        />
+
+        <Route
+          exact path="/search" render={props => {
+            if (this.isAuthenticated()) {
+              return <Search {...props} />
             }
               return <Auth {...this.props} />
           }}

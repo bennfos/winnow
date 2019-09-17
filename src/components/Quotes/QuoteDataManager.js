@@ -14,6 +14,10 @@ export default {
         return fetch(`${remoteURL}/quotes?userId=${userId}`)
             .then(response => response.json());
     },
+    queryUserQuotes(userId, searchInput) {
+        return fetch(`${remoteURL}/quotes?q=${searchInput}&userId=${userId}`)
+            .then(response => response.json());
+    },
     getQuotesWithEmbeddedUser() {
         return fetch(`${remoteURL}/quotes?_embed=users`)
             .then(response => response.json());

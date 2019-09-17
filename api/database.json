@@ -39,6 +39,14 @@
       "username": "jena",
       "password": "1234",
       "id": 5
+    },
+    {
+      "firstName": "Noah",
+      "lastName": "Bartfield",
+      "email": "noahbartfield@gmail.com",
+      "username": "noahbartfield",
+      "password": "1234",
+      "id": 6
     }
   ],
   "books": [
@@ -69,6 +77,27 @@
       "description": "happy stuff",
       "timestamp": "9/17/2019, 11:31:57 AM",
       "id": 4
+    },
+    {
+      "title": "sdv",
+      "userId": 1,
+      "description": "vds",
+      "timestamp": "9/17/2019, 1:10:16 PM",
+      "id": 5
+    },
+    {
+      "title": "vc ",
+      "userId": 1,
+      "description": "vds",
+      "timestamp": "9/17/2019, 1:10:23 PM",
+      "id": 6
+    },
+    {
+      "id": 7,
+      "userId": 6,
+      "title": "Brave New World",
+      "description": "Dystopian greatness and then some",
+      "timestamp": "9/17/2019, 1:36:48 PM"
     }
   ],
   "pages": [
@@ -199,6 +228,30 @@
       "month": "february",
       "day": "5",
       "thought": "asc"
+    },
+    {
+      "id": 17,
+      "userId": 6,
+      "bookId": 7,
+      "month": "january",
+      "day": "1",
+      "thought": ""
+    },
+    {
+      "userId": 1,
+      "bookId": 1,
+      "month": "february",
+      "day": "1",
+      "thought": "",
+      "id": 18
+    },
+    {
+      "userId": 1,
+      "bookId": 1,
+      "month": "november",
+      "day": "2",
+      "thought": "",
+      "id": 19
     }
   ],
   "quotes": [
@@ -264,6 +317,13 @@
       "quoteAuthor": "af",
       "timestamp": "9/17/2019, 11:33:50 AM",
       "id": 9
+    },
+    {
+      "quoteText": "Become who you are",
+      "userId": 1,
+      "quoteAuthor": "Nietzsche",
+      "timestamp": "9/17/2019, 3:27:50 PM",
+      "id": 10
     }
   ],
   "pageQuotes": [
@@ -311,6 +371,11 @@
       "quoteId": 9,
       "pageId": 14,
       "id": 9
+    },
+    {
+      "quoteId": 10,
+      "pageId": 1,
+      "id": 10
     }
   ]
 }

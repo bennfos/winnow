@@ -44,9 +44,9 @@ class OctoberSelect extends Component {
                 <Menu.Item
                         onClick={() => {
                             this.toggle()
-                            this.props.setMonth("october")
+                            this.props.setMonth("november")
                         }}
-                        >october
+                        >november
                 </Menu.Item>
                 <Modal
                     isOpen={this.state.modal}
@@ -54,7 +54,7 @@ class OctoberSelect extends Component {
                 >
                     <ModalHeader toggle={this.toggle}>select a page</ModalHeader>
                     <ModalBody>
-                        <Label />october
+                        <Label />november
                         <Input
                         onChange={this.props.handleFieldChange}
                         type="select"
