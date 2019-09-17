@@ -1,7 +1,7 @@
-import React, { Component } from 'react-dom'
+import React, { Component } from 'react'
 import ThoughtCard from "./ThoughtCard";
 import AddThoughtModal from "./AddThoughtModal";
-import './BookList.css'
+
 import PageDataManager from "../Pages/PageDataManager";
 
 
@@ -14,13 +14,20 @@ class ThoughtList extends Component {
 
   //When component mounts, gets all news and sets state of news array with all existsing news items
   componentDidMount() {
-    PageDataManager.getPage(this.props.pageId)
-        .then(page => {
-        this.setState({
-          though: page.thought
-        });
-      });
-    };
+    this.props.renderThought(this.props.pageId)
+      }
+
+
+    componentDidUpdate(prevProps) {
+        console.log("thought component update")
+        if (this.props.pageId !== prevProps.pageId) {
+          this.props.renderThought(this.props.pageId)
+          this.setState({
+            thought: this.props.thought
+          })
+          console.log("thought in ThoughtList state after update: ", this.state.thought)
+        }
+      }
 
 
   render() {
@@ -28,10 +35,10 @@ class ThoughtList extends Component {
       <React.Fragment>
         <div className="thoughtList__header">
           <div className="addthoughtModal">
-          <h2>thoughts</h2>
+            <h2>thoughts</h2>
             <AddThoughtModal {...this.props} />
           </div>
-          </div>
+        </div>
         <div className="thoughtCard__container">
             <ThoughtCard
               {...this.props}

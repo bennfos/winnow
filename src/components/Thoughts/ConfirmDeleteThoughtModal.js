@@ -35,7 +35,7 @@ class ConfirmDeleteThoughtModal extends Component {
                 day: this.props.day,
                 thought: ""
             }
-            this.props.postThought(pageWithThought)
+            this.props.postThought(pageWithThought, this.props.pageId)
             this.toggle()
         }
 

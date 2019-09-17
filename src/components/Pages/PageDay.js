@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import QuoteList from '../Quotes/QuoteList'
 import PageDataManager from '../Pages/PageDataManager'
 import AddThoughtModal from '../Thoughts/AddThoughtModal'
-import ThoughtCard from '../Thoughts/ThoughtCard'
+import ThoughtList from '../Thoughts/ThoughtList'
 import './PageDay.css'
 
 
@@ -23,8 +23,7 @@ class PageDay extends Component {
                     <QuoteList
                         {...this.props}
                         />
-                    <AddThoughtModal {...this.props} />
-                    <ThoughtCard {...this.props}/>
+                    <ThoughtList {...this.props}/>
                 </div>
             </React.Fragment>
         )

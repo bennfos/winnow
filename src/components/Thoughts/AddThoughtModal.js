@@ -65,7 +65,6 @@ class AddThoughtModal extends Component {
         .then(page => {
             this.setState({
             thought: page.thought,
-            timestamp: page.timestamp,
             loadingStatus: false,
             });
             console.log(this.state)
