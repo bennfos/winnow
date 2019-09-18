@@ -71,17 +71,38 @@ class AddThoughtModal extends Component {
         });
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.pageId !== prevProps.pageId) {
+        //   this.props.renderThought(this.props.pageId)
+          this.setState({
+            thought: this.props.thought
+          })
+        }
+      }
+
+
     resetThoughtInState = () => {
         this.setState({
             thought: ""
         })
     }
 
+    resetThoughtInStateIfNoThoughtInProps = () => {
+        if (this.props.thought === "") {
+            this.setState({
+                thought: ""
+            })
+        }
+    }
+
 
     render(){
         return(
             <>
-                <section onClick={this.toggle} className="thoughtList__header">
+                <section onClick={()=> {
+                    this.toggle()
+                    this.resetThoughtInStateIfNoThoughtInProps()
+                }} className="thoughtList__header">
                     <div className="thoughtList__title">
                         <Label>thoughts</Label>
                         <Icon
