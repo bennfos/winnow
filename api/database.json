@@ -107,7 +107,7 @@
       "bookId": 1,
       "month": "january",
       "day": "1",
-      "thought": "jan1 thoughts"
+      "thought": ""
     },
     {
       "id": 2,
@@ -375,11 +375,11 @@
       "id": 9
     },
     {
-      "quoteText": "Become who you are",
+      "id": 10,
       "userId": 1,
+      "quoteText": "Become who you are!",
       "quoteAuthor": "Nietzsche",
-      "timestamp": "9/17/2019, 3:27:50 PM",
-      "id": 10
+      "timestamp": "9/17/2019, 3:27:50 PM"
     },
     {
       "quoteText": "happy birthday",
