@@ -507,6 +507,22 @@
       "month": "may",
       "day": "2",
       "thought": "may2"
+    },
+    {
+      "id": 50,
+      "userId": 7,
+      "bookId": 8,
+      "month": "october",
+      "day": "7",
+      "thought": "happy birthday to me"
+    },
+    {
+      "id": 51,
+      "userId": 7,
+      "bookId": 8,
+      "month": "august",
+      "day": "1",
+      "thought": "happy "
     }
   ],
   "quotes": [

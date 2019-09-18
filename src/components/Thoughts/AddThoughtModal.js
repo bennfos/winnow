@@ -80,13 +80,6 @@ class AddThoughtModal extends Component {
         }
       }
 
-
-    resetThoughtInState = () => {
-        this.setState({
-            thought: ""
-        })
-    }
-
     resetThoughtInStateIfNoThoughtInProps = () => {
         if (this.props.thought === "") {
             this.setState({
@@ -133,9 +126,7 @@ class AddThoughtModal extends Component {
                                 primary
                                 onClick={ () => {
                                     this.constructOrEditThought()
-                                    this.resetThoughtInState()
                                 }
-
                                 }>save</Button>
                             <Button
 
