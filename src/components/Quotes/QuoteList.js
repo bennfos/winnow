@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import QuoteCard from './QuoteCard'
-import QuoteDataManager from './QuoteDataManager'
 import AddQuoteModal from './AddQuoteModal'
 import { Button } from 'semantic-ui-react'
 
@@ -14,19 +13,18 @@ class QuoteList extends Component {
         day: "1",
     }
 
+//when component mounts, update state of pageQuotes in PageMain
     componentDidMount() {
       this.props.renderPageQuotes(this.props.pageId)
       }
 
-
+//When component receives new pageId in props (i.e., page is changed) from PageMain, update state in PageMain to cause a rerender of QuoteList
     componentDidUpdate(prevProps) {
-
       if (this.props.pageId !== prevProps.pageId) {
         this.props.renderPageQuotes(this.props.pageId)
         this.setState({
           pageQuotes: this.props.pageQuotes
         })
-
       }
     }
 

@@ -50,7 +50,7 @@ class BookEditModal extends Component {
         } else {
             this.setState({ loadingStatus: true });
 
-        //creates a new object for the edited news item,
+        //creates a new object for the edited book
             const editedBook = {
                 id: this.props.book.id,
                 userId: parseInt(sessionStorage.getItem("credentials")),
@@ -58,15 +58,15 @@ class BookEditModal extends Component {
                 description: this.state.description,
                 timestamp: this.props.book.timestamp,
             };
-        //posts the object to the database
-            this.props.postEditedBook(editedBook)
+        //puts the object to the database
+            this.props.putEditedBook(editedBook)
         //closes the modal
             .then(this.toggle)
         }
     }
 
 
-//Gets the id of the news item that is being edited and sets state to populate the input fields
+//Gets the book object that is being edited and sets state to populate the input fields
     componentDidMount() {
         BookDataManager.getBook(this.props.book.id)
         .then(book => {

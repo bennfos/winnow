@@ -6,15 +6,7 @@ import "./Dashboard.css"
 import ApplicationViews from "../ApplicationViews";
 
 class Dashboard extends Component {
-    state = { visible: false }
-  handleClick = (event) => {
-    if (this.state.visible === false) {
-      this.setState({ visible: true })
-    } else {
-      this.setState({ visible: false })
-    }
-  }
-
+    
 
   logout = () => {
     sessionStorage.clear()
@@ -49,7 +41,7 @@ class Dashboard extends Component {
                 </Menu.Item>
                 <Menu.Item as={Link} to='/quote'
                 className="sidebarButton"
-                onClick={this.handleClick}>
+                >
                 quote
                 </Menu.Item>
                 <Menu.Item as={Link} to='/'

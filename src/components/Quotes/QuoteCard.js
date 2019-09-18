@@ -9,11 +9,13 @@ class QuoteCard extends Component {
         randomQuoteText: ""
     }
 
+//get random quote from Forismatic API and set it in state (not used yet--stretch goal)
   getRandom = () => {
       QuoteDataManager.getRandomQuote()
         .then(quoteObj => {
             this.setState({
-                randomQuoteText: quoteObj.quoteText
+                randomQuoteText: quoteObj.quoteText,
+                randomQuoteAuthor: quoteObj.quoteAuthor
             })
         })
   }

@@ -13,21 +13,9 @@ class AddThoughtModal extends Component {
         loadingStatus: false
     };
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            userId: parseInt(sessionStorage.getItem("credentials")),
-            thought: "",
-            pageId: 0,
-            modal: false,
-            loadingStatus: false
-        };
-
-        this.toggle = this.toggle.bind(this);
-    }
 
 //toggles modal
-    toggle() {
+    toggle = () => {
         this.setState(prevState => ({
             modal: !prevState.modal
         }));
@@ -46,7 +34,7 @@ class AddThoughtModal extends Component {
         if (this.state.thought === "") {
             alert("please provide the thought text");
         } else {
-
+            //construct a page object that includes the new or edited thought
                 const pageWithThought = {
                     id: this.props.pageId,
                     userId: parseInt(sessionStorage.getItem("credentials")),
@@ -55,11 +43,13 @@ class AddThoughtModal extends Component {
                     day: this.props.day,
                     thought: this.state.thought
                 }
+            //put the page object with new or edited thought in the database
                 this.props.putThought(pageWithThought, this.props.pageId)
             }
         this.toggle()
     }
 
+    //gets thought for that page into state so that it can be displayed in input field for user
     componentDidMount() {
         PageDataManager.getPage(this.props.pageId)
         .then(page => {
@@ -71,6 +61,7 @@ class AddThoughtModal extends Component {
         });
     }
 
+//When component receives new pageId in props (i.e., page is changed) from PageMain, update state in PageMain to cause an update of state in this modal. Ensures correct value will populate in input field after page change.
     componentDidUpdate(prevProps) {
         if (this.props.pageId !== prevProps.pageId) {
           this.props.renderThought(this.props.pageId)
@@ -80,6 +71,7 @@ class AddThoughtModal extends Component {
         }
       }
 
+//clears state of thought so that nothing will display if there is no thought in props. Ensures input field will be empty if opening modal from page with no thought yet added.
     resetThoughtInStateIfNoThoughtInProps = () => {
         if (this.props.thought === "") {
             this.setState({

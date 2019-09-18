@@ -6,9 +6,7 @@ import './Login.css';
 import Winnow from '../Winnow';
 
 class RegisterModal extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    state = {
             users: [],
             firstName: "",
             lastName: "",
@@ -19,8 +17,6 @@ class RegisterModal extends React.Component {
             modal: false
         };
 
-        this.toggle = this.toggle.bind(this);
-    }
 
     componentDidMount() {
         // getAll users and hand on
@@ -39,14 +35,17 @@ class RegisterModal extends React.Component {
 
     }
 
-    toggle() {
+    //toggles modal
+    toggle = () => {
         this.setState(prevState => ({
             modal: !prevState.modal
         }));
     }
 
+
     handleRegister = event => {
         event.preventDefault();
+        //Validate user input
         if (this.state.password !== this.state.confirmPassword) {
             alert("passwords do not match")
         } else if (this.state.users.find(user => user.username === this.state.username)) {
@@ -54,6 +53,8 @@ class RegisterModal extends React.Component {
         }  else if (this.state.users.find(user => user.email === this.state.email)) {
         alert("this email address is already associated with an account")
         } else {
+
+            //create a new user object
         const newUserObject = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
@@ -61,6 +62,7 @@ class RegisterModal extends React.Component {
             username: this.state.username,
             password: this.state.password
         }
+            //post new user to database and close modal
         UserDataManager.postUser(newUserObject)
             .then(() =>
                 alert("welcome to winnow. please sign in."))

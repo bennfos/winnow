@@ -13,22 +13,13 @@ class EditQuoteModal extends Component {
         quoteAuthor: "",
         timestamp: "",
         loadingStatus: false,
+        modal: false
     };
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            quotes: [],
-            quoteText: "",
-            quoteAuthor: "",
-            modal: false
-        };
 
-        this.toggle = this.toggle.bind(this);
-    }
 
 //Displays/hides the edit modal
-    toggle() {
+    toggle = () => {
         this.setState(prevState => ({
             modal: !prevState.modal
         }));
@@ -60,7 +51,7 @@ class EditQuoteModal extends Component {
                 quoteAuthor: this.state.quoteAuthor,
                 timestamp: this.props.pageQuote.quote.timestamp,
             };
-        //posts the object to the database
+        //posts the object to the database (see PageMain)
             this.props.putEditedQuote(editedQuote, this.props.pageId)
         //closes the modal
             .then(this.toggle)
@@ -68,18 +59,16 @@ class EditQuoteModal extends Component {
     }
 
 
-//Gets the id of the news item that is being edited and sets state to populate the input fields
+//Gets the quote that is being edited and sets state to populate the input fields
     componentDidMount() {
         QuoteDataManager.getQuote(this.props.pageQuote.quote.id)
         .then(quote => {
-            console.log(this.props.pageQuote.quote.id)
             this.setState({
-            quoteText: quote.quoteText,
-            quoteAuthor: quote.quoteAuthor,
-            timestamp: this.props.pageQuote.quote.timestamp,
-            loadingStatus: false,
+                quoteText: quote.quoteText,
+                quoteAuthor: quote.quoteAuthor,
+                timestamp: this.props.pageQuote.quote.timestamp,
+                loadingStatus: false,
             });
-            console.log(this.state)
         });
     }
 

@@ -1,7 +1,5 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
-import RandomQuote from '../Quotes/RandomQuote'
-import JanuarySelect from "../MonthSelect/JanuarySelect";
 import PageDay from './PageDay'
 import Auth from '../Auth/Auth'
 
@@ -29,16 +27,6 @@ export default class PageViews extends Component {
           }}
         />
 
-
-
-        <Route
-          exact path="/january" render={props => {
-            if (this.isAuthenticated()) {
-              return <JanuarySelect {...props} />
-            }
-              return <Auth {...this.props} />
-          }}
-        />
 
       </React.Fragment>
     );
