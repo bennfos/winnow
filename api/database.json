@@ -47,6 +47,14 @@
       "username": "noahbartfield",
       "password": "1234",
       "id": 6
+    },
+    {
+      "firstName": "Bennett",
+      "lastName": "Foster",
+      "email": "bennfos@gmail.com",
+      "username": "bennfos",
+      "password": ";lpo09",
+      "id": 7
     }
   ],
   "books": [
@@ -98,6 +106,13 @@
       "title": "Brave New World",
       "description": "Dystopian greatness and then some",
       "timestamp": "9/17/2019, 1:36:48 PM"
+    },
+    {
+      "title": "my quotebook",
+      "userId": 7,
+      "description": "the quotes that mean the most",
+      "timestamp": "9/18/2019, 11:27:18 AM",
+      "id": 8
     }
   ],
   "pages": [
@@ -107,7 +122,7 @@
       "bookId": 1,
       "month": "january",
       "day": "1",
-      "thought": "jan1 thoughts"
+      "thought": "here are some thoughts"
     },
     {
       "id": 2,
@@ -252,15 +267,127 @@
       "day": "2",
       "thought": "",
       "id": 19
+    },
+    {
+      "id": 20,
+      "userId": 1,
+      "bookId": 1,
+      "month": "october",
+      "day": "7",
+      "thought": ""
+    },
+    {
+      "userId": 1,
+      "bookId": 1,
+      "month": "february",
+      "day": "2",
+      "thought": "",
+      "id": 21
+    },
+    {
+      "userId": 1,
+      "bookId": 1,
+      "month": "january",
+      "day": "4",
+      "thought": "",
+      "id": 22
+    },
+    {
+      "userId": 1,
+      "bookId": 1,
+      "month": "january",
+      "day": "16",
+      "thought": "",
+      "id": 23
+    },
+    {
+      "userId": 1,
+      "bookId": 1,
+      "month": "january",
+      "day": "15",
+      "thought": "",
+      "id": 24
+    },
+    {
+      "userId": 1,
+      "bookId": 1,
+      "month": "january",
+      "day": "23",
+      "thought": "",
+      "id": 25
+    },
+    {
+      "userId": 1,
+      "bookId": 1,
+      "month": "january",
+      "day": "9",
+      "thought": "",
+      "id": 26
+    },
+    {
+      "id": 27,
+      "userId": 1,
+      "bookId": 1,
+      "month": "july",
+      "day": "4",
+      "thought": "release me!"
+    },
+    {
+      "id": 28,
+      "userId": 1,
+      "bookId": 1,
+      "month": "april",
+      "day": "6",
+      "thought": "more thoughyts"
+    },
+    {
+      "id": 29,
+      "userId": 7,
+      "bookId": 8,
+      "month": "january",
+      "day": "1",
+      "thought": "new year new me"
+    },
+    {
+      "id": 30,
+      "userId": 7,
+      "bookId": 8,
+      "month": "july",
+      "day": "4",
+      "thought": "'merca"
+    },
+    {
+      "id": 31,
+      "userId": 7,
+      "bookId": 8,
+      "month": "january",
+      "day": "2",
+      "thought": "jan 2 thought"
+    },
+    {
+      "userId": 7,
+      "bookId": 8,
+      "month": "february",
+      "day": "2",
+      "thought": "",
+      "id": 32
+    },
+    {
+      "userId": 7,
+      "bookId": 8,
+      "month": "january",
+      "day": "3",
+      "thought": "",
+      "id": 33
     }
   ],
   "quotes": [
     {
-      "quoteText": "sdvdv",
+      "id": 1,
       "userId": 1,
-      "quoteAuthor": "dsvdsv",
-      "timestamp": "9/17/2019, 12:07:15 AM",
-      "id": 1
+      "quoteText": "this is a quote",
+      "quoteAuthor": "someone",
+      "timestamp": "9/17/2019, 12:07:15 AM"
     },
     {
       "quoteText": "vdsv",
@@ -319,11 +446,60 @@
       "id": 9
     },
     {
-      "quoteText": "Become who you are",
+      "id": 10,
       "userId": 1,
+      "quoteText": "Become who you are",
       "quoteAuthor": "Nietzsche",
-      "timestamp": "9/17/2019, 3:27:50 PM",
-      "id": 10
+      "timestamp": "9/17/2019, 3:27:50 PM"
+    },
+    {
+      "quoteText": "happy birthday",
+      "userId": 1,
+      "quoteAuthor": "god",
+      "timestamp": "9/17/2019, 5:07:21 PM",
+      "id": 11
+    },
+    {
+      "quoteText": "this is america",
+      "userId": 1,
+      "quoteAuthor": "childish gambino",
+      "timestamp": "9/18/2019, 11:11:47 AM",
+      "id": 12
+    },
+    {
+      "quoteText": "We are fighting for our right to live. To exist. And should we win the day, the Fourth of July will no longer be known as an American holiday, but as the day the world declared in one voice: \"We will not go quietly into the night!\" We will not vanish without a fight!",
+      "userId": 1,
+      "quoteAuthor": "President Bill fucking Pullman",
+      "timestamp": "9/18/2019, 11:13:30 AM",
+      "id": 13
+    },
+    {
+      "quoteText": "“Be at war with your vices, at peace with your neighbors, and let every new year find you a better man.”",
+      "userId": 7,
+      "quoteAuthor": "Ben Franklin",
+      "timestamp": "9/18/2019, 11:28:24 AM",
+      "id": 14
+    },
+    {
+      "quoteText": "We are fighting for our right to live. To exist. And should we win the day, the Fourth of July will no longer be known as an American holiday, but as the day the world declared in one voice: \"We will not go quietly into the night!\" We will not vanish without a fight!",
+      "userId": 7,
+      "quoteAuthor": "President BIll effing Pullman",
+      "timestamp": "9/18/2019, 11:31:25 AM",
+      "id": 15
+    },
+    {
+      "quoteText": "this is america",
+      "userId": 7,
+      "quoteAuthor": "childish gambino",
+      "timestamp": "9/18/2019, 11:31:38 AM",
+      "id": 16
+    },
+    {
+      "quoteText": "some people never change",
+      "userId": 7,
+      "quoteAuthor": "",
+      "timestamp": "9/18/2019, 11:35:23 AM",
+      "id": 17
     }
   ],
   "pageQuotes": [
@@ -376,6 +552,41 @@
       "quoteId": 10,
       "pageId": 1,
       "id": 10
+    },
+    {
+      "quoteId": 11,
+      "pageId": 20,
+      "id": 11
+    },
+    {
+      "quoteId": 12,
+      "pageId": 27,
+      "id": 12
+    },
+    {
+      "quoteId": 13,
+      "pageId": 27,
+      "id": 13
+    },
+    {
+      "quoteId": 14,
+      "pageId": 29,
+      "id": 14
+    },
+    {
+      "quoteId": 15,
+      "pageId": 30,
+      "id": 15
+    },
+    {
+      "quoteId": 16,
+      "pageId": 30,
+      "id": 16
+    },
+    {
+      "quoteId": 17,
+      "pageId": 31,
+      "id": 17
     }
   ]
 }

@@ -22,8 +22,8 @@ class PageMain extends Component {
     state = {
         visible: false,
         userId: parseInt(sessionStorage.getItem("credentials")),
-        day: "1",
-        month: "january",
+        day: "",
+        month: "",
         modal: false,
         pageId: 0,
         pages: [],

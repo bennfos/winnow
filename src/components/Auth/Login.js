@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import UserDataManager from "./UserDataManager";
-import { Button } from 'semantic-ui-react'
+import { Button, Image } from 'semantic-ui-react'
 import { Input } from 'reactstrap'
+import logo from './agronomy.png'
 
 import "./Login.css";
 
@@ -46,6 +47,7 @@ class Login extends Component {
     return (
       <React.Fragment>
           <div className="login__heading">
+            <Image className="logo" src={logo}/>
             <h1>winnow</h1>
           </div>
           <div>

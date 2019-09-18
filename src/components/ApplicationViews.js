@@ -5,7 +5,6 @@ import BookMain from './Books/BookMain'
 import RandomQuote from './Quotes/RandomQuote'
 import Pages from './Pages/Pages'
 import Search from './Search/Search'
-import SearchResults from './Search/SearchResultCard'
 
 
 export default class ApplicationViews extends Component {

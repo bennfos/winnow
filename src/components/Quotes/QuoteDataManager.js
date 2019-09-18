@@ -58,6 +58,10 @@ export default {
         return fetch(`${remoteURL}/pageQuotes?_expand=quote&_expand=page&pageId=${pageId}`)
             .then(response => response.json());
     },
+    getAllPageQuotes () {
+        return fetch(`${remoteURL}/pageQuotes?_expand=quote&_expand=page`)
+            .then(response => response.json())
+    },
     getRandomQuote () {
        return fetchJsonp('http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en',
         {jsonpCallback: 'jsonp'})
