@@ -73,7 +73,7 @@ class AddThoughtModal extends Component {
 
     componentDidUpdate(prevProps) {
         if (this.props.pageId !== prevProps.pageId) {
-        //   this.props.renderThought(this.props.pageId)
+          this.props.renderThought(this.props.pageId)
           this.setState({
             thought: this.props.thought
           })
