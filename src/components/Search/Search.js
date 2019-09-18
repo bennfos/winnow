@@ -68,7 +68,7 @@ class Search extends Component {
                         onKeyUp={this.searchPageQuotes}
                         type="text"
                         id="searchInput"
-                        placeholder="enter keyword"
+                        placeholder="search by word, author or month"
                         value={this.state.searchInput}
                         autoFocus>
                     </Input>
