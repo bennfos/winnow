@@ -10,6 +10,13 @@ class ThoughtCard extends Component {
         pageId: 0,
     }
 
+//updates state of thought in PageMain to trigger render when ThoughtCard is mounted
+    componentDidMount() {
+        this.props.renderThought(this.props.pageId)
+        }
+
+
+
   render() {
     return (
 
