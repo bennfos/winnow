@@ -3,13 +3,13 @@ import BookCard from "./BookCard";
 import BookDataManager from "./BookDataManager";
 import AddBookModal from "./AddBookModal";
 import './BookList.css'
-import PageDataManager from "../Pages/PageDataManager"
 
 
 class BookList extends Component {
   //Defines initial state
   state = {
     books: [],
+    description: "",
     userId: parseInt(sessionStorage.getItem("credentials"))
   };
 
@@ -61,13 +61,19 @@ class BookList extends Component {
       });
   };
 
+
+
   render() {
     return (
       <React.Fragment>
         <div className="bookList__header">
           <h1>my books</h1>
           <div className="addBookModal">
-            <AddBookModal  {...this.props} addBook={this.addBook} />
+            <AddBookModal
+              {...this.props}
+              addBook={this.addBook}
+
+            />
           </div>
         </div>
         <div className="bookCards__container">
@@ -77,6 +83,7 @@ class BookList extends Component {
               book={book}
               removeBook={this.removeBook}
               putEditedBook={this.putEditedBook}
+
               {...this.props}
             />
           ))}

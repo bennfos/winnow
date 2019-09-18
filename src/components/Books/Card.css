@@ -30,3 +30,8 @@
     justify-content: space-between;
     margin: 30px 0 30px 0
 }
+
+.cardContent {
+    display: flex;
+    justify-content: right;
+}

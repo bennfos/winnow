@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Button, Input } from 'reactstrap';
-import { Icon } from 'semantic-ui-react'
+import { Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
+import { Icon, Button } from 'semantic-ui-react'
 
 class AddBookModal extends Component {
 
@@ -11,24 +11,12 @@ class AddBookModal extends Component {
         title: "",
         description: "",
         timestamp: "",
+        modal: false
     };
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            books: [],
-            userId: "",
-            title: "",
-            description: "",
-            timestamp: "",
-            modal: false
-        };
-
-        this.toggle = this.toggle.bind(this);
-    }
 
 //Displays/hides the new article modal
-    toggle() {
+    toggle = () => {
         this.setState(prevState => ({
             modal: !prevState.modal
         }));
@@ -43,8 +31,7 @@ class AddBookModal extends Component {
     };
 
     constructNewBook = event => {
-        event.preventDefault();
-
+        
     //Validates user input
         if (this.state.title === "") {
             alert("please give your new quoebook a title");
@@ -67,6 +54,14 @@ class AddBookModal extends Component {
     }
 };
 
+
+clearDescriptionInState = () => {
+    this.setState({
+        description: ""
+    })
+    console.log(this.state.description)
+}
+
     render(){
         return(
             <>
@@ -74,7 +69,9 @@ class AddBookModal extends Component {
                     <Icon
                     className="addBookModal__button"
                     name="add"
-                    onClick={this.toggle}
+                    onClick={() => {
+                        this.toggle()
+                    }}
                     size="large">
                     </Icon>
                 </section>
@@ -104,8 +101,12 @@ class AddBookModal extends Component {
 
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={this.constructNewBook}>save</Button>{' '}
-                            <Button color="secondary" onClick={this.toggle}>cancel</Button>
+                            <Button primary onClick={() => {
+                                    this.constructNewBook()
+                                    this.clearDescriptionInState()
+                            }}
+                            >save</Button>
+                            <Button secondary onClick={this.toggle}>cancel</Button>
                         </ModalFooter>
                     </Modal>
                 </div>
