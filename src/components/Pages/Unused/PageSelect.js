@@ -23,7 +23,7 @@ class PageDaySelect extends Component {
       }
 
 
-      constructNewPage = event => {
+      constructOrNavigateToNewPage = event => {
         event.preventDefault();
 
     //Validates user input

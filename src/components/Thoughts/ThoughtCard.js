@@ -10,12 +10,6 @@ class ThoughtCard extends Component {
         pageId: 0,
     }
 
-    componentDidMount() {
-        this.props.renderThought(this.props.pageId)
-        }
-
-
-
   render() {
     return (
 

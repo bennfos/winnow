@@ -26,6 +26,7 @@ class ConfirmDeleteThoughtModal extends Component {
         }));
     }
 
+//edits page so that thought is removed, and puts edited page in database (see PageMain)
     removeThought = event => {
         event.preventDefault()
             const pageWithThought = {

@@ -14,25 +14,13 @@ class AddQuoteModal extends Component {
         timestamp: "",
         pageId: 0,
         quoteId: 0,
-        pageQuoteId: 0
+        pageQuoteId: 0,
+        modal: false
     };
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            quotes: [],
-            userId: parseInt(sessionStorage.getItem("credentials")),
-            quoteText: "",
-            quoteAuthor: "",
-            timestamp: "",
-            modal: false
-        };
 
-        this.toggle = this.toggle.bind(this);
-    }
-
-//Displays/hides the new article modal
-    toggle() {
+//toggles modal
+    toggle = () => {
         this.setState(prevState => ({
             modal: !prevState.modal
         }));
@@ -47,7 +35,6 @@ class AddQuoteModal extends Component {
     };
 
     constructNewQuote = event => {
-        // event.preventDefault();
 
     //Validates user input
         if (this.state.quoteText === "") {

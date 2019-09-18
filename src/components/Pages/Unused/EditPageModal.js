@@ -146,7 +146,7 @@ class PageEditModal extends Component {
                             </Form>
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={this.constructNewPage}>save</Button>{' '}
+                            <Button color="primary" onClick={this.constructOrNavigateToNewPage}>save</Button>{' '}
                             <Button color="secondary" onClick={this.toggle}>cancel</Button>
                         </ModalFooter>
                     </Modal>

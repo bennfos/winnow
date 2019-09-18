@@ -27,17 +27,12 @@ class Search extends Component {
         this.setState(stateToChange);
     }
 
-//Search:
-//1. Get all pageQuotes
-//2. THEN map over pageQuotes and return an array of objects like this:
-//3. Filter those objects to include only current user's pages with quotes
-//4. Filter the array again to include only those object whose quoteText, quoteAuthor or month include the search input value
-//5. In render method, map over filtered array to create SearchResultsCards
-
-
     searchPageQuotes = () => {
+    //1. Get all pageQuotes
         QuoteDataManager.getAllPageQuotes()
             .then(pageQuotes => {
+
+            //2. THEN map over pageQuotes and return an array of objects with relevant properties
                 const allPagesWithQuotes = pageQuotes.map(pageQuote => {
                     return {
                         id: pageQuote.id,
@@ -49,13 +44,14 @@ class Search extends Component {
                         quoteText: pageQuote.quote.quoteText,
                         quoteAuthor: pageQuote.quote.quoteAuthor
                     }})
+            //3. Filter those objects to include only current user's pages with quotes
                 const filteredObjects = allPagesWithQuotes.filter(pageWithQuote => pageWithQuote.userId === this.state.userId)
+            //4. Filter the array again to include only those object whose quoteText, quoteAuthor or month include the search input value
                 const searchResultObjects = filteredObjects.filter(filteredObject =>
                     filteredObject.quoteText.toLowerCase().includes(this.state.searchInput.toLowerCase())
                         || filteredObject.quoteAuthor.toLowerCase().includes(this.state.searchInput.toLowerCase())
                             || filteredObject.month.toLowerCase().includes(this.state.searchInput.toLowerCase()))
                 this.setState({ searchResultObjects: searchResultObjects})
-                console.log(this.state.searchResultObjects)
             })
 }
     render() {
@@ -68,7 +64,7 @@ class Search extends Component {
                         onKeyUp={this.searchPageQuotes}
                         type="text"
                         id="searchInput"
-                        placeholder="search by word, author or month"
+                        placeholder="search by text, author, or month"
                         value={this.state.searchInput}
                         autoFocus>
                     </Input>

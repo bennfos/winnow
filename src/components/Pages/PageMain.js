@@ -32,12 +32,7 @@ class PageMain extends Component {
         pageQuotes: []
     }
 
-    handleFieldChange = evt => {
-        const stateToChange = {};
-        stateToChange[evt.target.id] = evt.target.value;
-        this.setState(stateToChange);
-        console.log(this.state)
-    };
+
 
     toggleSidebar = (event) => {
         if (this.state.visible === false) {
@@ -55,27 +50,37 @@ class PageMain extends Component {
         }
       }
 
+      //set month in state when selected in month menu
     setMonth = (month) => {
         this.setState({
             month: month
         })
     }
 
+    //set state of day when input is manipulated in the month menu
+    handleFieldChange = evt => {
+        const stateToChange = {};
+        stateToChange[evt.target.id] = evt.target.value;
+        this.setState(stateToChange);
+        console.log(this.state)
+    };
 
+//Construct or navigate to page (called in Month components)
+    constructOrNavigateToNewPage = () => {
 
-    constructNewPage = () => {
     //Validates user input
         if (this.state.day === "") {
             alert("please select a day");
         } else {
             this.setState({ loadingStatus: true });
 
+        //check to see if the page already exists in the database
             PageDataManager.checkPages(this.props.bookId, this.state.month, this.state.day)
                 .then(pages => {
-                    (console.log("checkPages: ", pages))
-                    if (pages.length > 0) {
-                        console.log("constructNewPage-navigate run")
 
+                //THEN, if it does exist, set state with that page's info, and push user to that page's view
+                    if (pages.length > 0) {
+                        console.log("constructOrNavigateToNewPage-navigate run")
                         this.setState({
                             pages: pages,
                             month: pages[0].month,
@@ -83,13 +88,13 @@ class PageMain extends Component {
                             pageId: pages[0].id,
                             thought: pages[0].thought
                         })
-
+                        this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}/${this.state.month}/${this.state.day}`)
                         this.toggle()
                         this.toggleSidebar()
-                        this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}/${this.state.month}/${this.state.day}`)
                     } else {
-                        console.log("constructNewPage-create run")
 
+                    //else, if the page does not exist yet, construct an object for that page
+                        console.log("constructOrNavigateToNewPage-construct run")
                         const newPage = {
                             userId: parseInt(sessionStorage.getItem("credentials")),
                             bookId: this.props.bookId,
@@ -97,38 +102,35 @@ class PageMain extends Component {
                             day: this.state.day,
                             thought: ""
                         };
-                        //posts the object to the database, gets all news items, updates state of news array
+                        //post the page object to the database, THEN set state with that page's id, and push user to that page's view
                         PageDataManager.postPage(newPage)
                             .then(page => {
-
                                 this.setState({
                                     pageId: page.id
                                 })
-
                                 this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}/${this.state.month}/${this.state.day}`)
                                 this.toggle()
                                 this.toggleSidebar()
-
                             })
                     }
             })
         }
     }
 
+//update state with appropriate quotes whenever page is changed (called in componentDidUpdate in QuoteList)
     renderPageQuotes = (pageId) => {
-
+    //get quotes for the page that is passed in as an argument, and set them in state
         QuoteDataManager.getPageQuotes(pageId)
           .then(pageQuotes => {
-
             this.setState({
                 pageQuotes: pageQuotes,
-
             })
-
           })
     }
 
+//update state with appropriate thought whenever page is changed (called in componentDidUpdate ThoughtList)
     renderThought = (pageId) => {
+    //get page data for page that is passed in as argument, and set thought in state
         PageDataManager.getPage(pageId)
             .then(page => {
                 this.setState({
@@ -137,32 +139,9 @@ class PageMain extends Component {
             })
     }
 
-    putEditedQuote = (quoteObject, pageId) => {
-        return QuoteDataManager.editQuote(quoteObject)
-            .then(() => {
-                QuoteDataManager.getPageQuotes(pageId)
-                .then(pageQuotes => {
-                    this.setState({
-                        pageQuotes: pageQuotes,
-                    })
-                })
-            })
-    }
-
-
-    putThought = (pageObject, pageId) => {
-        PageDataManager.editPage(pageObject)
-            .then(()=> {
-                PageDataManager.getPage(pageId)
-                .then(page => {
-                    this.setState({
-                        thought: page.thought
-                })
-                })
-            })
-    }
-
+    //Add quote and pageQuote to database (called in AddQuoteModal)
     addQuote = (quoteObject, pageId) => {
+        //post new quote object to the database
         return QuoteDataManager.postQuote(quoteObject)
             .then(quote => {
               //construct a new pageQuote object
@@ -185,6 +164,34 @@ class PageMain extends Component {
         };
 
 
+//put edited quote object in database, then get all page quotes for that page and set them in state (called in EditQuoteModal)
+    putEditedQuote = (quoteObject, pageId) => {
+        return QuoteDataManager.editQuote(quoteObject)
+            .then(() => {
+                QuoteDataManager.getPageQuotes(pageId)
+                .then(pageQuotes => {
+                    this.setState({
+                        pageQuotes: pageQuotes,
+                    })
+                })
+            })
+    }
+
+//put page object with edited thought in database, then get the page and set thought in state (called in AddThoughtModal)
+    putThought = (pageObject, pageId) => {
+        PageDataManager.editPage(pageObject)
+            .then(()=> {
+                PageDataManager.getPage(pageId)
+                .then(page => {
+                    this.setState({
+                        thought: page.thought
+                })
+                })
+            })
+    }
+
+
+//delete quote from database, then get all pageQuotes and set them in state (called in QuoteCard)
     removeQuote = (id, pageId) => {
         QuoteDataManager.deleteQuote(id)
             .then(() => {
@@ -199,25 +206,7 @@ class PageMain extends Component {
     };
 
 
-//posts new page object to database, then sets state with pageId, then gets all pageQuotes for that user and sets them in state
-    addPage = pageObject => {
-        console.log("addPage run")
-        return PageDataManager.postPage(pageObject)
-            .then(page => {
-                this.setState({
-                    pageId: page.id
-                })
 
-            })
-            .then(() =>
-                PageDataManager.getAllPages(this.state.userId)
-                .then(pages => {
-                    this.setState({
-                        pages: pages
-                    });
-                })
-            )
-    };
 
 
 
@@ -244,111 +233,99 @@ class PageMain extends Component {
             >
 
                     <JanuarySelect
-                        addPage={this.addPage}
                         setMonth={this.setMonth}
                         toggleSidebar={this.toggleSidebar}
                         toggle={this.toggle}
                         handleFieldChange={this.handleFieldChange}
-                        constructNewPage={this.constructNewPage}
+                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
                         {...this.props}/>
 
                     <FebruarySelect
-                        addPage={this.addPage}
                         setMonth={this.setMonth}
                         toggleSidebar={this.toggleSidebar}
                         toggle={this.toggle}
                         handleFieldChange={this.handleFieldChange}
-                        constructNewPage={this.constructNewPage}
+                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
                         {...this.props}/>
 
                     <MarchSelect
-                        addPage={this.addPage}
                         setMonth={this.setMonth}
                         toggleSidebar={this.toggleSidebar}
                         toggle={this.toggle}
                         handleFieldChange={this.handleFieldChange}
-                        constructNewPage={this.constructNewPage}
+                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
                         {...this.props}/>
 
                     <AprilSelect
-                        addPage={this.addPage}
                         setMonth={this.setMonth}
                         toggleSidebar={this.toggleSidebar}
                         toggle={this.toggle}
                         handleFieldChange={this.handleFieldChange}
-                        constructNewPage={this.constructNewPage}
+                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
                         {...this.props}/>
 
                     <MaySelect
-                        addPage={this.addPage}
                         setMonth={this.setMonth}
                         toggleSidebar={this.toggleSidebar}
                         toggle={this.toggle}
                         handleFieldChange={this.handleFieldChange}
-                        constructNewPage={this.constructNewPage}
+                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
                         {...this.props}/>
 
                     <JuneSelect
-                        addPage={this.addPage}
                         setMonth={this.setMonth}
                         toggleSidebar={this.toggleSidebar}
                         toggle={this.toggle}
                         handleFieldChange={this.handleFieldChange}
-                        constructNewPage={this.constructNewPage}
+                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
                         {...this.props}/>
 
                     <JulySelect
-                        addPage={this.addPage}
                         setMonth={this.setMonth}
                         toggleSidebar={this.toggleSidebar}
                         toggle={this.toggle}
                         handleFieldChange={this.handleFieldChange}
-                        constructNewPage={this.constructNewPage}
+                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
                         {...this.props}/>
 
                     <AugustSelect
-                        addPage={this.addPage}
                         setMonth={this.setMonth}
                         toggleSidebar={this.toggleSidebar}
                         toggle={this.toggle}
                         handleFieldChange={this.handleFieldChange}
-                        constructNewPage={this.constructNewPage}
+                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
                         {...this.props}/>
 
                     <SeptemberSelect
-                        addPage={this.addPage}
                         setMonth={this.setMonth}
                         toggleSidebar={this.toggleSidebar}
                         toggle={this.toggle}
                         handleFieldChange={this.handleFieldChange}
-                        constructNewPage={this.constructNewPage}
+                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
                         {...this.props}/>
 
                     <OctoberSelect
-                        addPage={this.addPage}
                         setMonth={this.setMonth}
                         toggleSidebar={this.toggleSidebar}
                         toggle={this.toggle}
                         handleFieldChange={this.handleFieldChange}
-                        constructNewPage={this.constructNewPage}
+                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
                         {...this.props}/>
 
                     <NovemberSelect
-                        addPage={this.addPage}
                         setMonth={this.setMonth}
                         toggleSidebar={this.toggleSidebar}
                         toggle={this.toggle}
                         handleFieldChange={this.handleFieldChange}
-                        constructNewPage={this.constructNewPage}
+                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
                         {...this.props}/>
 
                     <DecemberSelect
-                        addPage={this.addPage}
                         setMonth={this.setMonth}
                         toggleSidebar={this.toggleSidebar}
                         toggle={this.toggle}
                         handleFieldChange={this.handleFieldChange}
-                        constructNewPage={this.constructNewPage}
+                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
                         {...this.props}/>
 
             </Sidebar>
@@ -363,7 +340,6 @@ class PageMain extends Component {
                 thought={this.state.thought}
                 pageQuotes={this.state.pageQuotes}
                 renderThought={this.renderThought}
-                // resetThoughtInState={this.resetThoughtInState}
                 {...this.props}
                 />
             </Sidebar.Pusher>

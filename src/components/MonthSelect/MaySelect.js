@@ -100,7 +100,7 @@ class MaySelect extends Component {
                     <ModalFooter>
                             <Button
                                 onClick={() => {
-                                    this.props.constructNewPage()
+                                    this.props.constructOrNavigateToNewPage()
                                     this.toggle()
                                 }
 

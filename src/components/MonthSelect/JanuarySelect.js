@@ -14,26 +14,15 @@ class JanuarySelect extends Component {
         day: "1",
         month: "january",
         modal: false,
-        pageId: 0
+        pageId: 0,
+        quotes: [],
+        quoteText: "",
+        quoteAuthor: "",
+        timestamp: "",
     };
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            day: "1",
-            month: "january",
-            quotes: [],
-            userId: parseInt(sessionStorage.getItem("credentials")),
-            quoteText: "",
-            quoteAuthor: "",
-            timestamp: "",
-            modal: false
-        };
-
-        this.toggle = this.toggle.bind(this);
-    }
-
-    toggle() {
+    //toggles modal
+    toggle = () => {
         this.setState(prevState => ({
             modal: !prevState.modal
         }));
@@ -102,11 +91,9 @@ class JanuarySelect extends Component {
                     <ModalFooter>
                             <Button
                                 onClick={() => {
-
-                                    this.props.constructNewPage()
+                                    this.props.constructOrNavigateToNewPage()
                                     this.toggle()
                                 }
-
                                 }>go
                             </Button>
 

@@ -5,22 +5,13 @@ import { Icon, Button} from 'semantic-ui-react'
 class ConfirmDeleteQuoteModal extends Component {
 
 //Defines initial state
-    constructor(props) {
-        super(props);
-        this.state = {
-            quotes: [],
-            userId: "",
-            quoteAuthor: "",
-            quoteText: "",
-            timestamp: "",
+    state = {
             modal: false
         };
 
-        this.toggle = this.toggle.bind(this);
-    }
 
 //Displays/hides the new article modal
-    toggle() {
+    toggle = () => {
         this.setState(prevState => ({
             modal: !prevState.modal
         }));

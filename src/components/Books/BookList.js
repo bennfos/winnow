@@ -13,7 +13,7 @@ class BookList extends Component {
     userId: parseInt(sessionStorage.getItem("credentials"))
   };
 
-  //When component mounts, gets all news and sets state of news array with all existsing news items
+  //When component mounts, get all user's books and set state of with all existsing books
   componentDidMount() {
     BookDataManager.getAllBooks(this.state.userId).then(books => {
         this.setState({
@@ -22,7 +22,7 @@ class BookList extends Component {
       });
     };
 
-  // Called in NewsItemNewModal (child component) to post a new object to database and update state
+  // post a new book object to database and update state (called in AddBookModal)
   addBook = bookObject => {
     return BookDataManager.postBook(bookObject)
         .then(() => {
@@ -36,7 +36,7 @@ class BookList extends Component {
     };
 
 
-  // Called in NewsCard(child component) to delete object from database and update state
+  // delete book object from database and update state (called in ConfirmDeleteBookModal)
   removeBook = id => {
     BookDataManager.deleteBook(id)
         .then(() => {
@@ -49,8 +49,8 @@ class BookList extends Component {
       });
   };
 
-  // Called in NewEditModal (child component) to post edited object to database and update state
-  postEditedBook = id => {
+  // post edited object to database and update state
+  putEditedBook = id => {
     return BookDataManager.editBook(id).then(() => {
       BookDataManager.getAllBooks(this.state.userId)
         .then(books => {
@@ -76,7 +76,7 @@ class BookList extends Component {
               key={book.id}
               book={book}
               removeBook={this.removeBook}
-              postEditedBook={this.postEditedBook}
+              putEditedBook={this.putEditedBook}
               {...this.props}
             />
           ))}

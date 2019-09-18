@@ -55,6 +55,14 @@
       "username": "bennfos",
       "password": ";lpo09",
       "id": 7
+    },
+    {
+      "firstName": "e",
+      "lastName": "e",
+      "email": "e",
+      "username": "e",
+      "password": "e",
+      "id": 8
     }
   ],
   "books": [
@@ -108,11 +116,18 @@
       "timestamp": "9/17/2019, 1:36:48 PM"
     },
     {
-      "title": "my quotebook",
+      "id": 8,
       "userId": 7,
-      "description": "the quotes that mean the most",
-      "timestamp": "9/18/2019, 11:27:18 AM",
-      "id": 8
+      "title": "my quotebook",
+      "description": "the quotes that mean the most!",
+      "timestamp": "9/18/2019, 11:27:18 AM"
+    },
+    {
+      "id": 9,
+      "userId": 8,
+      "title": "e!",
+      "description": "e!",
+      "timestamp": "9/18/2019, 1:57:17 PM"
     }
   ],
   "pages": [
@@ -346,7 +361,7 @@
       "bookId": 8,
       "month": "january",
       "day": "1",
-      "thought": "new year new me"
+      "thought": "new year new me!"
     },
     {
       "id": 30,
@@ -354,7 +369,7 @@
       "bookId": 8,
       "month": "july",
       "day": "4",
-      "thought": "'merca"
+      "thought": "'merca!"
     },
     {
       "id": 31,
@@ -530,7 +545,55 @@
       "bookId": 8,
       "month": "january",
       "day": "7",
-      "thought": "jan7"
+      "thought": "jan7asc"
+    },
+    {
+      "userId": 7,
+      "bookId": 8,
+      "month": "february",
+      "day": "3",
+      "thought": "",
+      "id": 53
+    },
+    {
+      "id": 54,
+      "userId": 7,
+      "bookId": 8,
+      "month": "april",
+      "day": "29",
+      "thought": "ap29"
+    },
+    {
+      "userId": 7,
+      "bookId": 8,
+      "month": "april",
+      "day": "30",
+      "thought": "",
+      "id": 55
+    },
+    {
+      "id": 56,
+      "userId": 8,
+      "bookId": 9,
+      "month": "january",
+      "day": "1",
+      "thought": "jan1!"
+    },
+    {
+      "id": 57,
+      "userId": 8,
+      "bookId": 9,
+      "month": "january",
+      "day": "2",
+      "thought": "jan2"
+    },
+    {
+      "userId": 8,
+      "bookId": 9,
+      "month": "february",
+      "day": "1",
+      "thought": "",
+      "id": 58
     }
   ],
   "quotes": [
@@ -633,11 +696,11 @@
       "id": 14
     },
     {
-      "quoteText": "We are fighting for our right to live. To exist. And should we win the day, the Fourth of July will no longer be known as an American holiday, but as the day the world declared in one voice: \"We will not go quietly into the night!\" We will not vanish without a fight!",
+      "id": 15,
       "userId": 7,
+      "quoteText": "We are fighting for our right to live. To exist. And should we win the day, the Fourth of July will no longer be known as an American holiday, but as the day the world declared in one voice: \"We will not go quietly into the night!\" We will not vanish without a fight!!",
       "quoteAuthor": "President BIll effing Pullman",
-      "timestamp": "9/18/2019, 11:31:25 AM",
-      "id": 15
+      "timestamp": "9/18/2019, 11:31:25 AM"
     },
     {
       "quoteText": "this is america",
@@ -659,6 +722,20 @@
       "quoteAuthor": "Voltaire",
       "timestamp": "9/18/2019, 11:43:14 AM",
       "id": 18
+    },
+    {
+      "id": 19,
+      "userId": 8,
+      "quoteText": "jan1e!",
+      "quoteAuthor": "jan!",
+      "timestamp": "9/18/2019, 1:57:38 PM"
+    },
+    {
+      "quoteText": "jan2",
+      "userId": 8,
+      "quoteAuthor": "",
+      "timestamp": "9/18/2019, 1:58:14 PM",
+      "id": 20
     }
   ],
   "pageQuotes": [
@@ -751,6 +828,16 @@
       "quoteId": 18,
       "pageId": 34,
       "id": 18
+    },
+    {
+      "quoteId": 19,
+      "pageId": 56,
+      "id": 19
+    },
+    {
+      "quoteId": 20,
+      "pageId": 57,
+      "id": 20
     }
   ]
 }

@@ -19,6 +19,8 @@ class Login extends Component {
     this.setState(stateToChange);
   };
 
+
+  //check to see if username and password exist together in database and sets session storage
   handleLogin = event => {
     event.preventDefault();
     UserDataManager.checkUsers(this.state.username, this.state.password).then(
@@ -33,8 +35,9 @@ class Login extends Component {
     );
   };
 
+
   componentDidMount() {
-    // getAll users and hand on
+    // getAll users and  set in session storage
     UserDataManager.getAllUsers().then(users => {
       this.setState({
         users: users
