@@ -12,9 +12,9 @@ class ThoughtList extends Component {
   };
 
   //When component mounts, gets all news and sets state of news array with all existsing news items
-  componentDidMount() {
-    this.props.renderThought(this.props.pageId)
-      }
+  // componentDidMount() {
+  //   this.props.renderThought(this.props.pageId)
+  //     }
 
 
     componentDidUpdate(prevProps) {
