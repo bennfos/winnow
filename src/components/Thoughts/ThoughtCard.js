@@ -22,9 +22,9 @@ class ThoughtCard extends Component {
 
         <div className="bookCard">
             <Card body>
-                <div className="card__header">
+                <div className="card__content">
                         <CardTitle
-                            className="cardTitle">
+                            className="card__thought">
                             <p>{this.props.thought}</p>
                         </CardTitle>
                     <ConfirmDeleteThoughtModal {...this.props}/>

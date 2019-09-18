@@ -63,6 +63,14 @@
       "username": "e",
       "password": "e",
       "id": 8
+    },
+    {
+      "firstName": "andy",
+      "lastName": "collins",
+      "email": "and@a.com",
+      "username": "andy",
+      "password": "1",
+      "id": 9
     }
   ],
   "books": [
@@ -128,6 +136,41 @@
       "title": "e!",
       "description": "e!",
       "timestamp": "9/18/2019, 1:57:17 PM"
+    },
+    {
+      "id": 10,
+      "userId": 7,
+      "title": "movie quotes",
+      "description": "quotes from my favorite films",
+      "timestamp": "9/18/2019, 2:25:49 PM"
+    },
+    {
+      "title": "things my kids say",
+      "userId": 7,
+      "description": "",
+      "timestamp": "9/18/2019, 2:35:40 PM",
+      "id": 11
+    },
+    {
+      "id": 12,
+      "userId": 9,
+      "title": "quotebook!",
+      "description": "quotes that are good.",
+      "timestamp": "9/18/2019, 2:59:39 PM"
+    },
+    {
+      "title": "asc",
+      "userId": 9,
+      "description": "asc",
+      "timestamp": "9/18/2019, 4:09:28 PM",
+      "id": 13
+    },
+    {
+      "title": "asc",
+      "userId": 9,
+      "description": "",
+      "timestamp": "9/18/2019, 4:09:31 PM",
+      "id": 14
     }
   ],
   "pages": [
@@ -594,6 +637,94 @@
       "day": "1",
       "thought": "",
       "id": 58
+    },
+    {
+      "id": 59,
+      "userId": 7,
+      "bookId": 10,
+      "month": "january",
+      "day": "1",
+      "thought": "this foreshadows quint's bloody death"
+    },
+    {
+      "userId": 7,
+      "bookId": 10,
+      "month": "february",
+      "day": "2",
+      "thought": "",
+      "id": 60
+    },
+    {
+      "id": 61,
+      "userId": 7,
+      "bookId": 10,
+      "month": "july",
+      "day": "4",
+      "thought": "best speech ever"
+    },
+    {
+      "userId": 7,
+      "bookId": 11,
+      "month": "january",
+      "day": "1",
+      "thought": "",
+      "id": 62
+    },
+    {
+      "userId": 7,
+      "bookId": 8,
+      "month": "february",
+      "day": "14",
+      "thought": "",
+      "id": 63
+    },
+    {
+      "userId": 7,
+      "bookId": 8,
+      "month": "march",
+      "day": "7",
+      "thought": "",
+      "id": 64
+    },
+    {
+      "userId": 7,
+      "bookId": 8,
+      "month": "march",
+      "day": "4",
+      "thought": "",
+      "id": 65
+    },
+    {
+      "userId": 7,
+      "bookId": 8,
+      "month": "february",
+      "day": "4",
+      "thought": "",
+      "id": 66
+    },
+    {
+      "userId": 7,
+      "bookId": 8,
+      "month": "february",
+      "day": "16",
+      "thought": "",
+      "id": 67
+    },
+    {
+      "id": 68,
+      "userId": 9,
+      "bookId": 12,
+      "month": "january",
+      "day": "1",
+      "thought": "new year"
+    },
+    {
+      "userId": 9,
+      "bookId": 12,
+      "month": "september",
+      "day": "18",
+      "thought": "",
+      "id": 69
     }
   ],
   "quotes": [
@@ -736,6 +867,76 @@
       "quoteAuthor": "",
       "timestamp": "9/18/2019, 1:58:14 PM",
       "id": 20
+    },
+    {
+      "quoteText": "farewell and adieu to you fair spanish ladies",
+      "userId": 7,
+      "quoteAuthor": "quint",
+      "timestamp": "9/18/2019, 2:30:34 PM",
+      "id": 21
+    },
+    {
+      "quoteText": "We are fighting for our right to live. To exist. And should we win the day, the Fourth of July will no longer be known as an American holiday, but as the day the world declared in one voice: \"We will not go quietly into the night!\" We will not vanish without a fight!",
+      "userId": 7,
+      "quoteAuthor": "President Bill Pullman",
+      "timestamp": "9/18/2019, 2:34:17 PM",
+      "id": 22
+    },
+    {
+      "quoteText": "fuck spaghetti",
+      "userId": 7,
+      "quoteAuthor": "marlowe",
+      "timestamp": "9/18/2019, 2:36:28 PM",
+      "id": 23
+    },
+    {
+      "quoteText": "All you need is love",
+      "userId": 7,
+      "quoteAuthor": "the beatles",
+      "timestamp": "9/18/2019, 2:38:47 PM",
+      "id": 24
+    },
+    {
+      "quoteText": "blah",
+      "userId": 7,
+      "quoteAuthor": "blah",
+      "timestamp": "9/18/2019, 2:39:20 PM",
+      "id": 25
+    },
+    {
+      "quoteText": "bah",
+      "userId": 7,
+      "quoteAuthor": "blah",
+      "timestamp": "9/18/2019, 2:39:42 PM",
+      "id": 26
+    },
+    {
+      "quoteText": "asc",
+      "userId": 7,
+      "quoteAuthor": "asc",
+      "timestamp": "9/18/2019, 2:41:18 PM",
+      "id": 27
+    },
+    {
+      "quoteText": "dsv",
+      "userId": 7,
+      "quoteAuthor": "sdv",
+      "timestamp": "9/18/2019, 2:51:18 PM",
+      "id": 28
+    },
+    {
+      "id": 29,
+      "userId": 9,
+      "quoteText": "“For last year's words belong to last year's language\nAnd next year's words await another voice.”",
+      "quoteAuthor": "some dead guy",
+      "timestamp": "9/18/2019, 3:02:08 PM"
+    },
+    {
+      "quoteText": "What do we live for, if it is not to make life less difficult for each other?\n\n",
+      "userId": 9,
+      "quoteAuthor": "George Eliot",
+      "timestamp": "9/18/2019, 3:05:35 PM",
+      "id": 30
     }
   ],
   "pageQuotes": [
@@ -838,6 +1039,56 @@
       "quoteId": 20,
       "pageId": 57,
       "id": 20
+    },
+    {
+      "quoteId": 21,
+      "pageId": 59,
+      "id": 21
+    },
+    {
+      "quoteId": 22,
+      "pageId": 61,
+      "id": 22
+    },
+    {
+      "quoteId": 23,
+      "pageId": 62,
+      "id": 23
+    },
+    {
+      "quoteId": 24,
+      "pageId": 63,
+      "id": 24
+    },
+    {
+      "quoteId": 25,
+      "pageId": 64,
+      "id": 25
+    },
+    {
+      "quoteId": 26,
+      "pageId": 65,
+      "id": 26
+    },
+    {
+      "quoteId": 27,
+      "pageId": 66,
+      "id": 27
+    },
+    {
+      "quoteId": 28,
+      "pageId": 67,
+      "id": 28
+    },
+    {
+      "quoteId": 29,
+      "pageId": 68,
+      "id": 29
+    },
+    {
+      "quoteId": 30,
+      "pageId": 69,
+      "id": 30
     }
   ]
 }

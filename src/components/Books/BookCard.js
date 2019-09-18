@@ -11,6 +11,7 @@ class BookCard extends Component {
     state = {
         pages: [],
         pageId: 0,
+        description: ""
     }
 
   //Renders an individual news card with an article title, synopsis, link to URL, and edit and delete buttons.
@@ -52,7 +53,7 @@ class BookCard extends Component {
             })
     }
 
-
+   
 
   render() {
     return (
