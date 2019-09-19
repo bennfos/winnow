@@ -71,7 +71,9 @@ class AddThoughtModal extends Component {
         }
       }
 
-//clears state of thought so that nothing will display if there is no thought in props. Ensures input field will be empty if opening modal from page with no thought yet added.
+//clears state of thought so that nothing will display if there is no thought in props.
+//This ensures input field will be empty if opening modal from page with no thought yet added.
+//This fixes a bug which caused thought from previous page to input field when adding thought to a new page.
     resetThoughtInStateIfNoThoughtInProps = () => {
         if (this.props.thought === "") {
             this.setState({

@@ -3,6 +3,7 @@ import { Card, CardText,
     CardTitle} from 'reactstrap'
 import ConfirmDeleteThoughtModal from './ConfirmDeleteThoughtModal'
 import '../Books/Card.css'
+import './Thoughts.css'
 
 class ThoughtCard extends Component {
     state = {
@@ -20,8 +21,8 @@ class ThoughtCard extends Component {
   render() {
     return (
 
-        <div className="bookCard">
-            <Card body>
+        <div>
+            <Card body className="thoughtCard">
                 <div className="card__content">
                         <CardTitle
                             className="card__thought">

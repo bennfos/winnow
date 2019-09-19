@@ -20,7 +20,8 @@
 
 }
 
-/* .spacer {
-    height: 38px
-} */
+.sidebar__menu {
+    position: fixed;
+    top: 38px;
+}
 
