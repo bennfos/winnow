@@ -10,3 +10,12 @@
 .randomQuote__button {
     padding: 0 0 60px 0;
 }
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+    margin: 20px;
+}
