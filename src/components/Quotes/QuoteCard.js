@@ -3,11 +3,15 @@ import QuoteDataManager from './QuoteDataManager'
 import EditQuoteModal from '../Quotes/EditQuoteModal'
 import ConfirmDeleteQuoteModal from './ConfirmDeleteQuoteModal';
 import '../Books/Card.css'
+import './Quotes.css'
+import { NONAME } from 'dns';
 
 class QuoteCard extends Component {
     state = {
-        randomQuoteText: ""
+        randomQuoteText: "",
+        display: "hide"
     }
+
 
 //get random quote from Forismatic API and set it in state (not used yet--stretch goal)
   getRandom = () => {
@@ -20,16 +24,32 @@ class QuoteCard extends Component {
         })
   }
 
+  toggleEditAndDelete = () => {
+      if (this.state.display === "hide") {
+        this.setState({
+            display: "show"
+        })
+    } else if (this.state.display === "show") {
+        this.setState({
+            display: "hide"
+        })
+    }
+}
+
   render() {
     return (
         <>
-            <div className="card__container">
-                <div className="card__content">
+            <div
+                className="card__container"
+                onClick={this.toggleEditAndDelete}>
+                <div
+                    className="card__content"
+                    >
                     <h4>{this.props.pageQuote.quote.quoteText}</h4>
                     <p>{this.props.pageQuote.quote.quoteAuthor}</p>
                 </div>
                 <div className="card__header">
-                    <div className="editAndDelete__container">
+                    <div className={this.state.display}>
                         <EditQuoteModal
                             {...this.props}/>
                         <ConfirmDeleteQuoteModal
