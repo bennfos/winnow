@@ -121,7 +121,10 @@ resetThoughtInStateIfNoThoughtInProps = () => {
                                     this.constructOrEditThought()
                                 }
                                 }>save</Button>
-                            <ConfirmDeleteThoughtModal {...this.props}/>
+                            <ConfirmDeleteThoughtModal
+                                {...this.props}
+                                toggle={this.toggle}
+                            />
                             <Button
                                 onClick={this.toggle}
                                 >cancel</Button>

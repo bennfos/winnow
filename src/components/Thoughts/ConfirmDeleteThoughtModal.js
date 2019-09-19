@@ -27,19 +27,18 @@ class ConfirmDeleteThoughtModal extends Component {
     }
 
 //edits page so that thought is removed, and puts edited page in database (see PageMain)
-    removeThought = event => {
-        event.preventDefault()
-            const pageWithThought = {
-                id: this.props.pageId,
-                userId: parseInt(sessionStorage.getItem("credentials")),
-                bookId: this.props.bookId,
-                month: this.props.month,
-                day: this.props.day,
-                thought: ""
-            }
-            this.props.putThought(pageWithThought, this.props.pageId)
-            this.toggle()
+    removeThought = () => {
+        const pageWithThought = {
+            id: this.props.pageId,
+            userId: parseInt(sessionStorage.getItem("credentials")),
+            bookId: this.props.bookId,
+            month: this.props.month,
+            day: this.props.day,
+            thought: ""
         }
+        this.props.putThought(pageWithThought, this.props.pageId)
+        this.toggle()
+    }
 
 
 
@@ -70,11 +69,12 @@ class ConfirmDeleteThoughtModal extends Component {
                         <ModalFooter>
                             <Button
                                 negative
-                                onClick={
-                                    this.removeThought
-                                }>delete</Button>
+                                onClick={() => {
+                                    this.removeThought()
+                                    this.props.toggle()
+                                }}>yes
+                            </Button>
                             <Button
-
                                 onClick={this.toggle}
                             >cancel</Button>
                         </ModalFooter>
