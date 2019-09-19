@@ -3,6 +3,8 @@ import QuoteCard from './QuoteCard'
 import AddQuoteModal from './AddQuoteModal'
 import AddRandomQuoteModal from './AddRandomQuoteModal'
 import { Button } from 'semantic-ui-react'
+import './Quotes.css'
+import '../Pages/Pages.css'
 
 
 class QuoteList extends Component {

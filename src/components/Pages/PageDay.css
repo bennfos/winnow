@@ -3,8 +3,13 @@
     flex-direction: row;
     justify-content: space-around;
     text-align: center;
+
 }
 
 .quoteList__container {
-    margin: 30px
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 30px 0px 75px 15px;
+
 }

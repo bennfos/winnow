@@ -209,8 +209,11 @@ class PageMain extends Component {
                     fluid widths={1}
                     borderless
                     fixed="top"
+                    inverted
+                    color="grey"
                     >
                         <Menu.Item
+
                             onClick={this.toggleSidebar}
                             icon="chevron down"
                         >
@@ -228,6 +231,7 @@ class PageMain extends Component {
                     horizontal="true"
                     direction='top'
                     visible={visible}
+                    className="sidebar__menu"
                 >
                 {this.state.monthOptions.map(monthSelect => (
                     <MonthSelect
