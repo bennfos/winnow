@@ -35,3 +35,14 @@
     display: flex;
     justify-content: right;
 }
+
+.dayInt__button {
+    margin: 10px;
+    min-width: 35px;
+
+}
+
+.card__body {
+    display: flex;
+    justify-content: center;
+}

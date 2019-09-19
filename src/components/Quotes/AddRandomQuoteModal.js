@@ -109,7 +109,6 @@ class AddRandomQuoteModal extends Component {
                                 setTimeout(this.resetQuoteState, 1000)
                                 }}>save</Button>
                             <Button
-                                secondary
                                 onClick={() => {
                                     this.toggle()
                                     this.resetQuoteState()

@@ -1,23 +1,61 @@
 import React, { Component } from 'react';
-import { Input, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { Menu, Button } from 'semantic-ui-react';
+import { Label, Modal, ModalHeader, ModalBody, ModalFooter, Input} from 'reactstrap';
+import { Menu, Button, Grid, Container, Segment, Card,  } from 'semantic-ui-react';
+import '../Books/Card.css'
+
 
 
 class MonthSelect extends Component {
 
 //Defines initial state
     state = {
-        pages: [],
-        userId: parseInt(sessionStorage.getItem("credentials")),
-        day: "1",
-        month: "january",
         modal: false,
-        pageId: 0,
-        quotes: [],
-        quoteText: "",
-        quoteAuthor: "",
-        timestamp: "",
+        day: 0,
+        days: []
     };
+
+    pushDaysOfMonth = () => {
+        console.log(this.props.monthSelect)
+        let daysOfMonth = []
+        for (let i = 1; i <= 31; i++) {
+            daysOfMonth.push(i)
+        }
+        if (this.props.monthSelect === "february") {
+                daysOfMonth.pop()
+                daysOfMonth.pop()
+        } else if (this.props.monthSelect === "september") {
+            daysOfMonth.pop()
+        } else if (this.props.monthSelect === "april") {
+            daysOfMonth.pop()
+        } else if (this.props.monthSelect === "june") {
+            daysOfMonth.pop()
+        } else if (this.props.monthSelect === "november") {
+            daysOfMonth.pop()
+        }
+        this.setState({
+            days: daysOfMonth
+        })
+    }
+
+    // pushDaysOfMonth = () => {
+    //     console.log(this.props.monthSelect)
+    //     let daysOfMonth = []
+    //     for (let i = 1; i <= 31; i++) {
+    //         daysOfMonth.push(i)
+    //     }
+    //     if (this.props.monthSelect === "february") {
+    //             daysOfMonth.pop()
+    //             daysOfMonth.pop()
+    //     } else if (this.props.monthSelect === "september" || "april" || "june" || "november") {
+    //         daysOfMonth.pop()
+    //     this.setState({
+    //         days: daysOfMonth
+    //     })
+    // }
+
+
+
+
 
     //toggles modal
     toggle = () => {
@@ -26,69 +64,51 @@ class MonthSelect extends Component {
         }));
     }
 
-
-
     render(){
+        const monthSelect = this.props.monthSelect
         return(
             <>
-
                 <Menu.Item
                         onClick={() => {
+                            this.props.setMonth(monthSelect)
+                            this.pushDaysOfMonth()
                             this.toggle()
-                            this.props.setMonth("january")
                         }}
-                        >january
+                        >{monthSelect}
                 </Menu.Item>
                 <Modal
                     isOpen={this.state.modal}
                     toggle={this.toggle}
                 >
-                    <ModalHeader toggle={this.toggle}>select a page</ModalHeader>
-                    <ModalBody>
-                        <Label />january
-                        <Input
-                        onChange={this.props.handleFieldChange}
-                        type="select"
-                        name="day"
-                        id="day"
-                        placeholder="select a day">
-                                <option>select a day</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                                <option>11</option>
-                                <option>12</option>
-                                <option>13</option>
-                                <option>14</option>
-                                <option>15</option>
-                                <option>16</option>
-                                <option>17</option>
-                                <option>18</option>
-                                <option>19</option>
-                                <option>20</option>
-                                <option>21</option>
-                                <option>22</option>
-                                <option>23</option>
-                                <option>24</option>
-                                <option>25</option>
-                                <option>26</option>
-                                <option>27</option>
-                                <option>28</option>
-                                <option>29</option>
-                                <option>30</option>
-                                <option>31</option>
-                        </Input>
+                    <ModalHeader toggle={this.toggle}>select page</ModalHeader>
+                    <ModalBody className="card__body">
+                        <Container className="calendar__container">
+                            <Grid columns={7}>
+                                <Grid.Row centered>
+                                    <Label />{monthSelect}
+                                </Grid.Row>
+                                <Grid.Row>
+                                    {this.state.days.map(day => {
+                                        return (
+                                            <Grid.Column key={day} >
+                                                <Input
+                                                    id="day"
+                                                    type="button"
+                                                    value={day.toString()}
+                                                    className="dayInt__button"
+                                                    onClick={this.props.handleFieldChange}
+                                                >
+                                                </Input>
+                                            </Grid.Column>
+                                        )
+                                    })}
+                                </Grid.Row>
+                            </Grid>
+                        </Container>
                     </ModalBody>
-
                     <ModalFooter>
                             <Button
+                                primary
                                 onClick={() => {
                                     this.props.constructOrNavigateToNewPage()
                                     this.toggle()
