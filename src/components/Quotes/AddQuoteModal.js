@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input, Button } from 'reactstrap';
-import { Icon } from 'semantic-ui-react'
-import QuoteDataManager from './QuoteDataManager'
+import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input } from 'reactstrap';
+import { Icon, Button } from 'semantic-ui-react'
+
 
 class AddQuoteModal extends Component {
 
@@ -91,8 +91,7 @@ class AddQuoteModal extends Component {
                     >
                         <ModalHeader toggle={this.toggle}>add quote</ModalHeader>
                         <ModalBody>
-                            <Form className="newQuoteForm">
-                                <FormGroup>
+
 
                                     <Input onChange={this.handleFieldChange}
                                             type="textarea"
@@ -107,18 +106,17 @@ class AddQuoteModal extends Component {
                                             placeholder="author"
                                         /><br/>
 
-                                </FormGroup>
-                            </Form>
+
                         </ModalBody>
                         <ModalFooter>
                             <Button
-                                color="primary"
+                                primary
                                 onClick={ ()=> {
                                 this.constructNewQuote()
                                 setTimeout(this.resetQuoteState, 1000)
                                 }}>save</Button>
                             <Button
-                                color="secondary"
+                                secondary
                                 onClick={() => {
                                     this.toggle()
                                     this.resetQuoteState()

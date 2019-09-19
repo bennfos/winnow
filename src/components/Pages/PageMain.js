@@ -215,22 +215,31 @@ class PageMain extends Component {
         return (
         <>
             <div className="pageSelect">
-                <Button icon="chevron down" className="pageSelect__button" onClick={this.toggleSidebar}></Button>
-
+                <Menu
+                    fluid widths={1}
+                    borderless
+                    fixed="top"
+                    >
+                        <Menu.Item
+                            onClick={this.toggleSidebar}
+                            icon="chevron down"
+                        >
+                        </Menu.Item>
+                </Menu>
+            <div className="spacer"></div>
             <Sidebar.Pushable animation='push'>
                 <div className="sidebar">
-            <Sidebar
-                as={Menu}
-                color="grey"
-                animation='push'
-                icon='labeled'
-                inverted
-                onHide={this.handleSidebarHide}
-                horizontal="true"
-                direction='top'
-                visible={visible}
-                width='thin'
-            >
+                <Sidebar
+                    as={Menu}
+                    color="grey"
+                    animation='push'
+                    icon='labeled'
+                    inverted
+                    horizontal="true"
+                    direction='top'
+                    visible={visible}
+
+                >
 
                     <JanuarySelect
                         setMonth={this.setMonth}
@@ -329,8 +338,9 @@ class PageMain extends Component {
                         {...this.props}/>
 
             </Sidebar>
+
             </div>
-            <Sidebar.Pusher>
+            <Sidebar.Pusher dimmed={this.state.visible}>
                 <PageViews
                 putEditedQuote={this.putEditedQuote}
                 addQuote={this.addQuote}
@@ -344,6 +354,7 @@ class PageMain extends Component {
                 />
             </Sidebar.Pusher>
             </Sidebar.Pushable>
+
             </div>
         </>
         )

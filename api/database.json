@@ -725,6 +725,38 @@
       "day": "18",
       "thought": "",
       "id": 69
+    },
+    {
+      "userId": 9,
+      "bookId": 12,
+      "month": "february",
+      "day": "2",
+      "thought": "",
+      "id": 70
+    },
+    {
+      "userId": 9,
+      "bookId": 12,
+      "month": "april",
+      "day": "2",
+      "thought": "",
+      "id": 71
+    },
+    {
+      "userId": 9,
+      "bookId": 12,
+      "month": "january",
+      "day": "3",
+      "thought": "",
+      "id": 72
+    },
+    {
+      "userId": 9,
+      "bookId": 12,
+      "month": "february",
+      "day": "12",
+      "thought": "",
+      "id": 73
     }
   ],
   "quotes": [
@@ -937,6 +969,69 @@
       "quoteAuthor": "George Eliot",
       "timestamp": "9/18/2019, 3:05:35 PM",
       "id": 30
+    },
+    {
+      "quoteText": "Here is one quality that one must possess to win, and that is definiteness of purpose, the knowledge of what one wants, and a burning desire to possess it.",
+      "userId": 9,
+      "quoteAuthor": "Napoleon Hill",
+      "timestamp": "9/18/2019, 6:14:20 PM",
+      "id": 32
+    },
+    {
+      "quoteText": "The heart has its reasons which reason knows not of. ",
+      "userId": 9,
+      "quoteAuthor": "Blaise Pascal",
+      "timestamp": "9/18/2019, 6:15:47 PM",
+      "id": 33
+    },
+    {
+      "quoteText": "The thoughts we choose to think are the tools we use to paint the canvas of our lives. ",
+      "userId": 9,
+      "quoteAuthor": "Louise Hay ",
+      "timestamp": "9/18/2019, 6:15:51 PM",
+      "id": 34
+    },
+    {
+      "quoteText": "Everything in the universe goes by indirection. There are no straight lines. ",
+      "userId": 9,
+      "quoteAuthor": "Ralph Emerson",
+      "timestamp": "9/18/2019, 6:16:00 PM",
+      "id": 35
+    },
+    {
+      "quoteText": "Nothing great was ever achieved without enthusiasm. ",
+      "userId": 9,
+      "quoteAuthor": "Ralph Emerson",
+      "timestamp": "9/18/2019, 6:21:51 PM",
+      "id": 36
+    },
+    {
+      "id": 37,
+      "userId": 9,
+      "quoteText": "A hero is no braver than an ordinary man, but he is braver five minutes longer. ",
+      "quoteAuthor": "Mutha fuggin' Ralph Waldo Emerson",
+      "timestamp": "9/18/2019, 6:22:25 PM"
+    },
+    {
+      "quoteText": "An optimist is a person who sees a green light everywhere, while the pessimist sees only the red spotlight... The truly wise person is colour-blind.",
+      "userId": 7,
+      "quoteAuthor": "Albert Schweitzer",
+      "timestamp": "9/18/2019, 9:10:52 PM",
+      "id": 38
+    },
+    {
+      "quoteText": "If we had no winter, the spring would not be so pleasant; if we did not sometimes taste of adversity, prosperity would not be so welcome. ",
+      "userId": 7,
+      "quoteAuthor": "Anne Bradstreet",
+      "timestamp": "9/19/2019, 9:32:12 AM",
+      "id": 40
+    },
+    {
+      "quoteText": "Growth begins when we begin to accept our own weakness.  ",
+      "userId": 7,
+      "quoteAuthor": "Jean Vanier ",
+      "timestamp": "9/19/2019, 9:32:14 AM",
+      "id": 41
     }
   ],
   "pageQuotes": [
@@ -1089,6 +1184,51 @@
       "quoteId": 30,
       "pageId": 69,
       "id": 30
+    },
+    {
+      "quoteId": 32,
+      "pageId": 70,
+      "id": 32
+    },
+    {
+      "quoteId": 33,
+      "pageId": 70,
+      "id": 33
+    },
+    {
+      "quoteId": 34,
+      "pageId": 70,
+      "id": 34
+    },
+    {
+      "quoteId": 35,
+      "pageId": 71,
+      "id": 35
+    },
+    {
+      "quoteId": 36,
+      "pageId": 68,
+      "id": 36
+    },
+    {
+      "quoteId": 37,
+      "pageId": 73,
+      "id": 37
+    },
+    {
+      "quoteId": 38,
+      "pageId": 29,
+      "id": 38
+    },
+    {
+      "quoteId": 40,
+      "pageId": 29,
+      "id": 40
+    },
+    {
+      "quoteId": 41,
+      "pageId": 29,
+      "id": 41
     }
   ]
 }
