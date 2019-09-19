@@ -4,18 +4,7 @@ import './PageMain.css'
 import PageDataManager from './PageDataManager'
 import PageViews from './PageViews'
 import QuoteDataManager from '../Quotes/QuoteDataManager'
-import JanuarySelect from '../MonthSelect/JanuarySelect';
-import FebruarySelect from '../MonthSelect/FebruarySelect';
-import MarchSelect from '../MonthSelect/MarchSelect';
-import AprilSelect from '../MonthSelect/AprilSelect';
-import MaySelect from '../MonthSelect/MaySelect';
-import JuneSelect from '../MonthSelect/JuneSelect';
-import JulySelect from '../MonthSelect/JulySelect';
-import AugustSelect from '../MonthSelect/AugustSelect';
-import SeptemberSelect from '../MonthSelect/SeptemberSelect';
-import OctoberSelect from '../MonthSelect/OctoberSelect';
-import NovemberSelect from '../MonthSelect/NovemberSelect';
-import DecemberSelect from '../MonthSelect/DecemberSelect';
+import MonthSelect from '../MonthSelect/MonthSelect'
 
 class PageMain extends Component {
 
@@ -29,7 +18,8 @@ class PageMain extends Component {
         pages: [],
         quotes: [],
         thought: "",
-        pageQuotes: []
+        pageQuotes: [],
+        monthOptions: ["january", "february", "march", "april", "may", "june", "july", "august", "september", "november", "december"]
     }
 
 
@@ -238,104 +228,18 @@ class PageMain extends Component {
                     horizontal="true"
                     direction='top'
                     visible={visible}
-
                 >
-
-                    <JanuarySelect
+                {this.state.monthOptions.map(monthSelect => (
+                    <MonthSelect
                         setMonth={this.setMonth}
                         toggleSidebar={this.toggleSidebar}
                         toggle={this.toggle}
                         handleFieldChange={this.handleFieldChange}
                         constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
-                        {...this.props}/>
-
-                    <FebruarySelect
-                        setMonth={this.setMonth}
-                        toggleSidebar={this.toggleSidebar}
-                        toggle={this.toggle}
-                        handleFieldChange={this.handleFieldChange}
-                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
-                        {...this.props}/>
-
-                    <MarchSelect
-                        setMonth={this.setMonth}
-                        toggleSidebar={this.toggleSidebar}
-                        toggle={this.toggle}
-                        handleFieldChange={this.handleFieldChange}
-                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
-                        {...this.props}/>
-
-                    <AprilSelect
-                        setMonth={this.setMonth}
-                        toggleSidebar={this.toggleSidebar}
-                        toggle={this.toggle}
-                        handleFieldChange={this.handleFieldChange}
-                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
-                        {...this.props}/>
-
-                    <MaySelect
-                        setMonth={this.setMonth}
-                        toggleSidebar={this.toggleSidebar}
-                        toggle={this.toggle}
-                        handleFieldChange={this.handleFieldChange}
-                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
-                        {...this.props}/>
-
-                    <JuneSelect
-                        setMonth={this.setMonth}
-                        toggleSidebar={this.toggleSidebar}
-                        toggle={this.toggle}
-                        handleFieldChange={this.handleFieldChange}
-                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
-                        {...this.props}/>
-
-                    <JulySelect
-                        setMonth={this.setMonth}
-                        toggleSidebar={this.toggleSidebar}
-                        toggle={this.toggle}
-                        handleFieldChange={this.handleFieldChange}
-                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
-                        {...this.props}/>
-
-                    <AugustSelect
-                        setMonth={this.setMonth}
-                        toggleSidebar={this.toggleSidebar}
-                        toggle={this.toggle}
-                        handleFieldChange={this.handleFieldChange}
-                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
-                        {...this.props}/>
-
-                    <SeptemberSelect
-                        setMonth={this.setMonth}
-                        toggleSidebar={this.toggleSidebar}
-                        toggle={this.toggle}
-                        handleFieldChange={this.handleFieldChange}
-                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
-                        {...this.props}/>
-
-                    <OctoberSelect
-                        setMonth={this.setMonth}
-                        toggleSidebar={this.toggleSidebar}
-                        toggle={this.toggle}
-                        handleFieldChange={this.handleFieldChange}
-                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
-                        {...this.props}/>
-
-                    <NovemberSelect
-                        setMonth={this.setMonth}
-                        toggleSidebar={this.toggleSidebar}
-                        toggle={this.toggle}
-                        handleFieldChange={this.handleFieldChange}
-                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
-                        {...this.props}/>
-
-                    <DecemberSelect
-                        setMonth={this.setMonth}
-                        toggleSidebar={this.toggleSidebar}
-                        toggle={this.toggle}
-                        handleFieldChange={this.handleFieldChange}
-                        constructOrNavigateToNewPage={this.constructOrNavigateToNewPage}
-                        {...this.props}/>
+                        monthSelect={monthSelect}
+                        {...this.props}
+                    />
+                ))}
 
             </Sidebar>
 
