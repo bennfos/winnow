@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import fetchJsonp from 'fetch-jsonp'
+import { Button } from 'semantic-ui-react'
+import QuoteDataManager from './QuoteDataManager'
+import './Quotes.css'
 
 
 class RandomQuote extends Component {
@@ -8,31 +10,37 @@ class RandomQuote extends Component {
         quoteAuthor: ""
       };
 
-
-getAndDisplayRandomQuote = () => {
-    fetchJsonp('http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en',
-    {jsonpCallback: 'jsonp'})
-    .then(function(response) {
-      return response.json();
-    })
-    .then(response =>
-        this.setState({
-            quoteText: response.quoteText,
-            quoteAuthor: response.quoteAuthor
-        }))
+      refreshRandomQuote = () => {
+        QuoteDataManager.getRandomQuote()
+            .then(quote => {
+                this.setState({
+                    quoteText: quote.quoteText,
+                    quoteAuthor: quote.quoteAuthor
+                })
+        })
     }
 
+
+
     componentDidMount () {
-        this.getAndDisplayRandomQuote()
+        this.refreshRandomQuote()
         }
 
 
     render() {
        return (
         <>
-            <button type="button" onClick={()=>this.getAndDisplayRandomQuote()}>Get Quote</button>
-            <p>{this.state.quoteText}</p>
-            <p>{this.state.quoteAuthor}</p>
+            <div className="randomQuote__container">
+                <div className="randomQuote__button">
+                    <Button
+                        circular
+                        icon="quote left"
+                        onClick={this.refreshRandomQuote}
+                    ></Button>
+                </div>
+                <h4>{this.state.quoteText}</h4>
+                <p>{this.state.quoteAuthor}</p>
+            </div>
         </>
        )}
 }

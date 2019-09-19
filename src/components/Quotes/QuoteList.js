@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import QuoteCard from './QuoteCard'
 import AddQuoteModal from './AddQuoteModal'
+import AddRandomQuoteModal from './AddRandomQuoteModal'
 import { Button } from 'semantic-ui-react'
 
 
@@ -36,6 +37,9 @@ class QuoteList extends Component {
               <div className="quoteList__container">
                 <div className="pageDay__container">
                     <h3>{this.props.month} {this.props.day}</h3>
+                    <AddRandomQuoteModal
+                      {...this.props}
+                    />
                     <AddQuoteModal
                         className="addQuoteModal"
                         {...this.props}

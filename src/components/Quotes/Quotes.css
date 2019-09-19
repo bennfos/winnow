@@ -1,0 +1,12 @@
+.randomQuote__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 120px 0;
+    margin: 0 40px;
+}
+
+.randomQuote__button {
+    padding: 0 0 60px 0;
+}

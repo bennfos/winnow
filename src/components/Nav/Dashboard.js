@@ -6,7 +6,7 @@ import "./Dashboard.css"
 import ApplicationViews from "../ApplicationViews";
 
 class Dashboard extends Component {
-    
+
 
   logout = () => {
     sessionStorage.clear()
@@ -16,7 +16,7 @@ class Dashboard extends Component {
 
     return (
       <>
-        <div >
+        <div className="appViews">
               <ApplicationViews />
           </div>
           <div className="nav__container">
@@ -24,30 +24,42 @@ class Dashboard extends Component {
                 className="nav__menu"
                 as={Menu}
                 icon='labeled'
-                animation='push'
                 inverted
                 fixed="bottom"
-                fitted="vertically"
+                fitted="horizontally"
                 width='thin'
             >
-                <Menu.Item as={Link} to='/books'
-                className="sidebarButton"
-                >books
-                </Menu.Item>
-                <Menu.Item as={Link} to='/search'
-                className="sidebarButton"
+                <Menu.Item
+                  as={Link}
+                  to='/books'
+                  className="sidebarButton"
+                  icon="book"
                 >
-                search
                 </Menu.Item>
-                <Menu.Item as={Link} to='/quote'
-                className="sidebarButton"
+
+                <Menu.Item
+                  as={Link}
+                  to='/search'
+                  className="sidebarButton"
+                  icon="search"
                 >
-                quote
                 </Menu.Item>
-                <Menu.Item as={Link} to='/'
-                onClick={this.logout}
-                className="sidebarButton">
-                logout
+
+                <Menu.Item
+                  as={Link}
+                  to='/quote'
+                  className="sidebarButton"
+                  icon="quote left"
+                >
+
+                </Menu.Item>
+                <Menu.Item
+                  as={Link}
+                  to='/'
+                  onClick={this.logout}
+                  className="sidebarButton"
+                  icon="log out">
+
                 </Menu.Item>
             </Menu>
 
