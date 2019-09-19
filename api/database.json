@@ -1011,6 +1011,27 @@
       "quoteText": "A hero is no braver than an ordinary man, but he is braver five minutes longer. ",
       "quoteAuthor": "Mutha fuggin' Ralph Waldo Emerson",
       "timestamp": "9/18/2019, 6:22:25 PM"
+    },
+    {
+      "quoteText": "An optimist is a person who sees a green light everywhere, while the pessimist sees only the red spotlight... The truly wise person is colour-blind.",
+      "userId": 7,
+      "quoteAuthor": "Albert Schweitzer",
+      "timestamp": "9/18/2019, 9:10:52 PM",
+      "id": 38
+    },
+    {
+      "quoteText": "If we had no winter, the spring would not be so pleasant; if we did not sometimes taste of adversity, prosperity would not be so welcome. ",
+      "userId": 7,
+      "quoteAuthor": "Anne Bradstreet",
+      "timestamp": "9/19/2019, 9:32:12 AM",
+      "id": 40
+    },
+    {
+      "quoteText": "Growth begins when we begin to accept our own weakness.  ",
+      "userId": 7,
+      "quoteAuthor": "Jean Vanier ",
+      "timestamp": "9/19/2019, 9:32:14 AM",
+      "id": 41
     }
   ],
   "pageQuotes": [
@@ -1193,6 +1214,21 @@
       "quoteId": 37,
       "pageId": 73,
       "id": 37
+    },
+    {
+      "quoteId": 38,
+      "pageId": 29,
+      "id": 38
+    },
+    {
+      "quoteId": 40,
+      "pageId": 29,
+      "id": 40
+    },
+    {
+      "quoteId": 41,
+      "pageId": 29,
+      "id": 41
     }
   ]
 }

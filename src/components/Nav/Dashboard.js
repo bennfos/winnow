@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 
-import {Menu} from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 import "./Dashboard.css"
 import ApplicationViews from "../ApplicationViews";
 
@@ -22,12 +22,14 @@ class Dashboard extends Component {
           <div className="nav__container">
             <Menu
                 className="nav__menu"
-                as={Menu}
+                size="large"
                 icon='labeled'
+                borderless
                 inverted
                 fixed="bottom"
-                fitted="horizontally"
-                width='thin'
+                
+                fluid widths={4}
+
             >
                 <Menu.Item
                   as={Link}

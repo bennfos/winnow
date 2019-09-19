@@ -1,16 +1,4 @@
-.nav__container {
-    position: fixed;
-    bottom: 0;
-    align-content: bottom;
-    width: 100%;
-    overflow: hidden;
-}
-
-.appViews {
-
-}
-
 .nav__menu {
-    height: 50px;
-    width: 100%;
+    bottom: 0;
+    opacity: 50%;
 }

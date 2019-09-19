@@ -53,15 +53,14 @@ class BookCard extends Component {
             })
     }
 
-   
+
 
   render() {
     return (
 
         <div className="bookCard">
 
-            <Row>
-                <Col sm="6">
+
                     <Card body onClick={() => console.log("clicked")}>
                         <div className="card__content">
                             <div className="card__header">
@@ -90,8 +89,7 @@ class BookCard extends Component {
                         </div>
 
                     </Card>
-                </Col>
-            </Row>
+                
         </div>
 
     );
