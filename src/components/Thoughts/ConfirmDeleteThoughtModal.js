@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { Icon, Button} from 'semantic-ui-react'
+import { Button} from 'semantic-ui-react'
 
 class ConfirmDeleteThoughtModal extends Component {
 
@@ -47,13 +47,14 @@ class ConfirmDeleteThoughtModal extends Component {
         return(
             <>
                 <section className="confirmSectionContent">
-                    <Icon
+                    <Button
+                        negative
                         className="delete__icon"
                         name="delete"
                         onClick={this.toggle}
                         size="small"
-                    >
-                    </Icon>
+                    >delete
+                    </Button>
                 </section>
                 <div>
                     <Modal

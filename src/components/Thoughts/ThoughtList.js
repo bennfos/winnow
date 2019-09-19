@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ThoughtCard from "./ThoughtCard";
-import AddThoughtModal from "./AddThoughtModal";
+import { Label } from 'reactstrap'
 import './Thoughts.css'
 
 
@@ -27,7 +27,7 @@ class ThoughtList extends Component {
   render() {
     return (
       <React.Fragment>
-        <AddThoughtModal {...this.props} />
+        <Label>thought</Label>
         <div className="thoughtCard__container">
             <ThoughtCard
               {...this.props}
