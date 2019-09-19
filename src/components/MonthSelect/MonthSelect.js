@@ -16,45 +16,21 @@ class MonthSelect extends Component {
 
     pushDaysOfMonth = () => {
         console.log(this.props.monthSelect)
-        let daysOfMonth = []
+        const monthSelected = this.props.monthSelect
+        const daysOfMonth = []
         for (let i = 1; i <= 31; i++) {
             daysOfMonth.push(i)
         }
-        if (this.props.monthSelect === "february") {
+        if (monthSelected === "february") {
                 daysOfMonth.pop()
                 daysOfMonth.pop()
-        } else if (this.props.monthSelect === "september") {
-            daysOfMonth.pop()
-        } else if (this.props.monthSelect === "april") {
-            daysOfMonth.pop()
-        } else if (this.props.monthSelect === "june") {
-            daysOfMonth.pop()
-        } else if (this.props.monthSelect === "november") {
+        } else if (monthSelected === "september" || monthSelected === "april" || monthSelected === "june" || monthSelected === "november") {
             daysOfMonth.pop()
         }
         this.setState({
             days: daysOfMonth
         })
     }
-
-    // pushDaysOfMonth = () => {
-    //     console.log(this.props.monthSelect)
-    //     let daysOfMonth = []
-    //     for (let i = 1; i <= 31; i++) {
-    //         daysOfMonth.push(i)
-    //     }
-    //     if (this.props.monthSelect === "february") {
-    //             daysOfMonth.pop()
-    //             daysOfMonth.pop()
-    //     } else if (this.props.monthSelect === "september" || "april" || "june" || "november") {
-    //         daysOfMonth.pop()
-    //     this.setState({
-    //         days: daysOfMonth
-    //     })
-    // }
-
-
-
 
 
     //toggles modal
