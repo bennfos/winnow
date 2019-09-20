@@ -12,7 +12,7 @@ class PageMain extends Component {
         visible: false,
         userId: parseInt(sessionStorage.getItem("credentials")),
         day: "",
-
+        keyCount: 0,
         month: "",
         modal: false,
         pageId: 0,
@@ -23,7 +23,9 @@ class PageMain extends Component {
         monthOptions: ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
     }
 
-
+    getKey = () => {
+        return (this.state.keyCount++)
+    }
 
     toggleSidebar = (event) => {
         if (this.state.visible === false) {
@@ -236,7 +238,7 @@ class PageMain extends Component {
                 >
                 {this.state.monthOptions.map(monthSelect => (
                     <MonthSelect
-                        // key={}
+                        // key={this.getKey()}
                         setMonth={this.setMonth}
                         toggleSidebar={this.toggleSidebar}
                         toggle={this.toggle}

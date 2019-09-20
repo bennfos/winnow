@@ -79,6 +79,14 @@
       "username": "f",
       "password": "f",
       "id": 10
+    },
+    {
+      "firstName": "g",
+      "lastName": "g",
+      "email": "g",
+      "username": "g",
+      "password": "g",
+      "id": 11
     }
   ],
   "books": [
@@ -135,7 +143,7 @@
       "id": 8,
       "userId": 7,
       "title": "my quotebook",
-      "description": "the quotes that mean the most!",
+      "description": "the quotes that mean the most",
       "timestamp": "9/18/2019, 11:27:18 AM"
     },
     {
@@ -155,7 +163,7 @@
     {
       "id": 11,
       "userId": 7,
-      "title": "shit my kids say",
+      "title": "things my kids say",
       "description": "",
       "timestamp": "9/18/2019, 2:35:40 PM"
     },
@@ -419,7 +427,7 @@
       "bookId": 8,
       "month": "january",
       "day": "1",
-      "thought": "thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts "
+      "thought": "thoughts thoughts thoughtthoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts "
     },
     {
       "id": 30,
@@ -940,6 +948,22 @@
       "month": "june",
       "day": "19",
       "thought": ""
+    },
+    {
+      "id": 95,
+      "userId": 7,
+      "bookId": 8,
+      "month": "february",
+      "day": "26",
+      "thought": "my thoughts"
+    },
+    {
+      "id": 96,
+      "userId": 7,
+      "bookId": 8,
+      "month": "september",
+      "day": "13",
+      "thought": "thoughts"
     }
   ],
   "quotes": [
@@ -1196,13 +1220,6 @@
       "id": 38
     },
     {
-      "quoteText": "If we had no winter, the spring would not be so pleasant; if we did not sometimes taste of adversity, prosperity would not be so welcome. ",
-      "userId": 7,
-      "quoteAuthor": "Anne Bradstreet",
-      "timestamp": "9/19/2019, 9:32:12 AM",
-      "id": 40
-    },
-    {
       "quoteText": "Growth begins when we begin to accept our own weakness.  ",
       "userId": 7,
       "quoteAuthor": "Jean Vanier ",
@@ -1259,13 +1276,6 @@
       "id": 48
     },
     {
-      "quoteText": "The least movement is of importance to all nature. The entire ocean is affected by a pebble. ",
-      "userId": 7,
-      "quoteAuthor": "Blaise Pascal",
-      "timestamp": "9/20/2019, 9:38:38 AM",
-      "id": 49
-    },
-    {
       "quoteText": "All perceiving is also thinking, all reasoning is also intuition, all observation is also invention. ",
       "userId": 7,
       "quoteAuthor": "Rudolf Arnheim",
@@ -1313,6 +1323,27 @@
       "quoteAuthor": "Winston Churchill ",
       "timestamp": "9/20/2019, 11:23:51 AM",
       "id": 56
+    },
+    {
+      "quoteText": "One that desires to excel should endeavour in those things that are in themselves most excellent.",
+      "userId": 7,
+      "quoteAuthor": "Epictetus",
+      "timestamp": "9/20/2019, 11:50:44 AM",
+      "id": 57
+    },
+    {
+      "quoteText": "Correction does much, but encouragement does more. ",
+      "userId": 7,
+      "quoteAuthor": "Johann Wolfgang von Goethe",
+      "timestamp": "9/20/2019, 11:50:46 AM",
+      "id": 58
+    },
+    {
+      "quoteText": "my quote",
+      "userId": 7,
+      "quoteAuthor": "me",
+      "timestamp": "9/20/2019, 11:50:54 AM",
+      "id": 59
     }
   ],
   "pageQuotes": [
@@ -1497,11 +1528,6 @@
       "id": 38
     },
     {
-      "quoteId": 40,
-      "pageId": 29,
-      "id": 40
-    },
-    {
       "quoteId": 41,
       "pageId": 29,
       "id": 41
@@ -1542,11 +1568,6 @@
       "id": 48
     },
     {
-      "quoteId": 49,
-      "pageId": 29,
-      "id": 49
-    },
-    {
       "quoteId": 50,
       "pageId": 86,
       "id": 50
@@ -1580,6 +1601,21 @@
       "quoteId": 56,
       "pageId": 94,
       "id": 56
+    },
+    {
+      "quoteId": 57,
+      "pageId": 95,
+      "id": 57
+    },
+    {
+      "quoteId": 58,
+      "pageId": 95,
+      "id": 58
+    },
+    {
+      "quoteId": 59,
+      "pageId": 95,
+      "id": 59
     }
   ]
 }
