@@ -77,9 +77,10 @@ class EditQuoteModal extends Component {
             <>
                 <section className="quoteSectionContent">
                     <Icon
-                    type="button"
-                    onClick={this.toggle}
-                    name='edit outline'>
+                        type="button"
+                        onClick={this.toggle}
+                        name='edit outline'
+                        size="large">
                     </Icon>
                 </section>
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import QuoteDataManager from './QuoteDataManager'
 import { Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap'
 import { Button } from 'semantic-ui-react'
+import './Quotes.css'
 
 
 
@@ -62,14 +63,17 @@ class AddRandomQuoteModal extends Component {
        return (
         <>
                 <section className="quoteSectionContent">
-                    <Button
-                        onClick={() => {
-                            this.toggle()
-                            this.refreshRandomQuote()
-                        }}
-                        circular
-                        icon="quote left">
-                    </Button>
+                    <div className="addRandomQuoteModal__button">
+                        <Button
+                            onClick={() => {
+                                this.toggle()
+                                this.refreshRandomQuote()
+                            }}
+                            circular
+                            icon="quote left"
+                        >
+                        </Button>
+                    </div>
                 </section>
                 <div>
                     <Modal
@@ -77,16 +81,20 @@ class AddRandomQuoteModal extends Component {
                         toggle={this.toggle}
                         className={this.props.className}
                     >
-                        <ModalHeader
-                            className="modal__header"
-                            toggle={this.toggle}
-                            >get a quote
-                            <Button
-                                onClick={this.refreshRandomQuote}
-                                circular
-                                icon="quote left"
-                            ></Button>
-                        </ModalHeader>
+                        <div className="modal__header">
+                            <ModalHeader
+
+                                toggle={this.toggle}
+                                >
+                                <div>
+                                    <Button
+                                        onClick={this.refreshRandomQuote}
+                                        circular
+                                        icon="quote left"
+                                    ></Button>
+                                </div>
+                            </ModalHeader>
+                        </div>
                             <ModalBody>
                                 <Input onChange={this.handleFieldChange}
                                         disabled

@@ -45,10 +45,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/quote" render={props => {
-            if (this.isAuthenticated()) {
               return <RandomQuote {...props} />
-            }
-              return <Auth {...this.props} />
           }}
         />
 

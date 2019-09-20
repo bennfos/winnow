@@ -47,3 +47,36 @@
     display: flex;
     justify-content: center;
 }
+
+.editAndDelete {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+
+
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.goToPage {
+    display: flex;
+    justify-content: center;
+}
+
+.searchResult__card {
+    margin: 15px 0 15px 15px;
+}
+
+.searchResult__content {
+    display: flex;
+    align-items: center;
+}
