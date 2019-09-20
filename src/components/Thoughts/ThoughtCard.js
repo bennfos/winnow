@@ -135,7 +135,7 @@ resetThoughtInStateIfNoThoughtInProps = () => {
                 <div className="card__content">
                         <CardTitle
                             className="card__thought">
-                            <p>{this.props.thought}</p>
+                            <p><em>{this.props.thought}</em></p>
                         </CardTitle>
 
                 </div>

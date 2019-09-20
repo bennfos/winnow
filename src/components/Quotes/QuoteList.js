@@ -34,7 +34,7 @@ class QuoteList extends Component {
     render() {
         return (
             <React.Fragment>
-              <div className="quoteList__container">
+              <div className="quoteList__contents">
                 <div>
                   <div className="pageDay__container">
                     <div className="addRandomQuoteModal__container">

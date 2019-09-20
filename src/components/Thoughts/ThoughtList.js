@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import ThoughtCard from "./ThoughtCard";
-import { Label } from 'reactstrap'
+import { Image } from 'semantic-ui-react'
 import './Thoughts.css'
+import logo from '../Auth/agronomy.png'
 
 
 class ThoughtList extends Component {
@@ -27,11 +28,15 @@ class ThoughtList extends Component {
   render() {
     return (
       <React.Fragment>
-        <Label>thought</Label>
-        <div className="thoughtCard__container">
-            <ThoughtCard
-              {...this.props}
-            />
+        <div className="thoughtList__contents">
+          <div className="thoughtImage">
+          <Image className="logo" src={logo}></Image>
+          </div>
+          <div className="thoughtCard__container">
+              <ThoughtCard
+                {...this.props}
+              />
+          </div>
         </div>
       </React.Fragment>
     );

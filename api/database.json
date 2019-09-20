@@ -419,7 +419,7 @@
       "bookId": 8,
       "month": "january",
       "day": "1",
-      "thought": ""
+      "thought": "thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts thoughts "
     },
     {
       "id": 30,
@@ -814,12 +814,12 @@
       "id": 78
     },
     {
+      "id": 79,
       "userId": 7,
       "bookId": 8,
       "month": "february",
       "day": "5",
-      "thought": "",
-      "id": 79
+      "thought": "some thoughtssome thoughtssome thoughtssome thoughtssome thoughtssome thoughtssome thoughtssome thoughtssome thoughtssome thoughtssome thoughtssome thoughtssome thoughtssome thoughtssome thoughtssome thoughtssome thoughts"
     },
     {
       "userId": 7,
@@ -916,6 +916,30 @@
       "day": "28",
       "thought": "",
       "id": 91
+    },
+    {
+      "userId": 7,
+      "bookId": 8,
+      "month": "march",
+      "day": "3",
+      "thought": "",
+      "id": 92
+    },
+    {
+      "userId": 7,
+      "bookId": 8,
+      "month": "august",
+      "day": "4",
+      "thought": "",
+      "id": 93
+    },
+    {
+      "id": 94,
+      "userId": 7,
+      "bookId": 8,
+      "month": "june",
+      "day": "19",
+      "thought": ""
     }
   ],
   "quotes": [
@@ -1254,6 +1278,41 @@
       "quoteAuthor": "Frances de Sales",
       "timestamp": "9/20/2019, 9:43:50 AM",
       "id": 51
+    },
+    {
+      "quoteText": "These days people seek knowledge, not wisdom. Knowledge is of the past, wisdom is of the future. ",
+      "userId": 7,
+      "quoteAuthor": "Vernon Cooper",
+      "timestamp": "9/20/2019, 10:42:03 AM",
+      "id": 52
+    },
+    {
+      "quoteText": "If you do what you've always done, you'll get what youve always gotten.",
+      "userId": 7,
+      "quoteAuthor": "Tony Robbins",
+      "timestamp": "9/20/2019, 10:42:11 AM",
+      "id": 53
+    },
+    {
+      "quoteText": "Correction does much, but encouragement does more. ",
+      "userId": 7,
+      "quoteAuthor": "Johann Wolfgang von Goethe",
+      "timestamp": "9/20/2019, 10:43:17 AM",
+      "id": 54
+    },
+    {
+      "quoteText": "Think as a wise man but communicate in the language of the people. ",
+      "userId": 7,
+      "quoteAuthor": "William Yeats",
+      "timestamp": "9/20/2019, 11:23:48 AM",
+      "id": 55
+    },
+    {
+      "quoteText": "Short words are best and the old words when short are best of all.  ",
+      "userId": 7,
+      "quoteAuthor": "Winston Churchill ",
+      "timestamp": "9/20/2019, 11:23:51 AM",
+      "id": 56
     }
   ],
   "pageQuotes": [
@@ -1496,6 +1555,31 @@
       "quoteId": 51,
       "pageId": 66,
       "id": 51
+    },
+    {
+      "quoteId": 52,
+      "pageId": 92,
+      "id": 52
+    },
+    {
+      "quoteId": 53,
+      "pageId": 93,
+      "id": 53
+    },
+    {
+      "quoteId": 54,
+      "pageId": 79,
+      "id": 54
+    },
+    {
+      "quoteId": 55,
+      "pageId": 94,
+      "id": 55
+    },
+    {
+      "quoteId": 56,
+      "pageId": 94,
+      "id": 56
     }
   ]
 }
