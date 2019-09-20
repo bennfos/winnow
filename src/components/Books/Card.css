@@ -39,7 +39,8 @@
 
 .dayInt__button {
     margin: 10px;
-    min-width: 35px;
+    min-width: 40px;
+    min-height: 40px;
 
 }
 

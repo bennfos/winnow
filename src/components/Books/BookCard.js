@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import EditBookModal from './EditBookModal'
-import { Card, CardText,
-    CardTitle, Col, Row, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
-import { Icon, Confirm } from 'semantic-ui-react'
+import { Card, CardText, CardTitle } from 'reactstrap'
+import { Icon } from 'semantic-ui-react'
 import PageDataManager from '../Pages/PageDataManager'
 import ConfirmBookDeleteModal from './ConfirmDeleteBookModal'
 import './Card.css'

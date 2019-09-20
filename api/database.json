@@ -868,6 +868,54 @@
       "month": "march",
       "day": "3",
       "thought": "asc"
+    },
+    {
+      "userId": 7,
+      "bookId": 8,
+      "month": "june",
+      "day": "3",
+      "thought": "",
+      "id": 86
+    },
+    {
+      "userId": 7,
+      "bookId": 8,
+      "month": "september",
+      "day": "30",
+      "thought": "",
+      "id": 87
+    },
+    {
+      "userId": 7,
+      "bookId": 8,
+      "month": "november",
+      "day": "30",
+      "thought": "",
+      "id": 88
+    },
+    {
+      "userId": 7,
+      "bookId": 8,
+      "month": "december",
+      "day": "31",
+      "thought": "",
+      "id": 89
+    },
+    {
+      "userId": 7,
+      "bookId": 8,
+      "month": "may",
+      "day": "1",
+      "thought": "",
+      "id": 90
+    },
+    {
+      "userId": 7,
+      "bookId": 8,
+      "month": "july",
+      "day": "28",
+      "thought": "",
+      "id": 91
     }
   ],
   "quotes": [
@@ -1054,13 +1102,6 @@
       "id": 26
     },
     {
-      "quoteText": "asc",
-      "userId": 7,
-      "quoteAuthor": "asc",
-      "timestamp": "9/18/2019, 2:41:18 PM",
-      "id": 27
-    },
-    {
       "quoteText": "dsv",
       "userId": 7,
       "quoteAuthor": "sdv",
@@ -1192,6 +1233,27 @@
       "quoteAuthor": "asc",
       "timestamp": "9/19/2019, 11:24:00 PM",
       "id": 48
+    },
+    {
+      "quoteText": "The least movement is of importance to all nature. The entire ocean is affected by a pebble. ",
+      "userId": 7,
+      "quoteAuthor": "Blaise Pascal",
+      "timestamp": "9/20/2019, 9:38:38 AM",
+      "id": 49
+    },
+    {
+      "quoteText": "All perceiving is also thinking, all reasoning is also intuition, all observation is also invention. ",
+      "userId": 7,
+      "quoteAuthor": "Rudolf Arnheim",
+      "timestamp": "9/20/2019, 9:40:53 AM",
+      "id": 50
+    },
+    {
+      "quoteText": "Nothing is so strong as gentleness. Nothing is so gentle as real strength. ",
+      "userId": 7,
+      "quoteAuthor": "Frances de Sales",
+      "timestamp": "9/20/2019, 9:43:50 AM",
+      "id": 51
     }
   ],
   "pageQuotes": [
@@ -1326,11 +1388,6 @@
       "id": 26
     },
     {
-      "quoteId": 27,
-      "pageId": 66,
-      "id": 27
-    },
-    {
       "quoteId": 28,
       "pageId": 67,
       "id": 28
@@ -1424,6 +1481,21 @@
       "quoteId": 48,
       "pageId": 85,
       "id": 48
+    },
+    {
+      "quoteId": 49,
+      "pageId": 29,
+      "id": 49
+    },
+    {
+      "quoteId": 50,
+      "pageId": 86,
+      "id": 50
+    },
+    {
+      "quoteId": 51,
+      "pageId": 66,
+      "id": 51
     }
   ]
 }

@@ -27,9 +27,7 @@ class Dashboard extends Component {
                 borderless
                 inverted
                 fixed="bottom"
-                
                 fluid widths={4}
-
             >
                 <Menu.Item
                   as={Link}
@@ -41,20 +39,20 @@ class Dashboard extends Component {
 
                 <Menu.Item
                   as={Link}
+                  to='/quote'
+                  className="sidebarButton"
+                  icon="quote left"
+                ></Menu.Item>
+
+                <Menu.Item
+                  as={Link}
                   to='/search'
                   className="sidebarButton"
                   icon="search"
                 >
                 </Menu.Item>
 
-                <Menu.Item
-                  as={Link}
-                  to='/quote'
-                  className="sidebarButton"
-                  icon="quote left"
-                >
 
-                </Menu.Item>
                 <Menu.Item
                   as={Link}
                   to='/'

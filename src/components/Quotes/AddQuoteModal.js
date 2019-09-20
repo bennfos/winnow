@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
 import { Icon, Button } from 'semantic-ui-react'
 
 

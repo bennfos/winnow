@@ -4,7 +4,7 @@ import EditQuoteModal from '../Quotes/EditQuoteModal'
 import ConfirmDeleteQuoteModal from './ConfirmDeleteQuoteModal';
 import '../Books/Card.css'
 import './Quotes.css'
-import { NONAME } from 'dns';
+
 
 class QuoteCard extends Component {
     state = {

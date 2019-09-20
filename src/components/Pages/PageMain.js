@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Sidebar, Menu, Button } from 'semantic-ui-react'
+import { Sidebar, Menu } from 'semantic-ui-react'
 import './PageMain.css'
 import PageDataManager from './PageDataManager'
 import PageViews from './PageViews'
@@ -12,6 +12,7 @@ class PageMain extends Component {
         visible: false,
         userId: parseInt(sessionStorage.getItem("credentials")),
         day: "",
+
         month: "",
         modal: false,
         pageId: 0,
@@ -19,7 +20,7 @@ class PageMain extends Component {
         quotes: [],
         thought: "",
         pageQuotes: [],
-        monthOptions: ["january", "february", "march", "april", "may", "june", "july", "august", "september", "november", "december"]
+        monthOptions: ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
     }
 
 
@@ -70,7 +71,7 @@ class PageMain extends Component {
 
                 //THEN, if it does exist, set state with that page's info, and push user to that page's view
                     if (pages.length > 0) {
-                        console.log("constructOrNavigateToNewPage-navigate run")
+                        console.log("navigated to", pages[0].month, pages[0].day)
                         this.setState({
                             pages: pages,
                             month: pages[0].month,
@@ -84,7 +85,6 @@ class PageMain extends Component {
                     } else {
 
                     //else, if the page does not exist yet, construct an object for that page
-                        console.log("constructOrNavigateToNewPage-construct run")
                         const newPage = {
                             userId: parseInt(sessionStorage.getItem("credentials")),
                             bookId: this.props.bookId,
@@ -92,6 +92,7 @@ class PageMain extends Component {
                             day: this.state.day,
                             thought: ""
                         };
+                        console.log("created page for", newPage.month, newPage.day)
                         //post the page object to the database, THEN set state with that page's id, and push user to that page's view
                         PageDataManager.postPage(newPage)
                             .then(page => {
@@ -235,6 +236,7 @@ class PageMain extends Component {
                 >
                 {this.state.monthOptions.map(monthSelect => (
                     <MonthSelect
+                        // key={}
                         setMonth={this.setMonth}
                         toggleSidebar={this.toggleSidebar}
                         toggle={this.toggle}
