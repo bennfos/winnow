@@ -44,8 +44,7 @@ class BookEditModal extends Component {
         event.preventDefault();
 
     //Validates user input
-        if (this.state.title === ""||
-        this.state.description === "") {
+        if (this.state.title === "") {
             alert("Please fill out all fields");
         } else {
             this.setState({ loadingStatus: true });
@@ -84,9 +83,11 @@ class BookEditModal extends Component {
             <>
                 <section className="bookSectionContent">
                 <Icon
-                type="button"
-                onClick={this.toggle}
-                name='edit outline'>
+                    type="button"
+                    onClick={this.toggle}
+                    name='edit outline'
+                    size="large"
+                >
                 </Icon>
                 </section>
                 <div>

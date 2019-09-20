@@ -2,6 +2,7 @@ import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import PageDay from './PageDay'
 import Auth from '../Auth/Auth'
+import './PageMain.css'
 
 
 export default class PageViews extends Component {
@@ -16,6 +17,7 @@ export default class PageViews extends Component {
           exact path="/books/:bookId(\d+)/:pageId(\d+)/:month/:day" render={props => {
             if (this.isAuthenticated()) {
               return <PageDay
+                        className="pusher"
                         pageId={props.match.params.pageId}
                         bookId={props.match.params.bookId}
                         month={props.match.params.month}

@@ -248,7 +248,7 @@ class PageMain extends Component {
             </Sidebar>
 
             </div>
-            <Sidebar.Pusher dimmed={this.state.visible}>
+            <Sidebar.Pusher className="sidebar__pusher" dimmed={this.state.visible}>
                 <PageViews
                 putEditedQuote={this.putEditedQuote}
                 addQuote={this.addQuote}

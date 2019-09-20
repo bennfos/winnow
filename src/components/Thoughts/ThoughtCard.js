@@ -13,7 +13,7 @@ class ThoughtCard extends Component {
         userId: parseInt(sessionStorage.getItem("credentials")),
         thought: "add your thoughts",
         modal: false,
-        loadingStatus: false
+        loadingStatus: false,
     }
 
 //updates state of thought in PageMain to trigger render when ThoughtCard is mounted
@@ -34,6 +34,7 @@ toggle = () => {
         modal: !prevState.modal
     }));
 }
+
 
 //Sets state with input values as fields change
 handleFieldChange = evt => {

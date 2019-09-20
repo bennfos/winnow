@@ -72,7 +72,6 @@ class BookList extends Component {
             <AddBookModal
               {...this.props}
               addBook={this.addBook}
-
             />
           </div>
         </div>
@@ -83,7 +82,6 @@ class BookList extends Component {
               book={book}
               removeBook={this.removeBook}
               putEditedBook={this.putEditedBook}
-
               {...this.props}
             />
           ))}

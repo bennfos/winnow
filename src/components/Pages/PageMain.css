@@ -16,12 +16,17 @@
 
 .sidebar {
     height: 20px;
-    padding: 38px 0 0 0;
+    padding: 45px 0 0 0;
 
 }
 
 .sidebar__menu {
     position: fixed;
     top: 38px;
+}
+
+.sidebar__pusher {
+    display: flex;
+    justify-content: center;
 }
 

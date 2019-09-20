@@ -71,6 +71,14 @@
       "username": "andy",
       "password": "1",
       "id": 9
+    },
+    {
+      "firstName": "f",
+      "lastName": "f",
+      "email": "f",
+      "username": "f",
+      "password": "f",
+      "id": 10
     }
   ],
   "books": [
@@ -145,11 +153,11 @@
       "timestamp": "9/18/2019, 2:25:49 PM"
     },
     {
-      "title": "things my kids say",
+      "id": 11,
       "userId": 7,
+      "title": "shit my kids say",
       "description": "",
-      "timestamp": "9/18/2019, 2:35:40 PM",
-      "id": 11
+      "timestamp": "9/18/2019, 2:35:40 PM"
     },
     {
       "id": 12,
@@ -171,6 +179,13 @@
       "description": "",
       "timestamp": "9/18/2019, 4:09:31 PM",
       "id": 14
+    },
+    {
+      "id": 15,
+      "userId": 10,
+      "title": "f!",
+      "description": "f!",
+      "timestamp": "9/19/2019, 11:22:47 PM"
     }
   ],
   "pages": [
@@ -805,6 +820,54 @@
       "day": "5",
       "thought": "",
       "id": 79
+    },
+    {
+      "userId": 7,
+      "bookId": 8,
+      "month": "march",
+      "day": "5",
+      "thought": "",
+      "id": 80
+    },
+    {
+      "id": 81,
+      "userId": 7,
+      "bookId": 8,
+      "month": "december",
+      "day": "25",
+      "thought": "i love xmas thar are presents"
+    },
+    {
+      "userId": 7,
+      "bookId": 8,
+      "month": "february",
+      "day": "10",
+      "thought": "",
+      "id": 82
+    },
+    {
+      "userId": 7,
+      "bookId": 8,
+      "month": "january",
+      "day": "9",
+      "thought": "",
+      "id": 83
+    },
+    {
+      "id": 84,
+      "userId": 10,
+      "bookId": 15,
+      "month": "january",
+      "day": "1",
+      "thought": "jan1"
+    },
+    {
+      "id": 85,
+      "userId": 10,
+      "bookId": 15,
+      "month": "march",
+      "day": "3",
+      "thought": "asc"
     }
   ],
   "quotes": [
@@ -1094,6 +1157,41 @@
       "quoteAuthor": "Abraham Lincoln",
       "timestamp": "9/19/2019, 11:36:29 AM",
       "id": 43
+    },
+    {
+      "quoteText": "mare xmas",
+      "userId": 7,
+      "quoteAuthor": "",
+      "timestamp": "9/19/2019, 8:05:14 PM",
+      "id": 44
+    },
+    {
+      "quoteText": "I cannot make my days longer so I strive to make them better.",
+      "userId": 7,
+      "quoteAuthor": "Henry David Thoreau",
+      "timestamp": "9/19/2019, 8:05:39 PM",
+      "id": 45
+    },
+    {
+      "quoteText": "ho ho ho",
+      "userId": 7,
+      "quoteAuthor": "marlowe",
+      "timestamp": "9/19/2019, 8:06:33 PM",
+      "id": 46
+    },
+    {
+      "id": 47,
+      "userId": 10,
+      "quoteText": "Man is equally incapable of seeing the nothingness from which he emerges and the infinity in which he is engulfed. ",
+      "quoteAuthor": "Blaise Pascal!",
+      "timestamp": "9/19/2019, 11:23:17 PM"
+    },
+    {
+      "quoteText": "sac",
+      "userId": 10,
+      "quoteAuthor": "asc",
+      "timestamp": "9/19/2019, 11:24:00 PM",
+      "id": 48
     }
   ],
   "pageQuotes": [
@@ -1301,6 +1399,31 @@
       "quoteId": 43,
       "pageId": 32,
       "id": 43
+    },
+    {
+      "quoteId": 44,
+      "pageId": 81,
+      "id": 44
+    },
+    {
+      "quoteId": 45,
+      "pageId": 81,
+      "id": 45
+    },
+    {
+      "quoteId": 46,
+      "pageId": 81,
+      "id": 46
+    },
+    {
+      "quoteId": 47,
+      "pageId": 84,
+      "id": 47
+    },
+    {
+      "quoteId": 48,
+      "pageId": 85,
+      "id": 48
     }
   ]
 }

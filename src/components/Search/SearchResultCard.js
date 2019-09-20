@@ -10,21 +10,23 @@ class SearchResultCard extends Component {
   render() {
     return (
         <>
-            <Card className="card__container">
-                <CardBody className="card__content">
-                    <h4>{this.props.searchResultObject.quoteText}</h4>
-                    <p>{this.props.searchResultObject.quoteAuthor}</p>
-                    <div
-                        className="goToPage"
+            <div className="searchResult__card">
+                <Card className="card__container">
 
-                    >
-                        <p>{this.props.searchResultObject.month} {this.props.searchResultObject.day}</p>
-                        <Button
+                    <CardBody >
+                        <h2>{this.props.searchResultObject.month} {this.props.searchResultObject.day}</h2>
+                        <h4>{this.props.searchResultObject.quoteText}</h4>
+                        <p>{this.props.searchResultObject.quoteAuthor}</p>
+                        <div
+                            className="goToPage"
+                        >
+                            <Button
                             as={Link} to={`/books/${this.props.searchResultObject.bookId}/${this.props.searchResultObject.pageId}/${this.props.searchResultObject.month}/${this.props.searchResultObject.day}`}
                         >go</Button>
-                    </div>
-                </CardBody>
-            </Card>
+                        </div>
+                    </CardBody>
+                </Card>
+            </div>
         </>
     );
     }

@@ -76,10 +76,10 @@ class AddQuoteModal extends Component {
     render(){
         return(
             <>
-                <section className="quoteSectionContent">
+                <section className="addQuote__button">
                     <Icon
                     onClick={this.toggle}
-
+                    size="large"
                     name="add">
                     </Icon>
                 </section>
@@ -116,7 +116,6 @@ class AddQuoteModal extends Component {
                                 setTimeout(this.resetQuoteState, 1000)
                                 }}>save</Button>
                             <Button
-                                secondary
                                 onClick={() => {
                                     this.toggle()
                                     this.resetQuoteState()

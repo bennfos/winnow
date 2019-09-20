@@ -48,13 +48,13 @@ class QuoteCard extends Component {
                     <h4>{this.props.pageQuote.quote.quoteText}</h4>
                     <p>{this.props.pageQuote.quote.quoteAuthor}</p>
                 </div>
-                <div className="card__header">
+                <div className="editAndDelete">
                     <div className={this.state.display}>
-                        <EditQuoteModal
-                            {...this.props}/>
                         <ConfirmDeleteQuoteModal
                             {...this.props}
                         />
+                        <EditQuoteModal
+                            {...this.props}/>
                     </div>
                 </div>
             </div>

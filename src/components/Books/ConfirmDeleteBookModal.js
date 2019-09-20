@@ -30,11 +30,12 @@ class ConfirmDeleteBookModal extends Component {
     render(){
         return(
             <>
-                <section className="eventSectionContent">
+                <section>
                     <Icon
                         className="delete__icon"
                         name="delete"
                         onClick={this.toggle}
+                        size="large"
                     >
                     </Icon>
                 </section>

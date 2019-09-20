@@ -11,7 +11,8 @@ class BookCard extends Component {
     state = {
         pages: [],
         pageId: 0,
-        description: ""
+        description: "",
+        display: "hide"
     }
 
   //Renders an individual news card with an article title, synopsis, link to URL, and edit and delete buttons.
@@ -53,7 +54,17 @@ class BookCard extends Component {
             })
     }
 
-
+    toggleEditAndDelete = () => {
+        if (this.state.display === "hide") {
+          this.setState({
+              display: "show"
+          })
+      } else if (this.state.display === "show") {
+          this.setState({
+              display: "hide"
+          })
+      }
+    }
 
   render() {
     return (
@@ -61,7 +72,7 @@ class BookCard extends Component {
         <div className="bookCard">
 
 
-                    <Card body onClick={() => console.log("clicked")}>
+                    <Card body onClick={() => this.toggleEditAndDelete()}>
                         <div className="card__content">
                             <div className="card__header">
                                 <CardTitle
@@ -75,21 +86,19 @@ class BookCard extends Component {
                                         ></Icon>
                                     </div>
                                 </CardTitle>
-                                <div className="editAndDelete__container">
+                                <div className={this.state.display}>
                                     <ConfirmBookDeleteModal {...this.props}/>
                                     <EditBookModal
                                         {...this.props}
                                         postEditedBook={this.props.postEditedBook}
                                     />
-
-
                                 </div>
                             </div>
                             <CardText>{this.props.book.description}</CardText>
                         </div>
 
                     </Card>
-                
+
         </div>
 
     );

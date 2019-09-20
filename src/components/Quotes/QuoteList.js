@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import QuoteCard from './QuoteCard'
 import AddQuoteModal from './AddQuoteModal'
 import AddRandomQuoteModal from './AddRandomQuoteModal'
-import { Button } from 'semantic-ui-react'
 import './Quotes.css'
 import '../Pages/Pages.css'
 
@@ -35,20 +34,23 @@ class QuoteList extends Component {
     render() {
         return (
             <React.Fragment>
-
               <div className="quoteList__container">
-                <div className="pageDay__container">
-                    <h3>{this.props.month} {this.props.day}</h3>
-                    <AddRandomQuoteModal
-                      {...this.props}
-                    />
-                    <AddQuoteModal
-                        className="addQuoteModal"
-                        {...this.props}
-
+                <div>
+                  <div className="pageDay__container">
+                    <div className="addRandomQuoteModal__container">
+                      <AddRandomQuoteModal
+                            {...this.props}
                       />
+                    </div>
+                    <div className="list__header">
+                        <h1>{this.props.month} {this.props.day}</h1>
+                        <AddQuoteModal
+                            // className="addQuoteModal"
+                            {...this.props}
+                        />
+                    </div>
+                  </div>
                 </div>
-
                   {this.props.pageQuotes.map(pageQuote => (
                 <QuoteCard
                       key={pageQuote.id}
