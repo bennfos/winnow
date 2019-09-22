@@ -47,6 +47,7 @@ class EditQuoteModal extends Component {
             const editedQuote = {
                 id: this.props.pageQuote.quote.id,
                 userId: parseInt(sessionStorage.getItem("credentials")),
+                bookId: this.props.bookId,
                 quoteText: this.state.quoteText,
                 quoteAuthor: this.state.quoteAuthor,
                 timestamp: this.props.pageQuote.quote.timestamp,

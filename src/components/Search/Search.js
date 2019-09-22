@@ -31,7 +31,7 @@ class Search extends Component {
     //1. Get all pageQuotes
         QuoteDataManager.getAllPageQuotes()
             .then(pageQuotes => {
-
+                console.log(pageQuotes)
             //2. THEN map over pageQuotes and return an array of objects with relevant properties
                 const allPagesWithQuotes = pageQuotes.map(pageQuote => {
                     return {

@@ -41,8 +41,9 @@ class AddRandomQuoteModal extends Component {
             this.setState({ loadingStatus: true });
         //creates a new object for the quote that is to be added,
             const newRandomQuote = {
-                quoteText: this.state.quoteText,
                 userId: parseInt(sessionStorage.getItem("credentials")),
+                bookId: this.props.bookId,
+                quoteText: this.state.quoteText,
                 quoteAuthor: this.state.quoteAuthor,
                 timestamp: new Date().toLocaleString()
             };

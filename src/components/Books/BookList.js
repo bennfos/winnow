@@ -92,3 +92,25 @@ class BookList extends Component {
 }
 
 export default BookList;
+
+{/* <Grid columns={3}>
+<Grid.Row centered>
+    <Label />my books
+</Grid.Row>
+<Grid.Row>
+    {this.state.books.map(book => {
+        return (
+            <Grid.Column key={book.id}>
+                <BookCard
+                    key={book.id}
+                    book={book}
+                    removeBook={this.removeBook}
+                    putEditedBook={this.putEditedBook}
+                    {...this.props}
+                />
+
+            </Grid.Column>
+        )
+    })}
+</Grid.Row>
+</Grid> */}

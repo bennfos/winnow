@@ -23,9 +23,9 @@ class PageMain extends Component {
         monthOptions: ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
     }
 
-    getKey = () => {
-        return (this.state.keyCount++)
-    }
+    // getKey = () => {
+    //     return (this.state.keyCount++)
+    // }
 
     toggleSidebar = (event) => {
         if (this.state.visible === false) {
@@ -140,7 +140,8 @@ class PageMain extends Component {
               //construct a new pageQuote object
               const newPageQuote = {
                 quoteId: quote.id,
-                pageId: parseInt(pageId)
+                pageId: parseInt(pageId),
+                bookId: this.props.bookId
               }
               //post the new pageQuote to the database
               QuoteDataManager.savePageQuote(newPageQuote)

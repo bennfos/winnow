@@ -35,6 +35,7 @@
 .cardContent {
     display: flex;
     justify-content: right;
+    height: 400px;
 }
 
 .dayInt__button {
@@ -47,6 +48,7 @@
 .card__body {
     display: flex;
     justify-content: center;
+    min-height: 400px;
 }
 
 .editAndDelete {
@@ -80,4 +82,9 @@
 .searchResult__content {
     display: flex;
     align-items: center;
+}
+
+.bookCard {
+    width: 280px;
+
 }
