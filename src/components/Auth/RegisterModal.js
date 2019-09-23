@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
 import { Button } from 'semantic-ui-react'
 import UserDataManager from './UserDataManager';
+import BookDataManager from '../Books/BookDataManager'
 import './Login.css';
 
 class RegisterModal extends React.Component {
@@ -61,11 +62,24 @@ class RegisterModal extends React.Component {
             username: this.state.username,
             password: this.state.password
         }
-            //post new user to database and close modal
+
+            //post new user to database,
         UserDataManager.postUser(newUserObject)
-            .then(() =>
-                alert("welcome to winnow. please sign in."))
-            .then(()=>this.toggle())
+            .then(user => {
+
+            //create first book for user, and post, then close modal.
+                const firstBookObject = {
+                    userId: user.id,
+                    title: "quotebook",
+                    description: "welcome to winnow. we've created a book for you with some quotes to inspire you each day. click to open, then begin adding, editing, and recording your thoughts. (also, feel free delete or edit this description, or create a new book from scratch.)",
+                    timestamp: new Date().toLocaleString()
+                }
+                BookDataManager.postBook(firstBookObject)
+                .then(()=> {
+                    alert("welcome to winnow. please sign in.")
+                    this.toggle()
+                })
+            })
         }
     }
 

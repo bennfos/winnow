@@ -15,6 +15,14 @@
       "username": "i",
       "password": "i",
       "id": 2
+    },
+    {
+      "firstName": "a",
+      "lastName": "a",
+      "email": "a",
+      "username": "a",
+      "password": "a",
+      "id": 3
     }
   ],
   "books": [
@@ -31,6 +39,13 @@
       "description": "new",
       "timestamp": "9/22/2019, 8:19:35 PM",
       "id": 2
+    },
+    {
+      "userId": 3,
+      "title": "quotebook",
+      "description": "welcome to winnow. we've created a book for you with some quotes to inspire you each day. click to open, then begin adding, editing, and recording your thoughts. (also, feel free delete or edit this description, or create a new book from scratch.)",
+      "timestamp": "9/23/2019, 2:11:24 PM",
+      "id": 3
     }
   ],
   "pages": [
@@ -65,6 +80,22 @@
       "day": "4",
       "thought": "",
       "id": 4
+    },
+    {
+      "userId": 3,
+      "bookId": 3,
+      "month": "september",
+      "day": "23",
+      "thought": "",
+      "id": 5
+    },
+    {
+      "userId": 3,
+      "bookId": 3,
+      "month": "february",
+      "day": "1",
+      "thought": "",
+      "id": 6
     }
   ],
   "quotes": [
@@ -91,6 +122,22 @@
       "quoteAuthor": "Voltaire ",
       "timestamp": "9/21/2019, 6:37:09 PM",
       "id": 4
+    },
+    {
+      "userId": 3,
+      "bookId": 3,
+      "quoteText": "asc",
+      "quoteAuthor": "asc",
+      "timestamp": "9/23/2019, 2:12:10 PM",
+      "id": 5
+    },
+    {
+      "userId": 3,
+      "bookId": 3,
+      "quoteText": "Id rather regret the things that I have done than the things that I have not done. ",
+      "quoteAuthor": "Lucille Ball ",
+      "timestamp": "9/23/2019, 2:12:12 PM",
+      "id": 6
     }
   ],
   "pageQuotes": [
@@ -111,6 +158,18 @@
       "pageId": 1,
       "bookId": 1,
       "id": 4
+    },
+    {
+      "quoteId": 5,
+      "pageId": 5,
+      "bookId": 3,
+      "id": 5
+    },
+    {
+      "quoteId": 6,
+      "pageId": 5,
+      "bookId": 3,
+      "id": 6
     }
   ]
 }
