@@ -29,13 +29,6 @@ class Dashboard extends Component {
                 fixed="bottom"
                 fluid widths={4}
             >
-                <Menu.Item
-                  as={Link}
-                  to='/books'
-                  className="sidebarButton"
-                  icon="book"
-                >
-                </Menu.Item>
 
                 <Menu.Item
                   as={Link}
@@ -43,6 +36,14 @@ class Dashboard extends Component {
                   className="sidebarButton"
                   icon="quote left"
                 ></Menu.Item>
+
+                <Menu.Item
+                  as={Link}
+                  to='/books'
+                  className="sidebarButton"
+                  icon="book"
+                >
+                </Menu.Item>
 
                 <Menu.Item
                   as={Link}

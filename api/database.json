@@ -7,15 +7,30 @@
       "username": "bennfos",
       "password": ";lpo09po",
       "id": 1
+    },
+    {
+      "firstName": "i",
+      "lastName": "i",
+      "email": "i",
+      "username": "i",
+      "password": "i",
+      "id": 2
     }
   ],
   "books": [
     {
-      "title": "my quotebook",
+      "id": 1,
       "userId": 1,
-      "description": "",
-      "timestamp": "9/21/2019, 12:26:25 PM",
-      "id": 1
+      "title": "my quotebook",
+      "description": "these are the quotes that inspire me",
+      "timestamp": "9/21/2019, 12:26:25 PM"
+    },
+    {
+      "title": "new",
+      "userId": 1,
+      "description": "new",
+      "timestamp": "9/22/2019, 8:19:35 PM",
+      "id": 2
     }
   ],
   "pages": [
@@ -26,6 +41,30 @@
       "day": "1",
       "thought": "",
       "id": 1
+    },
+    {
+      "userId": 1,
+      "bookId": 1,
+      "month": "september",
+      "day": "23",
+      "thought": "",
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "bookId": 2,
+      "month": "september",
+      "day": "23",
+      "thought": "",
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "bookId": 1,
+      "month": "march",
+      "day": "4",
+      "thought": "",
+      "id": 4
     }
   ],
   "quotes": [

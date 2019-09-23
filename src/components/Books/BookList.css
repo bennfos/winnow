@@ -6,6 +6,22 @@
     margin: 40px 30px 18px 30px;
 }
 
+.bookList__contents {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 60%;
+    flex-wrap: wrap;
+    align-items: center;
+
+
+}
+
+.bookList__container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 75px 0;
+}
+
 .addBookModal {
     margin: 13px
 }

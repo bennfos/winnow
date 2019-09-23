@@ -23,10 +23,6 @@ class PageMain extends Component {
         monthOptions: ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
     }
 
-    // getKey = () => {
-    //     return (this.state.keyCount++)
-    // }
-
     toggleSidebar = (event) => {
         if (this.state.visible === false) {
           this.setState({ visible: true })

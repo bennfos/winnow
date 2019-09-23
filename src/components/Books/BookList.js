@@ -3,6 +3,7 @@ import BookCard from "./BookCard";
 import BookDataManager from "./BookDataManager";
 import AddBookModal from "./AddBookModal";
 import './BookList.css'
+import { Grid, Label } from "semantic-ui-react";
 
 
 class BookList extends Component {
@@ -10,15 +11,22 @@ class BookList extends Component {
   state = {
     books: [],
     description: "",
-    userId: parseInt(sessionStorage.getItem("credentials"))
+    userId: parseInt(sessionStorage.getItem("credentials")),
+    months: ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"],
+    currentMonth: "",
+    currentDate: ""
   };
 
   //When component mounts, get all user's books and set state of with all existsing books
   componentDidMount() {
+    const d = new Date();
     BookDataManager.getAllBooks(this.state.userId).then(books => {
         this.setState({
-          books: books
+          books: books,
+          currentMonth: this.state.months[d.getMonth()],
+          currentDate: d.getDate().toString()
         });
+        console.log(this.state.currentMonth, this.state.currentDate)
       });
     };
 
@@ -66,25 +74,31 @@ class BookList extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="bookList__header">
-          <h1>my books</h1>
-          <div className="addBookModal">
-            <AddBookModal
-              {...this.props}
-              addBook={this.addBook}
-            />
-          </div>
-        </div>
-        <div className="bookCards__container">
-          {this.state.books.map(book => (
-            <BookCard
-              key={book.id}
-              book={book}
-              removeBook={this.removeBook}
-              putEditedBook={this.putEditedBook}
-              {...this.props}
-            />
-          ))}
+        <div className="bookList__container">
+
+              <div className="bookList__header">
+                <h1>my books</h1>
+              </div>
+              <div className="bookList__contents">
+                {this.state.books.map(book => {
+                  return (
+                      <BookCard
+                        key={book.id}
+                        book={book}
+                        removeBook={this.removeBook}
+                        currentMonth = {this.state.currentMonth}
+                        currentDate = {this.state.currentDate}
+                        putEditedBook={this.putEditedBook}
+                        {...this.props}
+                      />
+                  )
+                })}
+
+                  <AddBookModal
+                    {...this.props}
+                    addBook={this.addBook}
+                  />
+              </div>
         </div>
       </React.Fragment>
     );
@@ -93,24 +107,3 @@ class BookList extends Component {
 
 export default BookList;
 
-{/* <Grid columns={3}>
-<Grid.Row centered>
-    <Label />my books
-</Grid.Row>
-<Grid.Row>
-    {this.state.books.map(book => {
-        return (
-            <Grid.Column key={book.id}>
-                <BookCard
-                    key={book.id}
-                    book={book}
-                    removeBook={this.removeBook}
-                    putEditedBook={this.putEditedBook}
-                    {...this.props}
-                />
-
-            </Grid.Column>
-        )
-    })}
-</Grid.Row>
-</Grid> */}

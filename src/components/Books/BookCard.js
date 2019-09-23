@@ -21,22 +21,22 @@ class BookCard extends Component {
   constructOrNavigateToFirstPage = event => {
     event.preventDefault();
 //Validates user input
-        PageDataManager.checkPages(this.props.book.id, "january", "1")
+        PageDataManager.checkPages(this.props.book.id, this.props.currentMonth, this.props.currentDate)
             .then(pages => {
                 if (pages.length > 0) {
                     this.setState({
                         pages: pages,
                         pageId: pages[0].id
                     })
-                    this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}/january/1`)
+                    this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}/${this.props.currentMonth}/${this.props.currentDate}`)
                 } else {
 
                 //creates a new object for the edited news item,
                     const newPage = {
                         userId: parseInt(sessionStorage.getItem("credentials")),
                         bookId: this.props.book.id,
-                        month: "january",
-                        day: "1",
+                        month: this.props.currentMonth,
+                        day: this.props.currentDate,
                         thought: ""
                     };
                     //posts the object to the database, gets all news items, updates state of news array
@@ -47,7 +47,7 @@ class BookCard extends Component {
                                 pageId: page.id
                             })
                             console.log("pageId: ", this.state.pageId)
-                            this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}/january/1`)
+                            this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}/${this.props.currentMonth}/${this.props.currentDate}`)
                         })
                 }
             })
@@ -68,37 +68,31 @@ class BookCard extends Component {
   render() {
     return (
 
-        <div className="bookCard">
 
-
-                    <Card body onClick={() => this.toggleEditAndDelete()}>
-                        <div className="card__content">
-                            <div className="card__header">
-                                <CardTitle
-                                    onClick={this.constructOrNavigateToFirstPage}
-                                    className="cardTitle">
-                                    <h2>{this.props.book.title}</h2>
-                                    <div className="open__button">
-                                        <Icon
-                                            name="chevron right"
-                                            size="large"
-                                        ></Icon>
-                                    </div>
-                                </CardTitle>
-                                <div className={this.state.display}>
-                                    <ConfirmBookDeleteModal {...this.props}/>
-                                    <EditBookModal
-                                        {...this.props}
-                                        postEditedBook={this.props.postEditedBook}
-                                    />
-                                </div>
-                            </div>
-                            <CardText>{this.props.book.description}</CardText>
+            <div className="bookCard" onClick={() => this.toggleEditAndDelete()}>
+                <div className="card__content">
+                    <div className={this.state.display}>
+                            <ConfirmBookDeleteModal {...this.props}/>
+                            <EditBookModal
+                                {...this.props}
+                                postEditedBook={this.props.postEditedBook}
+                            />
                         </div>
+                        <div className="card__title"
+                            onClick={this.constructOrNavigateToFirstPage}
+                        >
+                            <h4>{this.props.book.title}</h4>
+                            <div className="open__button">
+                                <Icon
+                                    name="chevron right"
 
-                    </Card>
+                                ></Icon>
+                            </div>
+                        </div>
+                    <p><em>{this.props.book.description}</em></p>
+                </div>
+            </div>
 
-        </div>
 
     );
   }
