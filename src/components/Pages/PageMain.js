@@ -97,10 +97,24 @@ class PageMain extends Component {
                                 this.setState({
                                     pageId: page.id
                                 })
+                            })
+                            //then get a random quote
+                            .then(QuoteDataManager.getRandomQuote)
+
+                            //then post quote for that page
+                                .then(quote => {
+                                    const initialQuote = {
+                                        userId: parseInt(sessionStorage.getItem("credentials")),
+                                        bookId: this.props.bookId,
+                                        quoteText: quote.quoteText,
+                                        quoteAuthor: quote.quoteAuthor,
+                                        timestamp: new Date().toLocaleString()
+                                    };
+                                    this.addQuote(initialQuote, this.state.pageId)
+                                })
                                 this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}/${this.state.month}/${this.state.day}`)
                                 this.toggle()
                                 this.toggleSidebar()
-                            })
                     }
             })
         }

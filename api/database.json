@@ -23,6 +23,22 @@
       "username": "a",
       "password": "a",
       "id": 3
+    },
+    {
+      "firstName": "b",
+      "lastName": "b",
+      "email": "b",
+      "username": "b",
+      "password": "b",
+      "id": 4
+    },
+    {
+      "firstName": "c",
+      "lastName": "c",
+      "email": "c",
+      "username": "c",
+      "password": "c",
+      "id": 5
     }
   ],
   "books": [
@@ -46,6 +62,20 @@
       "description": "welcome to winnow. we've created a book for you with some quotes to inspire you each day. click to open, then begin adding, editing, and recording your thoughts. (also, feel free delete or edit this description, or create a new book from scratch.)",
       "timestamp": "9/23/2019, 2:11:24 PM",
       "id": 3
+    },
+    {
+      "userId": 4,
+      "title": "quotebook",
+      "description": "welcome to winnow. we've created a book for you with some quotes to inspire you each day. click to open, then begin adding, editing, and recording your thoughts. (also, feel free delete or edit this description, or create a new book from scratch.)",
+      "timestamp": "9/23/2019, 2:26:11 PM",
+      "id": 4
+    },
+    {
+      "userId": 5,
+      "title": "quotebook",
+      "description": "welcome to winnow. we've created a book for you with some quotes to inspire you each day. click to open, then begin adding, editing, and recording your thoughts. (also, feel free delete or edit this description, or create a new book from scratch.)",
+      "timestamp": "9/23/2019, 2:27:01 PM",
+      "id": 5
     }
   ],
   "pages": [
@@ -96,6 +126,46 @@
       "day": "1",
       "thought": "",
       "id": 6
+    },
+    {
+      "userId": 4,
+      "bookId": 4,
+      "month": "september",
+      "day": "23",
+      "thought": "",
+      "id": 7
+    },
+    {
+      "userId": 5,
+      "bookId": 5,
+      "month": "september",
+      "day": "23",
+      "thought": "",
+      "id": 8
+    },
+    {
+      "userId": 5,
+      "bookId": 5,
+      "month": "february",
+      "day": "1",
+      "thought": "",
+      "id": 9
+    },
+    {
+      "userId": 5,
+      "bookId": 5,
+      "month": "april",
+      "day": "4",
+      "thought": "",
+      "id": 10
+    },
+    {
+      "userId": 5,
+      "bookId": 5,
+      "month": "march",
+      "day": "2",
+      "thought": "",
+      "id": 11
     }
   ],
   "quotes": [
@@ -138,6 +208,30 @@
       "quoteAuthor": "Lucille Ball ",
       "timestamp": "9/23/2019, 2:12:12 PM",
       "id": 6
+    },
+    {
+      "userId": 5,
+      "bookId": 5,
+      "quoteText": "To keep the body in good health is a duty... otherwise we shall not be able to keep our mind strong and clear.",
+      "quoteAuthor": "Buddha",
+      "timestamp": "9/23/2019, 2:27:33 PM",
+      "id": 7
+    },
+    {
+      "userId": 5,
+      "bookId": 5,
+      "quoteText": "What is a weed? A plant whose virtues have not yet been discovered. ",
+      "quoteAuthor": "Ralph Emerson",
+      "timestamp": "9/23/2019, 2:28:33 PM",
+      "id": 8
+    },
+    {
+      "userId": 5,
+      "bookId": 5,
+      "quoteText": "The most beautiful things in the world cannot be seen or even touched. They must be felt with the heart.",
+      "quoteAuthor": "Helen Keller",
+      "timestamp": "9/23/2019, 2:28:41 PM",
+      "id": 9
     }
   ],
   "pageQuotes": [
@@ -170,6 +264,24 @@
       "pageId": 5,
       "bookId": 3,
       "id": 6
+    },
+    {
+      "quoteId": 7,
+      "pageId": null,
+      "bookId": 5,
+      "id": 7
+    },
+    {
+      "quoteId": 8,
+      "pageId": 10,
+      "bookId": 5,
+      "id": 8
+    },
+    {
+      "quoteId": 9,
+      "pageId": 11,
+      "bookId": 5,
+      "id": 9
     }
   ]
 }
