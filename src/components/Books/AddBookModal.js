@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
 import { Icon, Button } from 'semantic-ui-react'
+import '../Books/Card.css'
 
 class AddBookModal extends Component {
 
@@ -31,7 +32,7 @@ class AddBookModal extends Component {
     };
 
     constructNewBook = event => {
-        
+
     //Validates user input
         if (this.state.title === "") {
             alert("please give your new quoebook a title");
@@ -65,16 +66,20 @@ clearDescriptionInState = () => {
     render(){
         return(
             <>
-                <section className="eventSectionContent">
-                    <Icon
-                    className="addBookModal__button"
-                    name="add"
-                    onClick={() => {
-                        this.toggle()
-                    }}
-                    size="large">
-                    </Icon>
-                </section>
+                <div className="addCard" onClick={() => this.toggle()}>
+                    <div className="addCard__content">
+                        <div className="add__icon">
+                            <Icon
+                                className="addBookModal__button"
+                                name="add"
+                                onClick={() => {
+                                    this.toggle()
+                                }}
+                                size="large">
+                            </Icon>
+                        </div>
+                    </div>
+                </div>
                 <div>
                     <Modal
                         isOpen={this.state.modal}
@@ -106,7 +111,7 @@ clearDescriptionInState = () => {
                                     this.clearDescriptionInState()
                             }}
                             >save</Button>
-                            <Button secondary onClick={this.toggle}>cancel</Button>
+                            <Button onClick={this.toggle}>cancel</Button>
                         </ModalFooter>
                     </Modal>
                 </div>

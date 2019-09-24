@@ -15,6 +15,14 @@
 
 }
 
+.quoteList__contents {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 0 40px 15px;
+
+}
+
 .list__header {
     display: flex;
     flex-direction: row;

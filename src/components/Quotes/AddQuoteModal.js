@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
 import { Icon, Button } from 'semantic-ui-react'
 
 
@@ -44,8 +44,9 @@ class AddQuoteModal extends Component {
 
         //creates a new object for the quote that is to be added,
             const newQuote = {
-                quoteText: this.state.quoteText,
                 userId: parseInt(sessionStorage.getItem("credentials")),
+                bookId: this.props.bookId,
+                quoteText: this.state.quoteText,
                 quoteAuthor: this.state.quoteAuthor,
                 timestamp: new Date().toLocaleString()
             };

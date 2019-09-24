@@ -35,7 +35,7 @@ class ConfirmDeleteBookModal extends Component {
                         className="delete__icon"
                         name="delete"
                         onClick={this.toggle}
-                        size="large"
+                        
                     >
                     </Icon>
                 </section>

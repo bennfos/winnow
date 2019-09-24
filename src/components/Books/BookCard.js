@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import EditBookModal from './EditBookModal'
-import { Card, CardText,
-    CardTitle, Col, Row, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
-import { Icon, Confirm } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
 import PageDataManager from '../Pages/PageDataManager'
+import QuoteDataManager from '../Quotes/QuoteDataManager'
 import ConfirmBookDeleteModal from './ConfirmDeleteBookModal'
 import './Card.css'
 
@@ -15,40 +14,73 @@ class BookCard extends Component {
         display: "hide"
     }
 
-  //Renders an individual news card with an article title, synopsis, link to URL, and edit and delete buttons.
+    postQuote = (quoteObject) => {
+        //post new quote object to the database
+
+        };
 
 
 
-  constructOrNavigateToFirstPage = event => {
-    event.preventDefault();
+  constructOrNavigateToFirstPage = () => {
 //Validates user input
-        PageDataManager.checkPages(this.props.book.id, "january", "1")
+        PageDataManager.checkPages(this.props.book.id, this.props.currentMonth, this.props.currentDate)
             .then(pages => {
                 if (pages.length > 0) {
+                    console.log("navigating to", this.props.currentMonth, this.props.currentDate)
                     this.setState({
                         pages: pages,
                         pageId: pages[0].id
                     })
-                    this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}/january/1`)
+                    this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}/${this.props.currentMonth}/${this.props.currentDate}`)
                 } else {
-
+                    console.log("creating page for", this.props.currentMonth, this.props.currentDate)
                 //creates a new object for the edited news item,
                     const newPage = {
                         userId: parseInt(sessionStorage.getItem("credentials")),
                         bookId: this.props.book.id,
-                        month: "january",
-                        day: "1",
+                        month: this.props.currentMonth,
+                        day: this.props.currentDate,
                         thought: ""
                     };
+                    console.log("created", newPage)
                     //posts the object to the database, gets all news items, updates state of news array
                     PageDataManager.postPage(newPage)
                         .then(page => {
-                            console.log("Page:", page)
+                            console.log(page)
                             this.setState({
                                 pageId: page.id
                             })
-                            console.log("pageId: ", this.state.pageId)
-                            this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}/january/1`)
+                            console.log("pageId for new page:", this.state.pageId)
+                        //then get a random quote
+                            QuoteDataManager.getRandomQuote()
+
+                        //then post quote for that page
+                                .then(quote => {
+                                    console.log("random quote", quote.quoteText)
+                                    const initialQuote = {
+                                        userId: parseInt(sessionStorage.getItem("credentials")),
+                                        bookId: this.props.book.id,
+                                        quoteText: quote.quoteText,
+                                        quoteAuthor: quote.quoteAuthor,
+                                        timestamp: new Date().toLocaleString()
+                                    };
+                                    QuoteDataManager.postQuote(initialQuote)
+                                        .then(quote => {
+                                            console.log("posted", quote)
+                                    //construct a new pageQuote object
+                                        const newPageQuote = {
+                                            quoteId: quote.id,
+                                            pageId: this.state.pageId,
+                                            bookId: this.props.book.id
+                                        }
+                                    //post the new pageQuote to the database
+                                        QuoteDataManager.savePageQuote(newPageQuote)
+                                        })
+                                        .then(() => {
+                                            console.log("pushing...")
+                                            this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}/${this.props.currentMonth}/${this.props.currentDate}`)
+                                        })
+                                })
                         })
                 }
             })
@@ -69,37 +101,31 @@ class BookCard extends Component {
   render() {
     return (
 
-        <div className="bookCard">
 
-
-                    <Card body onClick={() => this.toggleEditAndDelete()}>
-                        <div className="card__content">
-                            <div className="card__header">
-                                <CardTitle
-                                    onClick={this.constructOrNavigateToFirstPage}
-                                    className="cardTitle">
-                                    <h2>{this.props.book.title}</h2>
-                                    <div className="open__button">
-                                        <Icon
-                                            name="chevron right"
-                                            size="large"
-                                        ></Icon>
-                                    </div>
-                                </CardTitle>
-                                <div className={this.state.display}>
-                                    <ConfirmBookDeleteModal {...this.props}/>
-                                    <EditBookModal
-                                        {...this.props}
-                                        postEditedBook={this.props.postEditedBook}
-                                    />
-                                </div>
-                            </div>
-                            <CardText>{this.props.book.description}</CardText>
+            <div className="bookCard" onClick={() => this.toggleEditAndDelete()}>
+                <div className="card__content">
+                    <div className={this.state.display}>
+                            <ConfirmBookDeleteModal {...this.props}/>
+                            <EditBookModal
+                                {...this.props}
+                                postEditedBook={this.props.postEditedBook}
+                            />
                         </div>
+                        <div className="card__title"
+                            onClick={this.constructOrNavigateToFirstPage}
+                        >
+                            <h4>{this.props.book.title}</h4>
+                            <div className="open__button">
+                                <Icon
+                                    name="chevron right"
 
-                    </Card>
+                                ></Icon>
+                            </div>
+                        </div>
+                    <p><em>{this.props.book.description}</em></p>
+                </div>
+            </div>
 
-        </div>
 
     );
   }

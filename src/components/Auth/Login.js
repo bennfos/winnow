@@ -27,7 +27,7 @@ class Login extends Component {
       checkedUsers => {
         if (checkedUsers.length > 0) {
           sessionStorage.setItem("credentials", checkedUsers[0].id);
-          this.props.history.push("/books");
+          this.props.history.push("/quote");
         } else {
           alert("Invalid username or password.");
         }

@@ -3,6 +3,26 @@
     flex-direction: row;
 }
 
+.thoughtList__contents {
+    text-align: center;
+}
+
+
+.thoughtImage {
+    display: inline-block;
+    margin: 15px
+}
+
 .thoughtCard {
-    margin: 0 15px 0 0
+    margin: 0 15px 0 0;
+    text-align: left;
+}
+
+.card {
+    background-color: #f7f7f7 !important;
+}
+
+.logo {
+    width: 36px;
+    height: 36px;
 }

@@ -9,13 +9,19 @@ class MonthSelect extends Component {
 
 //Defines initial state
     state = {
+        days: [],
         modal: false,
-        day: 0,
-        days: []
     };
 
+    //toggles modal
+    toggle = () => {
+        this.setState(prevState => ({
+            modal: !prevState.modal
+        }));
+    }
+
     pushDaysOfMonth = () => {
-        console.log(this.props.monthSelect)
+
         const monthSelected = this.props.monthSelect
         const daysOfMonth = []
         for (let i = 1; i <= 31; i++) {
@@ -30,14 +36,6 @@ class MonthSelect extends Component {
         this.setState({
             days: daysOfMonth
         })
-    }
-
-
-    //toggles modal
-    toggle = () => {
-        this.setState(prevState => ({
-            modal: !prevState.modal
-        }));
     }
 
     render(){
@@ -66,7 +64,7 @@ class MonthSelect extends Component {
                                 <Grid.Row>
                                     {this.state.days.map(day => {
                                         return (
-                                            <Grid.Column key={day} >
+                                            <Grid.Column key={day}>
                                                 <Input
                                                     id="day"
                                                     type="button"

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Card, CardBody } from 'reactstrap'
-import { Icon, Button } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 import '../Books/Card.css'
 
 class SearchResultCard extends Component {

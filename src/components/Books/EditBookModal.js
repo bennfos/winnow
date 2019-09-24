@@ -86,7 +86,7 @@ class BookEditModal extends Component {
                     type="button"
                     onClick={this.toggle}
                     name='edit outline'
-                    size="large"
+
                 >
                 </Icon>
                 </section>
@@ -119,7 +119,7 @@ class BookEditModal extends Component {
                     </ModalBody>
                 <ModalFooter>
                     <Button primary type="button" onClick={this.editExistingBook}>save</Button>{' '}
-                    <Button secondary type="button" onClick={this.toggle}>cancel</Button>
+                    <Button type="button" onClick={this.toggle}>cancel</Button>
                 </ModalFooter>
             </Modal>
         </div>

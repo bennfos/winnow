@@ -7,17 +7,40 @@
 
 }
 
-
-.editAndDelete__container {
+.bookCard {
     display: flex;
-    flex-direction: row;
-    display: inline-block;
-    margin: 20px;
+    flex-wrap: wrap;
+    min-width: 220px;
+    max-width: 200px;
+    min-height: 330px;
+    border: 1px solid lightgray;
+    margin: 15px 20px 15px 60px;
+    border-radius: .25rem;
+    background-color: #f7f7f7;
 }
 
 
-.cardTitle {
+
+.addCard {
+    display: flex;
+    width: 220px;
+    height: 330px;
+    border: 1.5px dashed grey;
+    margin: 15px 20px 15px 60px;
+    border-radius: .25rem;
+    background-color: #f7f7f7;
+    opacity: 0.35;
+}
+
+.addCard__content {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 46%
+}
+
+.card__title {
     display:flex;
+    margin: 20px 5px;
 }
 
 .open__button {
@@ -32,29 +55,24 @@
     margin: 30px 15px 30px 0
 }
 
-.cardContent {
+.card__content {
     display: flex;
-    justify-content: right;
+    flex-direction: column;
+    justify-content: left;
+
 }
 
 .dayInt__button {
     margin: 10px;
-    min-width: 35px;
+    min-width: 40px;
+    min-height: 40px;
 
 }
 
 .card__body {
     display: flex;
     justify-content: center;
-}
-
-.editAndDelete {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    text-align: center;
-
-
+    min-height: 400px;
 }
 
 .hide {
@@ -63,8 +81,8 @@
 
 .show {
     display: flex;
-    flex-direction: column;
-    text-align: center;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
 .goToPage {
@@ -80,3 +98,4 @@
     display: flex;
     align-items: center;
 }
+

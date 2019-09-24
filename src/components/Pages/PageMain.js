@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Sidebar, Menu, Button } from 'semantic-ui-react'
+import { Sidebar, Menu } from 'semantic-ui-react'
 import './PageMain.css'
 import PageDataManager from './PageDataManager'
 import PageViews from './PageViews'
@@ -12,6 +12,7 @@ class PageMain extends Component {
         visible: false,
         userId: parseInt(sessionStorage.getItem("credentials")),
         day: "",
+        keyCount: 0,
         month: "",
         modal: false,
         pageId: 0,
@@ -19,10 +20,9 @@ class PageMain extends Component {
         quotes: [],
         thought: "",
         pageQuotes: [],
-        monthOptions: ["january", "february", "march", "april", "may", "june", "july", "august", "september", "november", "december"]
+        monthOptions: ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"],
+        loadingStatus: false
     }
-
-
 
     toggleSidebar = (event) => {
         if (this.state.visible === false) {
@@ -70,7 +70,7 @@ class PageMain extends Component {
 
                 //THEN, if it does exist, set state with that page's info, and push user to that page's view
                     if (pages.length > 0) {
-                        console.log("constructOrNavigateToNewPage-navigate run")
+                        console.log("navigated to", pages[0].month, pages[0].day)
                         this.setState({
                             pages: pages,
                             month: pages[0].month,
@@ -84,7 +84,6 @@ class PageMain extends Component {
                     } else {
 
                     //else, if the page does not exist yet, construct an object for that page
-                        console.log("constructOrNavigateToNewPage-construct run")
                         const newPage = {
                             userId: parseInt(sessionStorage.getItem("credentials")),
                             bookId: this.props.bookId,
@@ -92,16 +91,47 @@ class PageMain extends Component {
                             day: this.state.day,
                             thought: ""
                         };
+                        console.log("created page for", newPage.month, newPage.day)
                         //post the page object to the database, THEN set state with that page's id, and push user to that page's view
                         PageDataManager.postPage(newPage)
                             .then(page => {
+                                console.log("posted new page", page.id)
                                 this.setState({
                                     pageId: page.id
                                 })
-                                this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}/${this.state.month}/${this.state.day}`)
-                                this.toggle()
-                                this.toggleSidebar()
                             })
+                            //then get a random quote
+                            QuoteDataManager.getRandomQuote()
+
+                            //then post quote for that page
+                                .then(quote => {
+                                    console.log("got random quote:", quote.quoteText)
+                                    const initialQuote = {
+                                        userId: parseInt(sessionStorage.getItem("credentials")),
+                                        bookId: this.props.bookId,
+                                        quoteText: quote.quoteText,
+                                        quoteAuthor: quote.quoteAuthor,
+                                        timestamp: new Date().toLocaleString()
+                                    };
+                                    QuoteDataManager.postQuote(initialQuote)
+                                        .then(quote => {
+                                        console.log("random quote posted:", quote.quoteText)
+                                    //construct a new pageQuote object
+                                        const newPageQuote = {
+                                            quoteId: quote.id,
+                                            pageId: this.state.pageId,
+                                            bookId: this.props.bookId
+                                        }
+                                    //post the new pageQuote to the database
+                                        QuoteDataManager.savePageQuote(newPageQuote)
+                                            .then(()=> {
+                                                console.log("pushing...")
+                                                this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}/${this.state.month}/${this.state.day}`)
+                                                this.toggle()
+                                                this.toggleSidebar()
+                                            })
+                                        })
+                                })
                     }
             })
         }
@@ -134,14 +164,17 @@ class PageMain extends Component {
         //post new quote object to the database
         return QuoteDataManager.postQuote(quoteObject)
             .then(quote => {
+                console.log("quote posted:", quote.quoteText)
               //construct a new pageQuote object
               const newPageQuote = {
                 quoteId: quote.id,
-                pageId: parseInt(pageId)
+                pageId: parseInt(pageId),
+                bookId: this.props.bookId
               }
               //post the new pageQuote to the database
               QuoteDataManager.savePageQuote(newPageQuote)
                 .then(() => {
+                    console.log("new pageQuote created and posted")
                   QuoteDataManager.getPageQuotes(pageId)
                     .then(pageQuotes => {
                       this.setState({
@@ -235,6 +268,7 @@ class PageMain extends Component {
                 >
                 {this.state.monthOptions.map(monthSelect => (
                     <MonthSelect
+                        // key={this.getKey()}
                         setMonth={this.setMonth}
                         toggleSidebar={this.toggleSidebar}
                         toggle={this.toggle}
