@@ -139,7 +139,7 @@ class RegisterModal extends React.Component {
                             onClick={this.handleRegister}
                             >Sign up</Button>
 
-                        <Button secondary onClick={this.toggle}>Cancel</Button>
+                        <Button onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
             </div>

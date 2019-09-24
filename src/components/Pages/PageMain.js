@@ -20,7 +20,8 @@ class PageMain extends Component {
         quotes: [],
         thought: "",
         pageQuotes: [],
-        monthOptions: ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
+        monthOptions: ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"],
+        loadingStatus: false
     }
 
     toggleSidebar = (event) => {
@@ -94,15 +95,17 @@ class PageMain extends Component {
                         //post the page object to the database, THEN set state with that page's id, and push user to that page's view
                         PageDataManager.postPage(newPage)
                             .then(page => {
+                                console.log("posted new page", page.id)
                                 this.setState({
                                     pageId: page.id
                                 })
                             })
                             //then get a random quote
-                            .then(QuoteDataManager.getRandomQuote)
+                            QuoteDataManager.getRandomQuote()
 
                             //then post quote for that page
                                 .then(quote => {
+                                    console.log("got random quote:", quote.quoteText)
                                     const initialQuote = {
                                         userId: parseInt(sessionStorage.getItem("credentials")),
                                         bookId: this.props.bookId,
@@ -110,11 +113,25 @@ class PageMain extends Component {
                                         quoteAuthor: quote.quoteAuthor,
                                         timestamp: new Date().toLocaleString()
                                     };
-                                    this.addQuote(initialQuote, this.state.pageId)
+                                    QuoteDataManager.postQuote(initialQuote)
+                                        .then(quote => {
+                                        console.log("random quote posted:", quote.quoteText)
+                                    //construct a new pageQuote object
+                                        const newPageQuote = {
+                                            quoteId: quote.id,
+                                            pageId: this.state.pageId,
+                                            bookId: this.props.bookId
+                                        }
+                                    //post the new pageQuote to the database
+                                        QuoteDataManager.savePageQuote(newPageQuote)
+                                            .then(()=> {
+                                                console.log("pushing...")
+                                                this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}/${this.state.month}/${this.state.day}`)
+                                                this.toggle()
+                                                this.toggleSidebar()
+                                            })
+                                        })
                                 })
-                                this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}/${this.state.month}/${this.state.day}`)
-                                this.toggle()
-                                this.toggleSidebar()
                     }
             })
         }
@@ -147,6 +164,7 @@ class PageMain extends Component {
         //post new quote object to the database
         return QuoteDataManager.postQuote(quoteObject)
             .then(quote => {
+                console.log("quote posted:", quote.quoteText)
               //construct a new pageQuote object
               const newPageQuote = {
                 quoteId: quote.id,
@@ -156,6 +174,7 @@ class PageMain extends Component {
               //post the new pageQuote to the database
               QuoteDataManager.savePageQuote(newPageQuote)
                 .then(() => {
+                    console.log("new pageQuote created and posted")
                   QuoteDataManager.getPageQuotes(pageId)
                     .then(pageQuotes => {
                       this.setState({
