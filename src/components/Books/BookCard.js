@@ -34,7 +34,7 @@ class BookCard extends Component {
                     this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}/${this.props.currentMonth}/${this.props.currentDate}`)
                 } else {
                     console.log("creating page for", this.props.currentMonth, this.props.currentDate)
-                //creates a new object for the edited news item,
+                //creates a new object for the new page,
                     const newPage = {
                         userId: parseInt(sessionStorage.getItem("credentials")),
                         bookId: this.props.book.id,
@@ -43,7 +43,7 @@ class BookCard extends Component {
                         thought: ""
                     };
                     console.log("created", newPage)
-                    //posts the object to the database, gets all news items, updates state of news array
+                    //posts the object to the database, updates pageId in state
                     PageDataManager.postPage(newPage)
                         .then(page => {
                             console.log(page)
@@ -52,7 +52,8 @@ class BookCard extends Component {
                             })
                             console.log("pageId for new page:", this.state.pageId)
                         //then get a random quote
-                            QuoteDataManager.getRandomQuote()
+                            if (this.props.book.isBlank === false) {
+                                QuoteDataManager.getRandomQuote()
 
                         //then post quote for that page
                                 .then(quote => {
@@ -81,6 +82,11 @@ class BookCard extends Component {
                                             this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}/${this.props.currentMonth}/${this.props.currentDate}`)
                                         })
                                 })
+
+                            } else {
+                                console.log("pushing...")
+                                this.props.history.push(`/books/${this.props.book.id}/${this.state.pageId}/${this.props.currentMonth}/${this.props.currentDate}`)
+                            }
                         })
                 }
             })

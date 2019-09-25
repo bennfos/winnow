@@ -44,7 +44,8 @@ class AddBookModal extends Component {
                 title: this.state.title,
                 userId: parseInt(sessionStorage.getItem("credentials")),
                 description: this.state.description,
-                timestamp: new Date().toLocaleString()
+                timestamp: new Date().toLocaleString(),
+                isBlank: true
             };
 
         //posts the object to the database, gets all news items, updates state of news array

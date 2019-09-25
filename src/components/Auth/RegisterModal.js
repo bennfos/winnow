@@ -72,7 +72,8 @@ class RegisterModal extends React.Component {
                     userId: user.id,
                     title: "quotebook",
                     description: "welcome to winnow. we've created a book for you with some quotes to inspire you each day. click to open, then begin adding, editing, and recording your thoughts. (also, feel free delete or edit this description, or create a new book from scratch.)",
-                    timestamp: new Date().toLocaleString()
+                    timestamp: new Date().toLocaleString(),
+                    isBlank: false
                 }
                 BookDataManager.postBook(firstBookObject)
                 .then(()=> {
