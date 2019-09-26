@@ -1,68 +1,64 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# winnow: a react app by Bennett Foster
 
-## Available Scripts
+Most of us have at least some idea about what we believe concerning the fundamental questions of life: Why am I here? What kind of life do I want to live? What gives my actions purpose and my experiences meaning? On the surface, **winnow** is a lifestyle app that allows users to create a daily book of quotations from their favorite authors, speakers and thinkers, to which they can add their own thoughts and reflections. On a deeper level, it is an invitation to year-long project, whose purpose is to help users clarify and solidify their personal philosophy of life by drawing from and engaging with the wisdom of the past.
 
-In the project directory, you can run:
+## Technologies Used
 
-### `npm start`
+React
+JSON-Server
+Fetch JSONP (https://github.com/camsong/fetch-jsonp)
+Forismatic API (https://forismatic.com/en/api/)
+Reactstrap
+Semantic UI React
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## How to launch **winnow**
 
-### `npm test`
+1. Clone the repo from GitHub
+2. In your terminal, type the following command to install the dependencies associated with the project:
+```
+npm install
+```
+3. Install JSON-Server:
+```
+npm install -g json-server
+```
+4. In the main project directory, create a new directory called "api":
+```
+mkdir api
+```
+5. In the api directory, create a file called "database.json":
+```
+touch database.json
+```
+6. Copy/paste the data structure below into the database.json file
+7. From the api directory start JSON server using the following command:
+```
+json-server -p 5002 database.json
+```
+8. In another terminal tab or window, from the main project directory, type the the following command:
+```
+npm start
+```
+9. You can now register an account and begin using **winnow**!
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Data structure (copy/paste into database.json)
+```
+{
+  "users": [
 
-### `npm run build`
+  ],
+  "books": [
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  ],
+  "pages": [
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+  ],
+  "quotes": [
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  ],
+  "pageQuotes": [
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+  ]
+}
+```
