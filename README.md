@@ -29,6 +29,7 @@ mkdir api
 ```
 5. In the api directory, create a file called "database.json":
 ```
+cd api
 touch database.json
 ```
 6. Copy/paste the data structure below into the database.json file
