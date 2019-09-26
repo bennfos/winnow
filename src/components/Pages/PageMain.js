@@ -5,6 +5,7 @@ import PageDataManager from './PageDataManager'
 import PageViews from './PageViews'
 import QuoteDataManager from '../Quotes/QuoteDataManager'
 import MonthSelect from '../MonthSelect/MonthSelect'
+import BookDataManager from '../Books/BookDataManager'
 
 class PageMain extends Component {
 
@@ -101,7 +102,8 @@ class PageMain extends Component {
                                 })
                             })
                             //then get a random quote
-                            QuoteDataManager.getRandomQuote()
+                            if (this.state.isBlank === false) {
+                                QuoteDataManager.getRandomQuote()
 
                             //then post quote for that page
                                 .then(quote => {
@@ -132,6 +134,14 @@ class PageMain extends Component {
                                             })
                                         })
                                 })
+
+                            } else {
+                                console.log("pushing...")
+                                this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}/${this.state.month}/${this.state.day}`)
+                                this.toggle()
+                                this.toggleSidebar()
+                            }
+
                     }
             })
         }
@@ -229,7 +239,14 @@ class PageMain extends Component {
     };
 
 
-
+    componentDidMount () {
+        BookDataManager.getBook(this.props.bookId)
+            .then(book => {
+                this.setState({
+                    isBlank: book.isBlank
+                })
+            })
+    }
 
 
 
