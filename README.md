@@ -1,6 +1,6 @@
 # winnow: a react app by Bennett Foster
 
-Most of us have an idea of what we believe concerning the fundamental questions of life: Why am I here? What kind of life do I want to live? What gives my actions purpose and my experiences meaning? On the surface, **winnow** is a lifestyle app that allows users to create a daily book of quotations from their favorite authors, speakers and thinkers, to which they can add their own thoughts and reflections. On a deeper level, it is an invitation to year-long project, whose purpose is to help users clarify and solidify their personal philosophy of life by drawing from and engaging with the wisdom of the past.
+Most of us have an idea of what we believe concerning the fundamental questions of life: Why am I here? What kind of life do I want to live? What gives my actions purpose and my experiences meaning? On the surface, **winnow** is a lifestyle app that allows users to create a daily book of quotations from their favorite authors, speakers and thinkers, to which they can add their own thoughts and reflections. On a deeper level, it is an invitation to a year-long project, whose purpose is to help users clarify and solidify their personal philosophy of life by drawing from and engaging with the wisdom of the past.
 
 ## Technologies Used
 
