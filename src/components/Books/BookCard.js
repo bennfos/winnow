@@ -40,7 +40,7 @@ class BookCard extends Component {
                         bookId: this.props.book.id,
                         month: this.props.currentMonth,
                         day: this.props.currentDate,
-                        thought: ""
+                        thought: "add thought"
                     };
                     console.log("created", newPage)
                     //posts the object to the database, updates pageId in state

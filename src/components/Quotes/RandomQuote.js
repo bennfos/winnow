@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Button } from 'semantic-ui-react'
+import { Fade } from 'reactstrap'
+import { Button, Transition } from 'semantic-ui-react'
 import QuoteDataManager from './QuoteDataManager'
 import './Quotes.css'
 
@@ -7,7 +8,9 @@ import './Quotes.css'
 class RandomQuote extends Component {
     state = {
         quoteText: "",
-        quoteAuthor: ""
+        quoteAuthor: "",
+        enter: false,
+        fadeIn: true
       };
 
       refreshRandomQuote = () => {
@@ -20,6 +23,11 @@ class RandomQuote extends Component {
         })
     }
 
+    toggle = () => {
+        this.setState({
+            fadeIn: !this.state.fadeIn,
+        });
+    }
 
 
     componentDidMount () {
@@ -35,11 +43,22 @@ class RandomQuote extends Component {
                     <Button
                         circular
                         icon="quote left"
-                        onClick={this.refreshRandomQuote}
+                        onMouseDown={this.toggle}
+                        onClick={() => {
+                            this.refreshRandomQuote()
+                            this.toggle()
+                            }
+                        }
                     ></Button>
                 </div>
-                <h4>{this.state.quoteText}</h4>
-                <p>{this.state.quoteAuthor}</p>
+                <div>
+                    <Fade in={this.state.fadeIn} tag='h4' timeout={800}>
+                        {this.state.quoteText}
+                    </Fade>
+                    <Fade in={this.state.fadeIn} tag='p' timeout={800}>
+                        {this.state.quoteAuthor}
+                    </Fade>
+                </div>
             </div>
         </>
        )}
