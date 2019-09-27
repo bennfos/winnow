@@ -16,7 +16,7 @@ class SearchResultCard extends Component {
                     <CardBody >
                         <h2>{this.props.searchResultObject.month} {this.props.searchResultObject.day}</h2>
                         <h4>{this.props.searchResultObject.quoteText}</h4>
-                        <p>{this.props.searchResultObject.quoteAuthor}</p>
+                        <h6>{this.props.searchResultObject.quoteAuthor}</h6>
                         <div
                             className="goToPage"
                         >

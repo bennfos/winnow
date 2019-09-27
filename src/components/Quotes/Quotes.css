@@ -33,5 +33,10 @@
 }
 
 .modal__header {
-    display: inline-block
+    display: inline-block;
+}
+
+p {
+    text-align: right !important;
+    margin: 20px;
 }

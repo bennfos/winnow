@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Input, InputGroup } from 'reactstrap';
 import QuoteDataManager from '../Quotes/QuoteDataManager';
 import SearchResultCard from './SearchResultCard';
+import './Search.css'
 
 
 class Search extends Component {
@@ -57,24 +58,28 @@ class Search extends Component {
     render() {
         return (
             <React.Fragment>
-                <div>
-                    <InputGroup size="lg">
-                    <Input
-                        onChange={this.handleFieldChange}
-                        onKeyUp={this.searchPageQuotes}
-                        type="text"
-                        id="searchInput"
-                        placeholder="search by text, author, or month"
-                        value={this.state.searchInput}
-                        autoFocus>
-                    </Input>
-                    </InputGroup>
+                <div className="search__container">
+                    <div className="search__input">
+                        <InputGroup size="lg">
+                        <Input
+                            onChange={this.handleFieldChange}
+                            onKeyUp={this.searchPageQuotes}
+                            type="text"
+                            id="searchInput"
+                            placeholder="search by text, author, or month"
+                            value={this.state.searchInput}
+                            autoFocus>
+                        </Input>
+                        </InputGroup>
+                    </div>
+                    <div className="results__container">
                         {this.state.searchResultObjects.map(searchResultObject => (
                     <SearchResultCard
                       key={searchResultObject.id}
                       searchResultObject={searchResultObject}
                       {...this.props}/>
                   ))}
+                  </div>
                 </div>
             </React.Fragment>
         )

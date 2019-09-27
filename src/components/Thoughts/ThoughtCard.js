@@ -11,7 +11,7 @@ class ThoughtCard extends Component {
         pages: [],
         pageId: 0,
         userId: parseInt(sessionStorage.getItem("credentials")),
-        thought: "add your thoughts",
+        thought: "",
         modal: false,
         loadingStatus: false,
     }
@@ -135,7 +135,7 @@ resetThoughtInStateIfNoThoughtInProps = () => {
                 <div className="card__content">
                         <CardTitle
                             className="card__thought">
-                            <p><em>{this.props.thought}</em></p>
+                            <h6><em>{this.props.thought}</em></h6>
                         </CardTitle>
 
                 </div>

@@ -54,14 +54,14 @@ class Login extends Component {
             <h1>winnow</h1>
           </div>
           <div>
-            <p><em>Marcus Aurelius wrote that we should</em>
+            <h6><em>Marcus Aurelius wrote that we should</em>
               <strong> winnow </strong><em>our thoughts, so that we always
               have something meaningful to think and
-              talk about.</em></p>
+              talk about.</em></h6>
 
-              <p><em>Create a daily quote book to winnow the
+              <h6><em>Create a daily quote book to winnow the
               chaff of media noise, and collect a few
-              grains of wisdom.</em></p>
+              grains of wisdom.</em></h6>
           </div>
             <div className="loginForm">
               <Input
@@ -86,7 +86,7 @@ class Login extends Component {
                 type="submit"
                 onClick={this.handleLogin}
                 >sign in</Button>
-              <p>or</p>
+              <h6>or</h6>
             </div>
       </React.Fragment>
     );

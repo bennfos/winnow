@@ -3,7 +3,8 @@ import BookCard from "./BookCard";
 import BookDataManager from "./BookDataManager";
 import AddBookModal from "./AddBookModal";
 import './BookList.css'
-import { Grid, Label } from "semantic-ui-react";
+import { Fade } from "reactstrap";
+
 
 
 class BookList extends Component {
@@ -14,7 +15,8 @@ class BookList extends Component {
     userId: parseInt(sessionStorage.getItem("credentials")),
     months: ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"],
     currentMonth: "",
-    currentDate: ""
+    currentDate: "",
+    fadeIn: true
   };
 
   //When component mounts, get all user's books and set state of with all existsing books
@@ -69,7 +71,7 @@ class BookList extends Component {
       });
   };
 
-  
+
 
 
   render() {
@@ -80,26 +82,32 @@ class BookList extends Component {
               <div className="bookList__header">
                 <h1>my books</h1>
               </div>
+
               <div className="bookList__contents">
                 {this.state.books.map(book => {
                   return (
-                      <BookCard
-                        key={book.id}
-                        book={book}
-                        removeBook={this.removeBook}
-                        currentMonth = {this.state.currentMonth}
-                        currentDate = {this.state.currentDate}
-                        putEditedBook={this.putEditedBook}
-                        {...this.props}
-                      />
+
+                        <BookCard
+                          key={book.id}
+                          book={book}
+                          removeBook={this.removeBook}
+                          currentMonth = {this.state.currentMonth}
+                          currentDate = {this.state.currentDate}
+                          putEditedBook={this.putEditedBook}
+                          {...this.props}
+                        />
+
                   )
                 })}
 
                   <AddBookModal
+                    
                     {...this.props}
                     addBook={this.addBook}
                   />
+
               </div>
+
         </div>
       </React.Fragment>
     );
