@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import EditBookModal from './EditBookModal'
-import { Icon } from 'semantic-ui-react'
+import { Icon, Popup } from 'semantic-ui-react'
 import PageDataManager from '../Pages/PageDataManager'
 import QuoteDataManager from '../Quotes/QuoteDataManager'
 import ConfirmBookDeleteModal from './ConfirmDeleteBookModal'
@@ -40,7 +40,7 @@ class BookCard extends Component {
                         bookId: this.props.book.id,
                         month: this.props.currentMonth,
                         day: this.props.currentDate,
-                        thought: "add thought"
+                        thought: ""
                     };
                     console.log("created", newPage)
                     //posts the object to the database, updates pageId in state
@@ -120,6 +120,7 @@ class BookCard extends Component {
                         <div className="card__title"
                             onClick={this.constructOrNavigateToFirstPage}
                         >
+                            
                             <h4>{this.props.book.title}</h4>
                             <div className="open__button">
                                 <Icon
@@ -127,8 +128,9 @@ class BookCard extends Component {
 
                                 ></Icon>
                             </div>
+
                         </div>
-                    <p><em>{this.props.book.description}</em></p>
+                    <h6><em>{this.props.book.description}</em></h6>
                 </div>
             </div>
 

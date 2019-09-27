@@ -37,5 +37,6 @@
 }
 
 p {
-    text-align: right;
+    text-align: right !important;
+    margin: 20px;
 }

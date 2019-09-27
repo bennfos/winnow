@@ -40,22 +40,22 @@ class RandomQuote extends Component {
         <>
             <div className="randomQuote__container">
                 <div className="randomQuote__button">
-                    <Button
-                        circular
-                        icon="quote left"
-                        onMouseDown={this.toggle}
-                        onClick={() => {
-                            this.refreshRandomQuote()
-                            this.toggle()
+                        <Button
+                            circular
+                            icon="quote left"
+                            onMouseDown={this.toggle}
+                            onClick={() => {
+                                this.refreshRandomQuote()
+                                this.toggle()
+                                }
                             }
-                        }
-                    ></Button>
+                        ></Button>
                 </div>
                 <div>
-                    <Fade in={this.state.fadeIn} tag='h4' timeout={800}>
+                    <Fade in={this.state.fadeIn} tag='h4' timeout={600}>
                         {this.state.quoteText}
                     </Fade>
-                    <Fade in={this.state.fadeIn} tag='p' timeout={800}>
+                    <Fade in={this.state.fadeIn} tag='p' timeout={600}>
                         {this.state.quoteAuthor}
                     </Fade>
                 </div>

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import QuoteCard from './QuoteCard'
 import AddQuoteModal from './AddQuoteModal'
 import AddRandomQuoteModal from './AddRandomQuoteModal'
+import { Fade } from 'reactstrap'
 import './Quotes.css'
 import '../Pages/Pages.css'
 
@@ -51,12 +52,16 @@ class QuoteList extends Component {
                     </div>
                   </div>
                 </div>
+
+                <div>
                   {this.props.pageQuotes.map(pageQuote => (
                 <QuoteCard
                       key={pageQuote.id}
                       pageQuote={pageQuote}
                       {...this.props}/>
                   ))}
+                </div>
+                
               </div>
             </React.Fragment>
         )

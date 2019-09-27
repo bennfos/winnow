@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import QuoteList from '../Quotes/QuoteList'
 import ThoughtList from '../Thoughts/ThoughtList'
+import { Fade } from 'reactstrap'
 import './PageDay.css'
 
 
@@ -19,8 +20,10 @@ class PageDay extends Component {
                 <div className="quoteList__container">
                     <QuoteList
                         {...this.props}
-                        />
-                    <ThoughtList {...this.props}/>
+                    />
+                    <ThoughtList
+                        {...this.props}
+                    />
                 </div>
             </React.Fragment>
         )

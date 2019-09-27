@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Input, InputGroup } from 'reactstrap';
 import QuoteDataManager from '../Quotes/QuoteDataManager';
 import SearchResultCard from './SearchResultCard';
+import './Search.css'
 
 
 class Search extends Component {
@@ -57,7 +58,7 @@ class Search extends Component {
     render() {
         return (
             <React.Fragment>
-                <div>
+                <div className="search__container">
                     <InputGroup size="lg">
                     <Input
                         onChange={this.handleFieldChange}

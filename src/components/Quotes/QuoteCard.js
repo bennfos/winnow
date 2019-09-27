@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import QuoteDataManager from './QuoteDataManager'
 import EditQuoteModal from '../Quotes/EditQuoteModal'
 import ConfirmDeleteQuoteModal from './ConfirmDeleteQuoteModal';
+import { Fade } from 'reactstrap'
 import '../Books/Card.css'
 import './Quotes.css'
 
@@ -9,7 +10,8 @@ import './Quotes.css'
 class QuoteCard extends Component {
     state = {
         randomQuoteText: "",
-        display: "hide"
+        display: "hide",
+        fadeIn: true
     }
 
 
@@ -42,12 +44,16 @@ class QuoteCard extends Component {
             <div
                 className="card__container"
                 onClick={this.toggleEditAndDelete}>
-                <div
-                    className="card__content"
+
+                    <div
+                        className="card__content"
                     >
-                    <h4>{this.props.pageQuote.quote.quoteText}</h4>
-                    <p>{this.props.pageQuote.quote.quoteAuthor}</p>
-                </div>
+                        
+                        <h4>{this.props.pageQuote.quote.quoteText}</h4>
+                        <p>{this.props.pageQuote.quote.quoteAuthor}</p>
+                        {/* </Fade> */}
+                    </div>
+
                 <div className="editAndDelete">
                     <div className={this.state.display}>
                         <ConfirmDeleteQuoteModal
