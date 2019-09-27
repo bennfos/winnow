@@ -35,7 +35,7 @@ touch database.json
 6. Copy/paste the data structure below into the database.json file
 7. From the api directory start JSON server using the following command:
 ```
-json-server -p 5002 database.json
+json-server -p 8088 database.json
 ```
 8. In another terminal tab or window, from the main project directory, type the the following command:
 ```
