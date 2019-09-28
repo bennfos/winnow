@@ -10,7 +10,7 @@ class RandomQuote extends Component {
         quoteText: "",
         quoteAuthor: "",
         enter: false,
-        fadeIn: true
+        visible: true
       };
 
       refreshRandomQuote = () => {
@@ -23,11 +23,9 @@ class RandomQuote extends Component {
         })
     }
 
-    toggle = () => {
-        this.setState({
-            fadeIn: !this.state.fadeIn,
-        });
-    }
+    handleVisibility = () =>
+    this.setState((prevState) => ({ visible: !prevState.visible }))
+
 
 
     componentDidMount () {
@@ -36,6 +34,7 @@ class RandomQuote extends Component {
 
 
     render() {
+        const visible = this.state.visible
        return (
         <>
             <div className="randomQuote__container">
@@ -43,21 +42,25 @@ class RandomQuote extends Component {
                         <Button
                             circular
                             icon="quote left"
-                            onMouseDown={this.toggle}
+                            onMouseDown={() => {
+                                this.handleVisibility()
+                                setTimeout(this.refreshRandomQuote, 800)
+                            }}
                             onClick={() => {
-                                this.refreshRandomQuote()
-                                this.toggle()
+                                this.handleVisibility()
                                 }
                             }
                         ></Button>
                 </div>
                 <div>
-                    <Fade in={this.state.fadeIn} tag='h4' timeout={600}>
-                        {this.state.quoteText}
-                    </Fade>
-                    <Fade in={this.state.fadeIn} tag='p' timeout={600}>
-                        {this.state.quoteAuthor}
-                    </Fade>
+                    {/* <Transition visible={visible} transitionOnMount animation="fade down" duration={1000}> */}
+
+                        <h4>{this.state.quoteText}</h4>
+
+                    {/* </Transition> */}
+                    {/* <Transition visible={visible} transitionOnMount animation="fade down" duration={1000}> */}
+                        <p>{this.state.quoteAuthor}</p>
+                    {/* </Transition> */}
                 </div>
             </div>
         </>

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import QuoteCard from './QuoteCard'
 import AddQuoteModal from './AddQuoteModal'
 import AddRandomQuoteModal from './AddRandomQuoteModal'
-import { Fade } from 'reactstrap'
+import { Transition } from 'semantic-ui-react'
 import './Quotes.css'
 import '../Pages/Pages.css'
 
@@ -14,6 +14,7 @@ class QuoteList extends Component {
         bookId: 0,
         month: "january",
         day: "1",
+        visible: true
     }
 
 //when component mounts, update state of pageQuotes in PageMain
@@ -33,8 +34,10 @@ class QuoteList extends Component {
 
 
     render() {
+      const visible = this.state.visible
         return (
             <React.Fragment>
+
               <div className="quoteList__contents">
                 <div>
                   <div className="pageDay__container">
@@ -61,8 +64,9 @@ class QuoteList extends Component {
                       {...this.props}/>
                   ))}
                 </div>
-                
+
               </div>
+              
             </React.Fragment>
         )
     }

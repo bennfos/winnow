@@ -64,8 +64,9 @@ class MonthSelect extends Component {
                                 <Grid.Row>
                                     {this.state.days.map(day => {
                                         return (
-                                            <Grid.Column key={day}>
+                                            <Grid.Column >
                                                 <Input
+                                                    
                                                     id="day"
                                                     type="button"
                                                     value={day.toString()}
