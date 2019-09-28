@@ -12,8 +12,8 @@ class QuoteList extends Component {
         pageQuotes: [],
         userId: parseInt(sessionStorage.getItem("credentials")),
         bookId: 0,
-        month: "january",
-        day: "1",
+        month: "",
+        day: "",
         visible: true
     }
 
@@ -66,7 +66,7 @@ class QuoteList extends Component {
                 </div>
 
               </div>
-              
+
             </React.Fragment>
         )
     }

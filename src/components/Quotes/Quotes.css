@@ -42,7 +42,3 @@ p {
 }
 
 
-
-.fade:not(.show) {
-    opacity: 1 !important;
-}

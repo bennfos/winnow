@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Fade } from 'reactstrap'
 import { Button, Transition } from 'semantic-ui-react'
 import QuoteDataManager from './QuoteDataManager'
 import './Quotes.css'
@@ -9,7 +10,7 @@ class RandomQuote extends Component {
         quoteText: "",
         quoteAuthor: "",
         enter: false,
-        visible: true
+        fadeIn: true
       };
 
       refreshRandomQuote = () => {
@@ -22,9 +23,11 @@ class RandomQuote extends Component {
         })
     }
 
-    handleVisibility = () =>
-    this.setState((prevState) => ({ visible: !prevState.visible }))
-
+    toggle = () => {
+        this.setState({
+            fadeIn: !this.state.fadeIn,
+        });
+    }
 
 
     componentDidMount () {
@@ -33,7 +36,6 @@ class RandomQuote extends Component {
 
 
     render() {
-        const visible = this.state.visible
        return (
         <>
             <div className="randomQuote__container">
@@ -41,25 +43,21 @@ class RandomQuote extends Component {
                         <Button
                             circular
                             icon="quote left"
-                            onMouseDown={() => {
-                                this.handleVisibility()
-                                setTimeout(this.refreshRandomQuote, 800)
-                            }}
+                            onMouseDown={this.toggle}
                             onClick={() => {
-                                this.handleVisibility()
+                                this.refreshRandomQuote()
+                                this.toggle()
                                 }
                             }
                         ></Button>
                 </div>
                 <div>
-                    <Transition visible={visible} transitionOnMount animation="fade down" duration={1000}>
-
-                        <h4>{this.state.quoteText}</h4>
-
-                    </Transition>
-                    <Transition visible={visible} transitionOnMount animation="fade down" duration={1000}>
-                        <p>{this.state.quoteAuthor}</p>
-                    </Transition>
+                    <Fade in={this.state.fadeIn} tag='h4' timeout={600}>
+                        {this.state.quoteText}
+                    </Fade>
+                    <Fade in={this.state.fadeIn} tag='p' timeout={600}>
+                        {this.state.quoteAuthor}
+                    </Fade>
                 </div>
             </div>
         </>
