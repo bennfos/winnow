@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Fade } from 'reactstrap'
 import { Button, Transition } from 'semantic-ui-react'
 import QuoteDataManager from './QuoteDataManager'
 import './Quotes.css'
@@ -53,14 +52,14 @@ class RandomQuote extends Component {
                         ></Button>
                 </div>
                 <div>
-                    {/* <Transition visible={visible} transitionOnMount animation="fade down" duration={1000}> */}
+                    <Transition visible={visible} transitionOnMount animation="fade down" duration={1000}>
 
                         <h4>{this.state.quoteText}</h4>
 
-                    {/* </Transition> */}
-                    {/* <Transition visible={visible} transitionOnMount animation="fade down" duration={1000}> */}
+                    </Transition>
+                    <Transition visible={visible} transitionOnMount animation="fade down" duration={1000}>
                         <p>{this.state.quoteAuthor}</p>
-                    {/* </Transition> */}
+                    </Transition>
                 </div>
             </div>
         </>
