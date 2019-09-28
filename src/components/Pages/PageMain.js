@@ -7,6 +7,8 @@ import QuoteDataManager from '../Quotes/QuoteDataManager'
 import MonthSelect from '../MonthSelect/MonthSelect'
 import BookDataManager from '../Books/BookDataManager'
 
+
+
 class PageMain extends Component {
 
     state = {
@@ -249,7 +251,6 @@ class PageMain extends Component {
     }
 
 
-
     render() {
         const { visible } = this.state
         return (
@@ -285,7 +286,7 @@ class PageMain extends Component {
                 >
                 {this.state.monthOptions.map(monthSelect => (
                     <MonthSelect
-                        // key={this.getKey()}
+                        // key={}
                         setMonth={this.setMonth}
                         toggleSidebar={this.toggleSidebar}
                         toggle={this.toggle}
