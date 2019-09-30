@@ -69,13 +69,14 @@ clearDescriptionInState = () => {
             <>
                 <div className="addCard" onClick={() => this.toggle()}>
                     <div className="addCard__content">
-                        <div className="add__icon">
+                        <div
+                            className="add__icon"
+                            onClick={() => this.toggle}
+                        >
                             <Icon
+                                onClick={() => this.toggle}
                                 className="addBookModal__button"
                                 name="add"
-                                onClick={() => {
-                                    this.toggle()
-                                }}
                                 size="large">
                             </Icon>
                         </div>

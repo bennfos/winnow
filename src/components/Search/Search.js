@@ -54,7 +54,16 @@ class Search extends Component {
                             || filteredObject.month.toLowerCase().includes(this.state.searchInput.toLowerCase()))
                 this.setState({ searchResultObjects: searchResultObjects})
             })
-}
+    }
+
+    componentDidMount () {
+        document.body.classList.add('bk2')
+    }
+
+    componentWillUnmount () {
+        document.body.classList.remove('bk2')
+    }
+
     render() {
         return (
             <React.Fragment>

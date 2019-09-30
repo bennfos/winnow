@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import EditBookModal from './EditBookModal'
-import { Icon, Popup } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 import PageDataManager from '../Pages/PageDataManager'
 import QuoteDataManager from '../Quotes/QuoteDataManager'
 import ConfirmBookDeleteModal from './ConfirmDeleteBookModal'
@@ -109,7 +109,7 @@ class BookCard extends Component {
 
 
             <div className="bookCard" onClick={() => this.toggleEditAndDelete()}>
-                <div className="card__content">
+
                     <div className={this.state.display}>
                             <ConfirmBookDeleteModal {...this.props}/>
                             <EditBookModal
@@ -118,21 +118,23 @@ class BookCard extends Component {
                             />
                         </div>
                         <div className="card__title"
-                            onClick={this.constructOrNavigateToFirstPage}
                         >
-                            
-                            <h4>{this.props.book.title}</h4>
-                            <div className="open__button">
-                                <Icon
-                                    name="chevron right"
-
-                                ></Icon>
+                            <h2>{this.props.book.title}</h2>
+                            <div>
+                                <Button
+                                    onClick={this.constructOrNavigateToFirstPage}
+                                    icon="chevron right"
+                                    size="mini"
+                                >
+                                </Button>
                             </div>
-
                         </div>
-                    <h6><em>{this.props.book.description}</em></h6>
-                </div>
+
+                    <div className="book__description">
+                        <h4><em>{this.props.book.description}</em></h4>
+                    </div>
             </div>
+
 
 
     );

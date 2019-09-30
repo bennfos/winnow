@@ -36,13 +36,9 @@
     display: inline-block;
 }
 
-p {
+h5 {
     text-align: right !important;
     margin: 20px;
 }
 
 
-
-.fade:not(.show) {
-    opacity: 1 !important;
-}

@@ -3,8 +3,8 @@ import UserDataManager from "./UserDataManager";
 import { Button, Image } from 'semantic-ui-react'
 import { Input } from 'reactstrap'
 import logo from './agronomy.png'
-
 import "./Login.css";
+
 
 class Login extends Component {
   state = {
@@ -38,6 +38,7 @@ class Login extends Component {
 
   componentDidMount() {
     // getAll users and  set in session storage
+
     UserDataManager.getAllUsers().then(users => {
       this.setState({
         users: users
@@ -45,23 +46,29 @@ class Login extends Component {
     });
   }
 
+
+
+
   render() {
     console.log(this.state.users);
+
     return (
       <React.Fragment>
+        <div className="login">
           <div className="login__heading">
             <Image className="logo" src={logo}/>
-            <h1>winnow</h1>
+            <h1 style={{color: 'rgb(85, 85, 85)'}} ><strong>winnow</strong></h1>
           </div>
-          <div>
-            <h6><em>Marcus Aurelius wrote that we should</em>
+          <div className="login__description--1">
+            <h4><em>Marcus Aurelius wrote that we should</em>
               <strong> winnow </strong><em>our thoughts, so that we always
               have something meaningful to think and
-              talk about.</em></h6>
-
-              <h6><em>Create a daily quote book to winnow the
+              talk about.</em></h4>
+          <div className="login__description--2">
+              <h4><em>Create a daily quote book to winnow the
               chaff of media noise, and collect a few
-              grains of wisdom.</em></h6>
+              grains of wisdom.</em></h4>
+          </div>
           </div>
             <div className="loginForm">
               <Input
@@ -88,6 +95,7 @@ class Login extends Component {
                 >sign in</Button>
               <h6>or</h6>
             </div>
+          </div>
       </React.Fragment>
     );
   }
