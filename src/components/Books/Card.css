@@ -6,6 +6,24 @@
     text-align: center;
 }
 
+.quoteCard__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    max-width: 300px;
+}
+
+.editAndDelete {
+    position: fixed;
+    right: 10px;
+}
+
+.bookEditAndDelete {
+    position: absolute;
+    right: 60px;
+}
+
+
 .bookCard {
     display: flex;
     flex-direction: column;
@@ -40,7 +58,7 @@
 
 .card__title {
     display:flex;
-    margin: 20px 5px;
+    margin: 45px 5px;
 }
 
 .open__button {

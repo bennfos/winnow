@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import QuoteDataManager from './QuoteDataManager'
 import EditQuoteModal from '../Quotes/EditQuoteModal'
 import ConfirmDeleteQuoteModal from './ConfirmDeleteQuoteModal';
+import { Transition } from 'semantic-ui-react'
 import '../Books/Card.css'
 import './Quotes.css'
 
@@ -10,8 +11,13 @@ class QuoteCard extends Component {
     state = {
         randomQuoteText: "",
         display: "hide",
-        fadeIn: true
+        visible: false
     }
+
+    toggle = () => {
+        this.setState(state => ({ visible: !state.visible }))
+        console.log(this.state.visible);
+      }
 
 
 //get random quote from Forismatic API and set it in state (not used yet--stretch goal)
@@ -42,26 +48,25 @@ class QuoteCard extends Component {
         <>
             <div
                 className="card__container"
-                onClick={this.toggleEditAndDelete}>
+                onClick={this.toggle}>
 
                     <div
-                        className="card__content"
+                        className="quoteCard__content"
                     >
-
                         <h3>{this.props.pageQuote.quote.quoteText}</h3>
                         <h5>{this.props.pageQuote.quote.quoteAuthor}</h5>
-                        {/* </Fade> */}
                     </div>
+                    <Transition animation="horizontal flip" visible={this.state.visible}>
 
-                <div className="editAndDelete">
-                    <div className={this.state.display}>
-                        <ConfirmDeleteQuoteModal
-                            {...this.props}
-                        />
-                        <EditQuoteModal
-                            {...this.props}/>
-                    </div>
-                </div>
+                        <div className="editAndDelete">
+                            <ConfirmDeleteQuoteModal
+                                {...this.props}
+                            />
+                            <EditQuoteModal
+                                {...this.props}/>
+                        </div>
+
+                    </Transition>
             </div>
         </>
     );
