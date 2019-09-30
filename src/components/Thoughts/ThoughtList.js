@@ -24,7 +24,6 @@ class ThoughtList extends Component {
         }
       }
 
-
   render() {
     return (
       <React.Fragment>

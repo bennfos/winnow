@@ -8,9 +8,10 @@
 
 .bookCard {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    min-width: 220px;
-    max-width: 200px;
+    min-width: 260px;
+    max-width: 260px;
     min-height: 330px;
     border: 1px solid lightgray;
     margin: 15px 20px 15px 60px;
@@ -21,7 +22,8 @@
 
 .addCard {
     display: flex;
-    width: 220px;
+    min-width: 260px;
+    max-width: 260px;
     height: 330px;
     border: 1.5px dashed grey;
     margin: 15px 20px 15px 60px;

@@ -31,7 +31,7 @@ class AddBookModal extends Component {
         console.log(stateToChange)
     };
 
-    constructNewBook = event => {
+    constructNewBook = () => {
 
     //Validates user input
         if (this.state.title === "") {

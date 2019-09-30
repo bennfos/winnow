@@ -3,6 +3,9 @@
     width: 200px;
     margin: 15px;
 }
+.auth {
+    margin: 15px 0 75px 0;
+}
 
 .signIn {
     display: flex;
@@ -13,8 +16,13 @@
     text-align: center;
 }
 
+.input {
+    opacity: 0.6;
+}
+
 h4 {
     margin: 15px;
+
 }
 
 h6 {

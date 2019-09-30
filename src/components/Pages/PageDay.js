@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import QuoteList from '../Quotes/QuoteList'
 import ThoughtList from '../Thoughts/ThoughtList'
-import { Transition } from 'semantic-ui-react'
 import './PageDay.css'
 
 
@@ -15,7 +14,7 @@ class PageDay extends Component {
 
 
     render() {
-        
+
         return (
             <React.Fragment>
 

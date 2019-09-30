@@ -31,10 +31,9 @@ class AddQuoteModal extends Component {
         const stateToChange = {};
         stateToChange[evt.target.id] = evt.target.value;
         this.setState(stateToChange);
-        console.log(stateToChange)
     };
 
-    constructNewQuote = event => {
+    constructNewQuote = () => {
 
     //Validates user input
         if (this.state.quoteText === "") {
@@ -80,7 +79,7 @@ class AddQuoteModal extends Component {
                 <section className="addQuote__button">
                     <Icon
                     onClick={this.toggle}
-                    size="large"
+                    
                     name="add">
                     </Icon>
                 </section>
