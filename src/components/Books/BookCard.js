@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import EditBookModal from './EditBookModal'
-import { Button } from 'semantic-ui-react'
+import { Button, Transition } from 'semantic-ui-react'
 import PageDataManager from '../Pages/PageDataManager'
 import QuoteDataManager from '../Quotes/QuoteDataManager'
 import ConfirmBookDeleteModal from './ConfirmDeleteBookModal'
@@ -11,7 +11,8 @@ class BookCard extends Component {
         pages: [],
         pageId: 0,
         description: "",
-        display: "hide"
+        display: "hide",
+        visible: "false"
     }
 
     postQuote = (quoteObject) => {
@@ -92,6 +93,12 @@ class BookCard extends Component {
             })
     }
 
+    toggle = () => {
+        this.setState(state => ({ visible: !state.visible }))
+        console.log(this.state.visible);
+      }
+
+
     toggleEditAndDelete = () => {
         if (this.state.display === "hide") {
           this.setState({
@@ -108,15 +115,16 @@ class BookCard extends Component {
     return (
 
 
-            <div className="bookCard" onClick={() => this.toggleEditAndDelete()}>
-
-                    <div className={this.state.display}>
-                            <ConfirmBookDeleteModal {...this.props}/>
-                            <EditBookModal
-                                {...this.props}
-                                postEditedBook={this.props.postEditedBook}
-                            />
-                        </div>
+            <div className="bookCard" onClick={this.toggle}>
+                 <Transition animation="horizontal flip" visible={this.state.visible}>
+                    <div className="bookEditAndDelete">
+                        <ConfirmBookDeleteModal {...this.props}/>
+                        <EditBookModal
+                            {...this.props}
+                            postEditedBook={this.props.postEditedBook}
+                        />
+                    </div>
+                </Transition>
                         <div className="card__title"
                         >
                             <h2>{this.props.book.title}</h2>

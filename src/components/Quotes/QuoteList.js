@@ -55,10 +55,12 @@ class QuoteList extends Component {
 
             <div>
               {this.props.pageQuotes.map(pageQuote => (
-            <QuoteCard
-                  key={pageQuote.id}
-                  pageQuote={pageQuote}
-                  {...this.props}/>
+
+                <QuoteCard
+                    key={pageQuote.id}
+                    pageQuote={pageQuote}
+                    {...this.props}/>
+              
               ))}
             </div>
 
