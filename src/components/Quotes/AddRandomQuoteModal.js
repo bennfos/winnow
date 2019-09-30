@@ -72,6 +72,7 @@ class AddRandomQuoteModal extends Component {
                             }}
                             circular
                             icon="quote left"
+                            size="big"
                         >
                         </Button>
                     </div>

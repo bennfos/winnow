@@ -5,9 +5,18 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url("https://www.publicdomainpictures.net/pictures/40000/nahled/white-paper-background.jpg") no-repeat center center fixed;
+  color: rgb(117, 109, 109) !important;
+  background: url("background.png") no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
+  position: relative;
+}
+
+.bk2 {
+  background: #F0F2F3;
+  background-size: cover;
+  min-height: 100vh;
+  /* position: absolute; */
 }
 
 code {

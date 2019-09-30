@@ -4,7 +4,6 @@
     flex-direction: row;
     justify-content: space-between;
     text-align: center;
-
 }
 
 .bookCard {
@@ -18,7 +17,6 @@
     border-radius: .25rem;
     background-color: #f7f7f7;
 }
-
 
 
 .addCard {
@@ -60,14 +58,15 @@
     flex-direction: column;
     justify-content: left;
 
+
 }
 
 .dayInt__button {
     margin: 10px;
     min-width: 40px;
     min-height: 40px;
-
 }
+
 
 .card__body {
     display: flex;
@@ -90,9 +89,28 @@
     justify-content: center;
 }
 
+h2 {
+    margin: 10px;
+}
+
+h3 {
+    margin: 10px
+}
+
+.book__description {
+    margin: 15px;
+}
+
 .searchResult__card {
     margin: 15px 0 15px 15px;
 }
+
+.searchResult__card__header {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+}
+
 
 .searchResult__content {
     display: flex;

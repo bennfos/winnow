@@ -5,6 +5,7 @@ import QuoteDataManager from './QuoteDataManager'
 import './Quotes.css'
 
 
+
 class RandomQuote extends Component {
     state = {
         quoteText: "",
@@ -31,9 +32,13 @@ class RandomQuote extends Component {
 
 
     componentDidMount () {
+        document.body.classList.add('bk2')
         this.refreshRandomQuote()
         }
 
+    componentWillUnmount () {
+        document.body.classList.remove('bk2')
+    }
 
     render() {
        return (
@@ -42,6 +47,7 @@ class RandomQuote extends Component {
                 <div className="randomQuote__button">
                         <Button
                             circular
+                            size="big"
                             icon="quote left"
                             onMouseDown={this.toggle}
                             onClick={() => {
@@ -52,10 +58,10 @@ class RandomQuote extends Component {
                         ></Button>
                 </div>
                 <div>
-                    <Fade in={this.state.fadeIn} tag='h4' timeout={600}>
+                    <Fade in={this.state.fadeIn} tag='h3' timeout={600}>
                         {this.state.quoteText}
                     </Fade>
-                    <Fade in={this.state.fadeIn} tag='p' timeout={600}>
+                    <Fade in={this.state.fadeIn} tag='h5' timeout={600}>
                         {this.state.quoteAuthor}
                     </Fade>
                 </div>

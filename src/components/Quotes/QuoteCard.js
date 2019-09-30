@@ -48,9 +48,9 @@ class QuoteCard extends Component {
                     <div
                         className="card__content"
                     >
-                        
-                        <h4>{this.props.pageQuote.quote.quoteText}</h4>
-                        <p>{this.props.pageQuote.quote.quoteAuthor}</p>
+
+                        <h3>{this.props.pageQuote.quote.quoteText}</h3>
+                        <h5>{this.props.pageQuote.quote.quoteAuthor}</h5>
                         {/* </Fade> */}
                     </div>
 

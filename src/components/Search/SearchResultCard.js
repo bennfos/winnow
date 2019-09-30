@@ -14,15 +14,21 @@ class SearchResultCard extends Component {
                 <Card className="card__container">
 
                     <CardBody >
-                        <h2>{this.props.searchResultObject.month} {this.props.searchResultObject.day}</h2>
-                        <h4>{this.props.searchResultObject.quoteText}</h4>
-                        <h6>{this.props.searchResultObject.quoteAuthor}</h6>
+                        <div className="searchResult__card__header">
+                            <h2>{this.props.searchResultObject.month} {this.props.searchResultObject.day}</h2>
+                            <Button
+                                as={Link}
+                                to={`/books/${this.props.searchResultObject.bookId}/${this.props.searchResultObject.pageId}/${this.props.searchResultObject.month}/${this.props.searchResultObject.day}`}
+                                icon="chevron right"
+                                size="mini"                           >
+                            </Button>
+                        </div>
+                        <h3>{this.props.searchResultObject.quoteText}</h3>
+                        <h5>{this.props.searchResultObject.quoteAuthor}</h5>
                         <div
                             className="goToPage"
                         >
-                            <Button
-                            as={Link} to={`/books/${this.props.searchResultObject.bookId}/${this.props.searchResultObject.pageId}/${this.props.searchResultObject.month}/${this.props.searchResultObject.day}`}
-                        >go</Button>
+
                         </div>
                     </CardBody>
                 </Card>
