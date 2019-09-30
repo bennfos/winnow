@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import Auth from './Auth/Auth'
 import BookMain from './Books/BookMain'
@@ -28,7 +28,7 @@ export default class ApplicationViews extends Component {
             if (this.isAuthenticated()) {
               return <BookMain {...props} />
             }
-              return <Auth {...props} />
+              return <Redirect to="/" />
           }}
         />
 
@@ -39,7 +39,7 @@ export default class ApplicationViews extends Component {
                   bookId={parseInt(props.match.params.bookId)}
                   {...props}/>
             }
-              return <Auth {...props} />
+              return <Redirect to="/" />
           }}
         />
 
@@ -54,7 +54,7 @@ export default class ApplicationViews extends Component {
             if (this.isAuthenticated()) {
               return <Search {...props} />
             }
-              return <Auth {...this.props} />
+              return <Redirect to="/" />
           }}
         />
 

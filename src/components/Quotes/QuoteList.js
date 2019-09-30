@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import QuoteCard from './QuoteCard'
 import AddQuoteModal from './AddQuoteModal'
 import AddRandomQuoteModal from './AddRandomQuoteModal'
-import { Transition } from 'semantic-ui-react'
 import './Quotes.css'
 import '../Pages/Pages.css'
 
@@ -14,7 +13,6 @@ class QuoteList extends Component {
         bookId: 0,
         month: "",
         day: "",
-        visible: true
     }
 
 //when component mounts, update state of pageQuotes in PageMain
@@ -34,40 +32,39 @@ class QuoteList extends Component {
 
 
     render() {
-      const visible = this.state.visible
         return (
-            <React.Fragment>
+          <React.Fragment>
 
-              <div className="quoteList__contents">
-                <div>
-                  <div className="pageDay__container">
-                    <div className="addRandomQuoteModal__container">
-                      <AddRandomQuoteModal
-                            {...this.props}
-                      />
-                    </div>
-                    <div className="list__header">
-                        <h1>{this.props.month} {this.props.day}</h1>
-                        <AddQuoteModal
-                            // className="addQuoteModal"
-                            {...this.props}
-                        />
-                    </div>
-                  </div>
+          <div className="quoteList__contents">
+            <div>
+              <div className="pageDay__container">
+                <div className="addRandomQuoteModal__container">
+                  <AddRandomQuoteModal
+                        {...this.props}
+                  />
                 </div>
-
-                <div>
-                  {this.props.pageQuotes.map(pageQuote => (
-                <QuoteCard
-                      key={pageQuote.id}
-                      pageQuote={pageQuote}
-                      {...this.props}/>
-                  ))}
+                <div className="list__header">
+                    <h1>{this.props.month} {this.props.day}</h1>
+                    <div className="addQuoteModal">
+                      <AddQuoteModal
+                          {...this.props}/>
+                    </div>
                 </div>
-
               </div>
+            </div>
 
-            </React.Fragment>
+            <div>
+              {this.props.pageQuotes.map(pageQuote => (
+            <QuoteCard
+                  key={pageQuote.id}
+                  pageQuote={pageQuote}
+                  {...this.props}/>
+              ))}
+            </div>
+
+          </div>
+
+        </React.Fragment>
         )
     }
 }

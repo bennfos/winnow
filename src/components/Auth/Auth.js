@@ -7,8 +7,10 @@ class Auth extends Component {
     render() {
         return (
             <React.Fragment>
-                <Login {...this.props}/>
-                <RegisterModal className="registerbtn" {...this.props}/>
+                <div className="auth">
+                    <Login {...this.props}/>
+                    <RegisterModal className="registerbtn" {...this.props}/>
+                </div>
             </React.Fragment>
         )
     }

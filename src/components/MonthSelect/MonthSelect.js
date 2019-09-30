@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Label, Modal, ModalHeader, ModalBody, ModalFooter, Input} from 'reactstrap';
-import { Menu, Button, Grid, Container, Segment, Card,  } from 'semantic-ui-react';
+import { Menu, Button, Grid, Container } from 'semantic-ui-react';
 import '../Books/Card.css'
 
 
@@ -64,9 +64,9 @@ class MonthSelect extends Component {
                                 <Grid.Row>
                                     {this.state.days.map(day => {
                                         return (
-                                            <Grid.Column >
+                                            <Grid.Column key={day}>
                                                 <Input
-                                                    
+
                                                     id="day"
                                                     type="button"
                                                     value={day.toString()}

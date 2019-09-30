@@ -3,7 +3,6 @@ import BookCard from "./BookCard";
 import BookDataManager from "./BookDataManager";
 import AddBookModal from "./AddBookModal";
 import './BookList.css'
-import { Fade } from "reactstrap";
 
 
 
@@ -101,7 +100,7 @@ class BookList extends Component {
                 })}
 
                   <AddBookModal
-                    
+
                     {...this.props}
                     addBook={this.addBook}
                   />

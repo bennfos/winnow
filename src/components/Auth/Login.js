@@ -50,8 +50,6 @@ class Login extends Component {
 
 
   render() {
-    console.log(this.state.users);
-
     return (
       <React.Fragment>
         <div className="login">
@@ -78,6 +76,7 @@ class Login extends Component {
                 placeholder="username"
                 required
                 autoFocus=""
+                className="input"
               /><br/>
               <Input
                 onChange={this.handleFieldChange}
@@ -85,6 +84,7 @@ class Login extends Component {
                 id="password"
                 placeholder="password"
                 required
+                className="input"
               />
             </div>
             <div className="signIn">

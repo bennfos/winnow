@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import QuoteDataManager from './QuoteDataManager'
 import EditQuoteModal from '../Quotes/EditQuoteModal'
 import ConfirmDeleteQuoteModal from './ConfirmDeleteQuoteModal';
-import { Fade } from 'reactstrap'
 import '../Books/Card.css'
 import './Quotes.css'
 

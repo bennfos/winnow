@@ -15,7 +15,6 @@ class PageMain extends Component {
         visible: false,
         userId: parseInt(sessionStorage.getItem("credentials")),
         day: "",
-        keyCount: 0,
         month: "",
         modal: false,
         pageId: 0,
@@ -103,39 +102,40 @@ class PageMain extends Component {
                                     pageId: page.id
                                 })
                             })
-                            //then get a random quote
-                            if (this.state.isBlank === false) {
-                                QuoteDataManager.getRandomQuote()
+                            .then(() => {
+                                //then get a random quote
+                                if (this.state.isBlank === false) {
+                                    QuoteDataManager.getRandomQuote()
 
-                            //then post quote for that page
-                                .then(quote => {
-                                    console.log("got random quote:", quote.quoteText)
-                                    const initialQuote = {
-                                        userId: parseInt(sessionStorage.getItem("credentials")),
-                                        bookId: this.props.bookId,
-                                        quoteText: quote.quoteText,
-                                        quoteAuthor: quote.quoteAuthor,
-                                        timestamp: new Date().toLocaleString()
-                                    };
-                                    QuoteDataManager.postQuote(initialQuote)
-                                        .then(quote => {
-                                        console.log("random quote posted:", quote.quoteText)
-                                    //construct a new pageQuote object
-                                        const newPageQuote = {
-                                            quoteId: quote.id,
-                                            pageId: this.state.pageId,
-                                            bookId: this.props.bookId
-                                        }
-                                    //post the new pageQuote to the database
-                                        QuoteDataManager.savePageQuote(newPageQuote)
-                                            .then(()=> {
-                                                console.log("pushing...")
-                                                this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}/${this.state.month}/${this.state.day}`)
-                                                this.toggle()
-                                                this.toggleSidebar()
+                                //then post quote for that page
+                                    .then(quote => {
+                                        console.log("got random quote:", quote.quoteText)
+                                        const initialQuote = {
+                                            userId: parseInt(sessionStorage.getItem("credentials")),
+                                            bookId: this.props.bookId,
+                                            quoteText: quote.quoteText,
+                                            quoteAuthor: quote.quoteAuthor,
+                                            timestamp: new Date().toLocaleString()
+                                        };
+                                        QuoteDataManager.postQuote(initialQuote)
+                                            .then(quote => {
+                                            console.log("random quote posted:", quote.quoteText)
+                                        //construct a new pageQuote object
+                                            const newPageQuote = {
+                                                quoteId: quote.id,
+                                                pageId: this.state.pageId,
+                                                bookId: this.props.bookId
+                                            }
+                                        //post the new pageQuote to the database
+                                            QuoteDataManager.savePageQuote(newPageQuote)
+                                                .then(()=> {
+                                                    console.log("pushing...")
+                                                    this.props.history.push(`/books/${this.props.bookId}/${this.state.pageId}/${this.state.month}/${this.state.day}`)
+                                                    this.toggle()
+                                                    this.toggleSidebar()
+                                                })
                                             })
-                                        })
-                                })
+                                    })
 
                             } else {
                                 console.log("pushing...")
@@ -143,6 +143,7 @@ class PageMain extends Component {
                                 this.toggle()
                                 this.toggleSidebar()
                             }
+                        })
 
                     }
             })
@@ -286,7 +287,7 @@ class PageMain extends Component {
                 >
                 {this.state.monthOptions.map(monthSelect => (
                     <MonthSelect
-                        // key={}
+                        key={monthSelect}
                         setMonth={this.setMonth}
                         toggleSidebar={this.toggleSidebar}
                         toggle={this.toggle}

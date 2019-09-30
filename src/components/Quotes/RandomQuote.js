@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Fade } from 'reactstrap'
-import { Button, Transition } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 import QuoteDataManager from './QuoteDataManager'
 import './Quotes.css'
 

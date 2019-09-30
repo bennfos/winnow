@@ -13,6 +13,10 @@
     margin: 15px
 }
 
+.thoughtCard__container {
+    min-width: 300px;
+}
+
 .thoughtCard {
     margin: 0 15px 0 0;
     text-align: left;
