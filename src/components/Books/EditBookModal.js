@@ -86,7 +86,7 @@ class BookEditModal extends Component {
                     type="button"
                     onClick={this.toggle}
                     name='edit outline'
-
+                    size="large"
                 >
                 </Icon>
                 </section>

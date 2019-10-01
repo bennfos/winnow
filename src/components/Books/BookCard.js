@@ -12,13 +12,8 @@ class BookCard extends Component {
         pageId: 0,
         description: "",
         display: "hide",
-        visible: "false"
+        visible: false
     }
-
-    postQuote = (quoteObject) => {
-        //post new quote object to the database
-
-        };
 
 
 

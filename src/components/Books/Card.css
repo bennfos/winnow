@@ -19,6 +19,8 @@
 }
 
 .bookEditAndDelete {
+    display: flex !important;
+    flex-direction: row;
     position: absolute;
     right: 60px;
 }
@@ -58,6 +60,7 @@
 
 .card__title {
     display:flex;
+    align-items: center;
     margin: 45px 5px;
 }
 
