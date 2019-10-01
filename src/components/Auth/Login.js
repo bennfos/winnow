@@ -93,7 +93,9 @@ class Login extends Component {
                 type="submit"
                 onClick={this.handleLogin}
                 >sign in</Button>
-              <h6>or</h6>
+              <div className="or">
+                <h6>or</h6>
+              </div>
             </div>
           </div>
       </React.Fragment>
