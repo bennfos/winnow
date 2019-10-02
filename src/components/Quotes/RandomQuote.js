@@ -32,13 +32,10 @@ class RandomQuote extends Component {
 
 
     componentDidMount () {
-        document.body.classList.add('bk2')
         this.refreshRandomQuote()
         }
 
-    componentWillUnmount () {
-        document.body.classList.remove('bk2')
-    }
+
 
     render() {
        return (

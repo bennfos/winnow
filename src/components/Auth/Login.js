@@ -55,7 +55,9 @@ class Login extends Component {
         <div className="login">
           <div className="login__heading">
             <Image className="logo" src={logo}/>
-            <h1 style={{color: 'rgb(85, 85, 85)'}} ><strong>winnow</strong></h1>
+            <div className="title">
+              <h1 style={{color: 'rgb(85, 85, 85)'}} ><strong>winnow</strong></h1>
+            </div>
           </div>
           <div className="login__description--1">
             <h4><em>Marcus Aurelius wrote that we should</em>
