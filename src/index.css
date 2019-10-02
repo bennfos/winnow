@@ -6,16 +6,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: rgb(117, 109, 109) !important;
-  background: url("background.png") no-repeat center center fixed;
+  background-color: #F0F2F3 !important;
   background-size: cover;
-  min-height: 100vh;
-  position: relative;
-}
 
-.bk2 {
-  background: #F0F2F3;
-  background-size: cover;
-  min-height: 100vh;
 }
 
 code {
