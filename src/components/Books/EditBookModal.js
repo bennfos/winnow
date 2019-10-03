@@ -11,22 +11,11 @@ class BookEditModal extends Component {
         title: "",
         description: "",
         loadingStatus: false,
+        isBlank: false
     };
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            books: [],
-            title: "",
-            description: "",
-            modal: false
-        };
-
-        this.toggle = this.toggle.bind(this);
-    }
-
 //Displays/hides the edit modal
-    toggle() {
+    toggle = () => {
         this.setState(prevState => ({
             modal: !prevState.modal
         }));
@@ -40,8 +29,8 @@ class BookEditModal extends Component {
     };
 
 
-    editExistingBook = (event) => {
-        event.preventDefault();
+    editExistingBook = () => {
+
 
     //Validates user input
         if (this.state.title === "") {
@@ -56,6 +45,7 @@ class BookEditModal extends Component {
                 title: this.state.title,
                 description: this.state.description,
                 timestamp: this.props.book.timestamp,
+                isBlank: this.state.isBlank
             };
         //puts the object to the database
             this.props.putEditedBook(editedBook)
@@ -74,6 +64,7 @@ class BookEditModal extends Component {
             description: book.description,
             timestamp: this.props.book.timestamp,
             loadingStatus: false,
+            isBlank: book.isBlank
             });
         });
     }
